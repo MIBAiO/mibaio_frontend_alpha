@@ -1,0 +1,144 @@
+.ie-panel {
+    display: none;
+    background: #212121;
+    padding: 10px 0;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+html.ie-10 .ie-panel,
+html.lt-ie-10 .ie-panel {
+    display: block;
+}
+
+.vertical {
+    border-left: 2px solid white;
+    height: 100%;
+    position: absolute;
+    left: -40%;
+}
+
+@media only screen and (min-device-width: 773px) and (max-device-width: 1399px) {
+    .myclass {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width : 1400px) {
+    .myclass {
+        margin-bottom: 150px;
+    }
+}
+
+#handle-view {
+    margin-top: 80%;
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 1200px) {
+    #icon-view {
+        display: none;
+    }
+
+    #handle-view {
+        display: none;
+    }
+
+    #cart-size {
+        display: none;
+    }
+
+    #icon-view-home {
+        display: none;
+    }
+
+    #icon-view-more {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1199px) {
+    #cart-size-1 {
+        display: none;
+    }
+
+    #home-tab {
+        margin-right: 30px;
+    }
+
+    #more-tab {
+        margin-right: 50px;
+    }
+
+    #icon-view-home {
+        margin-left: 30px;
+        margin-right: 20px;
+
+    }
+
+    #icon-view-more {
+        margin-left: 30px;
+        margin-right: 20px;
+    }
+}
+
+#handle-view {
+    font-size: 28px;
+}
+
+#cart-size {
+    font-size: 28px;
+}
+
+#cart-size-1 {
+    font-size: 35px;
+}
+
+.make-navbar {
+    margin-right: 10%;
+}
+
+.ml-2,
+.mx-2 {
+    margin-left: 1.5rem !important;
+}
+
+.add-xs {
+
+    border-radius: 50%;
+    background-color: #0accbe;
+    color: white;
+    font-size: 40%;
+    padding: .6px;
+    bottom: 60%;
+    left: 50%;
+    line-height: 20px;
+    min-width: 20px;
+    text-align: center;
+    position: absolute;
+    background: #0accbe;
+    font-weight: bold;
+}
+
+#cart-page {
+    display: none;
+}
+
+#cart-empty {
+    display: none
+}
+.animated-1{
+    animation: up-down 1s ease-in-out infinite alternate-reverse both;
+}

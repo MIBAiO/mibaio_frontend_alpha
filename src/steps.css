@@ -1,0 +1,144 @@
+.services-1 .icon {
+  margin: 0 auto 20px auto;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 70%;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+.services-1 .icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+}
+/*.card_steps {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #4e83f1;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+}
+.card_steps::before {
+  content: "";
+  position: absolute;
+  background: #e1f0fa;
+  right: -60px;
+  top: -40px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  z-index: -1;
+}
+.card_steps:hover::before {
+  background: #fff;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+}
+.card_steps .steps_img {
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 80%;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.card_steps .card-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+.card_steps .card-text {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+  color: white;
+}
+.card_steps:hover .card-title,
+.card_steps:hover .card-text {
+  color: #4e83f1;
+}
+.card_steps:hover .img-fluid {
+  background: #fff;
+}
+.card_steps:hover .img-fluid {
+  color: #fff;
+}*/
+.services-1 .icon-box {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+}
+.services-1 .icon-box::before {
+  content: "";
+  position: absolute;
+  background: #e1f0fa;
+  right: -60px;
+  top: -40px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  z-index: -1;
+}
+.services-1 .icon-box:hover::before {
+  background: #4e83f1;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+} /*
+.services-1 .icon {
+  margin: 0 auto 20px auto;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #4e83f1;
+  transition: all 0.3s ease-in-out;
+}
+.services-1 .icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+}*/
+.services-1 .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.services-1 .title a {
+  color: #111;
+}
+.services-1 .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+.services-1 .icon-box:hover .title a,
+.services-1 .icon-box:hover .description {
+  color: #fff;
+}
+.services-1 .icon-box:hover .icon {
+  background: #4e83f1;
+}
+.services-1 .icon-box:hover .icon i {
+  color: #4e83f1;
+}

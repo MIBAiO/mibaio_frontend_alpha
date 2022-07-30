@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+
+.ie-panel {
+  display: none;
+  background: #212121;
+  padding: 10px 0;
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+  clear: both;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+html.ie-10 .ie-panel,
+html.lt-ie-10 .ie-panel {
+  display: block;
+}
+
+.vertical {
+  border-left: 2px solid white;
+  height: 100%;
+  position: absolute;
+  left: -40%;
+}
+
+
+#handle-view {
+  margin-top: 80%;
+  padding: 0 10px;
+}
+
+@media only screen and (min-width: 1200px) {
+  #icon-view {
+      display: none;
+  }
+
+  #handle-view {
+      display: none;
+  }
+
+  #cart-size {
+      display: none;
+  }
+
+  #icon-view-home {
+      display: none;
+  }
+
+  #icon-view-more {
+      display: none;
+  }
+
+}
+
+@media only screen and (max-width: 1199px) {
+  #cart-size-1 {
+      display: none;
+  }
+
+  #home-tab {
+      margin-right: 30px;
+  }
+
+  #more-tab {
+      margin-right: 50px;
+  }
+
+  #icon-view-home {
+      margin-left: 30px;
+      margin-right: 20px;
+
+  }
+
+  #icon-view-more {
+      margin-left: 30px;
+      margin-right: 20px;
+  }
+}
+
+#handle-view {
+  font-size: 28px;
+}
+
+#cart-size {
+  font-size: 28px;
+}
+
+#cart-size-1 {
+  font-size: 35px;
+}
+
+.make-navbar {
+  margin-right: 10%;
+}
+
+.ml-2,
+.mx-2 {
+  margin-left: 1.5rem !important;
+}
+
+@media (min-width: 1200px) {
+  #nav-laptop {
+      margin-left: 12%;
+  }
+}
+
+.billing-class input::placeholder {
+  color: #C8C8C8;
+  opacity: 3;
+  font-size: 12px;
+}
+
+.payment-class input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #C8C8C8;
+  opacity: 3;
+  font-size: 12px;
+  text-align: center;
+  /* Firefox */
+}
+
+.add-xs {
+
+  border-radius: 50%;
+  background-color: #0accbe;
+  color: white;
+  font-size: 40%;
+  padding: .6px;
+  bottom: 60%;
+  left: 50%;
+  line-height: 20px;
+  min-width: 20px;
+  text-align: center;
+  position: absolute;
+  background: #0accbe;
+  font-weight: bold;
+
+
+
+}
+
+.logotype {
+  background: #000;
+  color: #fff;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.column-title {
+  background: #eee;
+  text-transform: uppercase;
+  padding: 15px 5px 15px 15px;
+  font-size: 11px
+}
+
+.column-detail {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.column-header {
+  background: #eee;
+  text-transform: uppercase;
+  padding: 15px;
+  font-size: 11px;
+  border-right: 1px solid #eee;
+}
+
+.row-b {
+  padding: 7px 14px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.container-bill {
+  max-width: 680px;
+  margin: 0 auto;
+  color: black;
+}
+
+.alert {
+  background: #ffd9e8;
+  padding: 20px;
+  margin: 20px 0;
+  line-height: 22px;
+  color: #333
+}
+
+.socialmedia {
+  background: #eee;
+  padding: 20px;
+  display: inline-block
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+
+td,
+th {
+  padding: 10px;
+}
+
+
+
+
+.section-checkout{
+  padding: 30px 0;
+}
+.lottie-animate{
+  width: 500px; 
+  height: 500px;
+}
+
+@media (max-width: 991px) {
+  .lottie-animate{
+    width: 345px;
+    height: 345px;
+  }
+
+}
+.error {
+  color: red;
+  border-color: red;
+}
+.box-custom-4-aside-content .animated {
+  animation: up-down 1s ease-in-out infinite alternate-reverse both;
+}
+.row-c {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+.col-40{
+  -ms-flex: 40%;
+  flex: 40%;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%;
+  /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75
+.col-40 {
+  padding: 0 10px;
+}
+
+.check-1 {
+  background-color: none;
+  padding: 18px 13px 13px 18px;
+  /*border: 1px solid lightgrey;*/
+  border-radius: 3px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 2rem 0 rgba(168, 180, 194, 0.37);
+}
+.check{
+  background-color: none;
+  padding: 18px 13px 13px 18px;
+  /*border: 1px solid lightgrey;*/
+  border-radius: 3px;
+  margin-bottom: 40px;
+}
+
+.col-40 input[type="text"]{
+  width: 70%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #0accbe;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  border-bottom: solid 1px #999;
+  margin-bottom: 15px;
+  height: 32px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+
+}
+
+input[type="text"] {
+  /*width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-bottom: solid 2px #999;
+  border: 1px solid rgb(130, 26, 26);
+  border-radius: 1px;*/
+  width: 85%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #0accbe;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  border-bottom: solid 1px #999;
+  margin-bottom: 15px;
+  height: 32px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.l-check {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #0accbe;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 60%;
+  /* border-radius: 3px; */
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 0 1rem 0 rgba(99, 123, 150, 0.329);
+}
+
+.btn:hover {
+  background-color: white;
+  border: 1px solid #0accbe;
+  color: #0accbe;
+}
+
+.a-check {
+  color: #2196f3;
+}
+
+.hr-check {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns 
+    stack on top of each other instead of next to each other (also change the direction 
+    - make the "cart" column go on top) 
+*/
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .col-40 {
+    -ms-flex: 70%;
+    flex: 70%;
+    margin-top: 30px;
+  }
+
+  input[type="text"]{
+    width: 100%;
+  }
+
+}

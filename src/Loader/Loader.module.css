@@ -1,0 +1,116 @@
+/* /* .cardWrapper{
+    background-color: red;
+} */
+/*
+.message {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.spinner {
+    margin-bottom: 20px;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+} */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #ffffff;
+    transition: 5s;
+  }
+  .message {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.spinner {
+    margin-bottom: 20px;
+    animation: spin 5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  .preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .preloader.loaded .object {
+    animation: none;
+  }
+  
+  #loading {
+    background-color: #ffffff;
+  }
+  
+  #loading-center-object {
+    width: 200px;
+    height: 200px;
+    transform: rotate(-135deg);
+  }
+  
+  .preloader-body {
+    text-align: center;
+  }
+  
+  .object {
+    border-radius: 50%;
+    position: absolute;
+    border: 4px solid #0accbe;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    animation: animate 8s infinite;
+  }
+  
+  #object_one {
+    left: 75px;
+    top: 75px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  #object_two {
+    top: 65px;
+    left: 65px;
+    width: 70px;
+    height: 70px;
+    animation-delay: 3s;
+  }
+  
+  #object_three {
+    top: 55px;
+    left: 55px;
+    width: 90px;
+    height: 90px;
+    animation-delay: 3s;
+  }
+  
+  #object_four {
+    top: 45px;
+    left: 45px;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+  }
+  
+  @keyframes animate {
+    50% {
+      transform: rotate(360deg) scale(0.8);
+    }
+  }
