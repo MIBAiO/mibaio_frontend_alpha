@@ -20,19 +20,12 @@ export function useLoadingWithRefresh() {
                 );
                 console.log(data);
 
-                setTimeout(() => {
-                    console.log(data);
-                    dispatch(setUser(data));
-                    setLoading(false);
-                }, 5000);
+                dispatch(setUser(data));
+                setLoading(false);
             } catch (err) {
                 // console.log(err);
                 // setLoading(false);
-                setTimeout(() => {
-                    console.log(err);
-
-                    setLoading(false);
-                }, 5000);
+                setLoading(false);
             }
         })();
     }, []);
