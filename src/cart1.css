@@ -2,7 +2,7 @@
     display: none;
     background: #212121;
     padding: 10px 0;
-    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
     clear: both;
     text-align: center;
     position: relative;
@@ -35,7 +35,7 @@ html.lt-ie-10 .ie-panel {
     }
 }
 
-@media only screen and (min-width : 1400px) {
+@media only screen and (min-width: 1400px) {
     .myclass {
         margin-bottom: 150px;
     }
@@ -66,7 +66,6 @@ html.lt-ie-10 .ie-panel {
     #icon-view-more {
         display: none;
     }
-
 }
 
 @media only screen and (max-width: 1199px) {
@@ -85,7 +84,6 @@ html.lt-ie-10 .ie-panel {
     #icon-view-home {
         margin-left: 30px;
         margin-right: 20px;
-
     }
 
     #icon-view-more {
@@ -116,12 +114,11 @@ html.lt-ie-10 .ie-panel {
 }
 
 .add-xs {
-
     border-radius: 50%;
     background-color: #0accbe;
     color: white;
     font-size: 40%;
-    padding: .6px;
+    padding: 0.6px;
     bottom: 60%;
     left: 50%;
     line-height: 20px;
@@ -133,12 +130,12 @@ html.lt-ie-10 .ie-panel {
 }
 
 #cart-page {
-    display: none;
+    display: block;
 }
 
 #cart-empty {
-    display: none
+    display: none;
 }
-.animated-1{
+.animated-1 {
     animation: up-down 1s ease-in-out infinite alternate-reverse both;
 }

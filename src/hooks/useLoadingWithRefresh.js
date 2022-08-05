@@ -12,15 +12,15 @@ export function useLoadingWithRefresh() {
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await axios.get(
-                    `${REACT_APP_API_URL}/api/refresh`,
-                    {
-                        withCredentials: true,
-                    }
-                );
-                console.log(data);
+                // const { data } = await axios.get(
+                //     `${REACT_APP_API_URL}/api/refresh`,
+                //     {
+                //         withCredentials: true,
+                //     }
+                // );
+                // console.log(data);
 
-                dispatch(setUser(data));
+                // dispatch(setUser(data));
                 setLoading(false);
             } catch (err) {
                 // console.log(err);

@@ -11,9 +11,15 @@ const api = axios.create({
 	},
 });
 
+
+export const addProductToCart = (data) => api.post("/api/cart", data);
+
+export const getProductsInCart = () => api.get("/api/cart");
+
 //List of all endpoints
 export const register = (data) => api.post("/api/register", data);
 export const login = (data) => api.post("/api/login", data);
+<<<<<<< HEAD
 export const requestResetPassword = (data) =>
 	api.post("/api/requestResetPassword", data);
 export const passwordReset = (data) =>
@@ -29,21 +35,21 @@ export const passwordReset = (data) =>
 	);
 
 api.interceptors.response.use(
-	(config) => {
-		return config;
-	},
-	async (error) => {
-		const originalRequest = error.config;
-		if (
-			error.response.status === 401 &&
-			originalRequest &&
-			!originalRequest._isRetry
-		) {
-			originalRequest.isRetry = true;
-			try {
-				await axios.get(`${REACT_APP_API_URL}/api/refresh`, {
-					withCredentials: true,
-				});
+    (config) => {
+        return config;
+    },
+    async (error) => {
+        const originalRequest = error.config;
+        if (
+            error.response.status === 401 &&
+            originalRequest &&
+            !originalRequest._isRetry
+        ) {
+            originalRequest.isRetry = true;
+            try {
+                await axios.get(`${REACT_APP_API_URL}/api/refresh`, {
+                    withCredentials: true,
+                });
 
 				return api.request(originalRequest);
 			} catch (err) {

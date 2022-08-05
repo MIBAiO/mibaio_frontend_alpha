@@ -1,0 +1,32 @@
+.magnifierBody {
+    /* max-width: 1024px; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.magnifierImage {
+    flex: 0 0 100%;
+}
+
+.magnifierText {
+    border-left: 2px solid grey;
+    padding: 40px;
+    font-family: sans-serif;
+}
+
+@media (min-width: 415px) {
+    .magnifierBody {
+        flex-direction: row;
+    }
+
+    .magnifierImage {
+        flex: 0 0 50%;
+    }
+}
+
+@media (min-width: 800px) {
+    .magnifierImage {
+        flex: 0 0 33.5%;
+    }
+}
