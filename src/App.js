@@ -102,10 +102,6 @@ function App() {
                     <PasswordReset />
                 </GuestRoute>
 
-                <GuestRoute path="/model_copy">
-                    <Model_copy />
-                </GuestRoute>
-
                 <ProtectedRoute path="/cart">
                     <Cart />
                 </ProtectedRoute>

@@ -12,7 +12,12 @@ import Hamburger from "hamburger-react";
 // import React, { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
-import { getProductsInCart } from "../http/apis";
+import {
+    deleteCartItem,
+    getCouponData,
+    getProductsInCart,
+    updateCartItem,
+} from "../http/apis";
 
 const Cart = () => {
     const [itemQuantity, setItemQuantity] = useState(0);
@@ -25,7 +30,19 @@ const Cart = () => {
         toPay: null,
     });
 
+    const [couponDiscount, setCouponDiscount] = useState(0);
+
     const [cartItems, setCartItems] = useState([]);
+
+    const [couponCode, setCouponCode] = useState("");
+
+    const validateCoupon = async (e) => {
+        e.preventDefault();
+
+        const response = await getCouponData(couponCode);
+        // console.log(response);
+        setCouponDiscount(response.data.discount);
+    };
 
     useEffect(() => {
         (async () => {
@@ -39,9 +56,62 @@ const Cart = () => {
             setCartCalculation({
                 ...cartCalculation,
                 total,
+                toPay: total,
             });
         })();
     }, []);
+
+    useEffect(() => {
+        let total = 0;
+        cartItems.forEach((val) => {
+            total += itemPrice * val.count;
+        });
+        setCartCalculation({
+            ...cartCalculation,
+            total,
+            toPay: total,
+        });
+    }, [cartItems]);
+
+    useEffect(() => {
+        let total = 0;
+        cartItems.forEach((val) => {
+            total += itemPrice * val.count;
+        });
+        setCartCalculation({
+            ...cartCalculation,
+            total,
+            toPay: total - (couponDiscount / 100) * total,
+        });
+    }, [couponDiscount]);
+
+    const updateCount = async (idx, by) => {
+        try {
+            const response = await updateCartItem(
+                {
+                    modelName: cartItems[idx].modelName,
+                    count: cartItems[idx].count + by,
+                },
+                cartItems[idx]._id
+            );
+            console.log(response);
+            let temp = cartItems;
+            // console.log(temp.slice(0, idx));
+            // console.log(temp.splice(idx + 1));
+            setCartItems([
+                ...cartItems.slice(0, idx),
+                {
+                    ...cartItems[idx],
+                    modelName: cartItems[idx].modelName,
+                    count: cartItems[idx].count + by,
+                },
+                ...cartItems.slice(idx + 1),
+            ]);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     // const [itemTotalPrice, setItemTotalPrice] = useState(itemPrice*itemQuantity);
 
     return (
@@ -307,137 +377,6 @@ const Cart = () => {
                             </Container>
                         </Navbar>
 
-                        {/* end of perfect nav  */}
-
-                        {/* <div className="rd-navbar-wrap" style={{ height: '76px' }}>
-                            <nav className="rd-navbar rd-navbar-classic rd-navbar-original rd-navbar-static rd-navbar--is-stuck" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="0px" data-xl-stick-up-offset="0px" data-xxl-stick-up-offset="0px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
-                                <div className="rd-navbar-main">
-                                    
-                                    <div className="rd-navbar-panel">
-                                        
-                                        <button className="rd-navbar-toggle toggle-original" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span /></button>
-                                        
-                                        <div className="rd-navbar-brand"><Link className="brand" to="/"><img className="brand-logo-dark" src="images/logo-default-96x32.png" alt="" width={96} height={32} srcSet="images/logo-default-96x32.png 2x" /><img className="brand-logo-light" src="images/logo-default-96x32.png" alt="" width={96} height={32} srcSet="images/logo-default-96x32.png 2x" /></Link></div>
-                                    </div>
-                                    <div className="rd-navbar-nav-wrap toggle-original-elements"><Link href="/">
-                                        <p className="rd-navbar-slogan rd-navbar-slogan-2 text-white-50 wow clipInLeft animated" style={{ visibility: 'visible', animationName: 'clipInLeft' }}>Cool IoT
-                                            Company</p>
-                                    </Link>
-                                        
-                                        <ul className="rd-navbar-nav">
-                                            <li className="rd-nav-item active">
-                                                <Link to="/" className="rd-nav-link" id="home-tab">
-                                                    <i className="fa fa-fw fa-home" id="icon-view-home" />Home
-                                                </Link>
-                                            </li>
-                                            <li className="rd-nav-item">
-                                                <Link className="rd-nav-link" to="/about_us">
-                                                    <i className="fa fa-fw fa-drivers-license-o mr-3 ml-3" id="icon-view" />About
-                                                Us</Link>
-                                            </li>
-                                            <li className="rd-nav-item">
-                                                <Link className="rd-nav-link" to="/careers">
-                                                    <i className="fa fa-fw fa-graduation-cap mr-3" id="icon-view" />Careers</Link>
-                                            </li>
-                                            <li className="rd-nav-item rd-navbar--has-megamenu rd-navbar-submenu"><a className="rd-nav-link" href="#">
-                                                <i className="fa fa-fw fa-user-circle-o mr-3" id="icon-view" />Account</a><span className="rd-navbar-submenu-toggle" />
-                                                <div className="rd-menu rd-navbar-megamenu rd-navbar-open-right">
-                                                    <ul className="rd-navbar-megamenu-inner-acc">
-                                                        <li className="rd-megamenu-item">
-                                                            <ul className="rd-megamenu-list">
-                                                                <li className="rd-megamenu-list-item"><a className="rd-megamenu-list-link" href="#">View Dashboard</a>
-                                                                </li>
-                                                                <li className="rd-megamenu-list-item"><a className="rd-megamenu-list-link" href="#">Logout</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li className="rd-nav-item">
-                                                <Link className="rd-nav-link" to="/contact_us"><i className="fa fa-fw fa-phone mr-3 ml-4" id="icon-view" />Contact Us</Link>
-                                            </li>
-                                            <li className="rd-nav-item rd-navbar--has-megamenu rd-navbar-submenu">
-                                                <a className="rd-nav-link more-navbar" href="#" id="more-tab">
-                                                    <i className="fa fa-fw fa-server" id="icon-view-more" />More
-                                                </a><span className="rd-navbar-submenu-toggle" />
-                                                <div className="rd-menu rd-navbar-megamenu rd-navbar-open-right">
-                                                    <ul className="rd-navbar-megamenu-inner">
-                                                        <li className="rd-megamenu-item">
-                                                            <ul className="rd-megamenu-list">
-                                                                <li className="rd-megamenu-list-item"><Link className="rd-megamenu-list-link" to="/our_team">Our
-                                                                    Team</Link></li>
-                                                                <li className="rd-megamenu-list-item"><a className="rd-megamenu-list-link" href="#">FAQ</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="rd-megamenu-item">
-                                                            <ul className="rd-megamenu-list">
-                                                                <li className="rd-megamenu-list-item"><a className="rd-megamenu-list-link" href="#">Privacy policy</a>
-                                                                </li>
-                                                                <li className="rd-megamenu-list-item"><Link className="rd-megamenu-list-link" to="/our_team">Our
-                                                                    Team</Link></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="rd-megamenu-item">
-                                                            <ul className="rd-megamenu-list">
-                                                                <li className="rd-megamenu-list-item"><Link className="rd-megamenu-list-link" to="/login">Login</Link>
-                                                                </li>
-                                                                <li className="rd-megamenu-list-item"><Link className="rd-megamenu-list-link" href="/register">Register</Link></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <hr style={{ height: '2px' }} />
-                                        </ul>
-                                       
-                                        <div className="rd-navbar-element rd-navbar-element_centered">
-                                            <div className="group-xs">
-                                                <Link className="icon icon-sm link-social-2 mdi mdi-cart-outline cart-icon" id="cart-size-1" to="/cart"><span className="add-xs" id="cart-no">
-                                                    0
-                                                </span></Link>
-                                            </div>
-                                            <div>
-                                                <a className="icon icon-sm link-social-2 mdi mdi-facebook" href="#" id="handle-view" />
-                                                <a className="icon icon-sm link-social-2 mdi mdi-twitter" href="#" id="handle-view" />
-                                                <a className="icon icon-sm link-social-2 mdi mdi-instagram" href="#" id="handle-view" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="rd-navbar-element rd-navbar-element_right">
-                                        <div id="google_translate_element" style={{ display: 'none' }}>
-                                            <div className="skiptranslate goog-te-gadget" dir="ltr" style={{}}>
-                                                <div id=":0.targetLanguage" className="goog-te-gadget-simple" style={{ whiteSpace: 'nowrap' }}><img src="./MIBAiO Home_files/cleardot.gif" className="goog-te-gadget-icon" alt="" style={{ backgroundImage: 'url("https://translate.googleapis.com/translate_static/img/te_ctrl3.gif")', backgroundPosition: '-65px 0px' }} /><span style={{ verticalAlign: 'middle' }}><a aria-haspopup="true" className="goog-te-menu-value" href="javascript:void(0)"><span>Select
-                                                    Language</span><img src="./MIBAiO Home_files/cleardot.gif" alt="" width={1} height={1} /><span style={{ borderLeft: '1px solid rgb(187, 187, 187)' }}>​</span><img src="images/cleardot.gif" alt="" width={1} height={1} /><span aria-hidden="true" style={{ color: 'rgb(118, 118, 118)' }}>▼</span></a></span></div>
-                                            </div>
-                                        </div>
-                                        <ul className="list-localization">
-                                            <li>
-                                                <a className="icon icon-sm link-social-2 mdi mdi-cart-outline mr-2" id="cart-size" href="#"><span className="add-xs" id="cart-no">
-                                                    0
-                                                </span></a>
-                                            </li>
-                                            <li>
-                                                <label>
-                                                    <input id="Marathi" name="localization" defaultValue="Marathi" type="radio" autoComplete="Off" className="radio-custom" /><span className="radio-custom-dummy" /><span className="label-text"><span className="notranslate">मराठी</span></span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label>
-                                                    <input id="English" name="localization" defaultValue="English" type="radio" defaultChecked="checked" autoComplete="Off" className="radio-custom" /><span className="radio-custom-dummy" /><span className="label-text">English</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label>
-                                                    <input id="Hindi" name="localization" defaultValue="Hindi" type="radio" autoComplete="Off" className="radio-custom" /><span className="radio-custom-dummy" /><span className="label-text"><span className="notranslate">हिंदी</span></span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="rd-navbar-dummy" />
-                                </div>
-                            </nav>
-                        </div> */}
-                        {/* Box Custom 4*/}
                         <div
                             id="belownavbar"
                             className="box-custom-4 bg-default"
@@ -916,7 +855,7 @@ const Cart = () => {
                                                         <div className="td_item item_img">
                                                             <img
                                                                 className="model_pic"
-                                                                src="./images/product1/p2.png"
+                                                                src="/images/product1/Sample1.png"
                                                             />
                                                         </div>
                                                         <div className="td_item item_name">
@@ -942,6 +881,12 @@ const Cart = () => {
                                                                 <img
                                                                     src="./images/plus.svg"
                                                                     alt=""
+                                                                    onClick={() =>
+                                                                        updateCount(
+                                                                            idx,
+                                                                            1
+                                                                        )
+                                                                    }
                                                                 />
                                                             </button>
                                                             {/* <input type="text" name="number" id="cart_cnt" defaultValue /> */}
@@ -967,6 +912,12 @@ const Cart = () => {
                                                                 <img
                                                                     src="./images/minus.svg"
                                                                     alt=""
+                                                                    onClick={() =>
+                                                                        updateCount(
+                                                                            idx,
+                                                                            -1
+                                                                        )
+                                                                    }
                                                                 />
                                                             </button>
                                                         </div>
@@ -987,7 +938,23 @@ const Cart = () => {
                                                                 </strong>
                                                             </label>
                                                         </div>
-                                                        <div className="td_item item_remove">
+                                                        <div
+                                                            className="td_item item_remove"
+                                                            onClick={async () => {
+                                                                await deleteCartItem(
+                                                                    val._id
+                                                                );
+                                                                setCartItems([
+                                                                    ...cartItems.slice(
+                                                                        0,
+                                                                        idx
+                                                                    ),
+                                                                    ...cartItems.slice(
+                                                                        idx + 1
+                                                                    ),
+                                                                ]);
+                                                            }}
+                                                        >
                                                             <span className="material-icons-outlined">
                                                                 close
                                                             </span>
@@ -1062,18 +1029,40 @@ const Cart = () => {
                                                     </strong>
                                                 </label>
                                             </div> */}
-                                            <div
-                                                className="form_group"
-                                                style={{ width: "60%" }}
-                                            >
-                                                <label className="input_label">
-                                                    Apply Coupon (If Any)
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    className="input"
-                                                    id="card_number"
-                                                />
+                                            <div className="d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                                <div
+                                                    className="form_group col-6"
+                                                    // style={{ width: "100%" }}
+                                                >
+                                                    <label className="input_label">
+                                                        Coupon (If Any)
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        className="input"
+                                                        id="card_number"
+                                                        onChange={(e) => {
+                                                            setCouponCode(
+                                                                e.target.value
+                                                            );
+                                                        }}
+                                                        style={{
+                                                            fontWeight:
+                                                                "normal",
+                                                            color: "#0accbe",
+                                                        }}
+                                                    />
+                                                </div>
+                                                <button
+                                                    className="btn btn-success m-0 w-auto p-3"
+                                                    name="coupon"
+                                                    style={{ height: 60 }}
+                                                    onClick={validateCoupon}
+                                                >
+                                                    {couponDiscount
+                                                        ? "Applied"
+                                                        : "APPLY"}
+                                                </button>
                                             </div>
                                             <div
                                                 className="form_group"
@@ -1088,7 +1077,27 @@ const Cart = () => {
                                                     id="card_number"
                                                     style={{ color: "#0accbe" }}
                                                 >
-                                                    Rs. {cartCalculation.toPay}
+                                                    {couponDiscount ? (
+                                                        <>
+                                                            <strike>
+                                                                Rs.{" "}
+                                                                {
+                                                                    cartCalculation.total
+                                                                }
+                                                            </strike>
+                                                            Rs.{" "}
+                                                            {
+                                                                cartCalculation.toPay
+                                                            }
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            Rs.{" "}
+                                                            {
+                                                                cartCalculation.toPay
+                                                            }
+                                                        </>
+                                                    )}
                                                     <strong
                                                         className="pay_bold"
                                                         style={{

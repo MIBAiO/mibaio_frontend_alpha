@@ -33,6 +33,14 @@ export const passwordReset = (data) =>
         }
     );
 
+export const updateCartItem = (data, itemId) =>
+    api.put(`/api/cart/${itemId}`, data);
+
+export const deleteCartItem = (itemId) => api.delete(`/api/cart/${itemId}`);
+
+export const getCouponData = (couponCode) =>
+    api.get(`/api/coupons/apply/${couponCode}`);
+
 api.interceptors.response.use(
     (config) => {
         return config;
