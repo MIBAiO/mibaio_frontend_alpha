@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const REACT_APP_API_URL = "http://localhost:5500";
+export const REACT_APP_API_URL = "http://localhost:5500";
 
 const api = axios.create({
     baseURL: REACT_APP_API_URL,
@@ -11,35 +11,31 @@ const api = axios.create({
     },
 });
 
-export const addProductToCart = (data) => api.post("/api/cart", data);
-
-export const getProductsInCart = () => api.get("/api/cart");
-
 //List of all endpoints
-export const register = (data) => api.post("/api/register", data);
-export const login = (data) => api.post("/api/login", data);
 
-export const requestResetPassword = (data) =>
-    api.post("/api/requestResetPassword", data);
-export const passwordReset = (data) =>
-    api.post(
-        "/api/passwordReset",
-        { password: data.password },
-        {
-            params: {
-                token: data.token,
-                id: data.id,
-            },
-        }
-    );
+export {
+    register,
+    login,
+    requestResetPassword,
+    passwordReset,
+} from "./authCalls";
+export {
+    updateCartItem,
+    deleteCartItem,
+    addProductToCart,
+    getProductsInCart,
+} from "./cartCalls";
+export { getCouponData } from "./couponCalls";
 
-export const updateCartItem = (data, itemId) =>
-    api.put(`/api/cart/${itemId}`, data);
-
-export const deleteCartItem = (itemId) => api.delete(`/api/cart/${itemId}`);
-
-export const getCouponData = (couponCode) =>
-    api.get(`/api/coupons/apply/${couponCode}`);
+export {
+    getShippingDetails,
+    getBillingDetails,
+    uploadShippingDetails,
+    uploadBillingDetails,
+    updateBillingDetails,
+    updateShippingDetails,
+    createOrder,
+} from "./checkoutCalls";
 
 api.interceptors.response.use(
     (config) => {
