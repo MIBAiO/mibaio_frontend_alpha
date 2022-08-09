@@ -12,6 +12,7 @@ import Hamburger from "hamburger-react";
 // import pic1 from "../../public/pic1.png";
 import styled from "styled-components";
 import Magnifier from "react-magnifier";
+import Carousel from 'react-bootstrap/Carousel';
 import {
     GlassMagnifier,
     MOUSE_ACTIVATION,
@@ -907,34 +908,71 @@ const ViewProduct = () => {
                     </div> 
                 </div>
                 </div>
-
-
-                    <div id="tab-content2" class="tab-content">
-                        <p
-                            style={{
-                                textAlign: "center",
-                            }}
-                        >
-                            Cascading Style Sheets (CSS) is a style sheet
-                            language used for describing the look and formatting
-                            of a document written in a markup language.
-                        </p>
-                    </div>
-
-                    <div id="tab-content3" class="tab-content">
-                        <p
-                            style={{
-                                textAlign: "center",
-                            }}
-                        >
-                            jQuery is a fast, small, and feature-rich JavaScript
-                            library. It makes things like HTML document
-                            traversal and manipulation, event handling,
-                            animation, and Ajax much simpler with an easy-to-use
-                            API that works across a multitude of browsers.
-                        </p>
-                    </div>
+                <div id="tab-content2" class="tab-content">
+                <p style={{float:"left"}}>
+                    <ul>
+                        <li><strong>Product Dimensions ‏ :</strong> ‎ 9 x 9 x 3 cm</li>
+                        <li><strong>Date First Available ‏ :</strong> ‎ 1 July 2022</li>
+                        <li><strong>Manufacturer ‏ :</strong> ‎ MIBAiO Elmec Smart Automations Pvt. Ltd.</li>
+                        <li><strong>Operating frequency ‏ :</strong> ‎ 50Hz-60Hz</li>
+                        <li><strong>Operating voltage ‏ :</strong> ‎ 110-240 VAC</li>
+                        <li><strong>Communication protocol ‏ :</strong> ‎ WiFi 2.4GHz + Bluetooth 5.0</li>
+                        <li><strong>ASIN ‏ :</strong> ‎ B097HF97XP</li>
+                        <li><strong>Item model number ‏ :</strong> ‎ MX4S10XX</li>
+                        <li><strong>Country of Origin ‏ :</strong> ‎ India</li>
+                        <li><strong>Item Weight ‏ :</strong> ‎ 200 g</li>
+                        <li><strong>Included Components ‏ :</strong> ‎ 1 x MIBAiO Xtension, Instruction manual</li>
+                    </ul>
+                </p>
+            </div>
+            <div id="tab-content3" class="tab-content">
+            <Carousel controls={false} indicators = {false} interval ={2000} draggable={true} slide={true} >
+                <Carousel.Item>
+            <blockquote class="quote-classic"><img class="quote-classic-avatar" src="images/testimonials-1-102x102.jpg" alt="Customer profile image" width="102" height="102"/>
+                <div class="quote-classic-text">
+                  <p>With MIBAiO installed at my restaurant, I am tension free of all the hassels as I have the real time status of my connected appliances on my phone screen. Best part is, I can control my restaurant lights and fans without replacing them from anywhere in the world!</p>
                 </div>
+                
+                
+                <div class="quote-classic-meta">
+                  <cite class="quote-classic-cite">Mr. Prasad S</cite>
+                  <p class="quote-classic-position">Restaurant Owner</p>
+                </div>
+                
+              </blockquote>
+            </Carousel.Item>
+            <Carousel.Item>
+            <blockquote class="quote-classic"><img class="quote-classic-avatar" src="images/testimonials-2-102x102.jpg" alt="Customer profile image" width="102" height="102"/>
+            
+                <div class="quote-classic-text">
+                  <p>The Voice control feature is really helpful for my mother-in-law who is on a wheelchair! Setting up lights and scenes  with 1 tap whenever guests arrive at my house puts a futuristic tech impression! 😎</p>
+                </div>
+                
+                <div class="quote-classic-meta">
+                  <cite class="quote-classic-cite">Mrs. Swati K</cite>
+                  <p class="quote-classic-position">House Maker</p>
+                </div>
+                
+              </blockquote>
+              </Carousel.Item>
+              <Carousel.Item>
+              <blockquote class="quote-classic"><img class="quote-classic-avatar" src="images/testimonials-3-102x102.jpg" alt="Customer profile image" width="102" height="102"/>
+                <div class="quote-classic-text">
+                  <p>As promised, Xtension 4S has upgraded my lifestyle. I like the automatic scheduling feature which runs exactly at time set which reduces my effort and delivers me a delightful experience!<br/>Kudos to MIBAiO team!!</p>
+                </div>
+                
+                <div class="quote-classic-meta">
+                  <cite class="quote-classic-cite">Ms. Ankita R</cite>
+                  <p class="quote-classic-position">Working Professional</p>
+                </div>
+              
+              </blockquote>
+              </Carousel.Item>
+              </Carousel>
+             
+            </div>
+                </div>
+                   
                 {/* ================================================================================================ */}
 
                 {/* Subscribe to Get Notified!*/}
