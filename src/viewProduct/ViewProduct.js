@@ -785,7 +785,7 @@ const ViewProduct = () => {
                     <input type="radio" name="tabs" id="tab1" checked />
                     <label for="tab1" id="tab-l1">
                         <i class="fas fa-book"></i>
-                        <span>Overview</span>
+                        <span>Features</span>
                     </label>
 
                     <input type="radio" name="tabs" id="tab2" />
@@ -799,319 +799,115 @@ const ViewProduct = () => {
                         <i class="fas fa-comments"></i>
                         <span>Reviews</span>
                     </label>
-
-                    <div id="tab-content1" class="tab-content">
-                        <p
-                            style={{
-                                textAlign: "center",
-                            }}
-                        >
-                            <div class="container">
-                                <div class="row row-50 justify-content-xl-between align-items-center">
-                                    <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall">
-                                        <div class="unit unit-spacing-1 align-items-center">
-                                            <div class="unit-left">
-                                                <div class="icon icon-style-1 mdi mdi-microphone"></div>
-                                            </div>
-                                            <div class="unit-body">
-                                                <h3>Voice Control</h3>
-                                            </div>
-                                        </div>
-                                        <div class="block-4 offset-top-4">
-                                            <p class="big"></p>
-
-                                            <blockquote class="quote-light">
-                                                <div class="quote-light-mark linearicons-quote-open"></div>
-                                                <div class="quote-light-text">
-                                                    <p>
-                                                        Forgot to switch off the
-                                                        fan of your room before
-                                                        going out? No worries!
-                                                        <br />
-                                                        Get the best home
-                                                        automation experience at
-                                                        MIBAiO which provides a
-                                                        truely hands-free
-                                                        control of your home
-                                                        appliances from anywhere
-                                                    </p>
-                                                </div>
-                                            </blockquote>
-                                        </div>
+                
+                    <div id="tab-content1" className="tab-content">
+                    <video id="myvideo" src="images/SummarySlide.mp4" style={{width: "100%", marginBottom: "-5%", transitionDelay:" 1s"}} loop="true" autoPlay="true" muted="true"></video>
+                    <div class="container">
+                        <div class="row row-50 justify-content-xl-between align-items-center">
+                            <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall" data-wow-delay=".5s">
+                                <div class="unit unit-spacing-1 align-items-center">
+                                    <div class="unit-left">
+                                        <div class="icon icon-style-1 mdi mdi-clock"></div>
                                     </div>
-
-                                    <div
-                                        class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
-                                        id="Voice"
-                                    >
-                                        <div
-                                            class="slick-slider slick-slider-phone-frame-2 slick-style-1"
-                                            data-focus-behaviour="true"
-                                            data-arrows="true"
-                                            data-loop="false"
-                                            data-dots="false"
-                                            data-swipe="false"
-                                            data-speed="700"
-                                            data-initial-slide="1"
-                                            data-items="2"
-                                            data-sm-items="2"
-                                            data-md-items="2"
-                                            data-lg-items="2"
-                                            data-xl-items="2"
-                                            data-xxl-items="2"
-                                        >
-                                            <div class="item">
-                                                <div class="phone-frame-2">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                "url(images/VoiceControliphone-frame-3-inner-8-300x650.png)",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="phone-frame-2 feature">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                " url(images/iphone-frame-3-inner-1-300x650.png)",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="unit-body">
+                                    <h4>Schedule On/Off</h4>
                                 </div>
-                            </div>
-
-                            <div class="container">
-                                <div class="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
-                                    <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall">
-                                        <div class="unit unit-spacing-1 align-items-center">
-                                            <div class="unit-left">
-                                                <div class="icon icon-style-1 mdi mdi-plus-network"></div>
-                                            </div>
-                                            <div class="unit-body">
-                                                <h4
-                                                    style={{
-                                                        fontSize: "32px",
-                                                    }}
-                                                >
-                                                    Self-reliant lifestyle
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div class="block-4 offset-top-4">
-                                            <p class="big">
-                                                With inspiration from
-                                                "आत्मनिर्भर भारत अभियान", we are
-                                                comitted to provide our
-                                                customers a truely self-reliant
-                                                (आत्मनिर्भर) experience using
-                                                MIBAiO.
-                                            </p>
-                                            <ul class="list-marked list-marked_secondary">
-                                                <li>
-                                                    Easily manage home
-                                                    appliances without
-                                                    struggling to move from your
-                                                    position
-                                                </li>
-                                                <li>
-                                                    Hands-free experience with
-                                                    voice control feature
-                                                </li>
-                                                <li>
-                                                    Establish a reliable network
-                                                    with our secure IoT cloud
-                                                    and your existing appliances
-                                                </li>
-                                            </ul>
-                                            <div class="group-buttons-responsive group-middle"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern">
-                                        <div
-                                            class="slick-slider slick-slider-phone-frame-2 slick-style-1"
-                                            data-focus-behaviour="true"
-                                            data-arrows="true"
-                                            data-loop="false"
-                                            data-dots="false"
-                                            data-swipe="false"
-                                            data-speed="700"
-                                            data-initial-slide="0"
-                                            data-items="2"
-                                            data-sm-items="2"
-                                            data-md-items="2"
-                                            data-lg-items="2"
-                                            data-xl-items="2"
-                                            data-xxl-items="2"
-                                        >
-                                            <div class="item">
-                                                <div class="phone-frame-2">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                "url(images/phone-image-3-227x492.jpg)",
-                                                        }}
-                                                    ></div>
-                                                    <div
-                                                        class="tooltip-point"
-                                                        data-toggle="tooltip"
-                                                        data-placement="top"
-                                                        data-class="tooltip-light"
-                                                        title="Perfect smarthome solution"
-                                                        style={{
-                                                            position:
-                                                                "absolute",
-                                                            top: "42%",
-                                                            left: "35.9%",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="phone-frame-2">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                "url(images/iphone-frame-3-inner-1-300x650.png)",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="container">
-                                <div class="row row-50 justify-content-xl-between align-items-center">
-                                    <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall">
-                                        <div class="unit unit-spacing-1 align-items-center">
-                                            <div class="unit-left">
-                                                <div class="icon icon-style-1 mdi mdi-harddisk"></div>
-                                            </div>
-                                            <div class="unit-body">
-                                                <h3>Customize your App</h3>
-                                            </div>
-                                        </div>
-                                        <div class="block-4 offset-top-4">
-                                            <p class="big">
-                                                Design your mobile application
-                                                according to your choice of
-                                                colors. Improve your lifestyle
-                                                routines and manage it better.
-                                            </p>
-
-                                            <blockquote class="quote-light">
-                                                <div class="quote-light-mark linearicons-quote-open"></div>
-                                                <div class="quote-light-text">
-                                                    <p>
-                                                        Customize your App
-                                                        preferences by going to
-                                                        Settings &rarr;
-                                                        Personalization. And get
-                                                        the best home automation
-                                                        experience you truely
-                                                        deserve!
-                                                    </p>
-                                                </div>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern">
-                                        <div
-                                            class="slick-slider slick-slider-phone-frame-2 slick-style-1"
-                                            data-focus-behaviour="true"
-                                            data-arrows="true"
-                                            data-loop="false"
-                                            data-dots="false"
-                                            data-swipe="false"
-                                            data-speed="700"
-                                            data-initial-slide="1"
-                                            data-items="2"
-                                            data-sm-items="2"
-                                            data-md-items="2"
-                                            data-lg-items="2"
-                                            data-xl-items="2"
-                                            data-xxl-items="2"
-                                        >
-                                            <div class="item">
-                                                <div class="phone-frame-2">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                "url(images/iphone-frame-3-inner-1-300x650.png)",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="phone-frame-2">
-                                                    <img
-                                                        class="phone-frame-2-outer"
-                                                        src="images/iphonex-mockup-1-261x520.png"
-                                                        alt=""
-                                                        width="261"
-                                                        height="520"
-                                                    />
-                                                    <div
-                                                        class="phone-frame-2-inner"
-                                                        style={{
-                                                            backgroundImage:
-                                                                "url(images/iphone-frame-3-inner-1-300x650.png)",
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </p>
+                    
                     </div>
+                    <div class="block-4 offset-top-4">
+                                <div class="quote-light-text">
+                                    <p class="big">Automate your daily routine tasks by scheduling your appliance(s) to run at a specified time or set a timer to turn on/off your appliance(s) automatically.
+                                        eg:</p>
+                                </div>
+                                <blockquote class="quote-light">
+                                    <div class="quote-light-text">
+                                        <ul class="list-marked list-marked_secondary">
+                                            <li>Switch ON your Mandir/outdoor lights every eveing at 6:15pm and switch OFF at 11:00pm</li>
+                                            <li>Switch OFF TV/STB every night at 11:00pm</li>
+                                            <li>Set up timings of light and fan in kids/elderly rooms
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern" data-wow-delay=".5s" id="Schedule">
+                                <div class="item">
+                                    <img class="d-block w-100" src="images/product1/Feature1.png" alt="Appliance-scheduling-feature" />
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                <div class="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
+                <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall" data-wow-delay=".5s">
+                <div class="unit unit-spacing-1 align-items-center">
+                                <div class="unit-left">
+                                    <div class="icon icon-style-1 mdi mdi-plus-network"></div>
+                                </div>
+                                <div class="unit-body">
+                                    <h4 >Self-reliant lifestyle</h4>
+                                </div>
+                            </div>
+                            <div class="block-4 offset-top-4">
+                                <p class="big">With inspiration from "आत्मनिर्भर भारत अभियान", we are comitted to
+                                    provide
+                                    our customers a
+                                    truely self-reliant (आत्मनिर्भर) experience using MIBAiO.</p>
+                                    <blockquote class="quote-light">
+                                        <div class="quote-light-text">
+                                        <ul class="list-marked list-marked_secondary">
+                                            <li>Easily manage home appliances without struggling to move from your position</li>
+                                            <li>Hands-free experience with voice control feature</li>
+                                            <li>Establish a reliable network with our secure IoT cloud and your existing
+                                                appliances
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </blockquote>
+                                <div class="group-buttons-responsive group-middle"></div>
+                            </div>  
+                    </div>
+                    <div class="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern" data-wow-delay=".5s">
+                    <div class="item">
+                                    <img src="images/Smart guy.png" alt="smart-guy-using-app" style={{width: "100%"}} />
+                                </div>
+                        </div>
+                </div>    
+                </div>
+                <div class="container">
+                <div class="row row-50 justify-content-xl-between align-items-center">
+                <div class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall" data-wow-delay=".5s"> 
+                <div class="unit unit-spacing-1 align-items-center">
+                                <div class="unit-left">
+                                    <div class="icon icon-style-1 mdi mdi-microphone"></div>
+                                </div>
+                                <div class="unit-body">
+                                    <h4>Voice Control</h4>
+                                </div>
+                            </div>
+                            <div class="block-4 offset-top-4">
+                                <p class="big">🗣 "जो हुकूम मेरे आका" Let your voice assistant be your Genie! </p>
+                                <blockquote class="quote-light">
+                                    <div class="quote-light-text">
+                                        <ul class="list-marked list-marked_secondary">
+                                            <li>Connect your voice assistant(s) skills with MIBAiO app to enjoy a truely hands-free experience!</li>
+                                            <li>Works with leading voice assistants like Alexa, Siri and Google vooice assistant</li>
+                                        </ul>
+                                    </div>
+                                </blockquote>
+                            </div>
+                </div>
+                <div class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern" data-wow-delay=".5s">
+                                <div class="item">
+                                     <img src="images/VoiceControliphone-548x793.png" alt="Voice control feature" width="90%;"/>
+                                </div>
+                        </div>
+                    </div> 
+                </div>
+                </div>
+
 
                     <div id="tab-content2" class="tab-content">
                         <p
@@ -1368,6 +1164,7 @@ const ViewProduct = () => {
             </div>
             <div className="snackbars" id="form-output-global" />
         </div>
+        
     );
 };
 
