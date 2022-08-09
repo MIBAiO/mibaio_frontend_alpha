@@ -150,7 +150,7 @@
 }
 .container-fluid
 {
-  background:rgb(251, 248, 248);
+  /* background:rgb(251, 248, 248); */
   min-width: 100%;
 }
 .content

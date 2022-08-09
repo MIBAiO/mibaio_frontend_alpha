@@ -263,8 +263,7 @@
 }
 
 .quantity {
-  padding-top: 20px;
-  margin-right: 60px;
+  /* padding-top: 20px; */
 }
 .quantity input {
   -webkit-appearance: none;
@@ -277,16 +276,16 @@
 }
 
 .plus-btn {
-  width: 30px;
-  height: 30px;
+  /* width: 30px; */
+  /* height: 30px; */
   background-color: #e1e8ee;
   border-radius: 6px;
   border: none;
   cursor: pointer;
 }
 .minus-btn {
-  width: 30px;
-  height: 30px;
+  /* width: 30px; */
+  /* height: 30px; */
   background-color: #e1e8ee;
   border-radius: 6px;
   border: none;

@@ -112,7 +112,7 @@ html.lt-ie-10 .ie-panel {
 
 .ml-2,
 .mx-2 {
-    margin-left: 1.5rem !important;
+    /* margin-left: 1.5rem !important; */
 }
 
 .feature video {

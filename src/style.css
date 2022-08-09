@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/* @font-face {
+  font-family: Avenir;
+  src: url("/public/fonts/AvenirLTStd-Book.otf");
+} */
+
+
 /*
 * Trunk version 2.0.1
 */
@@ -2410,8 +2416,8 @@ div.box-custom-5-main {
 * Element groups
 */
 html body .group {
-  margin-bottom: -10px;
-  margin-left: -20px;
+  /* margin-bottom: -10px; */
+  /* margin-left: -20px; */
 }
 
 html body .group:empty {
@@ -2422,8 +2428,8 @@ html body .group:empty {
 html body .group > * {
   display: inline-block;
   margin-top: 0;
-  margin-bottom: 10px;
-  margin-left: 20px;
+  /* margin-bottom: 10px; */
+  /* margin-left: 20px; */
 }
 
 html body .group-xs {
@@ -2572,7 +2578,7 @@ html body .group-buttons-responsive > * {
 }
 
 * + .group {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 * + .group-xs {
@@ -2603,7 +2609,7 @@ html body .group-buttons-responsive > * {
 
 @media (min-width: 768px) {
   * + .group {
-    margin-top: 33px;
+    /* margin-top: 33px; */
   }
   * + .group-xs {
     margin-top: 33px;
@@ -3291,7 +3297,7 @@ html .list-inline-md > * {
 */
 img {
   display: inline-block;
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
 }
 
@@ -8990,7 +8996,7 @@ h5.iphone-frame-4-next-text {
 
 @media (min-width: 1600px) {
   .header-offset {
-    margin-bottom: 100px;
+    margin-bottom: 2%;
   }
 }
 

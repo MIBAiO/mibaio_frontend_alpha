@@ -46,6 +46,12 @@
     font-family:"Samsung";
     src:url("fonts/samsungsharpsans-medium.otf")
 }
+
+@font-face {
+	font-family: "Avenir";
+	src: url("fonts/AvenirLTStd-Book.otf");
+}
+
 html {
 	font-family: sans-serif;
 	line-height: 1.15;
@@ -7681,7 +7687,7 @@ button.bg-tertiary:focus {
 
 .ml-2,
 .mx-2 {
-	margin-left: 0.5rem !important;
+	/* margin-left: 0.5rem !important; */
 }
 
 .m-3 {
@@ -7753,7 +7759,7 @@ button.bg-tertiary:focus {
 
 .ml-5,
 .mx-5 {
-	margin-left: 3rem !important;
+	/* margin-left: 3rem !important; */
 }
 
 .p-0 {
