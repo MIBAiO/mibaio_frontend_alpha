@@ -3,10 +3,21 @@ import { Link } from "react-router-dom";
 import { faIdCard, fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import Cookies from "js-cookie";
 library.add(faIdCard, fas);
 
 const NavigationBar = () => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+    useEffect(() => {
+        if(Cookies.get("accessToken")) {
+            setIsLoggedIn(true);
+        }
+    }, [])
     function updateLanguage(value) {
         console.log(value);
         var selectIndex = 0;
@@ -93,11 +104,13 @@ const NavigationBar = () => {
                         <NavDropdown.Item ><Link className="rd-nav-link" to="/about_us">Log Out</Link></NavDropdown.Item>
 
                     </NavDropdown> */}
-                        <Nav.Link>
+                        {!isLoggedIn && (
+                            <Nav.Link>
                             <Link className="rd-nav-link nav-font" to="/login">
                                 Login
                             </Link>
                         </Nav.Link>
+                        )}
                         <Nav.Link>
                             <Link
                                 className="rd-nav-link nav-font"
@@ -158,7 +171,7 @@ const NavigationBar = () => {
                                             </li>
                                         </ul>
                                     </li>
-                                    <li classNames="rd-megamenu-item">
+                                    {/* <li classNames="rd-megamenu-item">
                                         <ul className="rd-megamenu-list">
                                             <li className="rd-megamenu-list-item">
                                                 <a
@@ -169,7 +182,7 @@ const NavigationBar = () => {
                                                 </a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </NavDropdown.Item>
                         </NavDropdown>

@@ -63,6 +63,7 @@ const ViewProduct = () => {
 			const res = await addProductToCart({
 				modelName: "MIBAiO Xtension 4S",
 				count: itemQuantity,
+				color
 			});
 			setDidRedirect(true);
 		} catch (err) {

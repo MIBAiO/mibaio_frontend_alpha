@@ -366,7 +366,7 @@ const Checkout = () => {
                                                         textAlign: "center",
                                                     }}
                                                 >
-                                                    Options
+                                                    Color
                                                 </td>
                                                 <td
                                                     width="10%"
@@ -422,7 +422,7 @@ const Checkout = () => {
                                                             textAlign: "center",
                                                         }}
                                                     >
-                                                        option
+                                                        {val.color}
                                                     </td>
                                                     <td
                                                         className="row-b"

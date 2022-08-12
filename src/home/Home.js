@@ -398,7 +398,8 @@ const Home = () => {
                                                 </div>
                                             </div>
                                         </a>
-                                        <a
+                                        <Link
+                                            to="/view"
                                             className="button button-icon button-icon-right button-secondary button-winona wow clipInLeft wow fadeInUp"
                                             data-wow-delay="1.3s"
                                             href="#"
@@ -417,7 +418,7 @@ const Home = () => {
                                             <div className="content-dubbed">
                                                 Buy Now
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

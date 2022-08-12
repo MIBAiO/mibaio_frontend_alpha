@@ -170,7 +170,8 @@ const Cart = () => {
                                         </p>
                                         <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                                             {/* <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> */}
-                                            <a
+                                            <Link
+                                                to="/view"
                                                 className="button button-icon button-icon-right button-secondary button-winona wow clipInLeft wow fadeInUp"
                                                 data-wow-delay="0.3s"
                                                 href="model_copy.php"
@@ -178,7 +179,7 @@ const Cart = () => {
                                                 style={{ fontSize: "18px" }}
                                             >
                                                 Back To Shopping
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                     <div className="col-lg-4">
@@ -227,7 +228,12 @@ const Cart = () => {
                                                                     <label className="main">
                                                                         {
                                                                             val.modelName
+                                                                        }{" "}
+                                                                        (
+                                                                        {
+                                                                            val.color
                                                                         }
+                                                                        )
                                                                     </label>
                                                                     <label className="sub">
                                                                         Ref.
