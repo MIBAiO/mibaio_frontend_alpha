@@ -6,20 +6,26 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
+import { getProductsInCart } from "../http/cartCalls";
 library.add(faIdCard, fas);
 
 const NavigationBar = () => {
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    const [cartCount, setCartCount] = useState(0);
 
     useEffect(() => {
-        if(Cookies.get("accessToken")) {
+        if (Cookies.get("accessToken")) {
             setIsLoggedIn(true);
         }
-    }, [])
+
+        (async () => {
+            const cartItems = await getProductsInCart();
+            setCartCount(cartItems.data.length);
+        })();
+    }, []);
     function updateLanguage(value) {
-        console.log(value);
+        // console.log(value);
         var selectIndex = 0;
         var a = document.querySelector("#google_translate_element select");
         switch (value) {
@@ -106,10 +112,13 @@ const NavigationBar = () => {
                     </NavDropdown> */}
                         {!isLoggedIn && (
                             <Nav.Link>
-                            <Link className="rd-nav-link nav-font" to="/login">
-                                Login
-                            </Link>
-                        </Nav.Link>
+                                <Link
+                                    className="rd-nav-link nav-font"
+                                    to="/login"
+                                >
+                                    Login
+                                </Link>
+                            </Nav.Link>
                         )}
                         <Nav.Link>
                             <Link
@@ -200,7 +209,7 @@ const NavigationBar = () => {
                                 to="/cart"
                             >
                                 <span className="add-xs" id="cart-no">
-                                    0
+                                    {cartCount}
                                 </span>
                             </Link>
                         </div>

@@ -16,7 +16,7 @@ import {
 } from "../http/apis";
 import CheckoutForm from "../components/CheckoutForm";
 import CustomFooter from "../components/customfooter";
-import { paymentSuccessCallback } from "../http/checkoutCalls";
+import { deleteOrder, paymentSuccessCallback } from "../http/checkoutCalls";
 import { Redirect } from "react-router-dom";
 
 const Checkout = () => {
@@ -253,6 +253,15 @@ const Checkout = () => {
             },
             theme: {
                 color: "#61dafb",
+            },
+            modal: {
+                ondismiss: () => {
+                    (async () => {
+                        console.log("CANCELLED");
+                        await deleteOrder(orderId);
+                        setIsPaymentInProgress(false);
+                    })();
+                },
             },
         };
 
