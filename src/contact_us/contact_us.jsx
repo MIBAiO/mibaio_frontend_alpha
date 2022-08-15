@@ -56,10 +56,7 @@ const ContactUs = () => {
 
             <div className="page">
                 {/* Page Header*/}
-                <section
-                    className="section page-header-1 header-section"
-                    style={{ background: "#434343" }}
-                >
+                <section className="section page-header-1 header-section">
                     {/* <NavigationBar /> */}
                     <PageHeadder quote="Contact Us" showYouAre={false} />
                 </section>
@@ -322,9 +319,11 @@ const ContactUs = () => {
                         </div>
                     </div>
                 </section>
-                <section className="section section-md-last block-footer-classic section-gray-2">
-                    <div className="block-footer-classic-wrap">
-                        {/* <div className="container">
+                <CustomFooter />
+
+                {/* <section className="section section-md-last block-footer-classic section-gray-2">
+                    <div className="block-footer-classic-wrap"> */}
+                {/* <div className="container">
                             <div className="row row-50 justify-content-lg-between">
                                 <div className="col-md-6 col-lg-6 wow clipInLeft">
                                     <p className="heading heading-alternate-1 text-white">
@@ -386,10 +385,9 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </div> */}
-                        {/* Page Footer*/}
-                        <CustomFooter />
-                        {/* Page Footer*/}
-                        {/* <footer className="section footer-classic footer-classic_boxed text-white-50 text">
+                {/* Page Footer*/}
+                {/* Page Footer*/}
+                {/* <footer className="section footer-classic footer-classic_boxed text-white-50 text">
                             <div className="hr container">
                                 <hr />
                             </div>
@@ -545,8 +543,8 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </footer> */}
-                    </div>
-                </section>
+                {/* </div>
+                </section> */}
             </div>
             <div className="snackbars" id="form-output-global" />
         </div>

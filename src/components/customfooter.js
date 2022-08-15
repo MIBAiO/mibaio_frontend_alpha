@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { subscribeToNewsletter } from "../http/apis";
+import Cookies from "js-cookie";
+
 const CustomFooter = () => {
     const [email, setEmail] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleSubscribe = (e) => {
         try {
@@ -13,6 +17,12 @@ const CustomFooter = () => {
             console.log(err);
         }
     };
+
+    useEffect(() => {
+        if (Cookies.get("accessToken")) {
+            setIsLoggedIn(true);
+        }
+    }, []);
     return (
         <section className="section section-md-last block-footer-classic">
             <div className="block-footer-classic-wrap">
@@ -136,20 +146,37 @@ const CustomFooter = () => {
                                             smarthome.
                                         </span>
                                     </p>
-                                    <Link
-                                        to="/login"
-                                        className="button button-color-8 button-winona text-black wow fadeIn"
-                                        style={{
-                                            animationName: "none",
-                                        }}
-                                    >
-                                        <div className="content-original">
-                                            Sign In
+                                    {!isLoggedIn && (
+                                        <Link
+                                            to="/login"
+                                            className="button button-color-8 button-winona text-black wow fadeIn"
+                                            style={{
+                                                animationName: "none",
+                                            }}
+                                        >
+                                            <div className="content-original">
+                                                Sign In
+                                            </div>
+                                            <div className="content-dubbed">
+                                                Sign In
+                                            </div>
+                                        </Link>
+                                    )}
+                                    {isLoggedIn && (
+                                        <div
+                                            className="button button-color-8 button-winona text-black wow fadeIn"
+                                            style={{
+                                                animationName: "none",
+                                            }}
+                                        >
+                                            <div className="content-original">
+                                                Log Out
+                                            </div>
+                                            <div className="content-dubbed">
+                                                Log Out
+                                            </div>
                                         </div>
-                                        <div className="content-dubbed">
-                                            Sign In
-                                        </div>
-                                    </Link>
+                                    )}
                                 </div>
                                 <div className="col-sm-5 col-lg-3 col-xl-2">
                                     <h4 className="footer-classic-title text-white">
@@ -170,13 +197,7 @@ const CustomFooter = () => {
                                     </h4>
                                     <ul className="list footer-classic-list footer-classic-list_2-cols text-white">
                                         <li>
-                                            <Link to="/register">Sign Up</Link>
-                                        </li>
-                                        <li>
                                             <Link to="/careers">Careers</Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/login">Log In</Link>
                                         </li>
                                         <li>
                                             <a href="https://mibaio.in/#FAQ">
