@@ -36,7 +36,9 @@ import modeposter from "./3Modeposter.png";
 import Chevron from "react-chevron";
 import { faArrowDown, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "../components/navigationbar";
-import Radium, { StyleRoot } from 'radium';
+
+import CustomFooter from "../components/customfooter";
+
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -340,7 +342,7 @@ const Home = () => {
                                                 autoStart: true,
                                                 loop: true,
                                                 wrapperClassName:
-                                                    "text-primary",
+                                                    "text-primary notranslate",
                                                 cursorClassName:
                                                     "typed-cursor typed-cursor--blink",
                                             }}
@@ -3844,7 +3846,8 @@ const Home = () => {
                                 </div>
                             </div>
                             {/* Page Footer*/}
-                            <footer className="section footer-classic footer-classic_boxed text-white-50 text">
+                            <CustomFooter />
+                            {/* <footer className="section footer-classic footer-classic_boxed text-white-50 text">
                                 <div className="hr container">
                                     <hr />
                                 </div>
@@ -3999,7 +4002,7 @@ const Home = () => {
                                         </p>
                                     </div>
                                 </div>
-                            </footer>
+                            </footer> */}
                             {/* <a
                                 style={{
                                     position: "fixed",

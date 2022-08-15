@@ -17,5 +17,7 @@ export const updateBillingDetails = (data) =>
 export const createOrder = (couponCode) =>
     api.get(`/checkout/get_bill?coupon=${couponCode}`);
 
+export const deleteOrder = (orderId) => api.delete(`/checkout/bill/${orderId}`);
+
 export const paymentSuccessCallback = (data) =>
     api.post("/payment/success", data);

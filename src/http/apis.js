@@ -37,6 +37,8 @@ export {
     createOrder,
 } from "./checkoutCalls";
 
+export { saveContactData, subscribeToNewsletter } from "./miscellaneousCalls";
+
 api.interceptors.response.use(
     (config) => {
         return config;
