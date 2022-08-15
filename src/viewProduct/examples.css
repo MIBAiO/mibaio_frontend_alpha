@@ -22,9 +22,9 @@ a {
   color: black;
 }
 
-a:hover {
+/* a:hover {
   color: #666;
-}
+} */
 
 .code {
   font-family: Courier New, Courier, monospace;

@@ -77,17 +77,21 @@ const NavigationBar = () => {
                         className="me-auto nav-font nav-menu"
                         style={{ marginLeft: "20%" }}
                     >
+                       
                         <Nav.Link>
+                            
                             <Link className="rd-nav-link nav-font" to="/">
                                 Home
                             </Link>
+                            
                         </Nav.Link>
+                       
                         <Nav.Link>
                             <Link
                                 className="rd-nav-link nav-font"
                                 to="/about_us"
                             >
-                                <FontAwesomeIcon icon="fa-solid fa-id-card" />
+                                {/* <FontAwesomeIcon icon="fa-solid fa-id-card" /> */}
                                 About Us
                             </Link>
                         </Nav.Link>

@@ -19,6 +19,7 @@
     "js-cookie": "^3.0.1",
     "lord-icon-element": "^3.3.3",
     "lottie-web": "^5.9.2",
+    "radium": "^0.26.2",
     "react": "^17.0.2",
     "react-back-to-top-button": "^0.0.14",
     "react-bootstrap": "^2.2.2",

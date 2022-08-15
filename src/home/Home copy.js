@@ -26,17 +26,14 @@ import WOW from "wowjs";
 import alpha1 from "./Alpha-Concept_1-black-front.png";
 import offset from "./Alpha-Concept_1-offset.png";
 import girlvideo from "./newgirl.mp4";
-import extensionphonevid from "./extensionphone.mp4";
-import alexaphone from "./alexaphone.gif";
 // import black from "./images/blue.png"
 import extensionvid from "./Event.mp4";
 import alexagif from "./Hi-Alexa.gif";
 import surgeproof from "./Surge-proof.png";
 import modeposter from "./3Modeposter.png";
 import Chevron from "react-chevron";
-import { faArrowDown, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "../components/navigationbar";
-import Radium, { StyleRoot } from 'radium';
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -62,8 +59,6 @@ const Home = () => {
         }
         setSelected(i);
     };
-
-  
 
     return (
         <>
@@ -274,16 +269,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <div className="iphone-frame-4-next element-process">
-                                        <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
-                                <lord-icon
-                                    src="https://cdn.lordicon.com/wxnxiano.json"
-                                    trigger="loop"
-                                    delay="175"
-                                    speed=".5"
-                                    colors="primary:#ffffff,secondary:#0accbe"
-                                    style={{width:"40px",height:"40px"}}>
-                                </lord-icon>
-                                            {/* <span className="icon icon-lg linearicons-envelope" /> */}
+                                            <span className="icon icon-lg linearicons-envelope" />
                                             <a
                                                 href="MIBAiO Brochure.pdf"
                                                 target="_blank"
@@ -771,10 +757,7 @@ const Home = () => {
                         </div>
                     </section>
                     <picture>
-                    
-                        
-{/*                             
-                             <video
+                        <video
                             style={{
                                 width: "100%",
                                 transitionDelay: "1s",
@@ -784,43 +767,11 @@ const Home = () => {
                             autoPlay
                             muted
                             playsInline
-
-                            
-                            
                         >
-                            
                             <source src={extensionvid} type="video/mp4" />
-                            
-
-                        </video>  */}
-                        <video style={{
-                                width: "100%",
-                                transitionDelay: "1s",
-                                marginBottom: "-6%",
-                            }}
-                            loop
-                            autoPlay
-                            muted
-                            playsInline>
-                            <source media="all and (min-width:800px)" src={extensionvid} type="video/mp4" />
-                            <source src={extensionphonevid} type="video/mp4" media="all and ()"/>
                         </video>
-                        
                     </picture>
-                    {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
-                    {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <picture>
-                        <source media="(min-width:800px)" srcSet={alexagif}></source>
-                        <img src={alexaphone}/>
-                    </picture>
-                    
-                    {/* <img src={alexaphone} style={alexaphonestyle} />  */}
-                    
-                   
-
-
-                   
-                    
+                    <img src={alexagif} style={{ minWidth: "100%" }} />
                     <section className="section section-md bg-gray-100">
                         <h3
                             className="wow fadeInUp"
@@ -4030,4 +3981,4 @@ const Home = () => {
     );
 };
 
-export default (Home);
+export default Home;

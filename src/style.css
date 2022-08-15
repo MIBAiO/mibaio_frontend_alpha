@@ -21,7 +21,10 @@
 .nav-menu{
   align: center;
 }
-
+body
+{
+  font-family: Avenir;
+}
 
 #nav-dropdown{
   color: blue;
