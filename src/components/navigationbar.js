@@ -7,7 +7,7 @@ import {
     NavDropdown,
     Row,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { faIdCard, fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 import { getProductsInCart } from "../http/cartCalls";
+import { logUserOut } from "../http/apis";
 library.add(faIdCard, fas);
 
 const NavigationBar = () => {
@@ -23,6 +24,8 @@ const NavigationBar = () => {
     const [cartCount, setCartCount] = useState(0);
 
     const [isDroppedDown, setIsDroppedDown] = useState(false);
+
+    const [didRedirect, setDidRedirect] = useState(false);
 
     useEffect(() => {
         if (Cookies.get("accessToken")) {
@@ -34,6 +37,12 @@ const NavigationBar = () => {
             setCartCount(cartItems.data.length);
         })();
     }, []);
+
+    const handleLogOut = async () => {
+        await logUserOut();
+        setIsLoggedIn(false);
+        setDidRedirect(true);
+    };
     function updateLanguage(value) {
         // console.log(value);
         var selectIndex = 0;
@@ -64,6 +73,7 @@ const NavigationBar = () => {
 
     return (
         <>
+            {didRedirect && <Redirect to="/" />}
             <Navbar
                 collapseOnSelect
                 expand="lg"
@@ -113,16 +123,28 @@ const NavigationBar = () => {
                             className="nav-font nav-menu"
                             style={{
                                 flexWrap: "wrap",
-                                width: "100%",
+                                // width: "100%",
                                 justifyContent: "center",
                             }}
                         >
-                            <Nav.Link>
+                            <Nav.Link
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <Link className="rd-nav-link nav-font" to="/">
                                     Home
                                 </Link>
                             </Nav.Link>
-                            <Nav.Link>
+                            <Nav.Link
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <Link
                                     className="rd-nav-link nav-font"
                                     to="/about_us"
@@ -131,7 +153,13 @@ const NavigationBar = () => {
                                     About Us
                                 </Link>
                             </Nav.Link>
-                            <Nav.Link>
+                            <Nav.Link
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <Link
                                     className="rd-nav-link nav-font"
                                     to="/view"
@@ -145,7 +173,13 @@ const NavigationBar = () => {
 
                     </NavDropdown> */}
 
-                            <Nav.Link>
+                            <Nav.Link
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <Link
                                     className="rd-nav-link nav-font"
                                     to="/contact_us"
@@ -154,7 +188,13 @@ const NavigationBar = () => {
                                 </Link>
                             </Nav.Link>
 
-                            <Nav.Link>
+                            <Nav.Link
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <Link className="rd-nav-link nav-font">
                                     <NavDropdown
                                         title="More"
@@ -216,7 +256,13 @@ const NavigationBar = () => {
                                 </Link>
                             </Nav.Link>
                             {!isLoggedIn && (
-                                <Nav.Link>
+                                <Nav.Link
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
                                     <Link
                                         className="rd-nav-link nav-font"
                                         to="/login"
@@ -226,13 +272,20 @@ const NavigationBar = () => {
                                 </Nav.Link>
                             )}
                             {isLoggedIn && (
-                                <Nav.Link>
-                                    <Link
+                                <Nav.Link
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <div
                                         className="rd-nav-link nav-font"
                                         to="/login"
+                                        onClick={handleLogOut}
                                     >
                                         Logout
-                                    </Link>
+                                    </div>
                                 </Nav.Link>
                             )}
                         </Nav>

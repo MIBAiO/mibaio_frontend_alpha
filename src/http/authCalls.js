@@ -16,3 +16,5 @@ export const passwordReset = (data) =>
             },
         }
     );
+
+export const logUserOut = () => api.get("/api/logout");

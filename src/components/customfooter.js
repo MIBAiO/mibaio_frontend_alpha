@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { subscribeToNewsletter } from "../http/apis";
+import { Link, Redirect } from "react-router-dom";
+import { logUserOut, subscribeToNewsletter } from "../http/apis";
 import Cookies from "js-cookie";
 
 const CustomFooter = () => {
     const [email, setEmail] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [didRedirect, setDidRedirect] = useState(false);
 
     const handleSubscribe = (e) => {
         try {
@@ -18,6 +19,11 @@ const CustomFooter = () => {
         }
     };
 
+    const handleLogOut = async () => {
+        await logUserOut();
+        setDidRedirect(true);
+    };
+
     useEffect(() => {
         if (Cookies.get("accessToken")) {
             setIsLoggedIn(true);
@@ -25,6 +31,7 @@ const CustomFooter = () => {
     }, []);
     return (
         <section className="section section-md-last block-footer-classic">
+            {didRedirect && <Redirect to="/" />}
             <div className="block-footer-classic-wrap">
                 <div className="container">
                     <div className="row row-50 justify-content-lg-between">
