@@ -23,8 +23,6 @@ const NavigationBar = () => {
 
     const [cartCount, setCartCount] = useState(0);
 
-    const [isDroppedDown, setIsDroppedDown] = useState(false);
-
     const [didRedirect, setDidRedirect] = useState(false);
 
     useEffect(() => {

@@ -3,19 +3,38 @@ import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { logUserOut, subscribeToNewsletter } from "../http/apis";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-bootstrap";
 
 const CustomFooter = () => {
     const [email, setEmail] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [didRedirect, setDidRedirect] = useState(false);
 
-    const handleSubscribe = (e) => {
+    const handleSubscribe = async (e) => {
+        toast.success("Subscribed to newsletter", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         try {
             e.preventDefault();
-            subscribeToNewsletter(email);
+            // await subscribeToNewsletter(email);
             setEmail("");
         } catch (err) {
-            console.log(err);
+            toast.error("Check your internet connection", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     };
 
@@ -32,6 +51,7 @@ const CustomFooter = () => {
     return (
         <section className="section section-md-last block-footer-classic">
             {didRedirect && <Redirect to="/" />}
+
             <div className="block-footer-classic-wrap">
                 <div className="container">
                     <div className="row row-50 justify-content-lg-between">

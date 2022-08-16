@@ -60,6 +60,8 @@ const ViewProduct = () => {
 
     const [didRedrirect, setDidRedirect] = useState(false);
 
+    const [isNotLoggedIn, setIsNotLoggedIn] = useState(false);
+
     const cartHandler = async () => {
         try {
             const res = await addProductToCart({
@@ -69,7 +71,7 @@ const ViewProduct = () => {
             });
             setDidRedirect(true);
         } catch (err) {
-            console.log(err);
+            setIsNotLoggedIn(true);
         }
     };
 
@@ -129,6 +131,7 @@ const ViewProduct = () => {
                 {/* FScreen*/}
 
                 {didRedrirect && <Redirect to="/cart" />}
+                {isNotLoggedIn && <Redirect to="/login" />}
                 <section className="myclass section page-header-3 header-section header-offset">
                     {/* RD Navbar*/}
                     {/* RD Navbar*/}
