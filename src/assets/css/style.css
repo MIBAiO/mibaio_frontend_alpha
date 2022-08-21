@@ -2296,6 +2296,7 @@ p [style*="max-width"] {
 */
 a {
   transition: all 0.3s ease-in-out;
+  /* color: #e3ecef !important; */
 }
 .cart-icon:hover .add-xs{
 
@@ -12587,9 +12588,9 @@ html .section-decoration-4 {
   .right-pattern::before {
     content: "";
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     left: 58%;
-    top: 42%;
+    /* top: 30%; */
     height: 75%;
     width: 42%;
     background: radial-gradient(
