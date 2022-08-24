@@ -36,6 +36,8 @@ export {
     updateBillingDetails,
     updateShippingDetails,
     createOrder,
+    updateBillingAndShippingAsSame,
+    uploadBillingAndShippingAsSame,
 } from "./checkoutCalls";
 
 export { saveContactData, subscribeToNewsletter } from "./miscellaneousCalls";

@@ -151,7 +151,7 @@ const CheckoutForm = ({
                             <input
                                 type="text"
                                 id="zip"
-                                name="zip"
+                                name="pin"
                                 placeholder="Pincode"
                                 required
                                 style={formStyle}
@@ -160,6 +160,26 @@ const CheckoutForm = ({
                                     setFormData({
                                         ...formData,
                                         zip: e.target.value,
+                                    });
+                                }}
+                                disabled={isDisabled}
+                            />
+                            <label className="l-check" htmlFor="zip">
+                                <i className="fa fa-phone mr-1" />
+                                Phone No
+                            </label>
+                            <input
+                                type="text"
+                                id="zip"
+                                name="phone"
+                                placeholder="Phone No"
+                                required
+                                style={formStyle}
+                                value={formData.phoneNo}
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        phoneNo: e.target.value,
                                     });
                                 }}
                                 disabled={isDisabled}

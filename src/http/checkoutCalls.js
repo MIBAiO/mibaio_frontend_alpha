@@ -14,6 +14,12 @@ export const updateShippingDetails = (data) =>
 export const updateBillingDetails = (data) =>
     api.put("/checkout/billing_details", data);
 
+export const updateBillingAndShippingAsSame = (data) =>
+    api.put("/checkout/billing_and_shipping", data);
+
+export const uploadBillingAndShippingAsSame = (data) =>
+    api.post("/checkout/billing_and_shipping", data);
+
 export const createOrder = (couponCode) =>
     api.get(`/checkout/get_bill?coupon=${couponCode}`);
 

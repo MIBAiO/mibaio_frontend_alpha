@@ -21,6 +21,7 @@ import {
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
 import PageHeadder from "../components/PageHeadder";
+import { toast } from "react-toastify";
 
 const Cart = () => {
     const [itemQuantity, setItemQuantity] = useState(0);
@@ -51,6 +52,8 @@ const Cart = () => {
             localStorage.setItem("coupon", couponCode);
         } catch (err) {
             console.log(err);
+            toast.error("Invalid Coupon Code");
+            localStorage.removeItem("coupon");
         }
     };
 

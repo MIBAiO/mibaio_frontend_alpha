@@ -9,6 +9,7 @@ import {
     getCouponData,
     getProductsInCart,
     getShippingDetails,
+    updateBillingAndShippingAsSame,
     updateBillingDetails,
     updateShippingDetails,
     uploadBillingDetails,
@@ -16,7 +17,11 @@ import {
 } from "../http/apis";
 import CheckoutForm from "../components/CheckoutForm";
 import CustomFooter from "../components/customfooter";
-import { deleteOrder, paymentSuccessCallback } from "../http/checkoutCalls";
+import {
+    deleteOrder,
+    paymentSuccessCallback,
+    uploadBillingAndShippingAsSame,
+} from "../http/checkoutCalls";
 import { Redirect } from "react-router-dom";
 
 const Checkout = () => {
@@ -39,6 +44,7 @@ const Checkout = () => {
         city: "",
         state: "",
         zip: "",
+        phoneNo: "",
     });
     const [billingDetails, setBillingDetails] = useState({
         name: "",
@@ -47,6 +53,7 @@ const Checkout = () => {
         city: "",
         state: "",
         zip: "",
+        phoneNo: "",
     });
 
     const [isPaymentInProgress, setIsPaymentInProgress] = useState(false);
@@ -56,7 +63,7 @@ const Checkout = () => {
         isNewBillingDetails: false,
     });
 
-    const [couponData, setCouponData] = useState({});
+    const [couponData, setCouponData] = useState(null);
 
     const [isShippingAndBillingSame, setIsShippingAndBillingSame] =
         useState(false);
@@ -79,17 +86,14 @@ const Checkout = () => {
             if (isShippingAndBillingSame) {
                 try {
                     if (isNewData.isNewBillingDetails) {
-                        const response = await uploadBillingDetails(billing);
+                        const response = await uploadBillingAndShippingAsSame(
+                            billing
+                        );
                         console.log(response);
                     } else {
-                        const response = await updateBillingDetails(billing);
-                        console.log(response);
-                    }
-                    if (isNewData.isNewShippingDetails) {
-                        const response = await uploadShippingDetails(billing);
-                        console.log(response);
-                    } else {
-                        const response = await updateShippingDetails(billing);
+                        const response = await updateBillingAndShippingAsSame(
+                            billing
+                        );
                         console.log(response);
                     }
                 } catch (err) {
@@ -97,6 +101,7 @@ const Checkout = () => {
                 }
             } else {
                 try {
+                    console.log(isNewData);
                     if (isNewData.isNewBillingDetails) {
                         const response = await uploadBillingDetails(billing);
                         console.log(response);
@@ -116,7 +121,11 @@ const Checkout = () => {
                 }
             }
 
-            const response = await createOrder(couponData.code);
+            let couponCode = "";
+            if (couponData) {
+                couponCode = couponData.code;
+            }
+            const response = await createOrder(couponCode);
             console.log(response.data);
             displayRazorpay(response.data._id);
         }
@@ -135,7 +144,7 @@ const Checkout = () => {
                 console.log(err.response.status);
                 if (err.response.status === 404) {
                     setIsNewData({
-                        ...isNewData,
+                        isNewBillingDetails: true,
                         isNewShippingDetails: true,
                     });
                 }
@@ -151,7 +160,7 @@ const Checkout = () => {
                 console.log(err.response.status);
                 if (err.response.status === 404) {
                     setIsNewData({
-                        ...isNewData,
+                        isNewShippingDetails: true,
                         isNewBillingDetails: true,
                     });
                 }
