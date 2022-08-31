@@ -33,6 +33,7 @@ import "./cart_details.css";
 import "./from_man.css";
 import "./services.css";
 import "./steps.css";
+import "./validate.css";
 
 import "./vission.css";
 import "./video.css";
@@ -50,6 +51,7 @@ import RequestResetPassword from "./resetPassword/requestresetpassword";
 import PasswordReset from "./resetPassword/passwordreset";
 import Temp from "./product_details/Temp";
 import BasicExample from "./viewProduct/BasicExample";
+import { Validate } from "./validate/Validate";
 
 function App() {
 	// const [loading, setLoading] = useState(false);
@@ -102,6 +104,10 @@ function App() {
 
 				<GuestRoute path="/passwordReset">
 					<PasswordReset />
+				</GuestRoute>
+
+				<GuestRoute path="/validate">
+					<Validate />
 				</GuestRoute>
 
 				<ProtectedRoute path="/cart">
