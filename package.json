@@ -69,6 +69,10 @@
     ]
   },
   "devDependencies": {
-    "@iconify/react": "^3.2.2"
+    "@iconify/react": "^3.2.2",
+    "webpack": "^5.74.0",
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-dev-server": "^4.10.0",
+    "webpack-hot-middleware": "^2.25.2"
   }
 }

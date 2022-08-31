@@ -52,6 +52,7 @@ import PasswordReset from "./resetPassword/passwordreset";
 import Temp from "./product_details/Temp";
 import BasicExample from "./viewProduct/BasicExample";
 import { Validate } from "./validate/Validate";
+import Review from "./review/Review";
 
 function App() {
 	// const [loading, setLoading] = useState(false);
@@ -106,13 +107,20 @@ function App() {
 					<PasswordReset />
 				</GuestRoute>
 
+
 				<GuestRoute path="/validate">
 					<Validate />
+
+				<GuestRoute path="/review">
+					<Review />
+
 				</GuestRoute>
 
 				<ProtectedRoute path="/cart">
 					<Cart />
 				</ProtectedRoute>
+				
+				
 
 				{/* <GuestRoute path="/navbar">
 =======
