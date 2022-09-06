@@ -53,59 +53,61 @@ import Temp from "./product_details/Temp";
 import BasicExample from "./viewProduct/BasicExample";
 import { Validate } from "./validate/Validate";
 import Review from "./review/Review";
+import { refresh } from "./http/apis";
+import PreviousOrders from "./PreviousOrders/PreviousOrders";
 
 function App() {
-	// const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
-	const { loading } = useLoadingWithRefresh();
-	return loading ? (
-		<Loader />
-	) : (
-		<BrowserRouter>
-			<Switch>
-				{/* <Model_copy/> */}
-				<GuestRoute path="/" exact>
-					<Home />
-					{/* <Copy/> */}
-				</GuestRoute>
+    const { loading } = useLoadingWithRefresh();
+    return loading ? (
+        <Loader />
+    ) : (
+        <BrowserRouter>
+            <Switch>
+                {/* <Model_copy/> */}
+                <GuestRoute path="/" exact>
+                    <Home />
+                    {/* <Copy/> */}
+                </GuestRoute>
 
-				<GuestRoute path="/about_us" exact>
-					<AboutUs />
-				</GuestRoute>
+                <GuestRoute path="/about_us" exact>
+                    <AboutUs />
+                </GuestRoute>
 
-				<GuestRoute path="/careers" exact>
-					<Careers />
-				</GuestRoute>
+                <GuestRoute path="/careers" exact>
+                    <Careers />
+                </GuestRoute>
 
-				<GuestRoute path="/register">
-					<Register />
-				</GuestRoute>
+                <GuestRoute path="/register">
+                    <Register />
+                </GuestRoute>
 
-				<GuestRoute path="/login">
-					<Login />
-				</GuestRoute>
+                <GuestRoute path="/login">
+                    <Login />
+                </GuestRoute>
 
-				<GuestRoute path="/our_team">
-					<OurTeam />
-				</GuestRoute>
+                <GuestRoute path="/our_team">
+                    <OurTeam />
+                </GuestRoute>
 
-				<GuestRoute path="/contact_us">
-					<ContactUs />
-				</GuestRoute>
+                <GuestRoute path="/contact_us">
+                    <ContactUs />
+                </GuestRoute>
 
-				<GuestRoute path="/request_reset_password">
-					<RequestResetPassword />
-				</GuestRoute>
+                <GuestRoute path="/request_reset_password">
+                    <RequestResetPassword />
+                </GuestRoute>
 
-				<GuestRoute path="/view">
-					{/* <BasicExample /> */}
-					<ViewProduct />
-					{/* <Temp /> */}
-				</GuestRoute>
+                <GuestRoute path="/view">
+                    {/* <BasicExample /> */}
+                    <ViewProduct />
+                    {/* <Temp /> */}
+                </GuestRoute>
 
-				<GuestRoute path="/passwordReset">
-					<PasswordReset />
-				</GuestRoute>
+                <GuestRoute path="/passwordReset">
+                    <PasswordReset />
+                </GuestRoute>
 
 
 				<GuestRoute path="/validate">
@@ -123,7 +125,7 @@ function App() {
 				
 				
 
-				{/* <GuestRoute path="/navbar">
+                {/* <GuestRoute path="/navbar">
 =======
 				<ProtectedRoute path="/cart">
 					<Cart />
@@ -134,55 +136,72 @@ function App() {
           <Navbar />
         </GuestRoute> */}
 
-				<ProtectedRoute path="/checkout">
-					<Checkout />
-				</ProtectedRoute>
-				<ProtectedRoute path="/product_details">
-					<Product_details />
-				</ProtectedRoute>
-			</Switch>
-		</BrowserRouter>
-	);
+                <ProtectedRoute path="/checkout">
+                    <Checkout />
+                </ProtectedRoute>
+                <ProtectedRoute path="/product_details">
+                    <Product_details />
+                </ProtectedRoute>
+                <ProtectedRoute path="/orders">
+                    <PreviousOrders />
+                </ProtectedRoute>
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 const GuestRoute = ({ children, ...rest }) => {
-	const { login } = useSelector((state) => state.auth);
-	return (
-		<Route
-			{...rest}
-			render={({ location }) => {
-				// return login ? (
-				//     <Redirect
-				//         to={{
-				//             pathname: "/",
-				//             state: { from: location },
-				//         }}
-				//     />
-				// ) : return ( children )
-				return children;
-			}}
-		></Route>
-	);
+    const { login } = useSelector((state) => state.auth);
+
+    return (
+        <Route
+            {...rest}
+            render={({ location }) => {
+                // return login ? (
+                //     <Redirect
+                //         to={{
+                //             pathname: "/",
+                //             state: { from: location },
+                //         }}
+                //     />
+                // ) : return ( children )
+                return children;
+            }}
+        ></Route>
+    );
 };
 
 const ProtectedRoute = ({ children, ...rest }) => {
-	return (
-		<Route
-			{...rest}
-			render={({ location }) => {
-				return !Cookies.get("accessToken") ? (
-					<Redirect
-						to={{
-							pathname: "/login",
-							state: { from: location },
-						}}
-					/>
-				) : (
-					children
-				);
-			}}
-		></Route>
-	);
+    const [isUnauthorized, setIsUnauthorized] = useState(false);
+    useEffect(() => {
+        if (!Cookies.get("accessToken")) {
+            (async () => {
+                try {
+                    await refresh();
+                } catch (err) {
+                    console.log(err);
+                    setIsUnauthorized(true);
+                }
+            })();
+        }
+    }, []);
+    return (
+        <Route
+            {...rest}
+            render={({ location }) => {
+                return isUnauthorized ? (
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location },
+                        }}
+                    />
+                ) : (
+                    children
+                );
+            }}
+        ></Route>
+    );
 };
 
 export default App;
