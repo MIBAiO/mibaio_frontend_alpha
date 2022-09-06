@@ -36,7 +36,10 @@ import modeposter from "./3Modeposter.png";
 import Chevron from "react-chevron";
 import { faArrowDown, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "../components/navigationbar";
-
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+// import MyOwlCarousel from "./owlCarousel";
 import CustomFooter from "../components/customfooter";
 
 const Home = () => {
@@ -57,12 +60,43 @@ const Home = () => {
 
     const [toggleState, setToggleState] = useState(false);
 
+    const [frameSize, setFrameSize] = useState(3);
+
     const toggle = (i) => {
         if (selected == i) {
             return setSelected(null);
         }
         setSelected(i);
     };
+
+    const [src, setSrc] = useState("big")
+    useEffect(() => {
+        window.addEventListener("resize", e => {
+            if(window.innerWidth <= 990) {
+                setFrameSize(1)
+            }
+            else {
+                setFrameSize(3)
+            }
+
+            if(window.innerWidth >= 800) {
+                setSrc("big")
+            }
+            else {
+                setSrc("small")
+            }
+        })
+    }, [])
+
+
+    // const getVideoSrc = width => {
+    //     if (width >= 800) 
+    //         return extensionvid;
+    //     return extensionphonevid;
+
+    // };
+
+    // const src = getVideoSrc(window.innerWidth);
 
     return (
         <>
@@ -641,27 +675,9 @@ const Home = () => {
                         </div>
                     </section>
                     <picture>
-                        {/*                             
-                             <video
-                            style={{
-                                width: "100%",
-                                transitionDelay: "1s",
-                                marginBottom: "-6%",
-                            }}
-                            loop
-                            autoPlay
-                            muted
-                            playsInline
-
-                            
-                            
-                        >
-                            
-                            <source src={extensionvid} type="video/mp4" />
-                            
-
-                        </video>  */}
-                        <video
+                        
+                        {src === "small" && (
+                            <video
                             style={{
                                 width: "100%",
                                 transitionDelay: "1s",
@@ -672,17 +688,42 @@ const Home = () => {
                             muted
                             playsInline
                         >
-                            <source
-                                media="(min-width:800px)"
-                                src={extensionvid}
-                                type="video/mp4"
-                            />
-                            <source
-                                media="(max-width:800px)"
-                                src={extensionphonevid}
-                                type="video/mp4"
-                            />
+                            
+                            <source 
+                            src={extensionphonevid}
+                            type="video/mp4"/>
+                            
                         </video>
+                        )}
+                        {src === "big" && (
+                            <video
+                            style={{
+                                width: "100%",
+                                transitionDelay: "1s",
+                                marginBottom: "-6%",
+                            }}
+                            loop
+                            autoPlay
+                            muted
+                            playsInline
+                        >
+                            
+                            <source 
+                            src={extensionvid}
+                            type="video/mp4"/>
+                            
+                        </video>
+                        )}
+                        {/* <video style={{
+                                width: "100%",
+                                transitionDelay: "1s",
+                                marginBottom: "-6%",
+                            }} autoplay playsInline muted>
+                                <source 
+                            src={extensionvid}
+                            type="video/mp4"/>
+                            </video> */}
+                       
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
@@ -1263,7 +1304,309 @@ const Home = () => {
                                         data-mouse-drag="false"
                                         style={{}}
                                     >
-                                        <div className="owl-stage-outer">
+                                        
+
+                                        
+                                        <OwlCarousel className="owl-theme" margin={30} items={frameSize} autoplay={true} >
+                                        <article
+                                                        className="pt-classic wow slideInRightLg item"
+                                                        data-wow-delay=".5s"
+                                                        style={{
+                                                            animationDelay:
+                                                                "0.5s",
+                                                            animationName:
+                                                                "none",
+                                                                minWidth: "300px"
+                                                        }}
+                                                    >
+                                                        <h4 className="pt-classic-title">
+                                                            Pack of 1
+                                                        </h4>
+                                                        <div className="pt-classic-price-outer">
+                                                            <div
+                                                                className="pt-classic-price"
+                                                                aria-hidden={
+                                                                    toggleState
+                                                                        ? "true"
+                                                                        : "false"
+                                                                }
+                                                            >
+                                                                <div className="pt-classic-price-currency font-weight-regular">
+                                                                    {" "}
+                                                                    ₹
+                                                                </div>
+                                                                <div className="pt-classic-price-value extra-light">
+                                                                    3433
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                className="pt-classic-price"
+                                                                aria-hidden={
+                                                                    toggleState
+                                                                        ? "false"
+                                                                        : "true"
+                                                                }
+                                                            >
+                                                                <div className="pt-classic-price-currency font-weight-regular">
+                                                                    {" "}
+                                                                    ₹
+                                                                </div>
+                                                                <div className="pt-classic-price-value extra-light">
+                                                                    6333
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="pt-classic-divider" />
+                                                        <ul className="pt-classic-list">
+                                                            <li>
+                                                                Control upto 4
+                                                                appliances
+                                                            </li>
+                                                            <li>
+                                                                Ideal for 1 room
+                                                            </li>
+                                                            <li>
+                                                                Manual control
+                                                            </li>
+                                                            <li>
+                                                                Bluetooth
+                                                                control
+                                                            </li>
+                                                            <li>
+                                                                Internet control
+                                                            </li>
+                                                            <li>
+                                                                Voice control
+                                                            </li>
+                                                        </ul>
+                                                        <div className="pt-classic-footer">
+                                                            <a
+                                                                className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
+                                                                href="https://mibaio.in/#"
+                                                            >
+                                                                <div className="content-original">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+                                                                <div className="content-dubbed">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </article>
+                                                    <article
+                                                        className="pt-classic pt-classic_style-2 pt-classic_preferred wow scaleIn item"
+                                                        style={{
+                                                            animationName:
+                                                                "none",
+                                                                minWidth: "300px"
+                                                        }}
+                                                    >
+                                                        <div className="pt-classic-header">
+                                                            <h4 className="pt-classic-title">
+                                                                Pack of 3
+                                                            </h4>
+                                                            <div className="pt-classic-price-outer">
+                                                                <div
+                                                                    className="pt-classic-price"
+                                                                    aria-hidden={
+                                                                        toggleState
+                                                                            ? "true"
+                                                                            : "false"
+                                                                    }
+                                                                >
+                                                                    <div className="pt-classic-price-currency font-weight-regular">
+                                                                        {" "}
+                                                                        ₹
+                                                                    </div>
+                                                                    <div className="pt-classic-price-value extra-light">
+                                                                        9999
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className="pt-classic-price"
+                                                                    aria-hidden={
+                                                                        toggleState
+                                                                            ? "false"
+                                                                            : "true"
+                                                                    }
+                                                                >
+                                                                    <div className="pt-classic-price-currency font-weight-regular">
+                                                                        {" "}
+                                                                        ₹
+                                                                    </div>
+
+                                                                    <div className="pt-classic-price-value extra-light">
+                                                                        17999
+                                                                    </div>
+                                                                    <div
+                                                                        style={{
+                                                                            width: "70%",
+                                                                            fontWeight:
+                                                                                " 500",
+                                                                            color: "#0accbe",
+                                                                            background:
+                                                                                " #d6f3f5",
+                                                                            letterSpacing:
+                                                                                "0.075em",
+                                                                            fontSize:
+                                                                                "20%",
+                                                                            display:
+                                                                                "flex",
+                                                                            justifyContent:
+                                                                                "center",
+                                                                            alignItems:
+                                                                                "center",
+                                                                            height: "35px",
+                                                                        }}
+                                                                    >
+                                                                        Save 20%
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="pt-classic-divider" />
+                                                        <ul className="pt-classic-list">
+                                                            <li>
+                                                                Control upto 12
+                                                                appliances
+                                                            </li>
+                                                            <li>
+                                                                Ideal for 2 BHK
+                                                            </li>
+                                                            <li>
+                                                                Manual Control
+                                                            </li>
+                                                            <li>
+                                                                Internet Control
+                                                            </li>
+                                                            <li>
+                                                                Bluetooth
+                                                                Control
+                                                            </li>
+                                                            <li>
+                                                                Voice control
+                                                            </li>
+                                                        </ul>
+                                                        <div className="pt-classic-footer">
+                                                            <a
+                                                                className="button button-secondary button-shadow button-icon button-icon-right button-winona font-weight-regular"
+                                                                href="https://mibaio.in/#"
+                                                            >
+                                                                <div className="content-original">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+
+                                                                <div className="content-dubbed">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+                                                            </a>
+                                                           
+                                                            <p className="pt-classic-note">
+                                                                #Recommended
+                                                            </p>
+                                                        </div>
+                                                    </article>
+                                                    <article
+                                                        className="pt-classic pt-classic_style-3 wow slideInLeftLg"
+                                                        data-wow-delay=".5s"
+                                                        style={{
+                                                            animationDelay:
+                                                                "0.5s",
+                                                            animationName:
+                                                                "none",
+                                                        }}
+                                                    >
+                                                        <h4 className="pt-classic-title">
+                                                            Pack of 2
+                                                        </h4>
+                                                        <div className="pt-classic-price-outer">
+                                                            <div
+                                                                className="pt-classic-price"
+                                                                aria-hidden={
+                                                                    toggleState
+                                                                        ? "false"
+                                                                        : "true"
+                                                                }
+                                                            >
+                                                                <div className="pt-classic-price-currency font-weight-regular">
+                                                                    {" "}
+                                                                    ₹
+                                                                </div>
+                                                                <div className="pt-classic-price-value extra-light">
+                                                                    13199
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                className="pt-classic-price"
+                                                                aria-hidden={
+                                                                    toggleState
+                                                                        ? "true"
+                                                                        : "false"
+                                                                }
+                                                            >
+                                                                <div className="pt-classic-price-currency font-weight-regular">
+                                                                    {" "}
+                                                                    ₹
+                                                                </div>
+                                                                <div className="pt-classic-price-value extra-light">
+                                                                    6833
+                                                                </div>
+                                                                <div className="badge badge-1">
+                                                                    Save 12%
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="pt-classic-divider" />
+                                                        <ul className="pt-classic-list">
+                                                            <li>
+                                                                Control upto 8
+                                                                appliances
+                                                            </li>
+                                                            <li>
+                                                                Ideal for 1 BHK
+                                                            </li>
+                                                            <li>
+                                                                Manual control
+                                                            </li>
+                                                            <li>
+                                                                Internet control
+                                                            </li>
+                                                            <li>
+                                                                Voice control
+                                                            </li>
+                                                            <li>
+                                                                Bluetooth
+                                                                control
+                                                            </li>
+                                                            <li>
+                                                                Upgrade more
+                                                                outputs
+                                                            </li>
+                                                        </ul>
+                                                        <div className="pt-classic-footer">
+                                                            <a
+                                                                className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
+                                                                href="https://mibaio.in/#"
+                                                            >
+                                                                <div className="content-original">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+                                                                <div className="content-dubbed">
+                                                                    <span className="icon mdi mdi-arrow-right" />
+                                                                    Select Plan
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </article>
+                                                    
+                                        </OwlCarousel>
+                                        
+                                        {/* <div className="owl-stage-outer">
                                             <div
                                                 className="owl-stage"
                                                 style={{
@@ -1485,10 +1828,7 @@ const Home = () => {
                                                                     Select Plan
                                                                 </div>
                                                             </a>
-                                                            {/* <p className="pt-classic-note text-transparent">
-                                                                #Vedant
-                                                                recommends
-                                                            </p> */}
+                                                           
                                                             <p className="pt-classic-note">
                                                                 #Recommended
                                                             </p>
@@ -1598,7 +1938,8 @@ const Home = () => {
                                                     </article>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        
                                         <div className="owl-nav disabled">
                                             <div className="owl-prev disabled" />
                                             <div className="owl-next disabled" />

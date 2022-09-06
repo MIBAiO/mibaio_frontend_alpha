@@ -110,6 +110,7 @@ function App() {
 
 				<GuestRoute path="/validate">
 					<Validate />
+					</GuestRoute>
 
 				<GuestRoute path="/review">
 					<Review />

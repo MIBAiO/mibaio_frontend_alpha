@@ -67,6 +67,9 @@ const Review = () => {
         }
     }
 
+    
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
     return (
         <>
             {/* RD Navbar*/}
@@ -172,7 +175,7 @@ const Review = () => {
                                         <div className="form-wrap">
                                         <Dropdown onSelect={(e, eve) => {
                                             setCurrentlySelected(e)
-                                        }} style={{minWidth:"100%"}}>
+                                        }} style={{minWidth:"100%"}} >
                                             <Dropdown.Toggle variant = "success" id = "dropdown-basic"  style={{minWidth:"100%",background:"white",color:"#0accbe"}}>
                                                 {currentlySelected}
                                             </Dropdown.Toggle>
@@ -207,15 +210,36 @@ const Review = () => {
                                                 type="text"
                                                 rows = "4"
                                                 cols = "40"
-                                                
+                                               
                                                 placeholder="Your Valuable Feedback here !"
-                                                required
+                                                
                                                 // style={{height:"145px"}}
                                                 onChange={(e) =>
                                                     setPassword(e.target.value)
                                                 }
                                             />
                                         </div>
+                                        <h5 style={{marginLeft:"26%"}}>Please rate us <br/></h5>
+                                        <div className="star-rating" style={{marginLeft:"26%"}}>
+                                            
+      {[...Array(5)].map((star, index) => {
+        index += 1;
+        return (
+          <button
+            type="button"
+                
+            key={index}
+            className={index <= (hover || rating) ? "on" : "off"}
+            onClick={() => setRating(index)}
+            onMouseEnter={() => setHover(index)}
+            onMouseLeave={() => setHover(rating)}
+          >
+            <span className="star">&#9733;</span>
+          </button>
+        );
+      })}
+    </div>
+    <br/>
                                         <div className="form-wrap">
                                             <button
                                                 className="button button-sm button-primary-outline button-winona"
