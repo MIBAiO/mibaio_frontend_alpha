@@ -20,6 +20,7 @@ export {
     requestResetPassword,
     passwordReset,
     logUserOut,
+    refresh,
 } from "./authCalls";
 export {
     updateCartItem,

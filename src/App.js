@@ -109,21 +109,20 @@ function App() {
                     <PasswordReset />
                 </GuestRoute>
 
+                <GuestRoute path="/validate">
+                    <Validate />
+                </GuestRoute>
 
-				<GuestRoute path="/validate">
-					<Validate />
-					</GuestRoute>
+                <GuestRoute path="/validate">
+                    <Validate />
+                </GuestRoute>
+                <GuestRoute path="/review">
+                    <Review />
+                </GuestRoute>
 
-				<GuestRoute path="/review">
-					<Review />
-
-				</GuestRoute>
-
-				<ProtectedRoute path="/cart">
-					<Cart />
-				</ProtectedRoute>
-				
-				
+                <ProtectedRoute path="/cart">
+                    <Cart />
+                </ProtectedRoute>
 
                 {/* <GuestRoute path="/navbar">
 =======
