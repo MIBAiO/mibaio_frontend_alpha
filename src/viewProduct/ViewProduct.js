@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addModel1, removeModel1 } from "../store/cartSlice";
 import { Link, Redirect } from "react-router-dom";
-
+import "./reviews.css";
 import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import Hamburger from "hamburger-react";
@@ -579,6 +579,7 @@ const ViewProduct = () => {
 								transitionDelay: " 1s",
 							}}
 							loop="true"
+					
 							autoPlay="true"
 							muted="true"
 						></video>
@@ -812,8 +813,25 @@ const ViewProduct = () => {
 							</ul>
 						</p>
 					</div>
+					
 					<div id="tab-content3" class="tab-content">
-						<Carousel
+						<div className="._2wzgFH">
+						<div class="_3LWZlK _1BLPMq">5
+					<img src="images/star.svg" class="_1wB99o"/>
+					
+					</div>
+					&nbsp;  ABC  &nbsp; <svg width="14" height="14" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="_2a1p_T"><g><circle cx="6" cy="6" r="6" fill="#878787"></circle><path stroke="#FFF" stroke-width="1.5" d="M3 6l2 2 4-4" fill="#878787"></path></g></svg>
+					 &nbsp; Verified Buyer
+					<div class="review_row">
+						<div class="t-ZTKy">
+							<div>
+								<div class="">Excellent cycle in this price range. Value for money.. excellent build quality.. nice looking.. ideal for men.. satisfied...</div>
+									</div>
+									</div>
+					</div>
+					
+					</div>
+						{/* <Carousel
 							controls={false}
 							indicators={false}
 							interval={2000}
@@ -915,7 +933,7 @@ const ViewProduct = () => {
 									</div>
 								</blockquote>
 							</Carousel.Item>
-						</Carousel>
+						</Carousel> */}
 					</div>
 				</div>
 
