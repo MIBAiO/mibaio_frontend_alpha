@@ -1,5 +1,5 @@
 import { login } from "../http/apis";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/authSlice";
 import { useHistory, Link, Redirect } from "react-router-dom";
@@ -12,85 +12,80 @@ import Hamburger from "hamburger-react";
 import "./reviewstyle.css";
 import styled from "styled-components";
 import NavigationBar from "../components/navigationbar";
+import { getUserOrders, postReview } from "../http/reviewCalls";
 
 const Review = () => {
-    const history = useHistory();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [didRedirect, setDidRedirect] = useState(false);
+	const history = useHistory();
+	const [email, setEmail] = useState("");
+	const [Review, setReview] = useState("");
+	const [didRedirect, setDidRedirect] = useState(false);
 
-    const [error, setError] = useState(null);
-    const [alertType, setAlertType] = useState("alert-danger");
+	const [error, setError] = useState(null);
+	const [alertType, setAlertType] = useState("alert-danger");
 
-    const [invalid, setInvalid] = useState(false);
+	const [invalid, setInvalid] = useState(false);
 
-    const [currentlySelected, setCurrentlySelected] = useState("Select a Product")
+	const [orderList, setOrderList] = useState([]);
 
-    const dispatch = useDispatch();
+	const [currentlySelected, setCurrentlySelected] =
+		useState("Select a Product");
 
-    function checkEmail(email) {
-        return email.match(
-            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-    }
+	const [OrderId, setOrderID] = useState("");
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-        if (!checkEmail(email)) {
-            setAlertType("alert-danger");
-            setError("Email is not valid");
-            setInvalid(true);
-        } else {
-            setError(null);
-            setInvalid(false);
-        }
-    };
+	const dispatch = useDispatch();
 
-    async function handleLogin(e) {
-        e.preventDefault();
+	async function handleSubmit(e) {
+		e.preventDefault();
+		const data = {
+			feedback: Review,
+			orderId: OrderId,
+			rating,
+		};
+		try {
+			const resp = await postReview(data);
+			console.log(resp);
+		} catch (err) {
+			console.log("err", err);
+		}
+	}
 
-        const loginData = { email, password };
-        //console.log(loginData)
+	useEffect(() => {
+		async function fetchData() {
+			const userOrders = await getUserOrders();
+			const eles = userOrders.data.map((ele) => {
+				return {
+					orderId: ele._id,
+					modelName: ele.orderData[0].modelName,
+				};
+			});
+			setOrderList([...eles]);
+		}
+		fetchData();
+	}, []);
 
-        try {
-            const { data } = await login(loginData);
-            dispatch(setUser({ data }));
-            console.log(data);
-            if (data) {
-                // history.push("/");
-                setDidRedirect(true);
-            }
-        } catch (e) {
-            setAlertType("alert-danger");
-            setError(e.response.data.message);
-            console.log(e.response.data.message);
-        }
-    }
+	const [rating, setRating] = useState(0);
+	const [hover, setHover] = useState(0);
+	return (
+		<>
+			{/* RD Navbar*/}
+			<NavigationBar />
 
-    
-    const [rating, setRating] = useState(0);
-    const [hover, setHover] = useState(0);
-    return (
-        <>
-            {/* RD Navbar*/}
-            <NavigationBar />
+			{didRedirect && <Redirect to="/" />}
 
-            {didRedirect && <Redirect to="/" />}
-
-            <div>
-                <div className="layout-2 section-layout-3-header">
-                    <div className="layout-2-inner">
-                        <div className="layout-2-item">
-                            <Link
-                                className="link link-icon link-icon-left"
-                                to="/"
-                            >
-                                <span className="icon mdi mdi-arrow-left" />
-                                <span>Back to Home</span>
-                            </Link>
-                        </div>
-                        <div className="layout-2-item">
-                            {/* <div className="layout-2-group">
+			<div>
+				<div className="layout-2 section-layout-3-header">
+					<div className="layout-2-inner">
+						<div className="layout-2-item">
+							<Link
+								className="link link-icon link-icon-left"
+								to="/"
+							>
+								<span className="icon mdi mdi-arrow-left" />
+								<span>Back to Home</span>
+							</Link>
+						</div>
+						<div className="layout-2-item">
+							{/* <div className="layout-2-group">
                                 
                                 <p className="text-gray-900 ls-001">
                                     Don’t have an account?
@@ -108,16 +103,16 @@ const Review = () => {
                                     Need help?{" "}
                                 </a>
                             </div> */}
-                        </div>
-                    </div>
-                </div>
-                <div className="section-layout-3-main">
-                    <div className="section-1 text-center">
-                        <div className="container">
-                            <div className="box-shadow-1">
-                                {" "}
-                                {/* <a className="brand" href="index.html"> */}
-                                    {/* <img
+						</div>
+					</div>
+				</div>
+				<div className="section-layout-3-main">
+					<div className="section-1 text-center">
+						<div className="container">
+							<div className="box-shadow-1">
+								{" "}
+								{/* <a className="brand" href="index.html"> */}
+								{/* <img
                                         className="brand-logo-dark"
                                         src={"images/logo-default-inverse-96x32.png"}
                                         alt=""
@@ -125,43 +120,48 @@ const Review = () => {
                                         height={32}
                                         srcSet="images/logo-default-inverse-96x32.png 2x"
                                     /> */}
-                                    <h3>Review &#10024;</h3>
-                                {/* </a> */}
-                                <p className="text-gray-900">
-                                    <span style={{ maxWidth: "400px" ,fontSize:"24px"}}>
-                                        We would appreciate your review!
-                                    </span>
-                                </p>
-                                {error && (
-                                    <div
-                                        className={
-                                            `alert ${alertType} d-flex align-items-center alert-dismissible fade rounded-pill` +
-                                            (error ? " show" : "")
-                                        }
-                                        role="alert"
-                                        style={{
-                                            width: "50%",
-                                            margin: "auto",
-                                            padding: "2% 5%",
-                                        }}
-                                    >
-                                        <button
-                                            type="button"
-                                            className="close"
-                                            data-dismiss="alert"
-                                            aria-label="Close"
-                                        >
-                                            <span aria-hidden="true">×</span>
-                                            <span className="sr-only">
-                                                Close
-                                            </span>
-                                        </button>
-                                        {error}
-                                    </div>
-                                )}
-                                <div className="box-shadow-1-main">
-                                    <form className="rd-form rd-mailform">
-                                        {/* <div className="form-wrap">
+								<h3>Review &#10024;</h3>
+								{/* </a> */}
+								<p className="text-gray-900">
+									<span
+										style={{
+											maxWidth: "400px",
+											fontSize: "24px",
+										}}
+									>
+										We would appreciate your review!
+									</span>
+								</p>
+								{error && (
+									<div
+										className={
+											`alert ${alertType} d-flex align-items-center alert-dismissible fade rounded-pill` +
+											(error ? " show" : "")
+										}
+										role="alert"
+										style={{
+											width: "50%",
+											margin: "auto",
+											padding: "2% 5%",
+										}}
+									>
+										<button
+											type="button"
+											className="close"
+											data-dismiss="alert"
+											aria-label="Close"
+										>
+											<span aria-hidden="true">×</span>
+											<span className="sr-only">
+												Close
+											</span>
+										</button>
+										{error}
+									</div>
+								)}
+								<div className="box-shadow-1-main">
+									<form className="rd-form rd-mailform">
+										{/* <div className="form-wrap">
                                             <input
                                                 className="form-input"
                                                 type="email"
@@ -172,30 +172,80 @@ const Review = () => {
                                                 onChange={handleEmailChange}
                                             />
                                         </div> */}
-                                        <div className="form-wrap">
-                                        <Dropdown onSelect={(e, eve) => {
-                                            setCurrentlySelected(e)
-                                        }} style={{minWidth:"100%"}} >
-                                            <Dropdown.Toggle variant = "success" id = "dropdown-basic"  style={{minWidth:"100%",background:"white",color:"#0accbe"}}>
-                                                {currentlySelected}
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu style={{minWidth:"100%"}}>
-                                                <Dropdown.Item eventKey="Extension 4S" href="#/action-1" >Extension 4S</Dropdown.Item>
-                                                <Dropdown.Item eventKey="Extension 8S" href="#/action-2" >Extension 8S</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                         </Dropdown>
-                                         </div>
-                                        {/* <div className="form-wrap">
+										<div className="form-wrap">
+											<Dropdown
+												onSelect={(e, eve) => {
+													const obj = JSON.parse(e);
+													setCurrentlySelected(
+														obj.modelName
+													);
+													setOrderID(obj.orderId);
+												}}
+												style={{ minWidth: "100%" }}
+											>
+												<Dropdown.Toggle
+													variant="success"
+													id="dropdown-basic"
+													style={{
+														minWidth: "100%",
+														background: "white",
+														color: "#0accbe",
+													}}
+												>
+													{currentlySelected}
+												</Dropdown.Toggle>
+												<Dropdown.Menu
+													style={{ minWidth: "100%" }}
+												>
+													{orderList.map((ele) => (
+														<Dropdown.Item
+															eventKey={JSON.stringify(
+																{
+																	modelName:
+																		ele.modelName,
+																	orderId:
+																		ele.orderId,
+																}
+															)}
+															// href="#/action-1"
+														>
+															<div>
+																{ele.modelName}
+																<br />
+																<div
+																	style={{
+																		fontSize:
+																			"10px",
+																	}}
+																>
+																	{
+																		ele.orderId
+																	}
+																</div>
+															</div>
+														</Dropdown.Item>
+													))}
+
+													{/* <Dropdown.Item
+														eventKey="Extension 8S"
+														href="#/action-2"
+													>
+														Extension 8S
+													</Dropdown.Item> */}
+												</Dropdown.Menu>
+											</Dropdown>
+										</div>
+										{/* <div className="form-wrap">
                                             <input
                                                 className="form-input"
-                                                type="password"
-                                                id="register-password"
+                                                type="Review"
+                                                id="register-Review"
                                                 name="pass"
-                                                placeholder="Password"
+                                                placeholder="Review"
                                                 required
-                                                value={password}
+                                                value={Review}
                                                 onChange={(e) =>
-                                                    setPassword(e.target.value)
+                                                    setReview(e.target.value)
                                                 }
                                             />
                                             <i
@@ -203,63 +253,80 @@ const Review = () => {
                                                 id="eye"
                                                 aria-hidden="true"
                                             /> */}
-                                        {/* </div> */}
-                                        <div className="form-wrap">
-                                        <textarea
-                                                className="form-input"
-                                                type="text"
-                                                rows = "4"
-                                                cols = "40"
-                                               
-                                                placeholder="Your Valuable Feedback here !"
-                                                
-                                                // style={{height:"145px"}}
-                                                onChange={(e) =>
-                                                    setPassword(e.target.value)
-                                                }
-                                            />
-                                        </div>
-                                        <h5 style={{marginLeft:"26%"}}>Please rate us <br/></h5>
-                                        <div className="star-rating" style={{marginLeft:"26%"}}>
-                                            
-      {[...Array(5)].map((star, index) => {
-        index += 1;
-        return (
-          <button
-            type="button"
-                
-            key={index}
-            className={index <= (hover || rating) ? "on" : "off"}
-            onClick={() => setRating(index)}
-            onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating)}
-          >
-            <span className="star">&#9733;</span>
-          </button>
-        );
-      })}
-    </div>
-    <br/>
-                                        <div className="form-wrap">
-                                            <button
-                                                className="button button-sm button-primary-outline button-winona"
-                                                name="btnsignin"
-                                                id="btnsignin"
-                                                style={{ marginLeft: "30%" }}
-                                                onClick={handleLogin}
-                                                disabled={invalid}
-                                            >
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </form>
-                                    {/* <div className="text-decoration-lines">
+										{/* </div> */}
+										<div className="form-wrap">
+											<textarea
+												className="form-input"
+												type="text"
+												rows="4"
+												cols="40"
+												placeholder="Your Valuable Feedback here !"
+												// style={{height:"145px"}}
+												onChange={(e) =>
+													setReview(e.target.value)
+												}
+											/>
+										</div>
+										<h5 style={{ marginLeft: "26%" }}>
+											Please rate us <br />
+										</h5>
+										<div
+											className="star-rating"
+											style={{ marginLeft: "26%" }}
+										>
+											{[...Array(5)].map(
+												(star, index) => {
+													index += 1;
+													return (
+														<button
+															type="button"
+															key={index}
+															className={
+																index <=
+																(hover ||
+																	rating)
+																	? "on"
+																	: "off"
+															}
+															onClick={() =>
+																setRating(index)
+															}
+															onMouseEnter={() =>
+																setHover(index)
+															}
+															onMouseLeave={() =>
+																setHover(rating)
+															}
+														>
+															<span className="star">
+																&#9733;
+															</span>
+														</button>
+													);
+												}
+											)}
+										</div>
+										<br />
+										<div className="form-wrap">
+											<button
+												className="button button-sm button-primary-outline button-winona"
+												name="btnsignin"
+												id="btnsignin"
+												style={{ marginLeft: "30%" }}
+												onClick={handleSubmit}
+												disabled={invalid}
+											>
+												Submit
+											</button>
+										</div>
+									</form>
+									{/* <div className="text-decoration-lines">
                                         <span className="text-decoration-lines-content">
                                             Or log in via social networks
                                         </span>
                                     </div> */}
 
-                                    {/* <div className="group group-xs">
+									{/* <div className="group group-xs">
                                         <a
                                             className="link link-social-3 mdi mdi-twitter"
                                             href="#"
@@ -281,36 +348,36 @@ const Review = () => {
                                             aria-label="Linkedin"
                                         />
                                     </div> */}
-                                    {/* <div className="text mt-4">
+									{/* <div className="text mt-4">
                                         <span>
-                                            <a href="/request_reset_password">
-                                                Forgot Password ?
+                                            <a href="/request_reset_Review">
+                                                Forgot Review ?
                                             </a>
                                         </span>
                                     </div> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="snackbars" id="form-output-global" />
-                {/* <script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="snackbars" id="form-output-global" />
+				{/* <script>
 					document.getElementById("eye").addEventListener("click", function() {'{'}
-					var x = document.getElementById("register-password");
-					if (x.type == "password") {'{'}
+					var x = document.getElementById("register-Review");
+					if (x.type == "Review") {'{'}
 					x.type = "text";
 					this.classList.add("fa-eye");
 					this.classList.remove("fa-eye-slash");
 					{'}'} else {'{'}
-					x.type = "password";
+					x.type = "Review";
 					this.classList.remove("fa-eye");
 					this.classList.add("fa-eye-slash");
 					{'}'}
 					{'}'});
           		</script> */}
-            </div>
-        </>
-    );
+			</div>
+		</>
+	);
 };
 
 export default Review;
