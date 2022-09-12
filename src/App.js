@@ -55,6 +55,7 @@ import { Validate } from "./validate/Validate";
 import Review from "./review/Review";
 import { refresh } from "./http/apis";
 import PreviousOrders from "./PreviousOrders/PreviousOrders";
+import OrderSuccess from "./OrderSuccess/OrderSuccess";
 
 
 function App() {
@@ -119,6 +120,9 @@ function App() {
                 </GuestRoute>
                 <GuestRoute path="/review">
                     <Review />
+                </GuestRoute>
+                <GuestRoute path="/success">
+                    <OrderSuccess />
                 </GuestRoute>
 
                 
