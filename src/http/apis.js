@@ -42,6 +42,8 @@ export {
     uploadBillingAndShippingAsSame,
 } from "./checkoutCalls";
 
+export { getAllOrders } from "./ordersCalls";
+
 export { saveContactData, subscribeToNewsletter } from "./miscellaneousCalls";
 
 api.interceptors.response.use(

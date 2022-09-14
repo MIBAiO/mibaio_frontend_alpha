@@ -238,7 +238,7 @@ const Checkout = () => {
             });
             const couponCode = localStorage.getItem("coupon");
             console.log(couponCode);
-            if (couponCode !== false) {
+            if (couponCode) {
                 const discountData = await getCouponData(couponCode);
                 setCouponData(discountData.data);
                 setCartCalculation({
