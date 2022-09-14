@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7a3b293.css",
+    "main.js": "/static/js/main.df07fb86.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/Hi-Alexa.gif": "/static/media/Hi-Alexa.778bd95aee26e553ffdb.gif",
+    "static/media/alexaphone.gif": "/static/media/alexaphone.07861de6ac2eaabf7acb.gif",
+    "static/media/home1.png": "/static/media/home1.6b43d96b8151a35aed58.png",
+    "static/media/Sample1.png": "/static/media/Sample1.d3659f5ab7016874cf13.png",
+    "static/media/3Modeposter.png": "/static/media/3Modeposter.9fc7b5d19b9f8291e748.png",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/extensionphone.mp4": "/static/media/extensionphone.e448b1cfde27ecaa1185.mp4",
+    "static/media/Surge-proof.png": "/static/media/Surge-proof.37fc4e0cdfc5a9ce78f5.png",
+    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/team1.jpg": "/static/media/team1.2997968cabdec8f88351.jpg",
+    "static/media/Event.mp4": "/static/media/Event.4ad14cec34b5c923b8f7.mp4",
+    "static/media/newgirl.mp4": "/static/media/newgirl.0ce5fa1edfade4ea217d.mp4",
+    "static/media/samsungsharpsans-medium.otf": "/static/media/samsungsharpsans-medium.33d052415ba88313f630.otf",
+    "static/media/home3.png": "/static/media/home3.d7bd167eb8545bfa8fc9.png",
+    "static/media/home4.png": "/static/media/home4.eecdca93088e9b9eca21.png",
+    "static/media/bootstrap-icons.woff": "/static/media/bootstrap-icons.94eeade15e6b7fbed95b.woff",
+    "static/media/home2.png": "/static/media/home2.772919a1638d0201a2c4.png",
+    "static/media/materialdesignicons-webfont.woff?v=1.4.57": "/static/media/materialdesignicons-webfont.6ec34761e3f71f3ca0df.woff",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/bootstrap-icons.woff2": "/static/media/bootstrap-icons.dfd0ea122577eb61795f.woff2",
+    "static/media/materialdesignicons-webfont.woff2?v=1.4.57": "/static/media/materialdesignicons-webfont.9d61ad513663c1f6900d.woff2",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/Alpha-Concept_1-offset.png": "/static/media/Alpha-Concept_1-offset.6da452247bde1fe9db8b.png",
+    "static/media/Alpha-Concept_1-black-front.png": "/static/media/Alpha-Concept_1-black-front.59977d3d3c43a8736bf4.png",
+    "static/media/AvenirLTStd-Book.otf": "/static/media/AvenirLTStd-Book.813557df4c7a90b1a474.otf",
+    "index.html": "/index.html",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/temp.svg": "/static/media/temp.a05fed6f51ca3d4ce2f32fd099900a80.svg",
+    "main.d7a3b293.css.map": "/static/css/main.d7a3b293.css.map",
+    "main.df07fb86.js.map": "/static/js/main.df07fb86.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7a3b293.css",
+    "static/js/main.df07fb86.js"
+  ]
+}
