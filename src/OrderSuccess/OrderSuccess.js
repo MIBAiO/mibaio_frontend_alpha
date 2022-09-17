@@ -13,37 +13,39 @@ import "./order_success.css";
 import { saveContactData } from "../http/apis";
 import CustomFooter from "../components/customfooter";
 import NavigationBar from "../components/navigationbar";
+import ScrollToTop from "../components/ScrollToTop";
 import PageHeadder from "../components/PageHeadder";
 const OrderSuccess = () => {
-    const { loading } = useLoadingWithRefresh();
+	const { loading } = useLoadingWithRefresh();
 
-    const [contactData, setContactData] = useState({
-        name: "",
-        email: "",
-        message: "",
-        phone: "",
-    });
+	const [contactData, setContactData] = useState({
+		name: "",
+		email: "",
+		message: "",
+		phone: "",
+	});
 
-    const submitContactForm = async (e) => {
-        try {
-            e.preventDefault();
-            await saveContactData(contactData);
+	const submitContactForm = async (e) => {
+		try {
+			e.preventDefault();
+			await saveContactData(contactData);
 
-            setContactData({
-                name: "",
-                phone: "",
-                message: "",
-                email: "",
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    };
-    return loading ? (
-        <Loader />
-    ) : (
-        <div>
-            {/* <div className="preloader" id="loading">
+			setContactData({
+				name: "",
+				phone: "",
+				message: "",
+				email: "",
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+	return loading ? (
+		<Loader />
+	) : (
+		<ScrollToTop>
+			<div>
+				{/* <div className="preloader" id="loading">
         <div className="preloader-body">
           <div id="loading-center-object">
             <div className="object" id="object_four" />
@@ -54,29 +56,40 @@ const OrderSuccess = () => {
         </div>
       </div> */}
 
-            <div className="page">
-                {/* Page Header*/}
-                <section className="section page-header-1 header-section">
-                    <NavigationBar />
-                    {/* <PageHeadder quote="Contact Us" showYouAre={false} /> */}
-                </section>
-                
-                
-                {/* Get in Touch*/}
-                <div className="body">
-                <div class="card">
-        <div style={{borderRadius:"200px",height:"200px", width:"200px",background: "#F8FAF5",margin:"0 auto"}}>
-            <i class="checkmark">✓</i>
-        </div>
-        <h1 className="success_title">Success</h1> 
-        <p className="success_content">Hurray, Order Placed Successfully ! <br/> It will be delivered at your doorstep shortly.</p>
-      </div>
-      </div>
-                <CustomFooter />
-            </div>
-            <div className="snackbars" id="form-output-global" />
-        </div>
-    );
+				<div className="page">
+					{/* Page Header*/}
+					<section className="section page-header-1 header-section">
+						<NavigationBar />
+						{/* <PageHeadder quote="Contact Us" showYouAre={false} /> */}
+					</section>
+
+					{/* Get in Touch*/}
+					<div className="body">
+						<div class="card">
+							<div
+								style={{
+									borderRadius: "200px",
+									height: "200px",
+									width: "200px",
+									background: "#F8FAF5",
+									margin: "0 auto",
+								}}
+							>
+								<i class="checkmark">✓</i>
+							</div>
+							<h1 className="success_title">Success</h1>
+							<p className="success_content">
+								Hurray, Order Placed Successfully ! <br /> It
+								will be delivered at your doorstep shortly.
+							</p>
+						</div>
+					</div>
+					<CustomFooter />
+				</div>
+				<div className="snackbars" id="form-output-global" />
+			</div>
+		</ScrollToTop>
+	);
 };
 
 export default OrderSuccess;
