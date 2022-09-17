@@ -331,7 +331,7 @@ const Checkout = () => {
     return (
         <>
             {/* TODO: Change redirect to success page after it is built */}
-            {orderSuccess && <Redirect to="/" />}
+            {orderSuccess && <Redirect to="/success" />}
             <div>
                 <div className="page">
                     {/* FScreen*/}
