@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../store/authSlice";
 
 // const REACT_APP_API_URL = "http://15.206.27.190:5500";
-const REACT_APP_API_URL = "http://localhost:5500";
+const REACT_APP_API_URL = "http://15.206.27.190:5500";
 
 export function useLoadingWithRefresh() {
     const [loading, setLoading] = useState(true);
