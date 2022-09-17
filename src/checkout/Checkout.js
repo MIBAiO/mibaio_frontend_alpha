@@ -1,9 +1,10 @@
 // import { displayRazorpay } from "./helpers/paymentHelper";
 import axios from "axios";
 import temp from "./helpers/temp.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavigationBar from "../components/navigationbar";
 import {
+    CODPaymentCall,
     createOrder,
     getBillingDetails,
     getCouponData,
@@ -24,6 +25,8 @@ import {
 } from "../http/checkoutCalls";
 import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PayMethod from "./PayMethod";
 
 const Checkout = () => {
     const [cartCalculation, setCartCalculation] = useState({
@@ -37,6 +40,10 @@ const Checkout = () => {
     const [isInvalid, setIsInvalid] = useState(false);
 
     const [orderSuccess, setOrderSuccess] = useState(false);
+
+    const [payViaCash, setPayViaCash] = useState(false);
+
+    const closeModal = useRef(false);
 
     const [shippingDetails, setShippingDetails] = useState({
         name: "",
@@ -88,6 +95,7 @@ const Checkout = () => {
         zip: false,
         phoneNo: false,
     });
+
     const saveData = async () => {
         if (!isInvalid) {
             setIsPaymentInProgress(true);
@@ -171,9 +179,24 @@ const Checkout = () => {
             if (couponData) {
                 couponCode = couponData.code;
             }
-            const response = await createOrder(couponCode);
+            const response = await createOrder(
+                couponCode,
+                payViaCash ? "COD" : "Prepaid"
+            );
             console.log(response.data);
-            displayRazorpay(response.data._id);
+            if (payViaCash) {
+                console.log(response.data);
+                const cashData = {
+                    ourOrderId: response.data._id,
+                };
+                const res = await CODPaymentCall(cashData);
+                console.log("RESPONSE: ", res);
+                localStorage.removeItem("coupon");
+                setOrderSuccess(true);
+                setIsPaymentInProgress(false);
+            } else {
+                displayRazorpay(response.data._id);
+            }
         }
     };
 
@@ -269,8 +292,11 @@ const Checkout = () => {
         }
 
         // creating a new order
+        // const result = await axios.post(
+        //     `http://15.206.27.190:5500/payment/orders/${orderId}`
+        // );
         const result = await axios.post(
-            `http://15.206.27.190:5500/payment/orders/${orderId}`
+            `http://localhost:5500/payment/orders/${orderId}`
         );
         // const result = await axios.post(
         //     `http://localhost:5500/payment/orders/${orderId}`
@@ -772,11 +798,47 @@ const Checkout = () => {
                                         />{" "}
                                         Shipping address same as billing
                                     </label>
+
+                                    {/* ======================================MODAL================================= */}
+                                    <div
+                                        class="modal fade"
+                                        id="exampleModal"
+                                        tabindex="-1"
+                                        role="dialog"
+                                        aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true"
+                                    >
+                                        <div
+                                            class="modal-dialog"
+                                            role="document"
+                                        >
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <PayMethod
+                                                        payViaCash={payViaCash}
+                                                        setPayViaCash={
+                                                            setPayViaCash
+                                                        }
+                                                        saveData={saveData}
+                                                    />
+                                                </div>
+                                                <button
+                                                    ref={closeModal}
+                                                    style={{
+                                                        visibility: "hidden",
+                                                    }}
+                                                ></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* ======================================END-MODAL================================= */}
                                     <button
                                         type="submit"
                                         defaultValue="Place My Order"
                                         className="btn w-40"
-                                        onClick={saveData}
+                                        data-toggle="modal"
+                                        data-target="#exampleModal"
+                                        // onClick={saveData}
                                     >
                                         {isPaymentInProgress && (
                                             <div
@@ -788,8 +850,7 @@ const Checkout = () => {
                                                 </span>
                                             </div>
                                         )}
-                                        {!isPaymentInProgress &&
-                                            "Place My Order"}
+                                        {!isPaymentInProgress && "Proceed"}
                                     </button>
                                 </div>
                             </div>

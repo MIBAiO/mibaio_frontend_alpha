@@ -6,6 +6,7 @@ jobs:
   deploy: 
     name: Push to EC2 Instance
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/deploy' }}
 
     strategy:
       matrix:

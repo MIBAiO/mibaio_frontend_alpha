@@ -20,10 +20,14 @@ export const updateBillingAndShippingAsSame = (data) =>
 export const uploadBillingAndShippingAsSame = (data) =>
     api.post("/checkout/billing_and_shipping", data);
 
-export const createOrder = (couponCode) =>
-    api.get(`/checkout/get_bill?coupon=${couponCode}`);
+export const createOrder = (couponCode, paymentMethod) =>
+    api.get(
+        `/checkout/get_bill?coupon=${couponCode}&paymentMethod=${paymentMethod}`
+    );
 
 export const deleteOrder = (orderId) => api.delete(`/checkout/bill/${orderId}`);
 
 export const paymentSuccessCallback = (data) =>
     api.post("/payment/success", data);
+
+export const CODPaymentCall = (data) => api.post("/payment/cod", data);
