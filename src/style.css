@@ -21,6 +21,7 @@
 .nav-font{
   font-size:1rem;
   color: white;
+  margin-left: 10px;
 }
 .nav-menu{
   align: center;
@@ -8946,7 +8947,7 @@ h5.iphone-frame-4-next-text {
 
 .header-section .box-custom-4-aside-content {
   margin-left: 0;
-  padding-right: 40px;
+  padding-right: 0px !important;
 }
 
 .header-section .box-custom-4-aside .iphone-frame-4-group {

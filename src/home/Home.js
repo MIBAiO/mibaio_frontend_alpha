@@ -162,6 +162,7 @@ const Home = () => {
                                                     loop
                                                     autoPlay
                                                     muted
+                                                    style={{alignContent:"center"}}
                                                 >
                                                     <source
                                                         src={girlvideo}
@@ -215,7 +216,7 @@ const Home = () => {
                                             Automate Your
                                         </span>
                                     </h2>
-                                    <h1
+                                    <h2
                                         className="extra-light text-white heading-decoration-3 wow fadeInUp"
                                         data-wow-delay=".4s"
                                         style={{
@@ -253,7 +254,7 @@ const Home = () => {
                                         {/* <span className="typed-cursor typed-cursor--blink">
                                             |
                                         </span> */}
-                                    </h1>
+                                    </h2>
                                     <br />
                                     <div
                                         className="wow fadeInUp"
