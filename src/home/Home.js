@@ -41,6 +41,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 // import MyOwlCarousel from "./owlCarousel";
 import CustomFooter from "../components/customfooter";
+import blueTheme from "./Home-screen.mp4";
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -165,7 +166,7 @@ const Home = () => {
                                                     style={{alignContent:"center"}}
                                                 >
                                                     <source
-                                                        src={girlvideo}
+                                                        src={blueTheme}
                                                         type="video/mp4"
                                                     />
                                                 </video>
