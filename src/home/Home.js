@@ -930,7 +930,7 @@ const Home = () => {
                                         We are on a mission to transform the
                                         Smart Home Ecosystem in India <br />
                                         And we invite you to take a front seat
-                                        in this
+                                        in this revolution
                                     </span>
                                 </p>
                                 {/* <a className="button-play mdi mdi-play mdi-24px wow fadeIn" href="https://youtu.be/qxN6Cw6qgLk" data-lightgallery="item" data-wow-delay=".3s">
@@ -1058,7 +1058,7 @@ const Home = () => {
                                     <br />
 
                                     <br />
-                                    <div className="wrapper">
+                                    {/* <div className="wrapper">
                                         <div className="accordion">
                                             <div className="item">
                                                 <div
@@ -1200,8 +1200,135 @@ const Home = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> */}
+                                    
+                                    <div className="accordion-list">
+                                <div
+                                        className="card-group-custom card-group-classic card-group-classic_1"
+                                        role="tablist"
+                                        aria-multiselectable="false"
+                                    >
+                                        <article className="card card-custom card-classic">
+                                            <div
+                                                className="card-header"
+                                                id="app-accordion-heading-4"
+                                                role="tab"
+                                            >
+                                                <div className="card-title">
+                                                    <a
+                                                        className="card-link"
+                                                        role="button"
+                                                        data-toggle="collapse"
+                                                        href="#app-accordion-collapse-4"
+                                                        aria-controls="app-accordion-collapse-4"
+                                                        aria-expanded="true"
+                                                    >
+                                                        <span style={{color:"#0accbe"}}>01</span> &nbsp; Comfort
+                                                        <div className="card-arrow"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="collapse show"
+                                                id="app-accordion-collapse-4"
+                                                role="tabpanel"
+                                                aria-labelledby="app-accordion-heading-4"
+                                                data-parent="#app-accordion"
+                                            >
+                                                <div className="card-body">
+                                                    <p>
+                                                    Control and keep an eye on
+                                                    your electricals from
+                                                    anywhere
+                                                    <br />
+                                                    Do it with your voice! or
+                                                    your fingertips.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article className="card card-custom card-classic">
+                                            <div
+                                                className="card-header"
+                                                id="app-accordion-heading-1"
+                                                role="tab"
+                                            >
+                                                <div className="card-title">
+                                                    <a
+                                                        className="card-link collapsed"
+                                                        role="button"
+                                                        data-toggle="collapse"
+                                                        href="#app-accordion-collapse-1"
+                                                        aria-controls="app-accordion-collapse-1"
+                                                        aria-expanded="false"
+                                                    >
+                                                       <span style={{color:"#0accbe"}}>02</span> &nbsp; Convenience
+                                                        <div className="card-arrow"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="collapse"
+                                                id="app-accordion-collapse-1"
+                                                role="tabpanel"
+                                                aria-labelledby="app-accordion-heading-1"
+                                                data-parent="#app-accordion"
+                                            >
+                                                <div className="card-body">
+                                                    <p>
+                                                    Easy to install.
+                                                    <br />
+                                                    Easy to operate... Makes
+                                                    life simple!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article className="card card-custom card-classic">
+                                            <div
+                                                className="card-header"
+                                                id="app-accordion-heading-2"
+                                                role="tab"
+                                            >
+                                                <div className="card-title">
+                                                    <a
+                                                        className="card-link collapsed"
+                                                        role="button"
+                                                        data-toggle="collapse"
+                                                        href="#app-accordion-collapse-2"
+                                                        aria-controls="app-accordion-collapse-2"
+                                                        aria-expanded="false"
+                                                    >
+                                                        <span style={{color:"#0accbe"}}>03</span> &nbsp; ROI [Return on
+                                                        Investment]?
+                                                        <div className="card-arrow"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="collapse"
+                                                id="app-accordion-collapse-2"
+                                                role="tabpanel"
+                                                aria-labelledby="app-accordion-heading-2"
+                                                data-parent="#app-accordion"
+                                            >
+                                                <div className="card-body">
+                                                    <p>
+                                                    With uptp 26% savings on
+                                                    energy bills per month,
+                                                    you'll recover the amount
+                                                    invested roughly in about 7
+                                                    months*..!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
                                     </div>
                                 </div>
+                                
 
                                 <div
                                     className="col-lg-5 align-items-stretch order-1 order-lg-2 img"
@@ -2276,7 +2403,7 @@ const Home = () => {
                                 </span>
                             </p>
                         </div>
-                        <div className="group">
+                        <div className="group" style={{padding:"15px"}}>
                             <Link
                                 className="button button-default-outline button-winona text-black wow fadeIn"
                                 to="/contact_us"
@@ -2288,6 +2415,7 @@ const Home = () => {
                                 className="button button-secondary button-winona wow fadeIn"
                                 to="/view"
                                 data-wow-delay=".1s"
+                                style={{marginLeft:"13px"}}
                             >
                                 <span></span>Buy Now
                             </Link>

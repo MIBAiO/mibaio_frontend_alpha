@@ -195,6 +195,7 @@ html p a:hover {
 /*
 * Typography
 */
+
 body {
   font-size: 14px;
   letter-spacing: 0.05em;
@@ -294,12 +295,15 @@ h2,
   }
 }
 
+
+
 @media (min-width: 1600px) {
   h2,
   .heading-2 {
     font-size: 55px;
   }
 }
+
 
 h3,
 .heading-3 {

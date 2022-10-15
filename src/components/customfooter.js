@@ -128,8 +128,9 @@ const CustomFooter = () => {
 								<Link
 									className="button button-default-outline button-winona text-white"
 									to="/about_us"
+									style={{marginLeft:"13px"}}
 								>
-									<div className="content-original">
+									<div className="content-original" style={{marginLeft:"13px"}}>
 										More About MIBAiO
 									</div>
 									<div className="content-dubbed">
