@@ -10,6 +10,13 @@
   }
 }
 
+@media (max-width: 574px)
+{
+  .video-play-button{
+    margin-top: -80px !important;
+  }
+}
+
 .video-play-button {
   position: absolute;
   z-index: 10;
@@ -25,6 +32,8 @@
   padding: 18px 20px 18px 28px;
   margin-top: 3px;
 }
+
+
 
 .video-play-button:before {
   content: "";

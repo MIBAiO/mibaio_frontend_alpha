@@ -65,7 +65,7 @@ const OrderSuccess = () => {
 
 					{/* Get in Touch*/}
 					<div className="body">
-						<div class="card">
+						<div class="success_card">
 							<div
 								style={{
 									borderRadius: "200px",
