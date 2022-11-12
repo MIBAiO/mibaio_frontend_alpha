@@ -260,9 +260,9 @@ const Login = () => {
                                     </div>
                                     <div className="text mt-4">
                                         <span>
-                                            <a href="/request_reset_password">
+                                            <Link to="request_reset_password">
                                                 Forgot Password ?
-                                            </a>
+                                            </Link>
                                         </span>
                                     </div>
                                 </div>
