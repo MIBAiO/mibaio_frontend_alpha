@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import NavigationBar from "../components/navigationbar";
 import { passwordReset } from "../http/apis";
 
@@ -13,7 +13,8 @@ const PasswordReset = () => {
 	const [redirect, setRedirect] = useState(false);
 	const [error, setError] = useState(null);
 	const [alertType, setAlertType] = useState("alert-danger");
-	const queryParams = new URLSearchParams(window.location.search);
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
 	useEffect(() => {
 		if (!queryParams.get("token") && !queryParams.get("id")) {
 			setRedirect(true);
