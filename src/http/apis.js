@@ -4,12 +4,14 @@ import { toast } from "react-toastify";
 // export const REACT_APP_API_URL = "http://localhost:5500";
 export const REACT_APP_API_URL = "http://15.206.27.190:5500";
 
+axios.defaults.withCredentials = true;
 const api = axios.create({
     baseURL: REACT_APP_API_URL,
     withCredentials: true,
     headers: {
         "Content-type": "application/json",
         Accept: "application/json",
+        credentials: "include",
     },
 });
 
@@ -53,6 +55,7 @@ api.interceptors.response.use(
         return config;
     },
     async (error) => {
+        console.log("CALLING HEREEEEE.......");
         const originalRequest = error.config;
         if (
             error.response.status === 401 &&

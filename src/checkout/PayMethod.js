@@ -42,7 +42,7 @@ export default function PayMethod({ payViaCash, setPayViaCash, saveData }) {
                         name="payment-method"
                         checked={!payViaCash}
                         onChange={(e) => {
-                            setPayViaCash(!e.target.value);
+                            setPayViaCash(false);
                         }}
                     />
                     <label class="pm-label" for="mcc">
