@@ -292,14 +292,12 @@ const Checkout = () => {
         }
 
         // creating a new order
-        // const result = await axios.post(
-        //     `http://15.206.27.190:5500/payment/orders/${orderId}`
-        // );
+
         const result = await axios.post(
             `http://15.206.27.190:5500/payment/orders/${orderId}`
         );
         // const result = await axios.post(
-        //     `http://15.206.27.190:5500/payment/orders/${orderId}`
+        //     `http://localhost:5500/payment/orders/${orderId}`
         // );
 
         if (!result) {

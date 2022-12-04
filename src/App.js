@@ -132,17 +132,6 @@ function App() {
                     <Cart />
                 </ProtectedRoute>
 
-                {/* <GuestRoute path="/navbar">
-=======
-				<ProtectedRoute path="/cart">
-					<Cart />
-				</ProtectedRoute>
-
-				{/* <GuestRoute path="/navbar">
->>>>>>> a66c319 (viewProduct completed)
-          <Navbar />
-        </GuestRoute> */}
-
                 <ProtectedRoute path="/checkout">
                     <Checkout />
                 </ProtectedRoute>
@@ -159,20 +148,10 @@ function App() {
 }
 
 const GuestRoute = ({ children, ...rest }) => {
-    const { login } = useSelector((state) => state.auth);
-
     return (
         <Route
             {...rest}
             render={({ location }) => {
-                // return login ? (
-                //     <Redirect
-                //         to={{
-                //             pathname: "/",
-                //             state: { from: location },
-                //         }}
-                //     />
-                // ) : return ( children )
                 return children;
             }}
         ></Route>
@@ -185,6 +164,7 @@ const ProtectedRoute = ({ children, ...rest }) => {
         if (!Cookies.get("accessToken")) {
             (async () => {
                 try {
+                    console.log("Calling in Protected Route.....")
                     await refresh();
                 } catch (err) {
                     console.log(err);

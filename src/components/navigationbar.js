@@ -41,8 +41,16 @@ const NavigationBar = () => {
             })();
         }
         (async () => {
-            const cartItems = await getProductsInCart();
-            setCartCount(cartItems.data.length);
+            try {
+                if (Cookies.get("accessToken")) {
+                    const cartItems = await getProductsInCart();
+                    setCartCount(cartItems.data.length);
+                } else {
+                    setCartCount(0);
+                }
+            } catch (err) {
+                setCartCount(0);
+            }
         })();
     }, []);
 
