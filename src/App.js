@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-import Copy from "./home/Copy";
 import ContactUs from "./contact_us/contact_us";
 import OurTeam from "./our_team/our_team";
 import Register from "./register/register";
@@ -16,8 +14,7 @@ import AboutUs from "./about_us/about_us";
 import Careers from "./careers/Careers";
 import "font-awesome/css/font-awesome.min.css";
 
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Cookies from "js-cookie";
 
@@ -49,8 +46,6 @@ import "../src/assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff";
 import "../src/assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2";
 import RequestResetPassword from "./resetPassword/requestresetpassword";
 import PasswordReset from "./resetPassword/passwordreset";
-import Temp from "./product_details/Temp";
-import BasicExample from "./viewProduct/BasicExample";
 import { Validate } from "./validate/Validate";
 import Review from "./review/Review";
 import { refresh } from "./http/apis";
