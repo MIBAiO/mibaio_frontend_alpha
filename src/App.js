@@ -57,6 +57,7 @@ import { refresh } from "./http/apis";
 import PreviousOrders from "./PreviousOrders/PreviousOrders";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
 import { HashRouter } from "react-router-dom";
+import RouteChangeTracker from "./RouteChangeTracker";
 
 function App() {
     // const [loading, setLoading] = useState(false);
@@ -67,6 +68,7 @@ function App() {
     ) : (
         // <BrowserRouter>
         <HashRouter basename="/">
+            <RouteChangeTracker />
             <Switch>
                 {/* <Model_copy/> */}
                 <GuestRoute path="/" exact>
@@ -164,7 +166,7 @@ const ProtectedRoute = ({ children, ...rest }) => {
         if (!Cookies.get("accessToken")) {
             (async () => {
                 try {
-                    console.log("Calling in Protected Route.....")
+                    console.log("Calling in Protected Route.....");
                     await refresh();
                 } catch (err) {
                     console.log(err);
