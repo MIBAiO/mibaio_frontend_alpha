@@ -10,11 +10,6 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import ReactGA from "react-ga";
-
-const TRACKING_ID = "G-6KWY8C63C0"; // YOUR_OWN_TRACKING_ID
-ReactGA.initialize(TRACKING_ID);
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

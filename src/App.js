@@ -57,7 +57,6 @@ import { refresh } from "./http/apis";
 import PreviousOrders from "./PreviousOrders/PreviousOrders";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
 import { HashRouter } from "react-router-dom";
-import RouteChangeTracker from "./RouteChangeTracker";
 
 function App() {
     // const [loading, setLoading] = useState(false);
@@ -68,7 +67,6 @@ function App() {
     ) : (
         // <BrowserRouter>
         <HashRouter basename="/">
-            <RouteChangeTracker />
             <Switch>
                 {/* <Model_copy/> */}
                 <GuestRoute path="/" exact>
