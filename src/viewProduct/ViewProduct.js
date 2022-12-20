@@ -43,7 +43,7 @@ const ViewProduct = () => {
 		show: true,
 	});
 	const [itemQuantity, setItemQuantity] = useState(1);
-	const [itemPrice, setItemPrice] = useState(3499);
+	const [itemPrice, setItemPrice] = useState(5499);
 	const [color, setColor] = useState("white");
 
 	const [productImages, setProductImages] = useState([
@@ -277,213 +277,213 @@ const ViewProduct = () => {
 							</p>
 							<p>Made with ❤ in India</p>
 
-                            <hr />
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    height: "40%",
-                                    justifyContent: "space-evenly",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "space-evenly",
-                                        margin: "2% 0",
-                                        // marginTop: "5%",
-                                        // height: "16%",
-                                        marginRight:"70%"
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            aspectRatio: "1 / 1",
-                                            backgroundColor: "#e5e5e5",
-                                            borderRadius: "20px",
-                                            width: "35px",
-                                            borderStyle: "solid",
-                                            borderWidth:
-                                                color === "white"
-                                                    ? "3px"
-                                                    : "0px",
-                                            borderColor: "rgb(10, 204, 190)",
-                                            cursor: "pointer",
-                                        }}
-                                        onClick={() => changeColor("white")}
-                                    ></div>
-                                    <div
-                                        style={{
-                                            aspectRatio: "1 / 1",
-                                            backgroundColor: "#3f4b66",
-                                            borderRadius: "20px",
-                                            width: "35px",
-                                            borderStyle: "solid",
-                                            borderWidth:
-                                                color === "blue"
-                                                    ? "3px"
-                                                    : "0px",
-                                            borderColor: "rgb(10, 204, 190)",
-                                            cursor: "pointer",
-                                        }}
-                                        onClick={() => changeColor("blue")}
-                                    ></div>
-                                    <div
-                                        style={{
-                                            aspectRatio: "1 / 1",
-                                            backgroundColor: "#1a1a1a",
-                                            borderRadius: "20px",
-                                            width: "35px",
-                                            borderStyle: "solid",
-                                            borderWidth:
-                                                color === "black"
-                                                    ? "3px"
-                                                    : "0px",
-                                            borderColor: "rgb(10, 204, 190)",
-                                            cursor: "pointer",
-                                        }}
-                                        onClick={() => changeColor("black")}
-                                    ></div>
-                                </div>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        justifyContent: "space-around",
-                                        alignItems: "center",
-                                        margin: "2% 0",
-                                        marginRight:"46%"
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            width: "30%",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                        }}
-                                    >
-                                        <h4
-                                            className="ml-2"
-                                            style={{
-                                                fontWeight: "bold",
-                                                fontSize: "25px",
-                                            }}
-                                        >
-                                            ₹2499.00{" "}
-                                            <small
-                                                style={{
-                                                    fontSize: "10px",
-                                                    color: "#0accbe",
-                                                }}
-                                            >
-                                                GST Included
-                                            </small>
-                                        </h4>
-                                    </div>
-                                    <div
-                                        className="quantity"
-                                        style={{
-                                            width: "30%",
-                                            display: "flex",
-                                            justifyContent: "space-evenly",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        <button
-                                            className="minus-btn"
-                                            type="button"
-                                            name="button"
-                                            style={{
-                                                aspectRatio: "1 / 1",
-                                                backgroundColor:
-                                                    "rgb(10, 204, 190)",
-                                                borderRadius: "50px",
-                                                margin: "0 10px",
-                                            }}
-                                            onClick={() => {
-                                                if (itemQuantity > 0) {
-                                                    setItemQuantity(
-                                                        itemQuantity - 1
-                                                    );
-                                                    dispatch(removeModel1());
-                                                }
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon="fa-solid fa-minus" />
-                                        </button>
+							<hr />
+							<div
+								style={{
+									display: "flex",
+									flexDirection: "column",
+									height: "40%",
+									justifyContent: "space-evenly",
+								}}
+							>
+								<div
+									style={{
+										display: "flex",
+										justifyContent: "space-evenly",
+										margin: "2% 0",
+										// marginTop: "5%",
+										// height: "16%",
+										marginRight: "70%",
+									}}
+								>
+									<div
+										style={{
+											aspectRatio: "1 / 1",
+											backgroundColor: "#e5e5e5",
+											borderRadius: "20px",
+											width: "35px",
+											borderStyle: "solid",
+											borderWidth:
+												color === "white"
+													? "3px"
+													: "0px",
+											borderColor: "rgb(10, 204, 190)",
+											cursor: "pointer",
+										}}
+										onClick={() => changeColor("white")}
+									></div>
+									<div
+										style={{
+											aspectRatio: "1 / 1",
+											backgroundColor: "#3f4b66",
+											borderRadius: "20px",
+											width: "35px",
+											borderStyle: "solid",
+											borderWidth:
+												color === "blue"
+													? "3px"
+													: "0px",
+											borderColor: "rgb(10, 204, 190)",
+											cursor: "pointer",
+										}}
+										onClick={() => changeColor("blue")}
+									></div>
+									<div
+										style={{
+											aspectRatio: "1 / 1",
+											backgroundColor: "#1a1a1a",
+											borderRadius: "20px",
+											width: "35px",
+											borderStyle: "solid",
+											borderWidth:
+												color === "black"
+													? "3px"
+													: "0px",
+											borderColor: "rgb(10, 204, 190)",
+											cursor: "pointer",
+										}}
+										onClick={() => changeColor("black")}
+									></div>
+								</div>
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										justifyContent: "space-around",
+										alignItems: "center",
+										margin: "2% 0",
+										marginRight: "46%",
+									}}
+								>
+									<div
+										style={{
+											width: "30%",
+											display: "flex",
+											justifyContent: "center",
+										}}
+									>
+										<h4
+											className="ml-2"
+											style={{
+												fontWeight: "bold",
+												fontSize: "25px",
+											}}
+										>
+											₹5499.00{" "}
+											<small
+												style={{
+													fontSize: "10px",
+													color: "#0accbe",
+												}}
+											>
+												GST Included
+											</small>
+										</h4>
+									</div>
+									<div
+										className="quantity"
+										style={{
+											width: "30%",
+											display: "flex",
+											justifyContent: "space-evenly",
+											alignItems: "center",
+										}}
+									>
+										<button
+											className="minus-btn"
+											type="button"
+											name="button"
+											style={{
+												aspectRatio: "1 / 1",
+												backgroundColor:
+													"rgb(10, 204, 190)",
+												borderRadius: "50px",
+												margin: "0 10px",
+											}}
+											onClick={() => {
+												if (itemQuantity > 0) {
+													setItemQuantity(
+														itemQuantity - 1
+													);
+													dispatch(removeModel1());
+												}
+											}}
+										>
+											<FontAwesomeIcon icon="fa-solid fa-minus" />
+										</button>
 
 										{/* <input type="text" name="name" defaultValue={1} /> */}
 										<div>
 											<span>{itemQuantity}</span>
 										</div>
 
-                                        <button
-                                            className="plus-btn"
-                                            type="button"
-                                            name="button"
-                                            onClick={() => {
-                                                setItemQuantity(
-                                                    itemQuantity + 1
-                                                );
-                                                dispatch(addModel1());
-                                            }}
-                                            style={{
-                                                aspectRatio: "1 / 1",
-                                                backgroundColor:
-                                                    "rgb(10, 204, 190)",
-                                                borderRadius: "50px",
-                                                margin: "0 10px",
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon="fa-solid fa-plus" />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div
-                                    className="group wow clipInLeft add"
-                                    style={{
-                                        // margin: "auto",
-                                        // width: "auto",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        margin: "2% 0",
-                                        marginRight:"65%"
-                                    }}
-                                >
-                                    <div
-                                        className="button button-icon button-icon-right button-secondary button-winona"
-                                        onClick={cartHandler}
-                                        data-wow-duration=".5s"
-                                        data-wow-delay=".5s"
-                                    >
-                                        <div className="content-original">
-                                            Add to Cart
-                                        </div>
-                                        <div className="content-dubbed">
-                                            Add to Cart
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 className="py-2" style={{ fontWeight: "bold" }}>
-                                Product Description
-                            </h4>
-                            <hr className="hr-pro" />
-                            <p
-                                style={{
-                                    fontSize: 16,
-                                    fontFamily: "Avenir",
-                                    lineHeight: "1.6",
-                                    fontWeight: "400",
-                                }}
-                            >
-                                MIBAiO 4S is a IoT smart device which upgrades
-                                the abilities of upto 4 pre-existing electrical
-                                appliances eg. lights, fan etc to be fully
-                                operated & automated using our App across the
-                                world!
-                            </p>
-                        </div>
+										<button
+											className="plus-btn"
+											type="button"
+											name="button"
+											onClick={() => {
+												setItemQuantity(
+													itemQuantity + 1
+												);
+												dispatch(addModel1());
+											}}
+											style={{
+												aspectRatio: "1 / 1",
+												backgroundColor:
+													"rgb(10, 204, 190)",
+												borderRadius: "50px",
+												margin: "0 10px",
+											}}
+										>
+											<FontAwesomeIcon icon="fa-solid fa-plus" />
+										</button>
+									</div>
+								</div>
+								<div
+									className="group wow clipInLeft add"
+									style={{
+										// margin: "auto",
+										// width: "auto",
+										display: "flex",
+										justifyContent: "center",
+										margin: "2% 0",
+										marginRight: "65%",
+									}}
+								>
+									<div
+										className="button button-icon button-icon-right button-secondary button-winona"
+										onClick={cartHandler}
+										data-wow-duration=".5s"
+										data-wow-delay=".5s"
+									>
+										<div className="content-original">
+											Add to Cart
+										</div>
+										<div className="content-dubbed">
+											Add to Cart
+										</div>
+									</div>
+								</div>
+							</div>
+							<h4 className="py-2" style={{ fontWeight: "bold" }}>
+								Product Description
+							</h4>
+							<hr className="hr-pro" />
+							<p
+								style={{
+									fontSize: 16,
+									fontFamily: "Avenir",
+									lineHeight: "1.6",
+									fontWeight: "400",
+								}}
+							>
+								MIBAiO 4S is a IoT smart device which upgrades
+								the abilities of upto 4 pre-existing electrical
+								appliances eg. lights, fan etc to be fully
+								operated & automated using our App across the
+								world!
+							</p>
+						</div>
 
 						{/* <div
                                     className="row"
@@ -579,7 +579,6 @@ const ViewProduct = () => {
 								transitionDelay: " 1s",
 							}}
 							loop="true"
-					
 							autoPlay="true"
 							muted="true"
 						></video>
@@ -813,24 +812,50 @@ const ViewProduct = () => {
 							</ul>
 						</p>
 					</div>
-					
+
 					<div id="tab-content3" class="tab-content">
 						<div className="._2wzgFH">
-						<div class="_3LWZlK _1BLPMq">5
-					<img src="images/star.svg" class="_1wB99o"/>
-					
-					</div>
-					&nbsp;  ABC  &nbsp; <svg width="14" height="14" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="_2a1p_T"><g><circle cx="6" cy="6" r="6" fill="#878787"></circle><path stroke="#FFF" stroke-width="1.5" d="M3 6l2 2 4-4" fill="#878787"></path></g></svg>
-					 &nbsp; Verified Buyer
-					<div class="review_row">
-						<div class="t-ZTKy">
-							<div>
-								<div class="">Excellent cycle in this price range. Value for money.. excellent build quality.. nice looking.. ideal for men.. satisfied...</div>
+							<div class="_3LWZlK _1BLPMq">
+								5
+								<img src="images/star.svg" class="_1wB99o" />
+							</div>
+							&nbsp; ABC &nbsp;{" "}
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 12 12"
+								xmlns="http://www.w3.org/2000/svg"
+								class="_2a1p_T"
+							>
+								<g>
+									<circle
+										cx="6"
+										cy="6"
+										r="6"
+										fill="#878787"
+									></circle>
+									<path
+										stroke="#FFF"
+										stroke-width="1.5"
+										d="M3 6l2 2 4-4"
+										fill="#878787"
+									></path>
+								</g>
+							</svg>
+							&nbsp; Verified Buyer
+							<div class="review_row">
+								<div class="t-ZTKy">
+									<div>
+										<div class="">
+											Excellent cycle in this price range.
+											Value for money.. excellent build
+											quality.. nice looking.. ideal for
+											men.. satisfied...
+										</div>
 									</div>
-									</div>
-					</div>
-					
-					</div>
+								</div>
+							</div>
+						</div>
 						{/* <Carousel
 							controls={false}
 							indicators={false}
