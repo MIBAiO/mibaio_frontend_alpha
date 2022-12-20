@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // export const REACT_APP_API_URL = "http://localhost:5500";
-export const REACT_APP_API_URL = "//15.206.27.190:5500";
+export const REACT_APP_API_URL = "//mibaio.in:5500";
 
 axios.defaults.withCredentials = true;
 const api = axios.create({
