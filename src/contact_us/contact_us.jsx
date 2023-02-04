@@ -56,10 +56,12 @@ const ContactUs = () => {
 
             <div className="page">
                 {/* Page Header*/}
-                <section className="section page-header-1 header-section">
-                    {/* <NavigationBar /> */}
+
+                {/* Old Format
+                    <section className="section page-header-1 header-section">
+                    <NavigationBar />
                     <PageHeadder quote="Contact Us" showYouAre={false} />
-                </section>
+                </section> */}
                 {/* <section className="breadcrumbs-custom section-gray">
                     <div className="breadcrumbs-custom-main bg-default">
                         <div className="container">
@@ -81,6 +83,31 @@ const ContactUs = () => {
                         </div>
                     </div>
                 </section> */}
+                <section className="section page-header-3 header-section">
+                    <NavigationBar />
+                </section>
+                <section className="breadcrumbs-custom">
+                    <div className="breadcrumbs-custom-main bg-default">
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div className="col-xl-9">
+                                    <h3 className="text-white breadcrumbs-custom-title">
+                                        Contact Us
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="breadcrumbs-custom-aside text-white">
+                            <ul className="breadcrumbs-custom-path">
+                                <li>
+                                    <a href="index.php">Home</a>
+                                </li>
+                                <li className="active text-white">Contact Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
                 <section className="section section-md">
                     <div className="container">
                         <div className="row row-50">
@@ -203,11 +230,11 @@ const ContactUs = () => {
                                     data-form-type="contact"
                                     onSubmit={submitContactForm}
                                 >
-                                    <div className="row row-x-16 row-20">
+                                    <div className="row row-x-16 row-20 flex-column flex-md-row">
                                         <div className="col-md-6">
                                             <div className="form-wrap">
                                                 <input
-                                                    className="form-input"
+                                                    className="form-input bg-white"
                                                     id="contact-name"
                                                     type="text"
                                                     name="name"
@@ -220,6 +247,7 @@ const ContactUs = () => {
                                                                 .value,
                                                         });
                                                     }}
+                                                    required
                                                 />
                                                 <label
                                                     className="form-label"
@@ -245,6 +273,7 @@ const ContactUs = () => {
                                                                 .value,
                                                         });
                                                     }}
+                                                    required
                                                 />
                                                 <label
                                                     className="form-label"
@@ -275,13 +304,14 @@ const ContactUs = () => {
                                                                 e.target.value,
                                                         });
                                                     }}
+                                                    required
                                                 />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-wrap">
                                                 <input
-                                                    className="form-input"
+                                                    className="form-input bg-white"
                                                     id="contact-phone"
                                                     type="text"
                                                     name="phone"
@@ -294,6 +324,7 @@ const ContactUs = () => {
                                                                 .value,
                                                         });
                                                     }}
+                                                    required
                                                 />
                                                 <label
                                                     className="form-label"
