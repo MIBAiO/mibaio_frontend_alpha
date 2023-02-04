@@ -305,7 +305,7 @@ const CustomFooter = () => {
 						<div className="container">
 							<p className="text-white-50 rights">
 								<span>©&nbsp;</span>
-								<span className="copyright-year">2022</span>
+								<span className="copyright-year">2023</span>
 								<span>&nbsp;</span>
 								<span>MIBAiO</span>
 								<span>.&nbsp;</span>
