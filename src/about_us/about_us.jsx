@@ -128,7 +128,7 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/* About*/}
-                <section className="section section-md bg-gray-100">
+                {/* <section className="section section-md bg-gray-100">
                     <div className="container">
                         <div
                             className="isotope row row-30"
@@ -149,6 +149,11 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section> */}
+                {/* gap between two sections */}
+                <section className="section section-md bg-gray-100">
+                    <div className="container">
                     </div>
                 </section>
                 {/* Welcome to Team*/}
