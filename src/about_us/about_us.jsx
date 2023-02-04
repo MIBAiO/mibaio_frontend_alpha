@@ -51,12 +51,12 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="breadcrumbs-custom-aside">
+                        <div className="breadcrumbs-custom-aside text-white">
                             <ul className="breadcrumbs-custom-path">
                                 <li>
                                     <a href="index.php">Home</a>
                                 </li>
-                                <li className="active">About Us</li>
+                                <li className="active text-white">About Us</li>
                             </ul>
                         </div>
                     </div>
