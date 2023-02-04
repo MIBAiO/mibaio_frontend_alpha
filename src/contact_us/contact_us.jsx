@@ -238,6 +238,8 @@ const ContactUs = () => {
                                                     id="contact-name"
                                                     type="text"
                                                     name="name"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Your Name*"
                                                     data-constraints="@Required"
                                                     value={contactData.name}
                                                     onChange={(e) => {
@@ -249,12 +251,12 @@ const ContactUs = () => {
                                                     }}
                                                     required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-name"
                                                 >
                                                     Your Name
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-md-6">
@@ -264,6 +266,8 @@ const ContactUs = () => {
                                                     id="contact-email"
                                                     type="email"
                                                     name="email"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Email*"
                                                     data-constraints="@Required @Email"
                                                     value={contactData.email}
                                                     onChange={(e) => {
@@ -275,26 +279,28 @@ const ContactUs = () => {
                                                     }}
                                                     required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-email"
                                                 >
                                                     Email
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-12">
                                             <div className="form-wrap">
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-message"
                                                 >
                                                     Message
-                                                </label>
+                                                </label> */}
                                                 <textarea
                                                     className="form-input"
                                                     id="contact-message"
                                                     name="message"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Message*"
                                                     data-constraints="@Required"
                                                     value={contactData.message}
                                                     onChange={(e) => {
@@ -315,6 +321,8 @@ const ContactUs = () => {
                                                     id="contact-phone"
                                                     type="text"
                                                     name="phone"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Phone*"
                                                     data-constraints="@PhoneNumber"
                                                     value={contactData.phone}
                                                     onChange={(e) => {
@@ -326,12 +334,12 @@ const ContactUs = () => {
                                                     }}
                                                     required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-phone"
                                                 >
                                                     Phone
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-md-6">
