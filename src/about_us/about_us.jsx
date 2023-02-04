@@ -40,7 +40,20 @@ const AboutUs = () => {
         <div>
             <style
                 dangerouslySetInnerHTML={{
-                    __html: "\n        .ie-panel {\n            display: none;\n            background: #212121;\n            padding: 10px 0;\n            box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);\n            clear: both;\n            text-align: center;\n            position: relative;\n            z-index: 1;\n        }\n\n        html.ie-10 .ie-panel,\n        html.lt-ie-10 .ie-panel {\n            display: block;\n        }\n    ",
+                    __html: `.ie-panel {
+                        display: none;            
+                        background: #212121;            
+                        padding: 10px 0;            
+                        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);            
+                        clear: both;            
+                        text-align: center;            
+                        position: relative;            
+                        z-index: 1;        
+                    }        
+                    html.ie-10 .ie-panel,        
+                    html.lt-ie-10 .ie-panel {            
+                        display: block;        
+                    }`,
                 }}
             />
 
