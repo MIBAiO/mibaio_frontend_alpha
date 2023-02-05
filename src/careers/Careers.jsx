@@ -53,7 +53,7 @@ const Careers = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="breadcrumbs-custom-aside">
+                            <div className="breadcrumbs-custom-aside text-white">
                                 <ul className="breadcrumbs-custom-path">
                                     <li>
                                         <a href="index.html">Home</a>
@@ -61,7 +61,7 @@ const Careers = () => {
                                     <li>
                                         <a href="#">Pages</a>
                                     </li>
-                                    <li className="active">Careers</li>
+                                    <li className="active text-white">Careers</li>
                                 </ul>
                             </div>
                         </div>
