@@ -551,7 +551,7 @@ const ViewProduct = () => {
 					>
 						What the Manufacturer has to say?
 					</h3>
-					<input type="radio" name="tabs" id="tab1" checked />
+					<input type="radio" name="tabs" id="tab1" defaultChecked />
 					<label for="tab1" id="tab-l1">
 						<i class="fas fa-book"></i>
 						<span>Features</span>
