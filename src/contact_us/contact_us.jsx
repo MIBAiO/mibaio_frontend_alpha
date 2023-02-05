@@ -236,7 +236,6 @@ const ContactUs = () => {
                                                 <input
                                                     className="form-input bg-white"
                                                     id="contact-name"
-                                                    type="text"
                                                     name="name"
                                                     //adding placeholder instead of label
                                                     placeholder="Your Name*"
@@ -319,7 +318,6 @@ const ContactUs = () => {
                                                 <input
                                                     className="form-input bg-white"
                                                     id="contact-phone"
-                                                    type="text"
                                                     name="phone"
                                                     //adding placeholder instead of label
                                                     placeholder="Phone*"
