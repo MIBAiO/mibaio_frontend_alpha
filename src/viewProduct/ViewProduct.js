@@ -381,11 +381,11 @@ const ViewProduct = () => {
 										</h4>
 									</div>
 									<div
-										className="quantity"
+										className="quantity justify-content-md-evenly"
 										style={{
 											width: "30%",
 											display: "flex",
-											justifyContent: "space-evenly",
+											// justifyContent: "space-evenly",
 											alignItems: "center",
 										}}
 									>
@@ -815,34 +815,40 @@ const ViewProduct = () => {
 
 					<div id="tab-content3" class="tab-content">
 						<div className="._2wzgFH">
-							<div class="_3LWZlK _1BLPMq">
-								5
-								<img src="images/star.svg" class="_1wB99o" />
+							<div className="d-flex justify-content-between align-items-center">
+								<div>
+									<div class="_3LWZlK _1BLPMq">
+										5
+										<img src="images/star.svg" class="_1wB99o" />
+									</div>
+									&nbsp; ABC &nbsp;{" "}
+									<svg
+										width="14"
+										height="14"
+										viewBox="0 0 12 12"
+										xmlns="http://www.w3.org/2000/svg"
+										class="_2a1p_T"
+									>
+										<g>
+											<circle
+												cx="6"
+												cy="6"
+												r="6"
+												fill="#878787"
+											></circle>
+											<path
+												stroke="#FFF"
+												stroke-width="1.5"
+												d="M3 6l2 2 4-4"
+												fill="#878787"
+											></path>
+										</g>
+									</svg>
+									&nbsp; Verified Buyer
+								</div>
+								<span class="rev-btn">
+									Add Review</span>
 							</div>
-							&nbsp; ABC &nbsp;{" "}
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 12 12"
-								xmlns="http://www.w3.org/2000/svg"
-								class="_2a1p_T"
-							>
-								<g>
-									<circle
-										cx="6"
-										cy="6"
-										r="6"
-										fill="#878787"
-									></circle>
-									<path
-										stroke="#FFF"
-										stroke-width="1.5"
-										d="M3 6l2 2 4-4"
-										fill="#878787"
-									></path>
-								</g>
-							</svg>
-							&nbsp; Verified Buyer
 							<div class="review_row">
 								<div class="t-ZTKy">
 									<div>
