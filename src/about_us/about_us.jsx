@@ -18,7 +18,20 @@ const AboutUs = () => {
         <div>
             <style
                 dangerouslySetInnerHTML={{
-                    __html: "\n        .ie-panel {\n            display: none;\n            background: #212121;\n            padding: 10px 0;\n            box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);\n            clear: both;\n            text-align: center;\n            position: relative;\n            z-index: 1;\n        }\n\n        html.ie-10 .ie-panel,\n        html.lt-ie-10 .ie-panel {\n            display: block;\n        }\n    ",
+                    __html: `.ie-panel {
+                        display: none;            
+                        background: #212121;            
+                        padding: 10px 0;            
+                        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);            
+                        clear: both;            
+                        text-align: center;            
+                        position: relative;            
+                        z-index: 1;        
+                    }        
+                    html.ie-10 .ie-panel,        
+                    html.lt-ie-10 .ie-panel {            
+                        display: block;        
+                    }`,
                 }}
             />
 
@@ -38,12 +51,12 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="breadcrumbs-custom-aside">
+                        <div className="breadcrumbs-custom-aside text-white">
                             <ul className="breadcrumbs-custom-path">
                                 <li>
                                     <a href="index.php">Home</a>
                                 </li>
-                                <li className="active">About Us</li>
+                                <li className="active text-white">About Us</li>
                             </ul>
                         </div>
                     </div>
@@ -115,7 +128,7 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/* About*/}
-                <section className="section section-md bg-gray-100">
+                {/* <section className="section section-md bg-gray-100">
                     <div className="container">
                         <div
                             className="isotope row row-30"
@@ -136,6 +149,11 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section> */}
+                {/* gap between two sections */}
+                <section className="section section-md bg-gray-100">
+                    <div className="container">
                     </div>
                 </section>
                 {/* Welcome to Team*/}

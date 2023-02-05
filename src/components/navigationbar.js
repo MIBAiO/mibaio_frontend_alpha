@@ -214,7 +214,9 @@ const NavigationBar = () => {
                             >
                                 <Link className="rd-nav-link nav-font">
                                     <NavDropdown
-                                        title="More"
+                                        title={
+                                            <span className="text-white">More</span>
+                                        }
                                         id="collasible-nav-dropdown"
                                         style={{
                                             minWidth: "100%",

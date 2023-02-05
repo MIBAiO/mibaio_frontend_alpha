@@ -38,7 +38,7 @@ const OurTeam = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="breadcrumbs-custom-aside">
+                        <div className="breadcrumbs-custom-aside text-white">
                             <ul className="breadcrumbs-custom-path">
                                 <li>
                                     <a href="index.html">Home</a>
@@ -46,7 +46,7 @@ const OurTeam = () => {
                                 <li>
                                     <a href="about-us.html">About</a>
                                 </li>
-                                <li className="active">Our Team</li>
+                                <li className="active text-white">Our Team</li>
                             </ul>
                         </div>
                     </div>
