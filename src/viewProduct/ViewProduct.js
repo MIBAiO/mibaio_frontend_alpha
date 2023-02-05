@@ -1,5 +1,5 @@
 //import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addModel1, removeModel1 } from "../store/cartSlice";
@@ -117,6 +117,29 @@ const ViewProduct = () => {
 		}
 	}, [color]);
 
+	//-------------------------------------------------------------------------------------
+	const videoRef = useRef(null);
+  
+	useEffect(() => {
+		let options = {
+		  rootMargin: "100px",
+		  threshold: [0.5, 0.75]
+		};
+	
+		let handlePlay = (entries, observer) => {
+		  entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			  videoRef.current.play();
+			} else {
+			  videoRef.current.pause();
+			}
+		  });
+		};
+	
+		let observer = new IntersectionObserver(handlePlay, options);
+	
+		observer.observe(videoRef.current);
+	});
 	return (
 		// <div className="preloader" id="loading">
 		//   <div className="preloader-body">
@@ -576,10 +599,10 @@ const ViewProduct = () => {
 							style={{
 								width: "100%",
 								marginBottom: "-5%",
-								transitionDelay: " 1s",
+								// transitionDelay: " 1s",
 							}}
-							
-							autoPlay="true"
+							ref={videoRef}
+							// autoPlay="true"
 							muted="true"
 						></video>
 						<div class="container">
