@@ -578,7 +578,7 @@ const ViewProduct = () => {
 								marginBottom: "-5%",
 								transitionDelay: " 1s",
 							}}
-							loop="true"
+							
 							autoPlay="true"
 							muted="true"
 						></video>
