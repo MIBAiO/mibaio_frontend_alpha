@@ -1,5 +1,5 @@
 //import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addModel1, removeModel1 } from "../store/cartSlice";
@@ -117,6 +117,29 @@ const ViewProduct = () => {
 		}
 	}, [color]);
 
+	//-------------------------------------------------------------------------------------
+	const videoRef = useRef(null);
+  
+	useEffect(() => {
+		let options = {
+		  rootMargin: "100px",
+		  threshold: [0.5, 0.75]
+		};
+	
+		let handlePlay = (entries, observer) => {
+		  entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			  videoRef.current.play();
+			} else {
+			  videoRef.current.pause();
+			}
+		  });
+		};
+	
+		let observer = new IntersectionObserver(handlePlay, options);
+	
+		observer.observe(videoRef.current);
+	});
 	return (
 		// <div className="preloader" id="loading">
 		//   <div className="preloader-body">
@@ -381,11 +404,11 @@ const ViewProduct = () => {
 										</h4>
 									</div>
 									<div
-										className="quantity"
+										className="quantity justify-content-md-evenly"
 										style={{
 											width: "30%",
 											display: "flex",
-											justifyContent: "space-evenly",
+											// justifyContent: "space-evenly",
 											alignItems: "center",
 										}}
 									>
@@ -551,7 +574,7 @@ const ViewProduct = () => {
 					>
 						What the Manufacturer has to say?
 					</h3>
-					<input type="radio" name="tabs" id="tab1" checked />
+					<input type="radio" name="tabs" id="tab1" defaultChecked />
 					<label for="tab1" id="tab-l1">
 						<i class="fas fa-book"></i>
 						<span>Features</span>
@@ -576,10 +599,10 @@ const ViewProduct = () => {
 							style={{
 								width: "100%",
 								marginBottom: "-5%",
-								transitionDelay: " 1s",
+								// transitionDelay: " 1s",
 							}}
-							
-							autoPlay="true"
+							ref={videoRef}
+							// autoPlay="true"
 							muted="true"
 						></video>
 						<div class="container">
@@ -815,34 +838,40 @@ const ViewProduct = () => {
 
 					<div id="tab-content3" class="tab-content">
 						<div className="._2wzgFH">
-							<div class="_3LWZlK _1BLPMq">
-								5
-								<img src="images/star.svg" class="_1wB99o" />
+							<div className="d-flex justify-content-between align-items-center">
+								<div>
+									<div class="_3LWZlK _1BLPMq">
+										5
+										<img src="images/star.svg" class="_1wB99o" />
+									</div>
+									&nbsp; ABC &nbsp;{" "}
+									<svg
+										width="14"
+										height="14"
+										viewBox="0 0 12 12"
+										xmlns="http://www.w3.org/2000/svg"
+										class="_2a1p_T"
+									>
+										<g>
+											<circle
+												cx="6"
+												cy="6"
+												r="6"
+												fill="#878787"
+											></circle>
+											<path
+												stroke="#FFF"
+												stroke-width="1.5"
+												d="M3 6l2 2 4-4"
+												fill="#878787"
+											></path>
+										</g>
+									</svg>
+									&nbsp; Verified Buyer
+								</div>
+								<span class="rev-btn">
+									Add Review</span>
 							</div>
-							&nbsp; ABC &nbsp;{" "}
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 12 12"
-								xmlns="http://www.w3.org/2000/svg"
-								class="_2a1p_T"
-							>
-								<g>
-									<circle
-										cx="6"
-										cy="6"
-										r="6"
-										fill="#878787"
-									></circle>
-									<path
-										stroke="#FFF"
-										stroke-width="1.5"
-										d="M3 6l2 2 4-4"
-										fill="#878787"
-									></path>
-								</g>
-							</svg>
-							&nbsp; Verified Buyer
 							<div class="review_row">
 								<div class="t-ZTKy">
 									<div>
