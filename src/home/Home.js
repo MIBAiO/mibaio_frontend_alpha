@@ -518,7 +518,7 @@ const Home = () => {
 													className="feature-title"
 													style={{ color: "#BDD4E7" }}
 												>
-													Enerygy monitoring
+													Energy monitoring
 												</h6>
 												<p className="grey-text">
 													Monitor your energy
@@ -721,19 +721,30 @@ const Home = () => {
 					</picture>
 					{/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
 					{/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-					<picture>
-						<source
-							media="(min-width:800px)"
-							srcSet={alexagif}
-						></source>
-						<img
-							src={alexaphone}
+					<section className="section section-md bg-gray-100">
+						<h3 
+							className="wow fadeInUp"
+							data-wow-delay=".4s"
 							style={{
-								width: "100%",
+								textAlign: "center",
+								paddingTop: "32px",
+								color: "#697484",
 							}}
-						/>
-					</picture>
-
+						>Title Here</h3>
+					
+						<picture>
+							<source
+								media="(min-width:800px)"
+								srcSet={alexagif}
+							></source>
+							<img
+								src={alexaphone}
+								style={{
+									width: "100%",
+								}}
+							/>
+						</picture>
+					</section>
 					{/* <img src={alexaphone} style={alexaphonestyle} />  */}
 
 					<section className="section section-md bg-gray-100">
