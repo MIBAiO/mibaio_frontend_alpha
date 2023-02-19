@@ -10,8 +10,30 @@ import Loader from "../Loader/Loader";
 import { useLoadingWithRefresh } from "../hooks/useLoadingWithRefresh";
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
+import Lottie from "react-lottie";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import "../assets/css/style.css";
+
+import * as aboutusAnimation from "../assets/lottie/aboutus.json";
+
 const AboutUs = () => {
     const { loading } = useLoadingWithRefresh();
+
+    const [lottieState, setLottieState] = useState({
+        isStopped: false,
+        isPaused: false,
+    });
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: aboutusAnimation,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice",
+        },
+    };
     return loading ? (
         <Loader />
     ) : (
@@ -49,88 +71,226 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/* Who we Are*/}
-                <section className="section section-md">
-                    <div className="container">
-                        <div className="row row-50 align-items-center">
-                            <div className="col-md-8 col-lg-7">
+                <section class="section section-md">
+                    <div class="container">
+                        <div class="row row-50 align-items-center">
+                            <div class="col-md-8 col-lg-7">
                                 <h3>We're a Passionate Team of Innovators!</h3>
-                                <p className="text-gray-900">
-                                    Our mission is{" "}
-                                    <strong>
-                                        "To make India known for quality design
-                                        and technology"
-                                    </strong>
+                                <p class="text-gray-900">
+                                    MIBAiO was conceptualized in 2019 to
+                                    simplify everyday living.
                                     <br />
-                                    Our team strives towards innovation. We are
-                                    commited to provide our customers a
-                                    futuristic experience of modern Smart homes
-                                    using MIBAiO, at an affordable cost to every
-                                    Indian household.
+                                    We want homes, offices, restaurants and
+                                    other institutions to get smarter where
+                                    functions like safety, energy efficiency &
+                                    convenience could be managed by smart,
+                                    space-saving automation solutions.
                                 </p>
-                                {/* Quote Light*/}
-                                <blockquote className="quote-light quote-light_1">
-                                    <div className="quote-light-mark linearicons-quote-open" />
-                                    <div className="quote-light-text">
-                                        <p>
-                                            <strong>
-                                                We are here to change the Smart
-                                                Home Ecosystem in India{" "}
-                                            </strong>
-                                            - and we invite you to take a front
-                                            seat in this revolution.
-                                        </p>
-                                    </div>
-                                </blockquote>
-                                <blockquote className="quote-light quote-light_1">
-                                    <div className="quote-light-mark linearicons-quote-open" />
-                                    <div className="quote-light-text">
-                                        <p>
-                                            <strong>
-                                                We automate every electronic
-                                                device in your home
-                                            </strong>
-                                            <br />
-                                            You can use our in-house application
-                                            or this website to control and
-                                            monitor all of your electronic
-                                            appliances from wherever you want,
-                                            whenever you want
-                                        </p>
-                                    </div>
-                                </blockquote>
+                                <br />
+                                <p class="text-gray-900">
+                                    Using intensive research and developing
+                                    products based on futuristic tech, we have
+                                    engineered products that can
+                                    transform/upgrade residential & commercial
+                                    properties across India.
+                                    <br />
+                                    <br /> From scheduling appliances to
+                                    controlling devices from anywhere in the
+                                    world, our product has been carefully
+                                    crafted to ensure that you can easily
+                                    upgrade to a comfortable, smarter and
+                                    luxurious lifestyle!
+                                </p>
                             </div>
-                            <div className="col-md-4 col-lg-5">
-                                <div className="phone-frame-1_mod-1">
-                                    <div className="phone-frame-1">
-                                        <img
-                                            src="images/iphone-frame-1-523x517.png"
-                                            alt=""
-                                            width={523}
-                                            height={517}
-                                        />
-                                    </div>
-                                </div>
+                            <div class="col-md-4 col-lg-5">
+                                <Lottie
+                                    options={defaultOptions}
+                                    isStopped={lottieState.isStopped}
+                                    isPaused={lottieState.isPaused}
+                                />
+                                {/* <lottie-player
+                                    className="lottie-animate"
+                                    src="https://assets6.lottiefiles.com/packages/lf20_qbmtrbg9.json"
+                                    // background="transparent"
+                                    speed={1}
+                                    hover
+                                    loop
+                                    autoPlay
+                                ></lottie-player> */}
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* About*/}
-                <section className="section section-md bg-gray-100">
-                    <div className="container">
-                        <div
-                            className="isotope row row-30"
-                            data-isotope-layout="masonry"
-                            data-isotope-group="about"
-                        >
-                            <div className="col-12 col-sm-6 col-md-4 isotope-item">
-                                <div className="block-ratio block-ratio-1">
-                                    <div className="block-ratio-dummy" />
-                                    <div className="block-ratio-content">
-                                        <div className="box-custom-1">
-                                            <h2>1270+</h2>
-                                            <h4 className="extra-lighter">
-                                                Hours of <br /> Hard work
+                <section class="section section-md bg-gray-100">
+                    <div class="container">
+                        <div class="isotope row row-30">
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                                <div class="block-ratio block-ratio-1">
+                                    <div class="block-ratio-dummy"></div>
+                                    <div class="block-ratio-content">
+                                        <div class="box-custom-1">
+                                            <h2>12+</h2>
+                                            <h4 class="extra-lighter">
+                                                Team <br /> Members
                                             </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-8 isotope-item">
+                                <div class="block-ratio block-ratio-3">
+                                    <div class="block-ratio-dummy"></div>
+                                    <div
+                                        class="block-ratio-content bg-image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(/assets/img/about-1-770x426.jpg)",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                                <div class="block-ratio block-ratio-2">
+                                    <div class="block-ratio-dummy"></div>
+                                    <div
+                                        class="block-ratio-content bg-image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(/assets/img/about-2-369x432.jpg)",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                                <div class="block-ratio block-ratio-1">
+                                    <div class="block-ratio-dummy"></div>
+                                    <div
+                                        class="block-ratio-content bg-image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(/assets/img/about-3-370x251.jpg)",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                                <div class="block-ratio block-ratio-1">
+                                    <div class="block-ratio-dummy"></div>
+                                    <div
+                                        class="block-ratio-content bg-image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(/assets/img/about-4-370x251.jpg)",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section oh">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-lg-between">
+                            <div class="col-md-10 col-lg-5 col-xl-4">
+                                <div class="section-md">
+                                    <span class="normal-2 text-primary font-weight-bold text-uppercase wow fadeIn">
+                                        Our History
+                                    </span>
+                                    <h3>Our Path to Global Success</h3>
+                                    <p class="big offset-top-3">
+                                        Our Research paper has been published in
+                                        IEEE Xplore® Journal.
+                                    </p>
+                                    <a
+                                        class="button button-secondary button-winona"
+                                        href="https://ieeexplore.ieee.org/document/9410775"
+                                    >
+                                        Read Research
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-lg-7">
+                                <div class="timeline-classic timeline-classic_1">
+                                    <div class="timeline-classic-item">
+                                        <div class="timeline-classic-item-inner">
+                                            <div class="timeline-classic-item-decoration"></div>
+                                            <p class="timeline-classic-title">
+                                                <span class="text-primary">
+                                                    February 2020.
+                                                </span>
+                                                <span>The Early Days</span>
+                                            </p>
+                                            <div class="timeline-classic-text">
+                                                <p>
+                                                    MIB-AIO was in the ideation
+                                                    stage where our founder was
+                                                    doing his research on it as
+                                                    a final year BE project.
+                                                    This is when we realised our
+                                                    project could be made into a
+                                                    commercial product.{" "}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-classic-item">
+                                        <div class="timeline-classic-item-inner">
+                                            <div class="timeline-classic-item-decoration"></div>
+                                            <p class="timeline-classic-title">
+                                                <span class="text-primary">
+                                                    April 2021.
+                                                </span>
+                                                <span>Establishment</span>
+                                            </p>
+                                            <div class="timeline-classic-text">
+                                                <p>
+                                                    On the Auspicious day of
+                                                    Gudhi Padwa (New Year), Our
+                                                    Company was incorporated
+                                                    officially by Govt of India.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-classic-item">
+                                        <div class="timeline-classic-item-inner">
+                                            <div class="timeline-classic-item-decoration"></div>
+                                            <p class="timeline-classic-title">
+                                                <span class="text-primary">
+                                                    August 2021.
+                                                </span>
+                                                <span>Startup Incubation</span>
+                                            </p>
+                                            <div class="timeline-classic-text">
+                                                <p>
+                                                    Our company, Mibaio Elmec
+                                                    Smart Automation Pvt Ltd got
+                                                    incubated at PICT-EDC and we
+                                                    started our offline
+                                                    operations.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-classic-item">
+                                        <div class="timeline-classic-item-inner">
+                                            <div class="timeline-classic-item-decoration"></div>
+                                            <p class="timeline-classic-title">
+                                                <span class="text-primary">
+                                                    March 2022.
+                                                </span>
+                                                <span>
+                                                    Worldwide Recognition
+                                                </span>
+                                            </p>
+                                            <div class="timeline-classic-text">
+                                                <p>
+                                                    Some nice text needs to be
+                                                    added over here.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,6 +298,547 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section>
+
+                <section class="section section-md bg-gray-100 text-center">
+                    <div class="container">
+                        <span class="normal text-primary font-weight-bold text-uppercase wow fadeIn">
+                            meet our team
+                        </span>
+                        <h3
+                            class="offset-top-7 font-weight-regular typed-text-heading wow fadeIn"
+                            data-wow-delay=".1s"
+                        >
+                            People that Shape Our Success
+                        </h3>
+                        <OwlCarousel
+                            dots={true}
+                            nav={false}
+                            stagePadding={0}
+                            loop={true}
+                            margin={30}
+                            mouseDrag={false}
+                            items={3}
+                            className="owl-theme"
+                        >
+                            {/* <div
+                            class="owl-carousel owl-carousel_profile-modern"
+                            data-items="1"
+                            data-sm-items="2"
+                            data-lg-items="3"
+                            data-xl-items="4"
+                            data-dots="true"
+                            data-nav="false"
+                            data-stage-padding="0"
+                            data-loop="true"
+                            data-margin="30"
+                            data-mouse-drag="false"
+                        > */}
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(9).png"
+                                        alt="Picture of CEO"
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Vedant S. Mane
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Founder & CEO
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(7).png"
+                                        alt="Picture of Dr. Bansod"
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Dr. Gaurav Bansod
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Mentor
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(15).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Anagh Mirji
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            UI/UX Designer
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(14).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Disha Gaikwad
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Hardware Developer
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(13).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Shikhar Singh
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Firmware Developer
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(10).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Yash Kalavadiya
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Web Developer
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(6).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Vedant Kulkarni
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            App Developer
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
+                                        src="images/profile-pic(15).png"
+                                        alt=""
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Anagh Mirji
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Design Head
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-twitter"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            {/* </div> */}
+                        </OwlCarousel>
+                    </div>
+                </section>
+
+                <section
+                    class="parallax-container section-lg bg-accent text-center"
+                    style={{
+                        background:
+                            "linear-gradient(to bottom,#4a80f0, transparent)",
+                    }}
+                >
+                    <div class="parallax-content">
+                        <div class="container">
+                            <span class="normal text-white font-weight-bold text-uppercase wow fadeIn">
+                                Testimonials
+                            </span>
+                            <h3
+                                class="offset-top-7 wow fadeIn"
+                                data-wow-delay=".1s"
+                            >
+                                What our customers feel about us
+                            </h3>
+                            <OwlCarousel
+                                items={1}
+                                mouseDrag={false}
+                                margin={30}
+                                loop
+                                nav
+                                dots
+                                className="owl-theme owl-carousel owl-carousel_type-1"
+                                stagePadding={0}
+                            >
+                                {/* <div
+                                class="owl-carousel owl-carousel_type-1"
+                                data-items="1"
+                                data-dots="true"
+                                data-nav="true"
+                                data-stage-padding="0"
+                                data-loop="true"
+                                data-margin="30"
+                                data-mouse-drag="false"
+                            > */}
+                                <blockquote class="quote-classic">
+                                    <img
+                                        class="quote-classic-avatar"
+                                        src="images/testimonials-1-102x102.jpg"
+                                        alt=""
+                                        width="102"
+                                        height="102"
+                                    />
+                                    <div class="quote-classic-text">
+                                        <p>
+                                            With MIBAiO installed at my house, I
+                                            am tension free of all the
+                                            appliances as I have the real time
+                                            status on my phone screen and can
+                                            control it from anywhere in the
+                                            world!.
+                                        </p>
+                                    </div>
+                                    <div class="quote-classic-meta">
+                                        <cite class="quote-classic-cite">
+                                            Mr. Prasad S
+                                        </cite>
+                                        <p class="quote-classic-position">
+                                            Regular Customer
+                                        </p>
+                                    </div>
+                                </blockquote>
+
+                                <blockquote class="quote-classic">
+                                    <img
+                                        class="quote-classic-avatar"
+                                        src="images/testimonials-2-102x102.jpg"
+                                        alt=""
+                                        width="102"
+                                        height="102"
+                                    />
+                                    <div class="quote-classic-text">
+                                        <p>
+                                            The Voice control feature is really
+                                            cool! Setting up lights and scenes
+                                            whenever guests arrives puts an
+                                            impression.
+                                        </p>
+                                    </div>
+                                    <div class="quote-classic-meta">
+                                        <cite class="quote-classic-cite">
+                                            Ms. Swati K
+                                        </cite>
+                                        <p class="quote-classic-position">
+                                            Regular Customer
+                                        </p>
+                                    </div>
+                                </blockquote>
+
+                                <blockquote class="quote-classic">
+                                    <img
+                                        class="quote-classic-avatar"
+                                        src="images/testimonials-3-102x102.jpg"
+                                        alt=""
+                                        width="102"
+                                        height="102"
+                                    />
+                                    <div class="quote-classic-text">
+                                        <p>
+                                            As promised, MIBAiO has upgraded my
+                                            lifestyle and my appliances. I like
+                                            the automatic scheduling feature
+                                            which runs exactly at time set which
+                                            delivers me an delightful
+                                            experience!. Kudos to MIBAiO team!!
+                                        </p>
+                                    </div>
+                                    <div class="quote-classic-meta">
+                                        <cite class="quote-classic-cite">
+                                            Ms. Ankita R
+                                        </cite>
+                                        <p class="quote-classic-position">
+                                            Regular Customer
+                                        </p>
+                                    </div>
+                                </blockquote>
+                                {/* </div> */}
+                            </OwlCarousel>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Welcome to Team*/}
                 <section className="section text-center">
                     <div className="container">
@@ -232,798 +933,11 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/* People Ready to Change the World */}
-                <section className="section section-md bg-gray-100 text-center">
-                    <div className="container">
-                        <span className="normal text-primary font-weight-bold text-uppercase wow fadeIn">
-                            meet our team
-                        </span>
-                        <h3
-                            className="offset-top-7 font-weight-regular typed-text-heading wow fadeIn"
-                            data-wow-delay=".1s"
-                        >
-                            People that Shape Our Success
-                        </h3>
-                        {/* Owl Carousel*/}
-                        <div
-                            className="owl-carousel owl-carousel_profile-modern"
-                            data-items={1}
-                            data-sm-items={2}
-                            data-lg-items={3}
-                            data-xl-items={4}
-                            data-dots="true"
-                            data-nav="false"
-                            data-stage-padding={0}
-                            data-loop="true"
-                            data-margin={30}
-                            data-mouse-drag="false"
-                        >
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-1-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Vedant S. Mane
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Founder &amp; CEO
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-2-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Dr. Gaurav Bansod
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Mentor
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-3-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Aditya Nerpagar
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Hardware Developer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-4-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Shlok Shaha
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Web Developer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-5-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Nishad Potdar
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Interface Designer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-6-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Advait Chandorkar
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            Firmware Engineer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-7-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Akshit Madan
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            App Developer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                            {/* Profile Modern*/}
-                            <article className="profile-modern">
-                                <figure className="profile-modern-figure">
-                                    <img
-                                        className="profile-modern-image"
-                                        src="images/team-8-369x315.jpg"
-                                        alt=""
-                                        width={369}
-                                        height={315}
-                                    />
-                                </figure>
-                                <div className="profile-modern-main">
-                                    <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                        <h4 className="profile-modern-name">
-                                            Anagh Mirji
-                                        </h4>
-                                        <p className="profile-modern-position">
-                                            UI/UX Designer
-                                        </p>
-                                    </div>
-                                    <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                        <h4 className="profile-modern-main-title extra-lighter">
-                                            Get in Touch
-                                        </h4>
-                                        <ul className="list-inline list-inline-xs">
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-facebook"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-twitter"
-                                                    href="#"
-                                                />
-                                            </li>
-                                            <li>
-                                                <a
-                                                    className="icon icon-md mdi mdi-instagram"
-                                                    href="#"
-                                                />
-                                            </li>
-                                        </ul>
-                                        <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-                <section className="section oh">
-                    <div className="container">
-                        <div className="row justify-content-center justify-content-lg-between">
-                            <div className="col-md-10 col-lg-5 col-xl-4">
-                                <div className="section-md">
-                                    <span className="normal-2 text-primary font-weight-bold text-uppercase wow fadeIn">
-                                        Our History
-                                    </span>
-                                    <h3>Our Path to Global Success</h3>
-                                    <p className="big offset-top-3">
-                                        Our Research paper has been published in
-                                        IEEE Xplore® Journal.
-                                    </p>
-                                    <a
-                                        className="button button-secondary button-winona"
-                                        href="https://ieeexplore.ieee.org/document/9410775"
-                                        target="_blank"
-                                    >
-                                        Read Research
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="col-md-10 col-lg-7">
-                                {/* Timeline*/}
-                                <div className="timeline-classic timeline-classic_1">
-                                    <div className="timeline-classic-item">
-                                        <div className="timeline-classic-item-inner">
-                                            <div className="timeline-classic-item-decoration" />
-                                            <p className="timeline-classic-title">
-                                                <span className="text-primary">
-                                                    November 2020.
-                                                </span>
-                                                <span>The Early Days</span>
-                                            </p>
-                                            <div className="timeline-classic-text">
-                                                <p>
-                                                    MIB-AIO was in the ideation
-                                                    stage where our founder was
-                                                    doing his research on it as
-                                                    a final year BE project.
-                                                    This is when we realised our
-                                                    project could be made into a
-                                                    commercial product.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="timeline-classic-item">
-                                        <div className="timeline-classic-item-inner">
-                                            <div className="timeline-classic-item-decoration" />
-                                            <p className="timeline-classic-title">
-                                                <span className="text-primary">
-                                                    April 2021.
-                                                </span>
-                                                <span>Establishment</span>
-                                            </p>
-                                            <div className="timeline-classic-text">
-                                                <p>
-                                                    On the Auspicious day of
-                                                    Gudhi Padwa (New Year), Our
-                                                    Company was incorporated
-                                                    officially by Govt of India.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="timeline-classic-item">
-                                        <div className="timeline-classic-item-inner">
-                                            <div className="timeline-classic-item-decoration" />
-                                            <p className="timeline-classic-title">
-                                                <span className="text-primary">
-                                                    August 2021.
-                                                </span>
-                                                <span>Startup Incubation</span>
-                                            </p>
-                                            <div className="timeline-classic-text">
-                                                <p>
-                                                    Our company, Mibaio Elmec
-                                                    Smart Automation Pvt Ltd got
-                                                    incubated at PICT-EDC and we
-                                                    started our offline
-                                                    operations.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="timeline-classic-item">
-                                        <div className="timeline-classic-item-inner">
-                                            <div className="timeline-classic-item-decoration" />
-                                            <p className="timeline-classic-title">
-                                                <span className="text-primary">
-                                                    March 2022.
-                                                </span>
-                                                <span>
-                                                    Worldwide Recognition
-                                                </span>
-                                            </p>
-                                            <div className="timeline-classic-text">
-                                                <p>
-                                                    Some nice tect needs to be
-                                                    added over here.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
                 {/* Testimonials*/}
-                <section
-                    className="parallax-container section-lg bg-accent text-center"
-                    data-parallax-img="images/bg-image-6.jpg"
-                >
-                    <div className="parallax-content">
-                        <div className="container">
-                            <span className="normal text-white font-weight-bold text-uppercase wow fadeIn">
-                                Testimonials
-                            </span>
-                            <h3
-                                className="offset-top-7 wow fadeIn"
-                                data-wow-delay=".1s"
-                            >
-                                What Users Think About Us
-                            </h3>
-                            <div
-                                className="owl-carousel owl-carousel_type-1"
-                                data-items={1}
-                                data-dots="true"
-                                data-nav="true"
-                                data-stage-padding={0}
-                                data-loop="true"
-                                data-margin={30}
-                                data-mouse-drag="false"
-                            >
-                                {/* Quote Classic*/}
-                                <blockquote className="quote-classic">
-                                    <img
-                                        className="quote-classic-avatar"
-                                        src="images/testimonials-1-102x102.jpg"
-                                        alt=""
-                                        width={102}
-                                        height={102}
-                                    />
-                                    <div className="quote-classic-text">
-                                        <p>
-                                            Sed odio morbi quis commodo odio.
-                                            Sed tempus urna et pharetra pharetra
-                                            massa massa. Sed viverra tellus in
-                                            hac habitasse platea dictumst
-                                            vestibulum. Ornare lectus sit amet
-                                            est placerat in egestas erat. Amet
-                                            volutpat consequat mauris.
-                                        </p>
-                                    </div>
-                                    <div className="quote-classic-meta">
-                                        <cite className="quote-classic-cite">
-                                            Alice Doe
-                                        </cite>
-                                        <p className="quote-classic-position">
-                                            Regular Customer
-                                        </p>
-                                    </div>
-                                </blockquote>
-                                {/* Quote Classic*/}
-                                <blockquote className="quote-classic">
-                                    <img
-                                        className="quote-classic-avatar"
-                                        src="images/testimonials-2-102x102.jpg"
-                                        alt=""
-                                        width={102}
-                                        height={102}
-                                    />
-                                    <div className="quote-classic-text">
-                                        <p>
-                                            Ubi est clemens usus? Cursuss
-                                            peregrinatione in nobilis avenio!
-                                            Volare ducunt ad ignigena. Amors
-                                            potus! Mirabilis sectam nunquam
-                                            manifestums cursus est. Ferox,
-                                            azureus sagas mechanice quaestio de
-                                            peritus, domesticus accola.
-                                        </p>
-                                    </div>
-                                    <div className="quote-classic-meta">
-                                        <cite className="quote-classic-cite">
-                                            John Williams
-                                        </cite>
-                                        <p className="quote-classic-position">
-                                            Regular Customer
-                                        </p>
-                                    </div>
-                                </blockquote>
-                                {/* Quote Classic*/}
-                                <blockquote className="quote-classic">
-                                    <img
-                                        className="quote-classic-avatar"
-                                        src="images/testimonials-3-102x102.jpg"
-                                        alt=""
-                                        width={102}
-                                        height={102}
-                                    />
-                                    <div className="quote-classic-text">
-                                        <p>
-                                            Est audax lanista, cesaris. Nunquam
-                                            acquirere diatria. Repressors ire!
-                                            Cum planeta credere, omnes
-                                            candidatuses demitto lotus, castus
-                                            nixes. Galluss ridetis, tanquam
-                                            teres fraticinida. Acipenser de
-                                            teres hydra, reperire vox.
-                                        </p>
-                                    </div>
-                                    <div className="quote-classic-meta">
-                                        <cite className="quote-classic-cite">
-                                            Scott Johnson
-                                        </cite>
-                                        <p className="quote-classic-position">
-                                            Regular Customer
-                                        </p>
-                                    </div>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
                 {/* Our Investors*/}
-                <section className="section section-md bg-gray-100 text-center">
-                    <div className="container">
-                        <span className="normal text-primry font-weight-bold text-uppercase wow fadeIn">
-                            companies that trust us
-                        </span>
-                        <h3
-                            className="offset-top-7 wow fadeIn"
-                            data-wow-delay=".1s"
-                        >
-                            Our Clients
-                        </h3>
-                        {/* Owl Carousel*/}
-                        <div
-                            className="owl-carousel owl-carousel-centered owl-carousel-main"
-                            data-items={2}
-                            data-sm-items={3}
-                            data-md-items={4}
-                            data-lg-items={5}
-                            data-dots="true"
-                            data-nav="false"
-                            data-stage-padding={0}
-                            data-loop="true"
-                            data-margin={30}
-                            data-mouse-drag="false"
-                        >
-                            <div className="wow clipInLeft">
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-1-88x77.png"
-                                        alt=""
-                                        width={88}
-                                        height={77}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".1s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-2-73x78.png"
-                                        alt=""
-                                        width={73}
-                                        height={78}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".2s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-3-96x62.png"
-                                        alt=""
-                                        width={96}
-                                        height={62}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".3s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-4-78x80.png"
-                                        alt=""
-                                        width={78}
-                                        height={80}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".4s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-5-87x76.png"
-                                        alt=""
-                                        width={87}
-                                        height={76}
-                                    />
-                                </a>
-                            </div>
-                            <div className="wow clipInLeft">
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-1-88x77.png"
-                                        alt=""
-                                        width={88}
-                                        height={77}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".1s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-2-73x78.png"
-                                        alt=""
-                                        width={73}
-                                        height={78}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".2s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-3-96x62.png"
-                                        alt=""
-                                        width={96}
-                                        height={62}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".3s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-4-78x80.png"
-                                        alt=""
-                                        width={78}
-                                        height={80}
-                                    />
-                                </a>
-                            </div>
-                            <div
-                                className="wow clipInLeft"
-                                data-wow-delay=".4s"
-                            >
-                                <a className="link-image-1" href="#">
-                                    <img
-                                        src="images/investor-5-87x76.png"
-                                        alt=""
-                                        width={87}
-                                        height={76}
-                                    />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
                 <CustomFooter />
             </div>
             <div className="snackbars" id="form-output-global" />

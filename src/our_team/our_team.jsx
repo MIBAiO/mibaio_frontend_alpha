@@ -51,405 +51,594 @@ const OurTeam = () => {
                         </div>
                     </div>
                 </section>
-                <section className="section section-lg">
-                    <div className="container">
-                        <div className="row row-50 row-xl-70">
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                <section class="section section-lg">
+                    <div class="container">
+                        <div class="row row-50 row-xl-70">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(9).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
                                                 Vedant S. Mane
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Founder &amp; CEO
+                                            <p class="profile-modern-position">
+                                                Managing Director
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
                                                 Get in Touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="https://www.facebook.com/Im.vedantmane"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="https://www.instagram.com/vedant_suryakant_mane/"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(7).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Dr. Gaurav Bansod
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Chief Financial Officer
+                                            <p class="profile-modern-position">
+                                                Mentor
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/team-3-369x315.jpg"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Shikhar Singh
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Project Manager
+                                            <p class="profile-modern-position">
+                                                Firmware Developer
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(14).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Disha Gaikwad
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Senior Developer
+                                            <p class="profile-modern-position">
+                                                Hardware Developer
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(15).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Anagh Mirji
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                QA Engineer
+                                            <p class="profile-modern-position">
+                                                UI/UX Designer
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(6).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Vedant Kulkarni
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Interface Designer
+                                            <p class="profile-modern-position">
+                                                App Developer
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(8).png"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Harshwardhan Atkare
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Head of Marketing
+                                            <p class="profile-modern-position">
+                                                App Developer
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
-                            <div className="col-sm-6 col-lg-4 col-xl-3">
-                                {/* Profile Modern*/}
-                                <article className="profile-modern">
-                                    <figure className="profile-modern-figure">
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
                                         <img
-                                            className="profile-modern-image"
-                                            src={team1}
+                                            class="profile-modern-image"
+                                            src="images/team-8-369x315.jpg"
                                             alt=""
-                                            width={369}
-                                            height={315}
+                                            width="369"
+                                            height="315"
                                         />
                                     </figure>
-                                    <div className="profile-modern-main">
-                                        <div className="profile-modern-main-item profile-modern-main-item_primary">
-                                            <h4 className="profile-modern-name">
-                                                Want your name here?
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Anirudh Bala Chowdhury
                                             </h4>
-                                            <p className="profile-modern-position">
-                                                Business Analyst
+                                            <p class="profile-modern-position">
+                                                Graphic Design
                                             </p>
                                         </div>
-                                        <div className="profile-modern-main-item profile-modern-main-item_secondary">
-                                            <h4 className="profile-modern-main-title extra-lighter">
-                                                Apply for position
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
                                             </h4>
-                                            <ul className="list-inline list-inline-xs">
+                                            <ul class="list-inline list-inline-xs">
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-facebook"
+                                                        class="icon icon-md mdi mdi-facebook"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-twitter"
+                                                        class="icon icon-md mdi mdi-twitter"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                                 <li>
                                                     <a
-                                                        className="icon icon-md mdi mdi-instagram"
+                                                        class="icon icon-md mdi mdi-instagram"
                                                         href="#"
-                                                    />
+                                                    ></a>
                                                 </li>
                                             </ul>
-                                            <div className="profile-modern-toggle mdi mdi-arrow-top-right" />
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
+                                        <img
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(10).png"
+                                            alt=""
+                                            width="369"
+                                            height="315"
+                                        />
+                                    </figure>
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Yash Kalavadiya
+                                            </h4>
+                                            <p class="profile-modern-position">
+                                                Web Developer
+                                            </p>
+                                        </div>
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
+                                            </h4>
+                                            <ul class="list-inline list-inline-xs">
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-facebook"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-twitter"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-instagram"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                            </ul>
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
+                                        <img
+                                            class="profile-modern-image"
+                                            src="images/profile-pic(13).png"
+                                            alt=""
+                                            width="369"
+                                            height="315"
+                                        />
+                                    </figure>
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Gaurav Chawda
+                                            </h4>
+                                            <p class="profile-modern-position">
+                                                Web Developer
+                                            </p>
+                                        </div>
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
+                                            </h4>
+                                            <ul class="list-inline list-inline-xs">
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-facebook"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-twitter"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-instagram"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                            </ul>
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
+                                        <img
+                                            class="profile-modern-image"
+                                            src="images/team-8-369x315.jpg"
+                                            alt=""
+                                            width="369"
+                                            height="315"
+                                        />
+                                    </figure>
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Siddhesh Kotkar
+                                            </h4>
+                                            <p class="profile-modern-position">
+                                                Web Developer
+                                            </p>
+                                        </div>
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
+                                            </h4>
+                                            <ul class="list-inline list-inline-xs">
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-facebook"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-twitter"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-instagram"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                            </ul>
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <article class="profile-modern">
+                                    <figure class="profile-modern-figure">
+                                        <img
+                                            class="profile-modern-image"
+                                            src="images/team-8-369x315.jpg"
+                                            alt=""
+                                            width="369"
+                                            height="315"
+                                        />
+                                    </figure>
+                                    <div class="profile-modern-main">
+                                        <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                            <h4 class="profile-modern-name">
+                                                Aryan Sonsale
+                                            </h4>
+                                            <p class="profile-modern-position">
+                                                Copy Writer
+                                            </p>
+                                        </div>
+                                        <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                            <h4 class="profile-modern-main-title extra-lighter">
+                                                Get in touch
+                                            </h4>
+                                            <ul class="list-inline list-inline-xs">
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-facebook"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-twitter"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        class="icon icon-md mdi mdi-instagram"
+                                                        href="#"
+                                                    ></a>
+                                                </li>
+                                            </ul>
+                                            <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
                                     </div>
                                 </article>

@@ -27,6 +27,8 @@ import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PayMethod from "./PayMethod";
+import Lottie from "react-lottie";
+import * as checkoutAnimation from "../assets/lottie/checkout.json";
 
 const Checkout = () => {
     const [cartCalculation, setCartCalculation] = useState({
@@ -73,6 +75,11 @@ const Checkout = () => {
 
     const [couponData, setCouponData] = useState(false);
 
+    const [lottieState, setLottieState] = useState({
+        isStopped: false,
+        isPaused: false,
+    });
+
     const [isShippingAndBillingSame, setIsShippingAndBillingSame] =
         useState(false);
 
@@ -95,6 +102,15 @@ const Checkout = () => {
         zip: false,
         phoneNo: false,
     });
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: checkoutAnimation,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice",
+        },
+    };
 
     const saveData = async () => {
         if (!isInvalid) {
@@ -373,7 +389,12 @@ const Checkout = () => {
                                         <span className="box-custom-4-icon" />
                                     </div>
                                 </div>
-                                <lottie-player
+                                <Lottie
+                                    options={defaultOptions}
+                                    isStopped={lottieState.isStopped}
+                                    isPaused={lottieState.isPaused}
+                                />
+                                {/* <lottie-player
                                     className="lottie-animate"
                                     src="https://assets5.lottiefiles.com/private_files/lf30_wai6psec.json"
                                     background="transparent"
@@ -381,7 +402,7 @@ const Checkout = () => {
                                     hover
                                     loop
                                     autoPlay
-                                ></lottie-player>
+                                ></lottie-player> */}
                             </div>
                             <div className="box-custom-4-main">
                                 <div className="block-10">

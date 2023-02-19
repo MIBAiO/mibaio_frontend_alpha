@@ -245,7 +245,7 @@ const NavigationBar = () => {
                                                 </li>
                                                 <li class="rd-megamenu-list-item">
                                                     <Link
-                                                        to=""
+                                                        to="/faq"
                                                         class="rd-megamenu-list-link text-dark"
                                                     >
                                                         FAQ
@@ -265,6 +265,23 @@ const NavigationBar = () => {
                                                         class="rd-megamenu-list-link text-dark"
                                                     >
                                                         Our Team
+                                                    </Link>
+                                                </li>
+                                                <li class="rd-megamenu-list-item">
+                                                    <Link
+                                                        to="/privacyPolicy"
+                                                        class="rd-megamenu-list-link text-dark"
+                                                    >
+                                                        Privacy Policy
+                                                    </Link>
+                                                </li>
+
+                                                <li class="rd-megamenu-list-item">
+                                                    <Link
+                                                        to="/returnnrefund"
+                                                        class="rd-megamenu-list-link text-dark"
+                                                    >
+                                                        Return &amp; Refund
                                                     </Link>
                                                 </li>
                                             </div>
