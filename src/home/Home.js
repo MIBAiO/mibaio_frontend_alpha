@@ -1934,11 +1934,11 @@ const Home = () => {
 							> */}
 							{/* --------------------------- */}
 							<div
-								className="accordion row row-30 justify-content-center justify-content-lg-start wow fadeIn"
+								className="accordion row row-30 justify-content-center justify-content-lg-start"
 								id="appAccordion"
 								data-wow-delay=".2s"
 							>
-								<div className="col-md-10 col-lg-6">
+								<div className="col-md-10 col-lg-6 wow fadeInLeftSmall">
 									<div className="card-group-custom card-group-classic card-group-classic_1">
 										<div className="card card-custom card-classic">
 											<div className="accordion-item card-header">
@@ -2034,7 +2034,7 @@ const Home = () => {
 									</div>
 								</div>
 
-								<div className="col-md-10 col-lg-6">
+								<div className="col-md-10 col-lg-6 wow fadeInRightSmall">
 									<div className="card-group-custom card-group-classic card-group-classic_1">
 										<div className="card card-custom card-classic">
 											<div className="accordion-item card-header">
