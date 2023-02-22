@@ -4,6 +4,7 @@ import NavigationBar from "./navigationbar";
 export default function PageHeadder({
     quote = "",
     showYouAre = true,
+    info = "",
     ...props
 }) {
     return (
@@ -61,15 +62,31 @@ export default function PageHeadder({
                         </div>
                     </>
                 )}
+                {/* <div class="breadcrumbs-custom-main-2 bg-default"> */}
+                {/* <div class="justify-content-center align-items-center"> */}
                 {!showYouAre && (
-                    <div className="w-100 d-flex justify-content-center align-items-center">
+                    <div class="container d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <h3 class="text-white breadcrumbs-custom-title-2">
+                                {quote}
+                            </h3>
+                            {info && (
+                                <p class="breadcrumbs-custom-text-2 big text-light">
+                                    {info}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                )}
+                {/* </div> */}
+                {/* </div> */}
+                {/* <div className="w-100 d-flex justify-content-center align-items-center">
                         <h1 className="extra-light text-white heading-decoration-3">
                             <span
                                 dangerouslySetInnerHTML={{ __html: quote }}
                             ></span>
                         </h1>
-                    </div>
-                )}
+                    </div> */}
             </div>
         </section>
     );
