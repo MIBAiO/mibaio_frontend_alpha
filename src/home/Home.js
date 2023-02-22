@@ -718,7 +718,9 @@ const Home = () => {
 								>
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
-											<div className="icon icon-style-1 mdi mdi-flash"></div>
+											<div className="icon icon-style-1 mdi mdi-flash"
+												// style={{ font: "normal 24px/2 Material Design Icons" }}
+											></div>
 										</div>
 										<div className="unit-body">
 											<h3>Surge Proof</h3>
@@ -759,7 +761,9 @@ const Home = () => {
 								<div className="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall">
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
-											<div className="icon icon-style-1 mdi mdi-access-point-network"></div>
+											<div className="icon icon-style-1 mdi mdi-access-point-network"
+												// style={{ font: "normal 24px/2 Material Design Icons" }}
+											></div>
 										</div>
 										<div className="unit-body">
 											<h3>Multi-Mode Control</h3>
@@ -775,10 +779,14 @@ const Home = () => {
 													to remotely control your smart appliances with:
 													<br />
 													<br />
-													<div className="icon icon-style-1 mdi mdi-wifi"></div>{" "}
+													<div className="icon icon-style-1 mdi mdi-wifi"
+														// style={{ font: "normal 24px/2 Material Design Icons" }}
+													></div>{" "}
 													Internet <br />
 													<br />
-													<div className="icon icon-style-1 mdi mdi-bluetooth"></div>{" "}
+													<div className="icon icon-style-1 mdi mdi-bluetooth"
+														// style={{ font: "normal 24px/2 Material Design Icons" }}
+													></div>{" "}
 													Bluetooth
 												</p>
 												<div className="group-buttons-responsive group-middle">
@@ -1938,7 +1946,7 @@ const Home = () => {
 								id="appAccordion"
 								data-wow-delay=".2s"
 							>
-								<div className="col-md-10 col-lg-6 wow fadeInLeftSmall">
+								<div className="col-md-10 col-lg-6 wow fadeInLeft">
 									<div className="card-group-custom card-group-classic card-group-classic_1">
 										<div className="card card-custom card-classic">
 											<div className="accordion-item card-header">
@@ -2034,7 +2042,7 @@ const Home = () => {
 									</div>
 								</div>
 
-								<div className="col-md-10 col-lg-6 wow fadeInRightSmall">
+								<div className="col-md-10 col-lg-6 wow fadeInRight">
 									<div className="card-group-custom card-group-classic card-group-classic_1">
 										<div className="card card-custom card-classic">
 											<div className="accordion-item card-header">
