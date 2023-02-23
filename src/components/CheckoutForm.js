@@ -30,7 +30,7 @@ const CheckoutForm = ({
 
     return (
         <div className="col-50">
-            <div className="check container w-50">
+            <div className="check container w-100 w-md-50">
                 <form id="validate">
                     <div className="row-c">
                         <div className="col-50 billing-class">
