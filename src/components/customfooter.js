@@ -309,10 +309,11 @@ const CustomFooter = () => {
 								<span>&nbsp;</span>
 								<span>MIBAiO</span>
 								<span>.&nbsp;</span>
-								<a href="https://mibaio.in/privacy-policy.html">
+								{/* <a href="https://mibaio.in/privacy-policy.html"> */}
+								<Link to="/privacyPolicy">
 									{" "}
 									Privacy Policy
-								</a>
+								</Link>
 							</p>
 						</div>
 					</div>
