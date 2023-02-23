@@ -52,6 +52,9 @@ import { refresh } from "./http/apis";
 import PreviousOrders from "./PreviousOrders/PreviousOrders";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
 import { HashRouter } from "react-router-dom";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import FAQ from "./FAQ/FAQ";
+import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 
 function App() {
     // const [loading, setLoading] = useState(false);
@@ -121,6 +124,17 @@ function App() {
 
                 <GuestRoute path="/success">
                     <OrderSuccess />
+                </GuestRoute>
+
+                <GuestRoute path="/privacyPolicy">
+                    <PrivacyPolicy />
+                </GuestRoute>
+                <GuestRoute path="/faq">
+                    <FAQ />
+                </GuestRoute>
+
+                <GuestRoute path="/returnnrefund">
+                    <ReturnNRefund />
                 </GuestRoute>
 
                 <ProtectedRoute path="/cart">
