@@ -253,14 +253,14 @@ const NavigationBar = () => {
                                                         FAQ
                                                     </Link>
                                                 </li>
-                                                <li class="rd-megamenu-list-item">
+                                                {/* <li class="rd-megamenu-list-item">
                                                     <Link
                                                         to="/"
                                                         class="rd-megamenu-list-link text-dark"
                                                     >
                                                         Privacy Policy
                                                     </Link>
-                                                </li>
+                                                </li> */}
                                                 <li class="rd-megamenu-list-item">
                                                     <Link
                                                         to="/our_team"
