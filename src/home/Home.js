@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import home1 from "./home1.png";
 import home2 from "./home2.png";
@@ -95,7 +95,44 @@ const Home = () => {
 	// };
 
 	// const src = getVideoSrc(window.innerWidth);
+// ----------------------------------------------------------------------------------
+// Enlarging the image on scroll
+	const nextSectionRef = useRef(null);
+	const containerRef = useRef(null);
+	const [scale, setScale] = useState(1);
+	const [opacity, setOpacity] = useState(1);
 
+	useEffect(() => {
+	const distance = nextSectionRef.current.offsetTop - window.innerHeight;
+	const container = containerRef.current;
+
+	const handleScroll = () => {
+		const rect = container.getBoundingClientRect();
+      	const windowHeight = window.innerHeight;
+		if (rect.top <= windowHeight) {
+			const scrollTop = window.pageYOffset;
+			if (scrollTop <= distance) {
+			const progress = scrollTop / distance;
+			const startScale = 1;
+			const endScale = 4;
+			const scaleDistance = endScale - startScale;
+			const opacityDistance = 1 - 0.5;
+
+			const newScale = startScale + scaleDistance * progress;
+			const newOpacity = 1 - opacityDistance * progress;
+			setScale(newScale);
+			setOpacity(newOpacity);
+			}
+		}
+	};
+
+	window.addEventListener('scroll', handleScroll);
+
+	return () => {
+		window.removeEventListener('scroll', handleScroll);
+	};
+	}, [nextSectionRef]);
+// -------------------------------------------------------------------------------------------
 	return (
 		<>
 			<ModalVideo
@@ -436,12 +473,17 @@ const Home = () => {
 										</div>
 									</div>
 
-									<div className="col-md-4 flex-center">
+									<div className="col-md-4 flex-center"
+										// data-aos="zoom-in"
+										// data-duration="1000"
+										ref={containerRef}
+									>
 										<img
 											src={sample1}
 											alt="MIBAiO Xtension 4S white"
 											className="z-depth-0 img-fluid wow fadeInUp"
 											data-wow-delay=".5s"
+											style={{ transform: `scale(${scale})`, opacity }}
 										/>
 									</div>
 
@@ -628,7 +670,9 @@ const Home = () => {
 							</div>
 						</div>
 					</section>
-					<picture>
+					<picture id="next-section" 
+						ref={nextSectionRef}
+					>
 						{src === "small" && (
 							<video
 								style={{
@@ -636,7 +680,7 @@ const Home = () => {
 									transitionDelay: "1s",
 									marginBottom: "-6%",
 								}}
-								loop
+								// loop
 								autoPlay
 								muted
 								playsInline
@@ -650,8 +694,9 @@ const Home = () => {
 									width: "100%",
 									transitionDelay: "1s",
 									marginBottom: "-6%",
+									
 								}}
-								loop
+								// loop
 								autoPlay
 								muted
 								playsInline
