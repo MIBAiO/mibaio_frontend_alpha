@@ -6378,6 +6378,7 @@ html:not(.tablet):not(.mobile) .thumbnail-classy:hover .thumbnail-classy-image {
   box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.15);
   background: #ffffff;
   text-align: left;
+  border-radius: 16px;
 }
 
 .profile-modern .profile-modern-main-title {
@@ -6388,6 +6389,7 @@ html:not(.tablet):not(.mobile) .thumbnail-classy:hover .thumbnail-classy-image {
   position: relative;
   flex-grow: 1;
   z-index: 2;
+  padding: 6px;
 }
 
 .profile-modern-image {
@@ -16517,10 +16519,13 @@ html:not(.ie-11):not(.ie-10) .countdown-circle {
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  border: 1px solid #000000 !important;
   font: 400 18px/40px "Material Design Icons";
-  color: #262f3c;
-  background: #f9f8f8;
+  /* color: #262f3c;
+  background: #f9f8f8; */
+  color: #000000 !important;
+  background: #ffffff !important;
   cursor: pointer;
   transition: 0.33s;
   text-align: center;
@@ -16528,8 +16533,15 @@ html:not(.ie-11):not(.ie-10) .countdown-circle {
 
 .owl-prev:hover,
 .owl-next:hover {
-  color: #0accbe;
+  /* color: #0accbe; */
+  color: #ffffff !important;
+  background: #000000 !important;
 }
+/* button.owl-next,
+button.owl-prev {
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+} */
 
 @media (min-width: 768px) {
   .owl-prev,

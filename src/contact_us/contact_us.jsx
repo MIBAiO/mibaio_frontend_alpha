@@ -5,7 +5,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../Loader/Loader";
 import { useLoadingWithRefresh } from "../hooks/useLoadingWithRefresh";
@@ -14,8 +14,15 @@ import { saveContactData } from "../http/apis";
 import CustomFooter from "../components/customfooter";
 import NavigationBar from "../components/navigationbar";
 import PageHeadder from "../components/PageHeadder";
+import WOW from "wowjs";
 const ContactUs = () => {
     const { loading } = useLoadingWithRefresh();
+
+    useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init();
+	});
 
     const [contactData, setContactData] = useState({
         name: "",
@@ -86,7 +93,7 @@ const ContactUs = () => {
                 <section className="section page-header-3 header-section">
                     <NavigationBar />
                 </section>
-                <section className="breadcrumbs-custom">
+                <section className="breadcrumbs-custom wow fadeInDown">
                     <div className="breadcrumbs-custom-main bg-default">
                         <div className="container">
                             <div className="row justify-content-center">
@@ -108,7 +115,7 @@ const ContactUs = () => {
                     </div>
                 </section>
 
-                <section className="section section-md">
+                <section className="section section-md wow fadeInUp">
                     <div className="container">
                         <div className="row row-50">
                             <div className="col-xl-5">
@@ -218,7 +225,7 @@ const ContactUs = () => {
                     </div>
                 </section>
                 {/* Get in Touch*/}
-                <section className="section section-md bg-gray-100">
+                <section className="section section-md bg-gray-100 wow fadeInUp">
                     <div className="container">
                         <h3 className="text-center">Get in Touch</h3>
                         <div className="row justify-content-center">
