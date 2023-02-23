@@ -55,6 +55,7 @@ import { HashRouter } from "react-router-dom";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import FAQ from "./FAQ/FAQ";
 import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     // const [loading, setLoading] = useState(false);
@@ -65,6 +66,8 @@ function App() {
     ) : (
         // <BrowserRouter>
         <HashRouter basename="/">
+            {/* added ScrollToTop so that page scrolls to top on changing pages */}
+            <ScrollToTop />
             <Switch>
                 {/* <Model_copy/> */}
                 <GuestRoute path="/" exact>
