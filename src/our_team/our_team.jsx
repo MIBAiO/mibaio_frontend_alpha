@@ -4,12 +4,21 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import team1 from "./team1.jpg";
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
+import WOW from "wowjs";
+
 const OurTeam = () => {
+
+    useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init();
+	});
+
     return (
         <div>
             {/* <div className="preloader" id="loading"> */}
@@ -27,7 +36,7 @@ const OurTeam = () => {
                     {/* RD Navbar*/}
                     <NavigationBar />
                 </section>
-                <section className="breadcrumbs-custom section-gray">
+                <section className="breadcrumbs-custom section-gray wow fadeInDown">
                     <div className="breadcrumbs-custom-main bg-default">
                         <div className="container">
                             <div className="row justify-content-center">
@@ -51,7 +60,7 @@ const OurTeam = () => {
                         </div>
                     </div>
                 </section>
-                <section class="section section-lg">
+                <section class="section section-lg wow fadeInUp">
                     <div class="container">
                         <div class="row row-50 row-xl-70">
                             <div class="col-sm-6 col-lg-4 col-xl-3">
