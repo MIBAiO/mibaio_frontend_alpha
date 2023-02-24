@@ -1987,7 +1987,7 @@ const Home = () => {
 							> */}
 							{/* --------------------------- */}
 							<div
-								className="accordion row row-30 justify-content-center justify-content-lg-start"
+								className="accordion row row-30 justify-content-center justify-content-lg-start flex-column flex-md-row"
 								id="appAccordion"
 								data-wow-delay=".2s"
 							>
