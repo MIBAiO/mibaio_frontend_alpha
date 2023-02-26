@@ -15,14 +15,17 @@ import CustomFooter from "../components/customfooter";
 import NavigationBar from "../components/navigationbar";
 import PageHeadder from "../components/PageHeadder";
 import WOW from "wowjs";
+import AOS from "aos";
 const ContactUs = () => {
     const { loading } = useLoadingWithRefresh();
 
     useEffect(() => {
-		new WOW.WOW({
-			live: false,
-		}).init();
+		new WOW.WOW({}).init();
 	});
+
+    useEffect(() => {
+		AOS.init();
+	}, []);
 
     const [contactData, setContactData] = useState({
         name: "",
@@ -115,7 +118,8 @@ const ContactUs = () => {
                     </div>
                 </section>
 
-                <section className="section section-md wow fadeInUp">
+                <section className="section section-md"
+                    data-aos="fade-up" data-aos-delay="200">
                     <div className="container">
                         <div className="row row-50">
                             <div className="col-xl-5">
@@ -225,7 +229,7 @@ const ContactUs = () => {
                     </div>
                 </section>
                 {/* Get in Touch*/}
-                <section className="section section-md bg-gray-100 wow fadeInUp">
+                <section className="section section-md bg-gray-100">
                     <div className="container">
                         <h3 className="text-center">Get in Touch</h3>
                         <div className="row justify-content-center">
