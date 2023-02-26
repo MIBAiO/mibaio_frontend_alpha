@@ -417,8 +417,8 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
                     </div>
-                    <a class="privacy-link" href="mailto:privacy@mibaio.xyz">
-                        privacy@mibaio.xyz
+                    <a class="privacy-link" href="mailto:privacy@mibaio.in">
+                        privacy@mibaio.in
                     </a>
                 </div>
             </section>

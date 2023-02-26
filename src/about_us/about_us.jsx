@@ -143,7 +143,7 @@ const AboutUs = () => {
                 {/* About*/}
                 <section class="section section-md bg-gray-100">
                     <div class="container">
-                        <div class="isotope row row-30">
+                        <div class="isotope row designTextContainer row-30">
                             <div class="col-12 col-sm-6 col-md-4 isotope-item wow fadeInLeft">
                                 <div class="block-ratio block-ratio-1">
                                     <div class="block-ratio-dummy"></div>
@@ -193,7 +193,7 @@ const AboutUs = () => {
                                     ></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                            {/* <div class="col-12 col-sm-6 col-md-4 isotope-item">
                                 <div class="block-ratio block-ratio-1">
                                     <div class="block-ratio-dummy"></div>
                                     <div
@@ -204,7 +204,7 @@ const AboutUs = () => {
                                         }}
                                     ></div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

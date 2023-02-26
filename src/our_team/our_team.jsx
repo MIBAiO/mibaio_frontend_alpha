@@ -62,7 +62,7 @@ const OurTeam = () => {
                 </section>
                 <section class="section section-lg wow fadeInUp">
                     <div class="container">
-                        <div class="row row-50 row-xl-70">
+                        <div class="row designTextContainer row-50 row-xl-70">
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <article class="profile-modern">
                                     <figure class="profile-modern-figure">

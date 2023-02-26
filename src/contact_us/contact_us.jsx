@@ -121,7 +121,7 @@ const ContactUs = () => {
                 <section className="section section-md"
                     data-aos="fade-up" data-aos-delay="200">
                     <div className="container">
-                        <div className="row row-50">
+                        <div className="row designTextContainer row-50">
                             <div className="col-xl-5">
                                 <div className="inset-1">
                                     <h2>Our Location</h2>

@@ -63,7 +63,8 @@ html.lt-ie-10 .ie-panel {
 
 @media only screen and (max-width: 1199px) {
   #cart-size-1 {
-      display: none;
+      /* display: none; */
+      display: flex;
   }
 
   #home-tab {
@@ -95,7 +96,7 @@ html.lt-ie-10 .ie-panel {
 }
 
 #cart-size-1 {
-  font-size: 35px;
+  font-size: 32px;
 }
 
 .make-navbar {
@@ -391,6 +392,9 @@ span.price {
 @media (max-width: 800px) {
   .row {
     flex-direction: column-reverse;
+  }
+  .designTextContainer {
+    flex-direction: row !important;
   }
 
   .col-25 {

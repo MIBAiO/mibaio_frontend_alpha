@@ -199,7 +199,7 @@ const Home = () => {
                                 </div> */}
 											</div>
 										</div>
-										<div className="iphone-frame-4-next element-process">
+										<div className="iphone-frame-4-next element-process brochureText">
 											<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 											<lord-icon
 												src="https://cdn.lordicon.com/wxnxiano.json"
@@ -408,7 +408,7 @@ const Home = () => {
 									Xtension 4S
 								</h2>
 								<h5
-									className="text-center wow-animation wow fadeIn"
+									className="text-center wow-animation wow fadeIn design-text"
 									data-wow-delay=".4s"
 									style={{
 										marginBottom: "20px",
@@ -435,7 +435,7 @@ const Home = () => {
 									data-wow-delay=".6s"
 								>
 									<div className="col-md-4">
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi mdi-router-wireless"
@@ -458,7 +458,7 @@ const Home = () => {
 											</div>
 										</div>
 
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="mdi mdi-repeat-off"
@@ -495,7 +495,7 @@ const Home = () => {
 									</div>
 
 									<div className="col-md-4 mt-2">
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi 2x mdi-bluetooth-audio"
@@ -517,7 +517,7 @@ const Home = () => {
 											</div>
 										</div>
 
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi 2x mdi-chart-line"
@@ -764,7 +764,7 @@ const Home = () => {
 						</h3>
 
 						<div className="container" id="Surge">
-							<div className="row row-50 justify-content-xl-between align-items-center">
+							<div className="row row-50 designTextContainer justify-content-xl-between align-items-center">
 								<div
 									className="col-md-8 col-lg-7 col-xl-6"
 									// data-wow-delay=".5s"
@@ -818,7 +818,7 @@ const Home = () => {
 							</div>
 						</div>
 						<div className="container" id="MMC">
-							<div className="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
+							<div className="row row-50 designTextContainer justify-content-xl-between align-items-center flex-md-row-reverse">
 								<div className="col-md-8 col-lg-7 col-xl-6"
 									// data-wow-delay=".5s"
 									data-aos-offset="100"
@@ -914,7 +914,8 @@ const Home = () => {
 								>
 									About MIBAiO
 								</span>
-								<h3
+								<h3>MIBAiO</h3>
+								<p
 									className="offset-top-7 font-weight-regular typed-text-heading wow fadeIn"
 									data-wow-delay=".1s"
 									style={{
@@ -922,7 +923,7 @@ const Home = () => {
 										animationName: "none",
 									}}
 								>
-									<span>MIBAiO</span>
+									{/* <span>MIBAiO</span> */}
 									<Typewriter
 										options={{
 											strings: [
@@ -940,7 +941,7 @@ const Home = () => {
 										}}
 										initDelay={1000}
 									/>
-								</h3>
+								</p>
 								<p
 									className="wow fadeIn"
 									data-wow-delay=".2s"

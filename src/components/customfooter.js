@@ -301,7 +301,7 @@ const CustomFooter = () => {
 												</div>
 											</div>
 										</div>
-										<div className="col-6 col-sm-12 col-lg-4 col-xl-12 text-right text-sm-left">
+										<div className="col-md-6 col-sm-12 col-lg-4 col-xl-12 text-lg-right text-sm-left">
 											<div className="group group-xs">
 												<a
 													className="link link-social-1 mdi mdi-twitter"

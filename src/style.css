@@ -19874,6 +19874,12 @@ body:not(.lg-from-hash)
 *
 * Typed text
 */
+.typed-text-heading .Typewriter {
+  font-size: 2.4375rem;
+}
+.design-text .Typewriter {
+  font-size: 1.4rem;
+}
 .typed-text-heading {
   vertical-align: top;
 }
@@ -20018,6 +20024,15 @@ body:not(.lg-from-hash)
 @media (max-width: 575px) {
   .why-us .img {
     min-height: 200px;
+  }
+  .typed-text-heading .Typewriter {
+    font-size: 1.1rem;
+  }
+  .brochureText {
+    left: 0 !important;
+  }
+  .smallProducts {
+    gap: 1rem;
   }
 }
 

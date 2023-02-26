@@ -246,7 +246,7 @@ const ViewProduct = () => {
 							/>
 						</div>
 						<div
-							className="col-md-1 product-small d-flex flex-md-column order-md-first"
+							className="col-md-1 product-small d-flex flex-md-column order-md-first smallProducts"
 							style={
 								{
 									// maxWidth: "160px",
@@ -284,7 +284,7 @@ const ViewProduct = () => {
 								maxWidth: "500px",
 							}}
 						>
-							<h2
+							<h2 className="xtension4s"
 								style={{
 									fontWeight: "400",
 									color: "#262f3c",
@@ -317,12 +317,14 @@ const ViewProduct = () => {
 									flexDirection: "column",
 									height: "40%",
 									justifyContent: "space-evenly",
+									// gap: "1rem",
 								}}
 							>
 								<div
 									style={{
 										display: "flex",
-										justifyContent: "space-evenly",
+										// justifyContent: "space-evenly",
+										gap: "0.5rem",
 										margin: "2% 0",
 										// marginTop: "5%",
 										// height: "16%",
@@ -388,7 +390,7 @@ const ViewProduct = () => {
 										marginRight: "46%",
 									}}
 								>
-									<div
+									<div className="_5499"
 										style={{
 											width: "30%",
 											display: "flex",
