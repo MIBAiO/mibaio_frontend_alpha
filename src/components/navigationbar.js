@@ -318,7 +318,7 @@ const NavigationBar = () => {
 					</Navbar.Collapse>
 					{/* Profile icon */}
 
-					<Nav>
+					<Nav className="order-3 order-md-0">
 						<div className="dropdown" style={{ marginRight: "15px" }}>
 							<button
 								className="icon icon-sm link-social-2 mdi mdi-account-circle"
@@ -362,7 +362,7 @@ const NavigationBar = () => {
 						</div>
 					</Nav>
 
-					<Nav>
+					<Nav className="order-4 order-md-0">
 						<div className="rd-navbar-element rd-navbar-element_centered">
 							<div className="group-xs" style={{ marginRight: "15px" }}>
 								<Link
