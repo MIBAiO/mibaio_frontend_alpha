@@ -25,6 +25,27 @@ const NavigationBar = () => {
 	const [cartCount, setCartCount] = useState(0);
 
 	const [didRedirect, setDidRedirect] = useState(false);
+// -----------------Sticky Navbar---------------------------------------
+	const [isSticky, setIsSticky] = useState(false);
+
+	useEffect(() => {
+	  const handleScroll = () => {
+		const scrollTop = window.pageYOffset;
+		const deviceWidth = window.innerWidth;
+      	const isMobile = deviceWidth < 768;
+		if (isMobile && scrollTop > 100) {
+		  setIsSticky(true);
+		} else {
+		  setIsSticky(false);
+		}
+	  };
+	  window.addEventListener('scroll', handleScroll);
+  
+	  return () => {
+		window.removeEventListener('scroll', handleScroll);
+	  };
+	}, []);
+// ------------------------------------------------------------------------  
 
 	useEffect(() => {
 		if (Cookies.get("accessToken")) {
@@ -102,6 +123,7 @@ const NavigationBar = () => {
 					alignItems: "center",
 					flexDirection: "column",
 				}}
+				fixed={ isSticky ? "top" : "" }
 			>
 				<Container
 					style={{
@@ -129,6 +151,7 @@ const NavigationBar = () => {
 					/>
 
 					<Navbar.Collapse
+						className="order-5 order-md-0"
 						id="responsive-navbar-nav"
 						style={{
 							justifyContent: "center",
