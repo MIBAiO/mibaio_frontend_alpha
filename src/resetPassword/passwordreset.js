@@ -58,6 +58,9 @@ const PasswordReset = () => {
 			console.log(data);
 			setAlertType("alert-success");
 			setError("Password Reset Successfully");
+			setTimeout(() => {
+				window.location.replace("https://mibaio.in/#/login");
+			}, 3000);
 		} catch (err) {
 			setAlertType("alert-danger");
 			console.log(err.response.data.err);
