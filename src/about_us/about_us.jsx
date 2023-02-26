@@ -331,13 +331,13 @@ const AboutUs = () => {
                         </h3>
                         <OwlCarousel
                             dots={true}
-                            nav={false}
+                            nav={true}
                             stagePadding={0}
                             loop={true}
                             margin={30}
                             mouseDrag={false}
                             items={3}
-                            className="owl-theme"
+                            className="owl-theme team-carousel"
                         >
                             {/* <div
                             class="owl-carousel owl-carousel_profile-modern"

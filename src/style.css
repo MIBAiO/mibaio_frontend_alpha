@@ -16558,7 +16558,7 @@ button.owl-prev {
 }
 
 .owl-prev::before {
-  content: "\f14a";
+  content: "" !important;
 }
 
 .owl-next {
@@ -16566,7 +16566,7 @@ button.owl-prev {
 }
 
 .owl-next::before {
-  content: "\f14f";
+  content: "" !important;
 }
 
 .owl-prev.disabled,
@@ -16664,6 +16664,13 @@ button.owl-prev {
   border-radius: 7px;
   background: #ffffff;
   box-shadow: 0 0 29px 0 rgba(75, 81, 91, 0.17);
+}
+.team-carousel {
+  padding: 0 2rem;
+}
+.team-carousel .owl-next,
+.team-carousel .owl-prev {
+  margin-top: -2rem !important;
 }
 
 .owl-carousel_type-1 .owl-dots {
