@@ -243,12 +243,36 @@ const CustomFooter = () => {
 											</Link>
 										</li>
 										<li>
-											<a
+											<Link
+												to="/view"
 												className="footer-anchor"
-												href="https://mibaio.in/#FAQ"
+											>
+												Products
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/faq"
+												className="footer-anchor"
 											>
 												FAQ
-											</a>
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/contact_us"
+												className="footer-anchor"
+											>
+												Contact Us
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/returnnrefund"
+												className="footer-anchor"
+											>
+												Return & Refund
+											</Link>
 										</li>
 									</ul>
 								</div>
