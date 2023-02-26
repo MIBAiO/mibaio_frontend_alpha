@@ -291,7 +291,7 @@ const NavigationBar = () => {
                                     </NavDropdown>
                                 </Link>
                             </Nav.Link>
-                            {!isLoggedIn && (
+                            {/* {!isLoggedIn && (
                                 <Nav.Link
                                     style={{
                                         display: "flex",
@@ -323,7 +323,7 @@ const NavigationBar = () => {
                                         Logout
                                     </div>
                                 </Nav.Link>
-                            )}
+                            )} */}
                         </Nav>
                         <Nav className="me-auto nav-font"></Nav>
                     </Navbar.Collapse>
@@ -334,30 +334,45 @@ const NavigationBar = () => {
                                 <button className="icon icon-sm link-social-2 mdi mdi-account-circle" 
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false" id="cart-size-1"
                                 ></button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <Link className="dropdown-item"
-                                            to=""
-                                        >
-                                            My Account
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item"
-                                            to=""
-                                        >
-                                            My Orders
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" 
-                                            to="/login"
-                                            onClick={handleLogOut}
-                                        >
-                                            Logout
-                                        </Link>
-                                    </li>
-                                </ul>
+                                {!isLoggedIn && (
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <Link
+                                                className="dropdown-item"
+                                                to="/login"
+                                            >
+                                                Login
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                )}
+                                {isLoggedIn && (
+                                    <ul>
+                                        <li>
+                                            <Link className="dropdown-item"
+                                                to=""
+                                            >
+                                                My Account
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item"
+                                                to=""
+                                            >
+                                                My Orders
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                className="dropdown-item"
+                                                to="/login"
+                                                onClick={handleLogOut}
+                                            >
+                                                Logout
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                )}
                             </div>
                         </Nav>
                     {/* )} */}
