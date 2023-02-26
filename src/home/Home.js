@@ -1238,7 +1238,7 @@ const Home = () => {
 													id="app-accordion-collapse-4"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-4"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
@@ -1283,7 +1283,7 @@ const Home = () => {
 													id="app-accordion-collapse-1"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-1"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
@@ -1327,7 +1327,7 @@ const Home = () => {
 													id="app-accordion-collapse-2"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-2"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
