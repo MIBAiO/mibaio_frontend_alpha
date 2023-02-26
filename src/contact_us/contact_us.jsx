@@ -255,8 +255,7 @@ const ContactUs = () => {
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            name: e.target
-                                                                .value,
+                                                            name: e.target.value,
                                                         });
                                                     }}
                                                     required
@@ -283,8 +282,7 @@ const ContactUs = () => {
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            email: e.target
-                                                                .value,
+                                                            email: e.target.value,
                                                         });
                                                     }}
                                                     required
@@ -337,8 +335,7 @@ const ContactUs = () => {
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            phone: e.target
-                                                                .value,
+                                                            phone: e.target.value,
                                                         });
                                                     }}
                                                     required
