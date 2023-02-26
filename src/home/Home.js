@@ -95,44 +95,12 @@ const Home = () => {
 	// };
 
 	// const src = getVideoSrc(window.innerWidth);
+
+	const servicesRef = useRef(null);
+	const readMoreClick = () => {
+		servicesRef.current.scrollIntoView({ behavior: 'smooth' });
+	}
 // ----------------------------------------------------------------------------------
-// Enlarging the image on scroll
-	const nextSectionRef = useRef(null);
-	const containerRef = useRef(null);
-	const [scale, setScale] = useState(1);
-	const [opacity, setOpacity] = useState(1);
-
-	useEffect(() => {
-	const distance = nextSectionRef.current.offsetTop - window.innerHeight;
-	const container = containerRef.current;
-
-	const handleScroll = () => {
-		const rect = container.getBoundingClientRect();
-      	const windowHeight = window.innerHeight;
-		if (rect.top <= windowHeight) {
-			const scrollTop = window.pageYOffset;
-			if (scrollTop <= distance) {
-			const progress = scrollTop / distance;
-			const startScale = 1;
-			const endScale = 4;
-			const scaleDistance = endScale - startScale;
-			const opacityDistance = 1 - 0.5;
-
-			const newScale = startScale + scaleDistance * progress;
-			const newOpacity = 1 - opacityDistance * progress;
-			setScale(newScale);
-			setOpacity(newOpacity);
-			}
-		}
-	};
-
-	window.addEventListener('scroll', handleScroll);
-
-	return () => {
-		window.removeEventListener('scroll', handleScroll);
-	};
-	}, [nextSectionRef]);
-// -------------------------------------------------------------------------------------------
 	return (
 		<>
 			<ModalVideo
@@ -315,12 +283,14 @@ const Home = () => {
 									>
 										<a
 											className="button button-default-outline button-winona"
-											href="#"
+											// href="#services"
 											data-wow-duration=".5s"
 											data-wow-delay=".5s"
 											style={{
 												margin: "10px",
+												color: "white",
 											}}
+											onClick={readMoreClick}
 										>
 											<div className="content-original">
 												<div className="content-original">Read More</div>
@@ -392,6 +362,7 @@ const Home = () => {
 						style={{
 							background: "linear-gradient(180deg, #434343, #000000)",
 						}}
+						ref={servicesRef}
 					>
 						<div className="container">
 							{/* <section> */}
@@ -476,14 +447,13 @@ const Home = () => {
 									<div className="col-md-4 flex-center"
 										// data-aos="zoom-in"
 										// data-duration="1000"
-										ref={containerRef}
 									>
 										<img
 											src={sample1}
 											alt="MIBAiO Xtension 4S white"
 											className="z-depth-0 img-fluid wow fadeInUp"
 											data-wow-delay=".5s"
-											style={{ transform: `scale(${scale})`, opacity }}
+											// style={{ transform: `scale(${scale})`, opacity }}
 										/>
 									</div>
 
@@ -671,7 +641,6 @@ const Home = () => {
 						</div>
 					</section>
 					<picture id="next-section" 
-						ref={nextSectionRef}
 					>
 						{src === "small" && (
 							<video
@@ -966,7 +935,7 @@ const Home = () => {
 											</article>
 										</div>
 										<div className="layout-bordered-1-item">
-											Counter Classic
+											{/* Counter Classic */}
 											<article
 												className="counter-classic wow clipInLeft"
 												data-wow-delay=".1s"
@@ -985,7 +954,7 @@ const Home = () => {
 											</article>
 										</div>
 										<div className="layout-bordered-1-item">
-											Counter Classic
+											{/* Counter Classic */}
 											<article
 												className="counter-classic wow clipInLeft"
 												data-wow-delay=".2s"
