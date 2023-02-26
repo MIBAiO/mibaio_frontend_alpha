@@ -286,9 +286,9 @@ const CustomFooter = () => {
 												<div className="col-lg-6 col-xl-12">
 													<a
 														className="footer-anchor"
-														href="mailto:info@mibaio.xyz"
+														href="mailto:info@mibaio.in"
 													>
-														info@mibaio.xyz
+														info@mibaio.in
 													</a>
 												</div>
 												<div className="col-lg-6 col-xl-12">
