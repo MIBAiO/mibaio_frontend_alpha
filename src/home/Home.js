@@ -100,6 +100,31 @@ const Home = () => {
 	const readMoreClick = () => {
 		servicesRef.current.scrollIntoView({ behavior: 'smooth' });
 	}
+
+	//----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		let options = {
+			rootMargin: "70px",
+			// threshold: [0.5, 0.75]
+			threshold: 0.5
+		};
+	
+		let handlePlay = (entries, observer) => {
+			entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				videoRef.current.play();
+			} else {
+				videoRef.current.pause();
+			}
+			});
+		};
+	
+		let observer = new IntersectionObserver(handlePlay, options);
+	
+		observer.observe(videoRef.current);
+	});
 // ----------------------------------------------------------------------------------
 	return (
 		<>
@@ -662,7 +687,8 @@ const Home = () => {
 									marginBottom: "-6%",
 								}}
 								// loop
-								autoPlay
+								// autoPlay
+								ref={videoRef}
 								muted
 								playsInline
 							>
@@ -678,7 +704,8 @@ const Home = () => {
 									
 								}}
 								// loop
-								autoPlay
+								// autoPlay
+								ref={videoRef}
 								muted
 								playsInline
 							>
