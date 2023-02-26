@@ -160,9 +160,9 @@ const ContactUs = () => {
                                                     <div className="unit-body">
                                                         <a
                                                             className="text-primary"
-                                                            href="mailto:info@mibaio.xyz"
+                                                            href="mailto:info@mibaio.in"
                                                         >
-                                                            info@mibaio.xyz
+                                                            info@mibaio.in
                                                         </a>
                                                     </div>
                                                 </li>
@@ -196,9 +196,9 @@ const ContactUs = () => {
                                                     <div className="unit-body">
                                                         <a
                                                             className="text-primary"
-                                                            href="mailto:support@mibaio.xyz"
+                                                            href="mailto:support@mibaio.in"
                                                         >
-                                                            support@mibaio.xyz
+                                                            support@mibaio.in
                                                         </a>
                                                     </div>
                                                 </li>
@@ -535,8 +535,8 @@ const ContactUs = () => {
                                                 <div className="col-6 col-sm-12 col-lg-8 col-xl-12">
                                                     <div className="row row-10 text-white-50">
                                                         <div className="col-lg-6 col-xl-12">
-                                                            <a href="mailto:info@mibaio.xyz">
-                                                                info@mibaio.xyz
+                                                            <a href="mailto:info@mibaio.in">
+                                                                info@mibaio.in
                                                             </a>
                                                         </div>
                                                         <div className="col-lg-6 col-xl-12">
