@@ -166,7 +166,9 @@ const ViewProduct = () => {
 
 				{didRedrirect && <Redirect to="/cart" />}
 				{isNotLoggedIn && <Redirect to="/login" />}
-				<section className="myclass section page-header-3 header-section header-offset">
+				<section className="myclass section page-header-3 header-section header-offset"
+					style={{ marginBottom: "50px", }}
+				>
 					{/* RD Navbar*/}
 					{/* RD Navbar*/}
 					<NavigationBar />
