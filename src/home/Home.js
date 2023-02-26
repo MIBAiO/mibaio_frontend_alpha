@@ -390,7 +390,19 @@ const Home = () => {
 										color: "#f1f1f1",
 									}}
 								>
-									Designed to simplify your life
+									{/* Designed to simplify your life */}
+									<Typewriter
+										options={{
+											strings: [
+												"Designed to simplify your life",
+											],
+											autoStart: true,
+											loop: true,
+											wrapperClassName: "text-primary",
+											cursorClassName: "typed-cursor typed-cursor--blink",
+										}}
+										initDelay={1000}
+									/>
 								</h5>
 
 								<div
