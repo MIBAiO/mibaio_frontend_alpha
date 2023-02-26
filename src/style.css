@@ -20003,6 +20003,7 @@ body:not(.lg-from-hash)
 .why-us .accordion-list a.collapsed .icon-close {
   display: none;
 }
+
 @media (max-width: 1024px) {
   .why-us .content,
   .why-us .accordion-list {
@@ -20033,6 +20034,9 @@ body:not(.lg-from-hash)
   }
   .smallProducts {
     gap: 1rem;
+  }
+  .team-carousel {
+    padding: 0;
   }
 }
 

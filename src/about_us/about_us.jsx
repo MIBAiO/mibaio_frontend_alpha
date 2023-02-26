@@ -32,6 +32,21 @@ const AboutUs = () => {
         isPaused: false,
     });
 
+    const carouselOptions = {
+        dots: true,
+        nav: true,
+        stagePadding: 0,
+        loop: true,
+        margin: 30,
+        mouseDrag: false,
+        items: 3,
+        responsive: {
+            0: { 
+                items: 1,
+                nav: false,
+            },
+        }
+    }
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -334,13 +349,18 @@ const AboutUs = () => {
                             People that Shape Our Success
                         </h3>
                         <OwlCarousel
-                            dots={true}
-                            nav={true}
-                            stagePadding={0}
-                            loop={true}
-                            margin={30}
-                            mouseDrag={false}
-                            items={3}
+                            // dots={true}
+                            // nav={true}
+                            // stagePadding={0}
+                            // loop={true}
+                            // margin={30}
+                            // mouseDrag={false}
+                            // items={3}
+                            // responsive={
+                            //     "0": { items: 1 },
+                            //     "768": { items: 3 }
+                            // }
+                            { ...carouselOptions }
                             className="owl-theme team-carousel"
                         >
                             {/* <div
