@@ -727,8 +727,12 @@ const Home = () => {
 						<div className="container" id="Surge">
 							<div className="row row-50 justify-content-xl-between align-items-center">
 								<div
-									className="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
-									data-wow-delay=".5s"
+									className="col-md-8 col-lg-7 col-xl-6"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-right"
+									// data-aos-anchor-placement="bottom-bottom"
 								>
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
@@ -755,8 +759,12 @@ const Home = () => {
 									</div>
 								</div>
 								<div
-									className="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
-									data-wow-delay=".6s"
+									className="col-md-4 col-lg-5 right-pattern"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-left"
+									// data-aos-anchor-placement="bottom-bottom"
 								>
 									<div className="item">
 										<img
@@ -772,7 +780,13 @@ const Home = () => {
 						</div>
 						<div className="container" id="MMC">
 							<div className="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
-								<div className="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall">
+								<div className="col-md-8 col-lg-7 col-xl-6"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-left"
+									// data-aos-anchor-placement="bottom-bottom"
+									>
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
 											<div className="icon icon-style-1 mdi mdi-access-point-network"
@@ -825,7 +839,13 @@ const Home = () => {
 									</div>
 								</div>
 
-								<div className="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern">
+								<div className="col-md-4 col-lg-5 left-pattern"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-right"
+									// data-aos-anchor-placement="bottom-bottom"
+								>
 									<img
 										className="d-block w-100"
 										src={modeposter}
