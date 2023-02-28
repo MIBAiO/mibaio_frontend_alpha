@@ -132,7 +132,7 @@ const NavigationBar = () => {
 				>
 					<Navbar.Brand
 						// href="#home"
-						className="order-md-0 mx-auto order-1"
+						className="order-0 ml-0 mr-auto mx-md-auto"
 					>
 						<Link to="/">
 							<img
@@ -147,7 +147,7 @@ const NavigationBar = () => {
 					</Navbar.Brand>
 					<Navbar.Toggle
 						aria-controls="responsive-navbar-nav"
-						className="order-md-1 order-0 border border-0"
+						className="order-md-1 order-4 border border-0"
 					/>
 
 					<Navbar.Collapse
@@ -341,7 +341,7 @@ const NavigationBar = () => {
 					</Navbar.Collapse>
 					{/* Profile icon */}
 
-					<Nav className="order-3 order-md-0">
+					<Nav className="order-2 order-md-0">
 						<div className="dropdown" style={{ marginRight: "15px" }}>
 							<button
 								className="icon icon-sm link-social-2 mdi mdi-account-circle"
@@ -385,7 +385,7 @@ const NavigationBar = () => {
 						</div>
 					</Nav>
 
-					<Nav className="order-4 order-md-0">
+					<Nav className="order-3 order-md-0">
 						<div className="rd-navbar-element rd-navbar-element_centered">
 							<div className="group-xs" style={{ marginRight: "15px" }}>
 								<Link
