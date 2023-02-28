@@ -233,6 +233,7 @@ const NavigationBar = () => {
 										style={{
 											minWidth: "100%",
 											backgroundColor: "#0000",
+											textAlign: "center",
 										}}
 									>
 										<NavDropdown.Item
@@ -351,7 +352,7 @@ const NavigationBar = () => {
 								id="cart-size-1"
 							></button>
 							{!isLoggedIn && (
-								<ul class="dropdown-menu">
+								<ul className="dropdown-menu position-absolute">
 									<li>
 										<Link className="dropdown-item" to="/login">
 											Login
@@ -360,7 +361,7 @@ const NavigationBar = () => {
 								</ul>
 							)}
 							{isLoggedIn && (
-								<ul>
+								<ul className="dropdown-menu position-absolute">
 									<li>
 										<Link className="dropdown-item" to="">
 											My Account
