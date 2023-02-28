@@ -4,14 +4,22 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLoadingWithRefresh } from "../hooks/useLoadingWithRefresh";
 import Loader from "../Loader/Loader";
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
+import WOW from "wowjs";
 const Careers = () => {
     const { loading } = useLoadingWithRefresh();
+
+    useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init();
+	});
+
     return loading ? (
         <Loader />
     ) : (
@@ -42,7 +50,7 @@ const Careers = () => {
                     <section className="section page-header-3 header-section">
                         <NavigationBar />
                     </section>
-                    <section className="breadcrumbs-custom">
+                    <section className="breadcrumbs-custom wow fadeInDown">
                         <div className="breadcrumbs-custom-main bg-default">
                             <div className="container">
                                 <div className="row justify-content-center">
@@ -53,7 +61,7 @@ const Careers = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="breadcrumbs-custom-aside">
+                            <div className="breadcrumbs-custom-aside text-white">
                                 <ul className="breadcrumbs-custom-path">
                                     <li>
                                         <a href="index.html">Home</a>
@@ -61,7 +69,7 @@ const Careers = () => {
                                     <li>
                                         <a href="#">Pages</a>
                                     </li>
-                                    <li className="active">Careers</li>
+                                    <li className="active text-white">Careers</li>
                                 </ul>
                             </div>
                         </div>
@@ -70,7 +78,7 @@ const Careers = () => {
                     <section className="section section-md">
                         <div className="container">
                             <div className="row row-50 flex-lg-row-reverse align-items-center">
-                                <div className="col-md-10 col-lg-6">
+                                <div className="col-md-10 col-lg-6 wow fadeInRight">
                                     <div className="inset-1">
                                         <h3>Your Career Starts Here!</h3>
                                         <p className="big">
@@ -99,7 +107,7 @@ const Careers = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 wow fadeInLeft">
                                     <img
                                         className="image-responsive"
                                         src="images/careers-1-598x384.jpg"
@@ -112,7 +120,7 @@ const Careers = () => {
                         </div>
                     </section>
                     {/* Available Vacancies*/}
-                    <section className="section section-md bg-gray-100">
+                    <section className="section section-md bg-gray-100 wow fadeInUp">
                         <div className="container">
                             <h3 className="text-center">Available Vacancies</h3>
                             <div className="row row-30">

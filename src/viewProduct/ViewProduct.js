@@ -1,5 +1,5 @@
 //import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addModel1, removeModel1 } from "../store/cartSlice";
@@ -29,10 +29,17 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
 import { toast } from "react-toastify";
+import WOW from "wowjs";
 library.add(fas, faPlus, faMinus);
 
 const ViewProduct = () => {
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init();
+	});
 
 	const [state, setState] = useState({
 		previewHorizontalPos: "left",
@@ -117,6 +124,30 @@ const ViewProduct = () => {
 		}
 	}, [color]);
 
+	//----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
+	const videoRef = useRef(null);
+  
+	useEffect(() => {
+		let options = {
+		  rootMargin: "100px",
+		  threshold: [0.5, 0.75]
+		};
+	
+		let handlePlay = (entries, observer) => {
+		  entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			  videoRef.current.play();
+			} else {
+			  videoRef.current.pause();
+			}
+		  });
+		};
+	
+		let observer = new IntersectionObserver(handlePlay, options);
+	
+		observer.observe(videoRef.current);
+	});
+	
 	return (
 		// <div className="preloader" id="loading">
 		//   <div className="preloader-body">
@@ -135,7 +166,9 @@ const ViewProduct = () => {
 
 				{didRedrirect && <Redirect to="/cart" />}
 				{isNotLoggedIn && <Redirect to="/login" />}
-				<section className="myclass section page-header-3 header-section header-offset">
+				<section className="myclass section page-header-3 header-section header-offset"
+					style={{ marginBottom: "50px", }}
+				>
 					{/* RD Navbar*/}
 					{/* RD Navbar*/}
 					<NavigationBar />
@@ -186,7 +219,7 @@ const ViewProduct = () => {
                                     mgHeight={150}
                                 /> */}
 						<div
-							className="fluid__image-container"
+							className="fluid__image-container wow fadeIn"
 							style={{ margin: "10px" }}
 						>
 							<ReactImageMagnify
@@ -213,7 +246,7 @@ const ViewProduct = () => {
 							/>
 						</div>
 						<div
-							className="col-md-1 product-small d-flex flex-md-column order-md-first"
+							className="col-md-1 product-small d-flex flex-md-column order-md-first smallProducts"
 							style={
 								{
 									// maxWidth: "160px",
@@ -243,7 +276,7 @@ const ViewProduct = () => {
 						</div>
 
 						<div
-							className="col-md-5 ml-5"
+							className="col-md-5 ml-5 wow fadeInRightSmall"
 							style={{
 								display: "flex",
 								flexDirection: "column",
@@ -251,7 +284,7 @@ const ViewProduct = () => {
 								maxWidth: "500px",
 							}}
 						>
-							<h2
+							<h2 className="xtension4s"
 								style={{
 									fontWeight: "400",
 									color: "#262f3c",
@@ -284,12 +317,14 @@ const ViewProduct = () => {
 									flexDirection: "column",
 									height: "40%",
 									justifyContent: "space-evenly",
+									// gap: "1rem",
 								}}
 							>
 								<div
 									style={{
 										display: "flex",
-										justifyContent: "space-evenly",
+										// justifyContent: "space-evenly",
+										gap: "0.5rem",
 										margin: "2% 0",
 										// marginTop: "5%",
 										// height: "16%",
@@ -355,7 +390,7 @@ const ViewProduct = () => {
 										marginRight: "46%",
 									}}
 								>
-									<div
+									<div className="_5499"
 										style={{
 											width: "30%",
 											display: "flex",
@@ -381,11 +416,11 @@ const ViewProduct = () => {
 										</h4>
 									</div>
 									<div
-										className="quantity"
+										className="quantity justify-content-md-evenly"
 										style={{
 											width: "30%",
 											display: "flex",
-											justifyContent: "space-evenly",
+											// justifyContent: "space-evenly",
 											alignItems: "center",
 										}}
 									>
@@ -494,42 +529,42 @@ const ViewProduct = () => {
                                         flexWrap: "nowrap",
                                     }}
                                 > */}
-						{/* <div class="small-img-col">
+						{/* <div className="small-img-col">
                                         <img
                                             src="pic3.png"
                                             alt=""
-                                            class="img-fluid mb-3 small-img"
+                                            className="img-fluid mb-3 small-img"
                                         />
                                     </div>
 
-                                    <div class="small-img-col">
+                                    <div className="small-img-col">
                                         <img
                                             src="pic3.png"
                                             alt=""
-                                            class="img-fluid mb-3 small-img"
+                                            className="img-fluid mb-3 small-img"
                                         />
                                     </div>
 
-                                    <div class="small-img-col">
+                                    <div className="small-img-col">
                                         <img
                                             src="pic3.png"
                                             alt=""
-                                            class="img-fluid mb-3 small-img"
+                                            className="img-fluid mb-3 small-img"
                                         />
                                     </div>
 
-                                    <div class="small-img-col">
+                                    <div className="small-img-col">
                                         <img
                                             src="pic3.png"
                                             alt=""
-                                            class="img-fluid mb-3 small-img"
+                                            className="img-fluid mb-3 small-img"
                                         />
                                     </div>
-                                    <div class="small-img-col">
+                                    <div className="small-img-col">
                                         <img
                                             src="pic3.png"
                                             alt=""
-                                            class="img-fluid mb-3 small-img"
+                                            className="img-fluid mb-3 small-img"
                                         />
                                     </div> */}
 						{/* </div> */}
@@ -540,7 +575,7 @@ const ViewProduct = () => {
 
 				{/* ================================================================================================ */}
 
-				<div class="tabs">
+				<div className="tabs">
 					<h3
 						style={{
 							fontWeight: "bold",
@@ -551,21 +586,21 @@ const ViewProduct = () => {
 					>
 						What the Manufacturer has to say?
 					</h3>
-					<input type="radio" name="tabs" id="tab1" checked />
+					<input type="radio" name="tabs" id="tab1" defaultChecked />
 					<label for="tab1" id="tab-l1">
-						<i class="fas fa-book"></i>
+						<i className="fas fa-book"></i>
 						<span>Features</span>
 					</label>
 
 					<input type="radio" name="tabs" id="tab2" />
 					<label for="tab2" id="tab-l2">
-						<i class="fas fa-microchip"></i>
+						<i className="fas fa-microchip"></i>
 						<span>Specifications</span>
 					</label>
 
 					<input type="radio" name="tabs" id="tab3" />
 					<label for="tab3" id="tab-l3">
-						<i class="fas fa-comments"></i>
+						<i className="fas fa-comments"></i>
 						<span>Reviews</span>
 					</label>
 
@@ -576,29 +611,29 @@ const ViewProduct = () => {
 							style={{
 								width: "100%",
 								marginBottom: "-5%",
-								transitionDelay: " 1s",
+								// transitionDelay: " 1s",
 							}}
-							loop="true"
-							autoPlay="true"
+							ref={videoRef}
+							// autoPlay="true"
 							muted="true"
 						></video>
-						<div class="container">
-							<div class="row row-50 justify-content-xl-between align-items-center">
+						<div className="container">
+							<div className="row row-50 justify-content-xl-between align-items-center">
 								<div
-									class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
+									className="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
 									data-wow-delay=".5s"
 								>
-									<div class="unit unit-spacing-1 align-items-center">
-										<div class="unit-left">
-											<div class="icon icon-style-1 mdi mdi-clock"></div>
+									<div className="unit unit-spacing-1 align-items-center">
+										<div className="unit-left">
+											<div className="icon icon-style-1 mdi mdi-clock"></div>
 										</div>
-										<div class="unit-body">
+										<div className="unit-body">
 											<h4>Schedule On/Off</h4>
 										</div>
 									</div>
-									<div class="block-4 offset-top-4">
-										<div class="quote-light-text">
-											<p class="big">
+									<div className="block-4 offset-top-4">
+										<div className="quote-light-text">
+											<p className="big">
 												Automate your daily routine
 												tasks by scheduling your
 												appliance(s) to run at a
@@ -607,9 +642,9 @@ const ViewProduct = () => {
 												automatically. eg:
 											</p>
 										</div>
-										<blockquote class="quote-light">
-											<div class="quote-light-text">
-												<ul class="list-marked list-marked_secondary">
+										<blockquote className="quote-light">
+											<div className="quote-light-text">
+												<ul className="list-marked list-marked_secondary">
 													<li>
 														Switch ON your
 														Mandir/outdoor lights
@@ -633,13 +668,13 @@ const ViewProduct = () => {
 								</div>
 
 								<div
-									class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
+									className="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
 									data-wow-delay=".5s"
 									id="Schedule"
 								>
-									<div class="item">
+									<div className="item">
 										<img
-											class="d-block w-100"
+											className="d-block w-100"
 											src="images/product1/Feature1.png"
 											alt="Appliance-scheduling-feature"
 										/>
@@ -647,31 +682,31 @@ const ViewProduct = () => {
 								</div>
 							</div>
 						</div>
-						<div class="container">
-							<div class="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
+						<div className="container">
+							<div className="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
 								<div
-									class="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall"
+									className="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall"
 									data-wow-delay=".5s"
 								>
-									<div class="unit unit-spacing-1 align-items-center">
-										<div class="unit-left">
-											<div class="icon icon-style-1 mdi mdi-plus-network"></div>
+									<div className="unit unit-spacing-1 align-items-center">
+										<div className="unit-left">
+											<div className="icon icon-style-1 mdi mdi-plus-network"></div>
 										</div>
-										<div class="unit-body">
+										<div className="unit-body">
 											<h4>Self-reliant lifestyle</h4>
 										</div>
 									</div>
-									<div class="block-4 offset-top-4">
-										<p class="big">
+									<div className="block-4 offset-top-4">
+										<p className="big">
 											With inspiration from "आत्मनिर्भर
 											भारत अभियान", we are comitted to
 											provide our customers a truely
 											self-reliant (आत्मनिर्भर) experience
 											using MIBAiO.
 										</p>
-										<blockquote class="quote-light">
-											<div class="quote-light-text">
-												<ul class="list-marked list-marked_secondary">
+										<blockquote className="quote-light">
+											<div className="quote-light-text">
+												<ul className="list-marked list-marked_secondary">
 													<li>
 														Easily manage home
 														appliances without
@@ -692,14 +727,14 @@ const ViewProduct = () => {
 												</ul>
 											</div>
 										</blockquote>
-										<div class="group-buttons-responsive group-middle"></div>
+										<div className="group-buttons-responsive group-middle"></div>
 									</div>
 								</div>
 								<div
-									class="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern"
+									className="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern"
 									data-wow-delay=".5s"
 								>
-									<div class="item">
+									<div className="item">
 										<img
 											src="images/Smart guy.png"
 											alt="smart-guy-using-app"
@@ -709,28 +744,28 @@ const ViewProduct = () => {
 								</div>
 							</div>
 						</div>
-						<div class="container">
-							<div class="row row-50 justify-content-xl-between align-items-center">
+						<div className="container">
+							<div className="row row-50 justify-content-xl-between align-items-center">
 								<div
-									class="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
+									className="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
 									data-wow-delay=".5s"
 								>
-									<div class="unit unit-spacing-1 align-items-center">
-										<div class="unit-left">
-											<div class="icon icon-style-1 mdi mdi-microphone"></div>
+									<div className="unit unit-spacing-1 align-items-center">
+										<div className="unit-left">
+											<div className="icon icon-style-1 mdi mdi-microphone"></div>
 										</div>
-										<div class="unit-body">
+										<div className="unit-body">
 											<h4>Voice Control</h4>
 										</div>
 									</div>
-									<div class="block-4 offset-top-4">
-										<p class="big">
+									<div className="block-4 offset-top-4">
+										<p className="big">
 											🗣 "जो हुकूम मेरे आका" Let your voice
 											assistant be your Genie!{" "}
 										</p>
-										<blockquote class="quote-light">
-											<div class="quote-light-text">
-												<ul class="list-marked list-marked_secondary">
+										<blockquote className="quote-light">
+											<div className="quote-light-text">
+												<ul className="list-marked list-marked_secondary">
 													<li>
 														Connect your voice
 														assistant(s) skills with
@@ -750,10 +785,10 @@ const ViewProduct = () => {
 									</div>
 								</div>
 								<div
-									class="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
+									className="col-md-4 col-lg-5 wow fadeInRightSmall"
 									data-wow-delay=".5s"
 								>
-									<div class="item">
+									<div className="item">
 										<img
 											src="images/VoiceControliphone-548x793.png"
 											alt="Voice control feature"
@@ -764,7 +799,7 @@ const ViewProduct = () => {
 							</div>
 						</div>
 					</div>
-					<div id="tab-content2" class="tab-content">
+					<div id="tab-content2" className="tab-content">
 						<p style={{ float: "left" }}>
 							<ul>
 								<li>
@@ -813,40 +848,46 @@ const ViewProduct = () => {
 						</p>
 					</div>
 
-					<div id="tab-content3" class="tab-content">
+					<div id="tab-content3" className="tab-content">
 						<div className="._2wzgFH">
-							<div class="_3LWZlK _1BLPMq">
-								5
-								<img src="images/star.svg" class="_1wB99o" />
+							<div className="d-flex justify-content-between align-items-center">
+								<div>
+									<div className="_3LWZlK _1BLPMq">
+										5
+										<img src="images/star.svg" className="_1wB99o" />
+									</div>
+									&nbsp; ABC &nbsp;{" "}
+									<svg
+										width="14"
+										height="14"
+										viewBox="0 0 12 12"
+										xmlns="http://www.w3.org/2000/svg"
+										className="_2a1p_T"
+									>
+										<g>
+											<circle
+												cx="6"
+												cy="6"
+												r="6"
+												fill="#878787"
+											></circle>
+											<path
+												stroke="#FFF"
+												stroke-width="1.5"
+												d="M3 6l2 2 4-4"
+												fill="#878787"
+											></path>
+										</g>
+									</svg>
+									&nbsp; Verified Buyer
+								</div>
+								<span className="rev-btn">
+									Add Review</span>
 							</div>
-							&nbsp; ABC &nbsp;{" "}
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 12 12"
-								xmlns="http://www.w3.org/2000/svg"
-								class="_2a1p_T"
-							>
-								<g>
-									<circle
-										cx="6"
-										cy="6"
-										r="6"
-										fill="#878787"
-									></circle>
-									<path
-										stroke="#FFF"
-										stroke-width="1.5"
-										d="M3 6l2 2 4-4"
-										fill="#878787"
-									></path>
-								</g>
-							</svg>
-							&nbsp; Verified Buyer
-							<div class="review_row">
-								<div class="t-ZTKy">
+							<div className="review_row">
+								<div className="t-ZTKy">
 									<div>
-										<div class="">
+										<div className="">
 											Excellent cycle in this price range.
 											Value for money.. excellent build
 											quality.. nice looking.. ideal for
@@ -864,15 +905,15 @@ const ViewProduct = () => {
 							slide={true}
 						>
 							<Carousel.Item>
-								<blockquote class="quote-classic">
+								<blockquote className="quote-classic">
 									<img
-										class="quote-classic-avatar"
+										className="quote-classic-avatar"
 										src="images/testimonials-1-102x102.jpg"
 										alt="Customer profile image"
 										width="102"
 										height="102"
 									/>
-									<div class="quote-classic-text">
+									<div className="quote-classic-text">
 										<p>
 											With MIBAiO installed at my
 											restaurant, I am tension free of all
@@ -885,27 +926,27 @@ const ViewProduct = () => {
 										</p>
 									</div>
 
-									<div class="quote-classic-meta">
-										<cite class="quote-classic-cite">
+									<div className="quote-classic-meta">
+										<cite className="quote-classic-cite">
 											Mr. Prasad S
 										</cite>
-										<p class="quote-classic-position">
+										<p className="quote-classic-position">
 											Restaurant Owner
 										</p>
 									</div>
 								</blockquote>
 							</Carousel.Item>
 							<Carousel.Item>
-								<blockquote class="quote-classic">
+								<blockquote className="quote-classic">
 									<img
-										class="quote-classic-avatar"
+										className="quote-classic-avatar"
 										src="images/testimonials-2-102x102.jpg"
 										alt="Customer profile image"
 										width="102"
 										height="102"
 									/>
 
-									<div class="quote-classic-text">
+									<div className="quote-classic-text">
 										<p>
 											The Voice control feature is really
 											helpful for my mother-in-law who is
@@ -916,26 +957,26 @@ const ViewProduct = () => {
 										</p>
 									</div>
 
-									<div class="quote-classic-meta">
-										<cite class="quote-classic-cite">
+									<div className="quote-classic-meta">
+										<cite className="quote-classic-cite">
 											Mrs. Swati K
 										</cite>
-										<p class="quote-classic-position">
+										<p className="quote-classic-position">
 											House Maker
 										</p>
 									</div>
 								</blockquote>
 							</Carousel.Item>
 							<Carousel.Item>
-								<blockquote class="quote-classic">
+								<blockquote className="quote-classic">
 									<img
-										class="quote-classic-avatar"
+										className="quote-classic-avatar"
 										src="images/testimonials-3-102x102.jpg"
 										alt="Customer profile image"
 										width="102"
 										height="102"
 									/>
-									<div class="quote-classic-text">
+									<div className="quote-classic-text">
 										<p>
 											As promised, Xtension 4S has
 											upgraded my lifestyle. I like the
@@ -948,11 +989,11 @@ const ViewProduct = () => {
 										</p>
 									</div>
 
-									<div class="quote-classic-meta">
-										<cite class="quote-classic-cite">
+									<div className="quote-classic-meta">
+										<cite className="quote-classic-cite">
 											Ms. Ankita R
 										</cite>
-										<p class="quote-classic-position">
+										<p className="quote-classic-position">
 											Working Professional
 										</p>
 									</div>

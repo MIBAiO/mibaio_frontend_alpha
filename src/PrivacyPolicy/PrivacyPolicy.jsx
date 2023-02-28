@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
                         role="tablist"
                         aria-multiselectable="false"
                     >
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-1"
@@ -77,7 +77,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-2"
@@ -139,7 +139,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-3"
@@ -199,7 +199,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-4"
@@ -254,7 +254,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-5"
@@ -310,7 +310,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-6"
@@ -374,7 +374,7 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
 
-                        <article class="card card-custom card-corporate">
+                        <article class="card card-custom card-corporate pl-2">
                             <div
                                 class="card-header"
                                 id="accordion1-heading-7"
@@ -417,8 +417,8 @@ const PrivacyPolicy = () => {
                             </div>
                         </article>
                     </div>
-                    <a class="privacy-link" href="mailto:privacy@mibaio.xyz">
-                        privacy@mibaio.xyz
+                    <a class="privacy-link" href="mailto:privacy@mibaio.in">
+                        privacy@mibaio.in
                     </a>
                 </div>
             </section>

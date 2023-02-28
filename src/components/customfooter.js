@@ -243,12 +243,36 @@ const CustomFooter = () => {
 											</Link>
 										</li>
 										<li>
-											<a
+											<Link
+												to="/view"
 												className="footer-anchor"
-												href="https://mibaio.in/#FAQ"
+											>
+												Products
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/faq"
+												className="footer-anchor"
 											>
 												FAQ
-											</a>
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/contact_us"
+												className="footer-anchor"
+											>
+												Contact Us
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/returnnrefund"
+												className="footer-anchor"
+											>
+												Return & Refund
+											</Link>
 										</li>
 									</ul>
 								</div>
@@ -262,9 +286,9 @@ const CustomFooter = () => {
 												<div className="col-lg-6 col-xl-12">
 													<a
 														className="footer-anchor"
-														href="mailto:info@mibaio.xyz"
+														href="mailto:info@mibaio.in"
 													>
-														info@mibaio.xyz
+														info@mibaio.in
 													</a>
 												</div>
 												<div className="col-lg-6 col-xl-12">
@@ -277,7 +301,7 @@ const CustomFooter = () => {
 												</div>
 											</div>
 										</div>
-										<div className="col-6 col-sm-12 col-lg-4 col-xl-12 text-right text-sm-left">
+										<div className="col-md-6 col-sm-12 col-lg-4 col-xl-12 text-lg-right text-sm-left">
 											<div className="group group-xs">
 												<a
 													className="link link-social-1 mdi mdi-twitter"
@@ -305,14 +329,15 @@ const CustomFooter = () => {
 						<div className="container">
 							<p className="text-white-50 rights">
 								<span>©&nbsp;</span>
-								<span className="copyright-year">2022</span>
+								<span className="copyright-year">2023</span>
 								<span>&nbsp;</span>
 								<span>MIBAiO</span>
 								<span>.&nbsp;</span>
-								<a href="https://mibaio.in/privacy-policy.html">
+								{/* <a href="https://mibaio.in/privacy-policy.html"> */}
+								<Link to="/privacyPolicy">
 									{" "}
 									Privacy Policy
-								</a>
+								</Link>
 							</p>
 						</div>
 					</div>

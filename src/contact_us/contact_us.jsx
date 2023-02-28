@@ -5,7 +5,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../Loader/Loader";
 import { useLoadingWithRefresh } from "../hooks/useLoadingWithRefresh";
@@ -14,8 +14,18 @@ import { saveContactData } from "../http/apis";
 import CustomFooter from "../components/customfooter";
 import NavigationBar from "../components/navigationbar";
 import PageHeadder from "../components/PageHeadder";
+import WOW from "wowjs";
+import AOS from "aos";
 const ContactUs = () => {
     const { loading } = useLoadingWithRefresh();
+
+    useEffect(() => {
+		new WOW.WOW({}).init();
+	});
+
+    useEffect(() => {
+		AOS.init();
+	}, []);
 
     const [contactData, setContactData] = useState({
         name: "",
@@ -56,10 +66,12 @@ const ContactUs = () => {
 
             <div className="page">
                 {/* Page Header*/}
-                <section className="section page-header-1 header-section">
-                    {/* <NavigationBar /> */}
+
+                {/* Old Format
+                    <section className="section page-header-1 header-section">
+                    <NavigationBar />
                     <PageHeadder quote="Contact Us" showYouAre={false} />
-                </section>
+                </section> */}
                 {/* <section className="breadcrumbs-custom section-gray">
                     <div className="breadcrumbs-custom-main bg-default">
                         <div className="container">
@@ -81,9 +93,35 @@ const ContactUs = () => {
                         </div>
                     </div>
                 </section> */}
-                <section className="section section-md">
+                <section className="section page-header-3 header-section">
+                    <NavigationBar />
+                </section>
+                <section className="breadcrumbs-custom wow fadeInDown">
+                    <div className="breadcrumbs-custom-main bg-default">
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div className="col-xl-9">
+                                    <h3 className="text-white breadcrumbs-custom-title">
+                                        Contact Us
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="breadcrumbs-custom-aside text-white">
+                            <ul className="breadcrumbs-custom-path">
+                                <li>
+                                    <a href="index.php">Home</a>
+                                </li>
+                                <li className="active text-white">Contact Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="section section-md"
+                    data-aos="fade-up" data-aos-delay="200">
                     <div className="container">
-                        <div className="row row-50">
+                        <div className="row designTextContainer row-50">
                             <div className="col-xl-5">
                                 <div className="inset-1">
                                     <h2>Our Location</h2>
@@ -122,9 +160,9 @@ const ContactUs = () => {
                                                     <div className="unit-body">
                                                         <a
                                                             className="text-primary"
-                                                            href="mailto:info@mibaio.xyz"
+                                                            href="mailto:info@mibaio.in"
                                                         >
-                                                            info@mibaio.xyz
+                                                            info@mibaio.in
                                                         </a>
                                                     </div>
                                                 </li>
@@ -158,9 +196,9 @@ const ContactUs = () => {
                                                     <div className="unit-body">
                                                         <a
                                                             className="text-primary"
-                                                            href="mailto:support@mibaio.xyz"
+                                                            href="mailto:support@mibaio.in"
                                                         >
-                                                            support@mibaio.xyz
+                                                            support@mibaio.in
                                                         </a>
                                                     </div>
                                                 </li>
@@ -203,30 +241,31 @@ const ContactUs = () => {
                                     data-form-type="contact"
                                     onSubmit={submitContactForm}
                                 >
-                                    <div className="row row-x-16 row-20">
+                                    <div className="row row-x-16 row-20 flex-column flex-md-row">
                                         <div className="col-md-6">
                                             <div className="form-wrap">
                                                 <input
-                                                    className="form-input"
+                                                    className="form-input bg-white"
                                                     id="contact-name"
-                                                    type="text"
                                                     name="name"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Your Name*"
                                                     data-constraints="@Required"
                                                     value={contactData.name}
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            name: e.target
-                                                                .value,
+                                                            name: e.target.value,
                                                         });
                                                     }}
+                                                    required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-name"
                                                 >
                                                     Your Name
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-md-6">
@@ -236,36 +275,40 @@ const ContactUs = () => {
                                                     id="contact-email"
                                                     type="email"
                                                     name="email"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Email*"
                                                     data-constraints="@Required @Email"
                                                     value={contactData.email}
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            email: e.target
-                                                                .value,
+                                                            email: e.target.value,
                                                         });
                                                     }}
+                                                    required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-email"
                                                 >
                                                     Email
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-12">
                                             <div className="form-wrap">
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-message"
                                                 >
                                                     Message
-                                                </label>
+                                                </label> */}
                                                 <textarea
                                                     className="form-input"
                                                     id="contact-message"
                                                     name="message"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Message*"
                                                     data-constraints="@Required"
                                                     value={contactData.message}
                                                     onChange={(e) => {
@@ -275,32 +318,34 @@ const ContactUs = () => {
                                                                 e.target.value,
                                                         });
                                                     }}
+                                                    required
                                                 />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-wrap">
                                                 <input
-                                                    className="form-input"
+                                                    className="form-input bg-white"
                                                     id="contact-phone"
-                                                    type="text"
                                                     name="phone"
+                                                    //adding placeholder instead of label
+                                                    placeholder="Phone*"
                                                     data-constraints="@PhoneNumber"
                                                     value={contactData.phone}
                                                     onChange={(e) => {
                                                         setContactData({
                                                             ...contactData,
-                                                            phone: e.target
-                                                                .value,
+                                                            phone: e.target.value,
                                                         });
                                                     }}
+                                                    required
                                                 />
-                                                <label
+                                                {/* <label
                                                     className="form-label"
                                                     htmlFor="contact-phone"
                                                 >
                                                     Phone
-                                                </label>
+                                                </label> */}
                                             </div>
                                         </div>
                                         <div className="col-md-6">
@@ -487,8 +532,8 @@ const ContactUs = () => {
                                                 <div className="col-6 col-sm-12 col-lg-8 col-xl-12">
                                                     <div className="row row-10 text-white-50">
                                                         <div className="col-lg-6 col-xl-12">
-                                                            <a href="mailto:info@mibaio.xyz">
-                                                                info@mibaio.xyz
+                                                            <a href="mailto:info@mibaio.in">
+                                                                info@mibaio.in
                                                             </a>
                                                         </div>
                                                         <div className="col-lg-6 col-xl-12">

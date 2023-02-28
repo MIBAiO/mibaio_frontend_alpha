@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import home1 from "./home1.png";
 import home2 from "./home2.png";
@@ -96,6 +96,36 @@ const Home = () => {
 
 	// const src = getVideoSrc(window.innerWidth);
 
+	const servicesRef = useRef(null);
+	const readMoreClick = () => {
+		servicesRef.current.scrollIntoView({ behavior: 'smooth' });
+	}
+
+	//----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		let options = {
+			rootMargin: "70px",
+			// threshold: [0.5, 0.75]
+			threshold: 0.5
+		};
+	
+		let handlePlay = (entries, observer) => {
+			entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				videoRef.current.play();
+			} else {
+				videoRef.current.pause();
+			}
+			});
+		};
+	
+		let observer = new IntersectionObserver(handlePlay, options);
+	
+		observer.observe(videoRef.current);
+	});
+// ----------------------------------------------------------------------------------
 	return (
 		<>
 			<ModalVideo
@@ -125,10 +155,7 @@ const Home = () => {
 
 						<NavigationBar />
 
-						<div
-							id="belownavbar"
-							className="box-custom-4 bg-default"
-						>
+						<div id="belownavbar" className="box-custom-4 bg-default">
 							<div className="box-custom-4-aside bg-accent">
 								<div className="box-custom-4-aside-decoration">
 									<div className="box-custom-4-aside-decoration-bg wow clipInLeft"></div>
@@ -164,10 +191,7 @@ const Home = () => {
 														alignContent: "center",
 													}}
 												>
-													<source
-														src={blueTheme}
-														type="video/mp4"
-													/>
+													<source src={blueTheme} type="video/mp4" />
 												</video>
 
 												{/* <div className="carousel-item">
@@ -175,7 +199,7 @@ const Home = () => {
                                 </div> */}
 											</div>
 										</div>
-										<div className="iphone-frame-4-next element-process">
+										<div className="iphone-frame-4-next element-process brochureText">
 											<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 											<lord-icon
 												src="https://cdn.lordicon.com/wxnxiano.json"
@@ -189,10 +213,7 @@ const Home = () => {
 												}}
 											></lord-icon>
 											{/* <span className="icon icon-lg linearicons-envelope" /> */}
-											<a
-												href="MIBAiO Brochure.pdf"
-												target="_blank"
-											>
+											<a href="MIBAiO Brochure.pdf" target="_blank">
 												<h5 className="text-white iphone-frame-4-next-text">
 													Brochure
 												</h5>
@@ -212,9 +233,7 @@ const Home = () => {
 											animationName: "fadeInUp",
 										}}
 									>
-										<span className="text-white">
-											Automate Your
-										</span>
+										<span className="text-white">Automate Your</span>
 									</h2>
 									<h2
 										className="extra-light text-white heading-decoration-3 wow fadeInUp"
@@ -244,10 +263,8 @@ const Home = () => {
 												],
 												autoStart: true,
 												loop: true,
-												wrapperClassName:
-													"text-primary notranslate",
-												cursorClassName:
-													"typed-cursor typed-cursor--blink",
+												wrapperClassName: "text-primary notranslate",
+												cursorClassName: "typed-cursor typed-cursor--blink",
 											}}
 											initDelay={1000}
 										/>
@@ -274,11 +291,9 @@ const Home = () => {
 												animationName: "clipInLeft",
 											}}
 										>
-											Upgrade your existing conventional
-											electrical appliances to a set of
-											smart appliances! Control & monitor
-											from any part of the world with your
-											smartphone!
+											Upgrade your existing conventional electrical appliances
+											to a set of smart appliances! Control & monitor from any
+											part of the world with your smartphone!
 										</p>
 									</div>
 									<br />
@@ -293,28 +308,22 @@ const Home = () => {
 									>
 										<a
 											className="button button-default-outline button-winona"
-											href="#"
+											// href="#services"
 											data-wow-duration=".5s"
 											data-wow-delay=".5s"
 											style={{
 												margin: "10px",
+												color: "white",
 											}}
+											onClick={readMoreClick}
 										>
 											<div className="content-original">
-												<div className="content-original">
-													Read More
-												</div>
-												<div className="content-dubbed">
-													Read More
-												</div>
+												<div className="content-original">Read More</div>
+												<div className="content-dubbed">Read More</div>
 											</div>
 											<div className="content-dubbed">
-												<div className="content-original">
-													Read More
-												</div>
-												<div className="content-dubbed">
-													Read More
-												</div>
+												<div className="content-original">Read More</div>
+												<div className="content-dubbed">Read More</div>
 											</div>
 										</a>
 										<Link
@@ -331,12 +340,8 @@ const Home = () => {
 												margin: "10px",
 											}}
 										>
-											<div className="content-original">
-												Buy Now
-											</div>
-											<div className="content-dubbed">
-												Buy Now
-											</div>
+											<div className="content-original">Buy Now</div>
+											<div className="content-dubbed">Buy Now</div>
 										</Link>
 									</div>
 								</div>
@@ -380,9 +385,9 @@ const Home = () => {
 						id="services"
 						className="services section-md section-bg"
 						style={{
-							background:
-								"linear-gradient(180deg, #434343, #000000)",
+							background: "linear-gradient(180deg, #434343, #000000)",
 						}}
+						ref={servicesRef}
 					>
 						<div className="container">
 							{/* <section> */}
@@ -403,14 +408,26 @@ const Home = () => {
 									Xtension 4S
 								</h2>
 								<h5
-									className="text-center wow-animation wow fadeIn"
+									className="text-center wow-animation wow fadeIn design-text"
 									data-wow-delay=".4s"
 									style={{
 										marginBottom: "20px",
 										color: "#f1f1f1",
 									}}
 								>
-									Designed to simplify your life
+									{/* Designed to simplify your life */}
+									<Typewriter
+										options={{
+											strings: [
+												"Designed to simplify your life",
+											],
+											autoStart: true,
+											loop: true,
+											wrapperClassName: "text-primary",
+											cursorClassName: "typed-cursor typed-cursor--blink",
+										}}
+										initDelay={1000}
+									/>
 								</h5>
 
 								<div
@@ -418,7 +435,7 @@ const Home = () => {
 									data-wow-delay=".6s"
 								>
 									<div className="col-md-4">
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi mdi-router-wireless"
@@ -433,18 +450,15 @@ const Home = () => {
 													No Hub required
 												</h6>
 												<p className="grey-text">
-													Does not need any additional
-													hub to connect to internet,
-													works with any 2.4Ghz
-													compatible WiFi router.
+													Does not need any additional hub to connect to
+													internet, works with any 2.4Ghz compatible WiFi
+													router.
 												</p>
-												<div
-													style={{ height: "15px" }}
-												></div>
+												<div style={{ height: "15px" }}></div>
 											</div>
 										</div>
 
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="mdi mdi-repeat-off"
@@ -459,28 +473,29 @@ const Home = () => {
 													No rewiring
 												</h6>
 												<p className="grey-text">
-													Does not need additional
-													rewiring. Easy to install,
+													Does not need additional rewiring. Easy to install,
 													plug and play!
 												</p>
-												<div
-													style={{ height: "15px" }}
-												></div>
+												<div style={{ height: "15px" }}></div>
 											</div>
 										</div>
 									</div>
 
-									<div className="col-md-4 flex-center">
+									<div className="col-md-4 flex-center"
+										// data-aos="zoom-in"
+										// data-duration="1000"
+									>
 										<img
 											src={sample1}
 											alt="MIBAiO Xtension 4S white"
 											className="z-depth-0 img-fluid wow fadeInUp"
 											data-wow-delay=".5s"
+											// style={{ transform: `scale(${scale})`, opacity }}
 										/>
 									</div>
 
 									<div className="col-md-4 mt-2">
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi 2x mdi-bluetooth-audio"
@@ -495,18 +510,14 @@ const Home = () => {
 													Dual Connectivity
 												</h6>
 												<p className="grey-text">
-													Bluetooth + WiFi hybrid mode
-													ensures that it works
-													flawlessly with and without
-													internet.
+													Bluetooth + WiFi hybrid mode ensures that it works
+													flawlessly with and without internet.
 												</p>
-												<div
-													style={{ height: "15px" }}
-												></div>
+												<div style={{ height: "15px" }}></div>
 											</div>
 										</div>
 
-										<div className="row">
+										<div className="row designTextContainer">
 											<div className="col-2">
 												<i
 													className="fas mdi 2x mdi-chart-line"
@@ -518,16 +529,13 @@ const Home = () => {
 													className="feature-title"
 													style={{ color: "#BDD4E7" }}
 												>
-													Enerygy monitoring
+													Energy monitoring
 												</h6>
 												<p className="grey-text">
-													Monitor your energy
-													consumption and estimate the
-													cost of electricity bills.
+													Monitor your energy consumption and estimate the cost
+													of electricity bills.
 												</p>
-												<div
-													style={{ height: "15px" }}
-												></div>
+												<div style={{ height: "15px" }}></div>
 											</div>
 										</div>
 									</div>
@@ -560,10 +568,8 @@ const Home = () => {
 											<a href="#Security">Automation</a>
 										</h4>
 										<p className="description">
-											Schedule your appliances to turn
-											on/off automatically at desired
-											timing. Indivisually or
-											simultaneously!🕖{" "}
+											Schedule your appliances to turn on/off automatically at
+											desired timing. Indivisually or simultaneously!🕖{" "}
 										</p>
 									</div>
 								</div>
@@ -593,8 +599,7 @@ const Home = () => {
 											<a href="#Voice">Voice Control</a>
 										</h4>
 										<p className="description">
-											Relax yourself completely, 🗣 Let
-											your voice do the job!
+											Relax yourself completely, 🗣 Let your voice do the job!
 											<br /> <br />{" "}
 											<span
 												style={{
@@ -602,8 +607,7 @@ const Home = () => {
 													opacity: " .8",
 												}}
 											>
-												(PS: Works with Alexa, Siri &
-												Google)
+												(PS: Works with Alexa, Siri & Google)
 											</span>
 										</p>
 									</div>
@@ -634,9 +638,8 @@ const Home = () => {
 											<a href="#MMC">Energy Efficient</a>
 										</h4>
 										<p className="description">
-											Energy savings and advancements you
-											never imagined! Save upto 26% of
-											your energy biils! 💚{" "}
+											Energy savings and advancements you never imagined! Save
+											upto 26% of your energy biils! 💚{" "}
 										</p>
 									</div>
 								</div>
@@ -666,16 +669,16 @@ const Home = () => {
 											<a href="#Surge">Shared Access</a>
 										</h4>
 										<p className="description">
-											Share devices with your family 👨‍👩‍👦,
-											sync state of devices, set more
-											smart scenes for any space.
+											Share devices with your family 👨‍👩‍👦, sync state of devices,
+											set more smart scenes for any space.
 										</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</section>
-					<picture>
+					<picture id="next-section" 
+					>
 						{src === "small" && (
 							<video
 								style={{
@@ -683,15 +686,13 @@ const Home = () => {
 									transitionDelay: "1s",
 									marginBottom: "-6%",
 								}}
-								loop
-								autoPlay
+								// loop
+								// autoPlay
+								ref={videoRef}
 								muted
 								playsInline
 							>
-								<source
-									src={extensionphonevid}
-									type="video/mp4"
-								/>
+								<source src={extensionphonevid} type="video/mp4" />
 							</video>
 						)}
 						{src === "big" && (
@@ -700,9 +701,11 @@ const Home = () => {
 									width: "100%",
 									transitionDelay: "1s",
 									marginBottom: "-6%",
+									
 								}}
-								loop
-								autoPlay
+								// loop
+								// autoPlay
+								ref={videoRef}
 								muted
 								playsInline
 							>
@@ -721,19 +724,29 @@ const Home = () => {
 					</picture>
 					{/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
 					{/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-					<picture>
-						<source
-							media="(min-width:800px)"
-							srcSet={alexagif}
-						></source>
-						<img
-							src={alexaphone}
+					<section className="section section-md bg-gray-100">
+						<h3
+							className="wow fadeInUp"
+							data-wow-delay=".4s"
 							style={{
-								width: "100%",
+								textAlign: "center",
+								paddingTop: "32px",
+								color: "#697484",
 							}}
-						/>
-					</picture>
+						>
+							Title Here
+						</h3>
 
+						<picture>
+							<source media="(min-width:800px)" srcSet={alexagif}></source>
+							<img
+								src={alexaphone}
+								style={{
+									width: "100%",
+								}}
+							/>
+						</picture>
+					</section>
 					{/* <img src={alexaphone} style={alexaphonestyle} />  */}
 
 					<section className="section section-md bg-gray-100">
@@ -746,22 +759,25 @@ const Home = () => {
 								color: "#697484",
 							}}
 						>
-							Our{" "}
-							<span style={{ color: "#0accbe" }}>
-								most prominent{" "}
-							</span>
+							Our <span style={{ color: "#0accbe" }}>most prominent </span>
 							features
 						</h3>
 
 						<div className="container" id="Surge">
-							<div className="row row-50 justify-content-xl-between align-items-center">
+							<div className="row row-50 designTextContainer justify-content-xl-between align-items-center">
 								<div
-									className="col-md-8 col-lg-7 col-xl-6 wow fadeInLeftSmall"
-									data-wow-delay=".5s"
+									className="col-md-8 col-lg-7 col-xl-6"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-right"
+									// data-aos-anchor-placement="bottom-bottom"
 								>
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
-											<div className="icon icon-style-1 mdi mdi-flash"></div>
+											<div className="icon icon-style-1 mdi mdi-flash"
+												// style={{ font: "normal 24px/2 Material Design Icons" }}
+											></div>
 										</div>
 										<div className="unit-body">
 											<h3>Surge Proof</h3>
@@ -772,22 +788,22 @@ const Home = () => {
 										<blockquote className="quote-light">
 											<div className="quote-light-text">
 												<p>
-													MIBAiO Xtension 4S is
-													equipped with a Positive
-													Temperature Coefficient
-													Thermister (PTC) to protect
-													your electrical appliances
-													from accidental voltage
-													spikes in alternating
-													current (AC) circuits
+													MIBAiO Xtension 4S is equipped with a Positive
+													Temperature Coefficient Thermister (PTC) to protect
+													your electrical appliances from accidental voltage
+													spikes in alternating current (AC) circuits
 												</p>
 											</div>
 										</blockquote>
 									</div>
 								</div>
 								<div
-									className="col-md-4 col-lg-5 wow fadeInRightSmall right-pattern"
-									data-wow-delay=".6s"
+									className="col-md-4 col-lg-5 right-pattern"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-left"
+									// data-aos-anchor-placement="bottom-bottom"
 								>
 									<div className="item">
 										<img
@@ -802,11 +818,19 @@ const Home = () => {
 							</div>
 						</div>
 						<div className="container" id="MMC">
-							<div className="row row-50 justify-content-xl-between align-items-center flex-md-row-reverse">
-								<div className="col-md-8 col-lg-7 col-xl-6 wow fadeInRightSmall">
+							<div className="row row-50 designTextContainer justify-content-xl-between align-items-center flex-md-row-reverse">
+								<div className="col-md-8 col-lg-7 col-xl-6"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-left"
+									// data-aos-anchor-placement="bottom-bottom"
+									>
 									<div className="unit unit-spacing-1 align-items-center">
 										<div className="unit-left">
-											<div className="icon icon-style-1 mdi mdi-access-point-network"></div>
+											<div className="icon icon-style-1 mdi mdi-access-point-network"
+												// style={{ font: "normal 24px/2 Material Design Icons" }}
+											></div>
 										</div>
 										<div className="unit-body">
 											<h3>Multi-Mode Control</h3>
@@ -817,18 +841,19 @@ const Home = () => {
 										<blockquote className="quote-light">
 											<div className="quote-light-text">
 												<p>
-													In addition to the
-													conventional physical button
-													switching, MIBAiO Smart app
-													additionally enables you to
-													remotely control your smart
-													appliances with:
+													In addition to the conventional physical button
+													switching, MIBAiO Smart app additionally enables you
+													to remotely control your smart appliances with:
 													<br />
 													<br />
-													<div className="icon icon-style-1 mdi mdi-wifi"></div>{" "}
+													<div className="icon icon-style-1 mdi mdi-wifi"
+														// style={{ font: "normal 24px/2 Material Design Icons" }}
+													></div>{" "}
 													Internet <br />
 													<br />
-													<div className="icon icon-style-1 mdi mdi-bluetooth"></div>{" "}
+													<div className="icon icon-style-1 mdi mdi-bluetooth"
+														// style={{ font: "normal 24px/2 Material Design Icons" }}
+													></div>{" "}
 													Bluetooth
 												</p>
 												<div className="group-buttons-responsive group-middle">
@@ -853,7 +878,13 @@ const Home = () => {
 									</div>
 								</div>
 
-								<div className="col-md-4 col-lg-5 wow fadeInLeftSmall left-pattern">
+								<div className="col-md-4 col-lg-5 left-pattern"
+									// data-wow-delay=".5s"
+									data-aos-offset="100"
+									data-aos-duration="1500"
+									data-aos="fade-right"
+									// data-aos-anchor-placement="bottom-bottom"
+								>
 									<img
 										className="d-block w-100"
 										src={modeposter}
@@ -883,7 +914,8 @@ const Home = () => {
 								>
 									About MIBAiO
 								</span>
-								<h3
+								<h3>MIBAiO</h3>
+								<p
 									className="offset-top-7 font-weight-regular typed-text-heading wow fadeIn"
 									data-wow-delay=".1s"
 									style={{
@@ -891,7 +923,7 @@ const Home = () => {
 										animationName: "none",
 									}}
 								>
-									<span>MIBAiO</span>
+									{/* <span>MIBAiO</span> */}
 									<Typewriter
 										options={{
 											strings: [
@@ -905,12 +937,11 @@ const Home = () => {
 											autoStart: true,
 											loop: true,
 											wrapperClassName: "text-primary",
-											cursorClassName:
-												"typed-cursor typed-cursor--blink",
+											cursorClassName: "typed-cursor typed-cursor--blink",
 										}}
 										initDelay={1000}
 									/>
-								</h3>
+								</p>
 								<p
 									className="wow fadeIn"
 									data-wow-delay=".2s"
@@ -920,10 +951,9 @@ const Home = () => {
 									}}
 								>
 									<span style={{ maxWidth: "800px" }}>
-										We are on a mission to transform the
-										Smart Home Ecosystem in India <br />
-										And we invite you to take a front seat
-										in this revolution
+										We are on a mission to transform the Smart Home Ecosystem in
+										India <br />
+										And we invite you to take a front seat in this revolution
 									</span>
 								</p>
 								{/* <a className="button-play mdi mdi-play mdi-24px wow fadeIn" href="https://youtu.be/qxN6Cw6qgLk" data-lightgallery="item" data-wow-delay=".3s">
@@ -940,10 +970,7 @@ const Home = () => {
 								>
 									<span />
 								</div>
-								<div
-									id="video-overlay"
-									className="video-overlay-class"
-								>
+								<div id="video-overlay" className="video-overlay-class">
 									{/* <a className="video-overlay-close">&times;</a> */}
 								</div>
 							</div>
@@ -959,12 +986,8 @@ const Home = () => {
 												}}
 											>
 												<div className="counter-classic-main">
-													<div className="counter">
-														3
-													</div>
-													<span className="small text-primary">
-														+
-													</span>
+													<div className="counter">3</div>
+													<span className="small text-primary">+</span>
 												</div>
 												<h4 className="counter-classic-title text-black extra-lighter">
 													Modes <br /> of control
@@ -972,7 +995,7 @@ const Home = () => {
 											</article>
 										</div>
 										<div className="layout-bordered-1-item">
-											Counter Classic
+											{/* Counter Classic */}
 											<article
 												className="counter-classic wow clipInLeft"
 												data-wow-delay=".1s"
@@ -982,12 +1005,8 @@ const Home = () => {
 												}}
 											>
 												<div className="counter-classic-main">
-													<div className="counter">
-														14
-													</div>
-													<span className="small text-primary">
-														k
-													</span>
+													<div className="counter">14</div>
+													<span className="small text-primary">k</span>
 												</div>
 												<h4 className="counter-classic-title extra-lighter">
 													Lines <br /> of code
@@ -995,7 +1014,7 @@ const Home = () => {
 											</article>
 										</div>
 										<div className="layout-bordered-1-item">
-											Counter Classic
+											{/* Counter Classic */}
 											<article
 												className="counter-classic wow clipInLeft"
 												data-wow-delay=".2s"
@@ -1005,16 +1024,11 @@ const Home = () => {
 												}}
 											>
 												<div className="counter-classic-main">
-													<div className="counter">
-														5
-													</div>
-													<span className="small text-primary">
-														yrs
-													</span>
+													<div className="counter">5</div>
+													<span className="small text-primary">yrs</span>
 												</div>
 												<h4 className="counter-classic-title extra-lighter">
-													Of warranty <br /> MIBAiO
-													guarantee
+													Of warranty <br /> MIBAiO guarantee
 												</h4>
 											</article>
 										</div>
@@ -1024,28 +1038,20 @@ const Home = () => {
 						</div>
 					</section>
 
-					<section
-						id="why-us"
-						className="why-us section-bg1 wow fadeInUp"
-					>
+					<section id="why-us" className="why-us section-bg1 wow fadeInUp">
 						<div className="container-fluid">
 							<div className="row">
 								<div className="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 									<div className="content">
 										<h3>
 											How does MIBAiO{" "}
-											<span style={{ color: "#0accbe" }}>
-												benefit you?
-											</span>
+											<span style={{ color: "#0accbe" }}>benefit you?</span>
 										</h3>
 										<br />
 										<h5 style={{ color: "#697484" }}>
-											Here's where we tell how MIBAiO
-											Xtension 4S truely{" "}
-											<span style={{ color: "#4a80f0" }}>
-												adds value
-											</span>{" "}
-											to your life!
+											Here's where we tell how MIBAiO Xtension 4S truely{" "}
+											<span style={{ color: "#4a80f0" }}>adds value</span> to
+											your life!
 										</h5>
 									</div>
 									<br />
@@ -1233,18 +1239,14 @@ const Home = () => {
 													id="app-accordion-collapse-4"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-4"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
-															Control and keep an
-															eye on your
-															electricals from
+															Control and keep an eye on your electricals from
 															anywhere
 															<br />
-															Do it with your
-															voice! or your
-															fingertips.
+															Do it with your voice! or your fingertips.
 														</p>
 													</div>
 												</div>
@@ -1282,14 +1284,13 @@ const Home = () => {
 													id="app-accordion-collapse-1"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-1"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
 															Easy to install.
 															<br />
-															Easy to operate...
-															Makes life simple!
+															Easy to operate... Makes life simple!
 														</p>
 													</div>
 												</div>
@@ -1317,8 +1318,7 @@ const Home = () => {
 															>
 																03
 															</span>{" "}
-															&nbsp; ROI [Return
-															on Investment]?
+															&nbsp; ROI [Return on Investment]?
 															<div className="card-arrow"></div>
 														</a>
 													</div>
@@ -1328,17 +1328,13 @@ const Home = () => {
 													id="app-accordion-collapse-2"
 													role="tabpanel"
 													aria-labelledby="app-accordion-heading-2"
-													data-parent="#app-accordion"
+													data-parent="#why-us"
 												>
 													<div className="card-body">
 														<p>
-															With uptp 26%
-															savings on energy
-															bills per month,
-															you'll recover the
-															amount invested
-															roughly in about 7
-															months*..!
+															With uptp 26% savings on energy bills per month,
+															you'll recover the amount invested roughly in
+															about 7 months*..!
 														</p>
 													</div>
 												</div>
@@ -1350,8 +1346,7 @@ const Home = () => {
 								<div
 									className="col-lg-5 align-items-stretch order-1 order-lg-2 img"
 									style={{
-										backgroundImage:
-											' url("images/Picture1.png")',
+										backgroundImage: ' url("images/Picture1.png")',
 									}}
 									data-aos="zoom-in"
 									data-aos-delay="150"
@@ -1400,8 +1395,7 @@ const Home = () => {
 									}}
 								>
 									<span style={{ maxWidth: "700px" }}>
-										We've got you an offer we're sure you
-										wont resist. 😎
+										We've got you an offer we're sure you wont resist. 😎
 									</span>
 								</p>
 								<div
@@ -1430,10 +1424,7 @@ const Home = () => {
 								</div>
 							</div>
 							<div className="container ot50">
-								<div
-									className="pt-classic-group"
-									id="pt-classic"
-								>
+								<div className="pt-classic-group" id="pt-classic">
 									<div
 										className="owl-carousel owl-carousel_type-2 owl-loaded"
 										data-items={1}
@@ -1464,17 +1455,11 @@ const Home = () => {
 													minWidth: "300px",
 												}}
 											>
-												<h4 className="pt-classic-title">
-													Pack of 1
-												</h4>
+												<h4 className="pt-classic-title">Pack of 1</h4>
 												<div className="pt-classic-price-outer">
 													<div
 														className="pt-classic-price"
-														aria-hidden={
-															toggleState
-																? "true"
-																: "false"
-														}
+														aria-hidden={toggleState ? "true" : "false"}
 													>
 														<div className="pt-classic-price-currency font-weight-regular">
 															{" "}
@@ -1486,11 +1471,7 @@ const Home = () => {
 													</div>
 													<div
 														className="pt-classic-price"
-														aria-hidden={
-															toggleState
-																? "false"
-																: "true"
-														}
+														aria-hidden={toggleState ? "false" : "true"}
 													>
 														<div className="pt-classic-price-currency font-weight-regular">
 															{" "}
@@ -1503,10 +1484,7 @@ const Home = () => {
 												</div>
 												<div className="pt-classic-divider" />
 												<ul className="pt-classic-list">
-													<li>
-														Control upto 4
-														appliances
-													</li>
+													<li>Control upto 4 appliances</li>
 													<li>Ideal for 1 room</li>
 													<li>Manual control</li>
 													<li>Bluetooth control</li>
@@ -1537,17 +1515,11 @@ const Home = () => {
 												}}
 											>
 												<div className="pt-classic-header">
-													<h4 className="pt-classic-title">
-														Pack of 3
-													</h4>
+													<h4 className="pt-classic-title">Pack of 3</h4>
 													<div className="pt-classic-price-outer">
 														<div
 															className="pt-classic-price"
-															aria-hidden={
-																toggleState
-																	? "true"
-																	: "false"
-															}
+															aria-hidden={toggleState ? "true" : "false"}
 														>
 															<div className="pt-classic-price-currency font-weight-regular">
 																{" "}
@@ -1559,11 +1531,7 @@ const Home = () => {
 														</div>
 														<div
 															className="pt-classic-price"
-															aria-hidden={
-																toggleState
-																	? "false"
-																	: "true"
-															}
+															aria-hidden={toggleState ? "false" : "true"}
 														>
 															<div className="pt-classic-price-currency font-weight-regular">
 																{" "}
@@ -1576,21 +1544,14 @@ const Home = () => {
 															<div
 																style={{
 																	width: "70%",
-																	fontWeight:
-																		" 500",
+																	fontWeight: " 500",
 																	color: "#0accbe",
-																	background:
-																		" #d6f3f5",
-																	letterSpacing:
-																		"0.075em",
-																	fontSize:
-																		"20%",
-																	display:
-																		"flex",
-																	justifyContent:
-																		"center",
-																	alignItems:
-																		"center",
+																	background: " #d6f3f5",
+																	letterSpacing: "0.075em",
+																	fontSize: "20%",
+																	display: "flex",
+																	justifyContent: "center",
+																	alignItems: "center",
 																	height: "35px",
 																}}
 															>
@@ -1601,10 +1562,7 @@ const Home = () => {
 												</div>
 												<div className="pt-classic-divider" />
 												<ul className="pt-classic-list">
-													<li>
-														Control upto 12
-														appliances
-													</li>
+													<li>Control upto 12 appliances</li>
 													<li>Ideal for 2 BHK</li>
 													<li>Manual Control</li>
 													<li>Internet Control</li>
@@ -1627,9 +1585,7 @@ const Home = () => {
 														</div>
 													</a>
 
-													<p className="pt-classic-note">
-														#Recommended
-													</p>
+													<p className="pt-classic-note">#Recommended</p>
 												</div>
 											</article>
 											<article
@@ -1640,17 +1596,11 @@ const Home = () => {
 													animationName: "none",
 												}}
 											>
-												<h4 className="pt-classic-title">
-													Pack of 2
-												</h4>
+												<h4 className="pt-classic-title">Pack of 2</h4>
 												<div className="pt-classic-price-outer">
 													<div
 														className="pt-classic-price"
-														aria-hidden={
-															toggleState
-																? "false"
-																: "true"
-														}
+														aria-hidden={toggleState ? "false" : "true"}
 													>
 														<div className="pt-classic-price-currency font-weight-regular">
 															{" "}
@@ -1662,11 +1612,7 @@ const Home = () => {
 													</div>
 													<div
 														className="pt-classic-price"
-														aria-hidden={
-															toggleState
-																? "true"
-																: "false"
-														}
+														aria-hidden={toggleState ? "true" : "false"}
 													>
 														<div className="pt-classic-price-currency font-weight-regular">
 															{" "}
@@ -1675,25 +1621,18 @@ const Home = () => {
 														<div className="pt-classic-price-value extra-light">
 															10798
 														</div>
-														<div className="badge badge-1">
-															Save 12%
-														</div>
+														<div className="badge badge-1">Save 12%</div>
 													</div>
 												</div>
 												<div className="pt-classic-divider" />
 												<ul className="pt-classic-list">
-													<li>
-														Control upto 8
-														appliances
-													</li>
+													<li>Control upto 8 appliances</li>
 													<li>Ideal for 1 BHK</li>
 													<li>Manual control</li>
 													<li>Internet control</li>
 													<li>Voice control</li>
 													<li>Bluetooth control</li>
-													<li>
-														Upgrade more outputs
-													</li>
+													<li>Upgrade more outputs</li>
 												</ul>
 												<div className="pt-classic-footer">
 													<a
@@ -2067,18 +2006,211 @@ const Home = () => {
 							<span className="normal text-primary font-weight-bold text-uppercase wow fadeIn">
 								Popular Questions
 							</span>
-							<h3
-								className="offset-top-7 wow fadeIn"
-								data-wow-delay=".1s"
-							>
+							<h3 className="offset-top-7 wow fadeIn" data-wow-delay=".1s">
 								Frequently Asked Questions
 							</h3>
-							<div
+							{/* <div
 								className="row row-30 justify-content-center justify-content-lg-start wow fadeIn"
 								id="app-accordion"
 								data-wow-delay=".2s"
+							> */}
+							{/* --------------------------- */}
+							<div
+								className="accordion row row-30 justify-content-center justify-content-lg-start flex-column flex-md-row"
+								id="appAccordion"
+								data-wow-delay=".2s"
 							>
-								<div className="col-md-10 col-lg-6">
+								<div className="col-md-10 col-lg-6 wow fadeInLeft">
+									<div className="card-group-custom card-group-classic card-group-classic_1">
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingOne">
+													<a
+														className="accordion-button"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseOne"
+														aria-expanded="true"
+														aria-controls="collapseOne"
+													>
+														What does "MIBAiO" mean?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseOne"
+													className="accordion-collapse collapse card-body show"
+													aria-labelledby="headingOne"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														MIBAiO is an acronym for Manual Internet Bluetooth All
+														In One.{" "}
+													</div>
+												</div>
+											</div>
+										</div>
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingTwo">
+													<a
+														className="accordion-button collapsed"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseTwo"
+														aria-expanded="false"
+														aria-controls="collapseTwo"
+													>
+														What are the key features of your product?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseTwo"
+													className="accordion-collapse collapse card-body"
+													aria-labelledby="headingTwo"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														Our product offers Manual, Internet and Bluetooth
+														all-in-one functionality along with voice control. To
+														know more about key features, please refer the product
+														brochure.
+													</div>
+												</div>
+											</div>
+										</div>
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingThree">
+													<a
+														className="accordion-button collapsed"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseThree"
+														aria-expanded="false"
+														aria-controls="collapseThree"
+													>
+														Why should I purchase your product?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseThree"
+													className="accordion-collapse collapse card-body"
+													aria-labelledby="headingThree"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														The major advantage is price: You get a premium model
+														under ₹4000. You don't have to call an electrician for
+														installation, we make it very easy to install for you.
+														Second advantage is Made in INDIA: Our product is
+														carefully designed for a standard Indian household of
+														world-class quality. We are working under the Make in
+														India, Digital India, Aatmanirbhar Bharat initiatives.{" "}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div className="col-md-10 col-lg-6 wow fadeInRight">
+									<div className="card-group-custom card-group-classic card-group-classic_1">
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingFour">
+													<a
+														className="accordion-button collapsed"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseFour"
+														aria-expanded="false"
+														aria-controls="collapseFour"
+													>
+														Do you provide post sales service?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseFour"
+													className="accordion-collapse collapse card-body"
+													aria-labelledby="headingFour"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														Yes, we do. Our team is ready for your support
+														24x7x365 with our qualified Engineers.
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingFive">
+													<a
+														className="accordion-button collapsed"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseFive"
+														aria-expanded="false"
+														aria-controls="collapseFive"
+													>
+														Does your product control the speed of fan digitally?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseFive"
+													className="accordion-collapse collapse card-body"
+													aria-labelledby="headingFive"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														No as of now. But you'll get that funtion in the
+														upcoming versions of MIBAiO.
+													</div>
+												</div>
+											</div>
+										</div>
+										<div className="card card-custom card-classic">
+											<div className="accordion-item card-header">
+												<h2 className="accordion-header card-title" id="headingSix">
+													<a
+														className="accordion-button collapsed"
+														type="button"
+														data-bs-toggle="collapse"
+														data-bs-target="#collapseSix"
+														aria-expanded="false"
+														aria-controls="collapseSix"
+													>
+														What can I do with your product?
+														<span className="card-arrow"></span>
+													</a>
+												</h2>
+												<div
+													id="collapseSix"
+													className="accordion-collapse collapse card-body"
+													aria-labelledby="headingSix"
+													data-bs-parent="#appAccordion"
+												>
+													<div className="accordion-body">
+														Talk to your electrical appliances through Siri, Alexa
+														and Google voice assistant. Control your exising
+														appliances with your smartphone and also manually(like
+														we do now using the conventional switches). Monitor your
+														electricity consumption of connected appliances on your
+														smartphone app.
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							{/* <div className="col-md-10 col-lg-6">
 									<div
 										className="card-group-custom card-group-classic card-group-classic_1"
 										role="tablist"
@@ -2198,7 +2330,7 @@ const Home = () => {
 														The major advantage is
 														price: You get a premium
 														model under ₹4000. You
-														don’t have to call an
+														don't have to call an
 														electrician for
 														installation, we make it
 														very easy to install for
@@ -2349,8 +2481,8 @@ const Home = () => {
 											</div>
 										</article>
 									</div>
-								</div>
-							</div>
+								</div> */}
+							{/* </div> */}
 						</div>
 					</section>
 
@@ -2359,14 +2491,9 @@ const Home = () => {
 							<span className="normal text-primary font-weight-bold text-uppercase wow fadeIn">
 								lifestyle 2.0
 							</span>
-							<h3
-								className="offset-top-7 wow fadeIn"
-								data-wow-delay=".1s"
-							>
+							<h3 className="offset-top-7 wow fadeIn" data-wow-delay=".1s">
 								Step into the future,{" "}
-								<span style={{ color: "#0accbe" }}>
-									Upgrade to MIBAiO
-								</span>
+								<span style={{ color: "#0accbe" }}>Upgrade to MIBAiO</span>
 							</h3>
 							<p className="wow fadeIn" data-wow-delay=".2s">
 								<span
@@ -2375,10 +2502,9 @@ const Home = () => {
 										opacity: " .85",
 									}}
 								>
-									It’s time to upgrade your
-									home/office/workspace and experience the
-									futuristic lifestyle! Contact us directly to
-									enhance your lifestyle experience.
+									It’s time to upgrade your home/office/workspace and experience
+									the futuristic lifestyle! Contact us directly to enhance your
+									lifestyle experience.
 								</span>
 							</p>
 						</div>

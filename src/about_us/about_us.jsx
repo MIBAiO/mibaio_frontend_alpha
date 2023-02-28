@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../Loader/Loader";
 import { useLoadingWithRefresh } from "../hooks/useLoadingWithRefresh";
@@ -15,17 +15,46 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "../assets/css/style.css";
-
+import WOW from "wowjs";
 import * as aboutusAnimation from "../assets/lottie/aboutus.json";
 
 const AboutUs = () => {
     const { loading } = useLoadingWithRefresh();
+
+    useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init();
+	});
 
     const [lottieState, setLottieState] = useState({
         isStopped: false,
         isPaused: false,
     });
 
+    const carouselOptions = {
+        dots: true,
+        nav: true,
+        stagePadding: 0,
+        loop: true,
+        margin: 30,
+        mouseDrag: false,
+        items: 3,
+        responsive: {
+            0: { 
+                items: 1,
+                nav: false,
+            },
+            768: {
+                item: 2,
+                nav: true,
+            },
+            992: {
+                item: 3,
+                nav: true,
+            }
+        }
+    }
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -40,7 +69,20 @@ const AboutUs = () => {
         <div>
             <style
                 dangerouslySetInnerHTML={{
-                    __html: "\n        .ie-panel {\n            display: none;\n            background: #212121;\n            padding: 10px 0;\n            box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);\n            clear: both;\n            text-align: center;\n            position: relative;\n            z-index: 1;\n        }\n\n        html.ie-10 .ie-panel,\n        html.lt-ie-10 .ie-panel {\n            display: block;\n        }\n    ",
+                    __html: `.ie-panel {
+                        display: none;            
+                        background: #212121;            
+                        padding: 10px 0;            
+                        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);            
+                        clear: both;            
+                        text-align: center;            
+                        position: relative;            
+                        z-index: 1;        
+                    }        
+                    html.ie-10 .ie-panel,        
+                    html.lt-ie-10 .ie-panel {            
+                        display: block;        
+                    }`,
                 }}
             />
 
@@ -49,7 +91,7 @@ const AboutUs = () => {
                 <section className="section page-header-3 header-section">
                     <NavigationBar />
                 </section>
-                <section className="breadcrumbs-custom">
+                <section className="breadcrumbs-custom wow fadeInDown">
                     <div className="breadcrumbs-custom-main bg-default">
                         <div className="container">
                             <div className="row justify-content-center">
@@ -60,12 +102,12 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="breadcrumbs-custom-aside">
+                        <div className="breadcrumbs-custom-aside text-white">
                             <ul className="breadcrumbs-custom-path">
                                 <li>
                                     <a href="index.php">Home</a>
                                 </li>
-                                <li className="active">About Us</li>
+                                <li className="active text-white">About Us</li>
                             </ul>
                         </div>
                     </div>
@@ -74,7 +116,7 @@ const AboutUs = () => {
                 <section class="section section-md">
                     <div class="container">
                         <div class="row row-50 align-items-center">
-                            <div class="col-md-8 col-lg-7">
+                            <div class="col-md-8 col-lg-7 wow fadeInLeft">
                                 <h3>We're a Passionate Team of Innovators!</h3>
                                 <p class="text-gray-900">
                                     MIBAiO was conceptualized in 2019 to
@@ -102,7 +144,7 @@ const AboutUs = () => {
                                     luxurious lifestyle!
                                 </p>
                             </div>
-                            <div class="col-md-4 col-lg-5">
+                            <div class="col-md-4 col-lg-5 wow fadeInRight">
                                 <Lottie
                                     options={defaultOptions}
                                     isStopped={lottieState.isStopped}
@@ -124,8 +166,8 @@ const AboutUs = () => {
                 {/* About*/}
                 <section class="section section-md bg-gray-100">
                     <div class="container">
-                        <div class="isotope row row-30">
-                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                        <div class="isotope row designTextContainer row-30">
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item wow fadeInLeft">
                                 <div class="block-ratio block-ratio-1">
                                     <div class="block-ratio-dummy"></div>
                                     <div class="block-ratio-content">
@@ -138,7 +180,7 @@ const AboutUs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-8 isotope-item">
+                            <div class="col-12 col-sm-6 col-md-8 isotope-item wow fadeInRight">
                                 <div class="block-ratio block-ratio-3">
                                     <div class="block-ratio-dummy"></div>
                                     <div
@@ -150,7 +192,7 @@ const AboutUs = () => {
                                     ></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item wow fadeInLeft">
                                 <div class="block-ratio block-ratio-2">
                                     <div class="block-ratio-dummy"></div>
                                     <div
@@ -162,7 +204,7 @@ const AboutUs = () => {
                                     ></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                            <div class="col-12 col-sm-6 col-md-4 isotope-item wow fadeInLeft">
                                 <div class="block-ratio block-ratio-1">
                                     <div class="block-ratio-dummy"></div>
                                     <div
@@ -174,7 +216,7 @@ const AboutUs = () => {
                                     ></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 isotope-item">
+                            {/* <div class="col-12 col-sm-6 col-md-4 isotope-item">
                                 <div class="block-ratio block-ratio-1">
                                     <div class="block-ratio-dummy"></div>
                                     <div
@@ -185,7 +227,7 @@ const AboutUs = () => {
                                         }}
                                     ></div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>
@@ -193,7 +235,7 @@ const AboutUs = () => {
                 <section class="section oh">
                     <div class="container">
                         <div class="row justify-content-center justify-content-lg-between">
-                            <div class="col-md-10 col-lg-5 col-xl-4">
+                            <div class="col-md-10 col-lg-5 col-xl-4 wow fadeInLeft">
                                 <div class="section-md">
                                     <span class="normal-2 text-primary font-weight-bold text-uppercase wow fadeIn">
                                         Our History
@@ -211,7 +253,7 @@ const AboutUs = () => {
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-10 col-lg-7">
+                            <div class="col-md-10 col-lg-7 wow fadeInRight">
                                 <div class="timeline-classic timeline-classic_1">
                                     <div class="timeline-classic-item">
                                         <div class="timeline-classic-item-inner">
@@ -311,14 +353,19 @@ const AboutUs = () => {
                             People that Shape Our Success
                         </h3>
                         <OwlCarousel
-                            dots={true}
-                            nav={false}
-                            stagePadding={0}
-                            loop={true}
-                            margin={30}
-                            mouseDrag={false}
-                            items={3}
-                            className="owl-theme"
+                            // dots={true}
+                            // nav={true}
+                            // stagePadding={0}
+                            // loop={true}
+                            // margin={30}
+                            // mouseDrag={false}
+                            // items={3}
+                            // responsive={
+                            //     "0": { items: 1 },
+                            //     "768": { items: 3 }
+                            // }
+                            { ...carouselOptions }
+                            className="owl-theme team-carousel"
                         >
                             {/* <div
                             class="owl-carousel owl-carousel_profile-modern"
@@ -840,7 +887,7 @@ const AboutUs = () => {
                 </section>
 
                 {/* Welcome to Team*/}
-                <section className="section text-center">
+                <section className="section text-center wow fadeIn">
                     <div className="container">
                         <div className="list-blocks-outer">
                             <div className="list-blocks">
