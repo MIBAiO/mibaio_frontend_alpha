@@ -45,6 +45,14 @@ const AboutUs = () => {
                 items: 1,
                 nav: false,
             },
+            768: {
+                item: 2,
+                nav: true,
+            },
+            992: {
+                item: 3,
+                nav: true,
+            }
         }
     }
     const defaultOptions = {
