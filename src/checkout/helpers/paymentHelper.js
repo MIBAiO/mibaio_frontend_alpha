@@ -28,7 +28,7 @@ export const displayRazorpay = async (e) => {
 
     // creating a new order
     // const result = await axios.post("http://15.206.27.190:5500/payment/orders");
-    const result = await axios.post("http://15.206.27.190:5500/payment/orders");
+    const result = await axios.post("https://mibaio.in:5500/payment/orders");
 
     if (!result) {
         alert("Server error. Are you online?");
