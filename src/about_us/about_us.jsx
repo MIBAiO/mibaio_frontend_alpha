@@ -340,10 +340,6 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section>
-                {/* gap between two sections */}
-                <section className="section section-md bg-gray-100">
-                    <div className="container"></div>
-                </section>
 
                 <section class="section section-md bg-gray-100 text-center">
                     <div class="container">

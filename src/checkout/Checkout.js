@@ -23,7 +23,7 @@ import {
     paymentSuccessCallback,
     uploadBillingAndShippingAsSame,
 } from "../http/checkoutCalls";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PayMethod from "./PayMethod";
@@ -381,10 +381,18 @@ const Checkout = () => {
                         <NavigationBar />
                         <div
                             id="belownavbar"
-                            className="box-custom-4 bg-default"
+                            className="d-flex justify-content-center align-items-center flex-column box-custom-4 bg-default"
                         >
-                            <div className="box-custom-4-aside bg-accent">
-                                <div className="box-custom-4-aside-decoration">
+                            <div
+                                className="col-md-4 ml-4"
+                                style={
+                                    {
+                                        // width: "35%",
+                                        // height: "auto",
+                                    }
+                                }
+                            >
+                                <div className="box-custom-3-aside-decoration">
                                     <div className="box-custom-4-aside-decoration-bg wow clipInLeft" />
                                     <div className="box-custom-4-icon-outer">
                                         <span className="box-custom-4-icon" />
@@ -394,6 +402,7 @@ const Checkout = () => {
                                     options={defaultOptions}
                                     isStopped={lottieState.isStopped}
                                     isPaused={lottieState.isPaused}
+                                    style={{ backgroundColor: "transparent" }}
                                 />
                                 {/* <lottie-player
                                     className="lottie-animate"
@@ -405,7 +414,17 @@ const Checkout = () => {
                                     autoPlay
                                 ></lottie-player> */}
                             </div>
-                            <div className="box-custom-4-main">
+                            <div className=" text-white mb-4 d-flex justify-content-center align-items-end">
+                                <ul className="breadcrumbs-custom-path">
+                                    <li>
+                                        <Link to="/">Home</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/checkout">Checkout</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            {/* <div className="box-custom-4-main">
                                 <div className="block-10">
                                     <h1
                                         className="font-weight-bold heading-decoration-2 wow fadeInUp"
@@ -425,12 +444,12 @@ const Checkout = () => {
                                         </span>
                                     </h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </section>
                     <section className="section-checkout">
                         <div
-                            className="col-25 mr-5 ml-5 mt-5"
+                            className="col-25 mr-0 ml-0 mt-5"
                             style={{ paddingBottom: "60px" }}
                         >
                             <div className="container-bill">

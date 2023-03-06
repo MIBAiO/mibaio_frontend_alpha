@@ -59,7 +59,7 @@ const Login = () => {
             // dispatch(setUser({ data }));
             console.log(data);
             if (data) {
-                console.log("HEREEEEEEE");
+                console.log("HEREEEEEEE", data);
                 // history.push("/");
                 setDidRedirect(true);
                 // console.log(data);
@@ -133,9 +133,7 @@ const Login = () => {
                                 </a>
                                 <p className="text-gray-900">
                                     <span style={{ maxWidth: "400px" }}>
-                                        Enter your e-mail and password below to
-                                        log in to your account and
-                                        control/monitor your smarthome!
+                                        Login to your account to view your cart
                                     </span>
                                 </p>
                                 {error && (

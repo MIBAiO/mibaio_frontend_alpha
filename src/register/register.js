@@ -166,8 +166,8 @@ const Register = () => {
                             </a>
                             <p className="text-gray-900">
                                 <span style={{ maxWidth: "400px" }}>
-                                    Register a free account on our website to
-                                    experience the amazing features of our apps.
+                                    Register a free account to shop on our
+                                    website and avail discounts
                                 </span>
                             </p>
                             <div className="box-shadow-1-main">
