@@ -56,10 +56,9 @@ import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import FAQ from "./FAQ/FAQ";
 import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 import ScrollToTop from "./components/ScrollToTop";
+import RegisterWithEmail from "./register/RegisterWithEmail";
 
 function App() {
-    // const [loading, setLoading] = useState(false);
-
     const { loading } = useLoadingWithRefresh();
     return loading ? (
         <Loader />
@@ -69,10 +68,8 @@ function App() {
             {/* added ScrollToTop so that page scrolls to top on changing pages */}
             <ScrollToTop />
             <Switch>
-                {/* <Model_copy/> */}
                 <GuestRoute path="/" exact>
                     <Home />
-                    {/* <Copy/> */}
                 </GuestRoute>
 
                 <GuestRoute path="/about_us" exact>
@@ -85,6 +82,10 @@ function App() {
 
                 <GuestRoute path="/register">
                     <Register />
+                </GuestRoute>
+
+                <GuestRoute path="/register/email">
+                    <RegisterWithEmail />
                 </GuestRoute>
 
                 <GuestRoute path="/login">

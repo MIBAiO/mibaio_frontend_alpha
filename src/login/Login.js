@@ -1,18 +1,11 @@
 import { login } from "../http/apis";
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setUser } from "../store/authSlice";
-import { useHistory, Link, Redirect } from "react-router-dom";
-
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Hamburger from "hamburger-react";
-
-import styled from "styled-components";
+import { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import NavigationBar from "../components/navigationbar";
+import "./login.css";
+import GoogleIcon from "../assets/svg/GoogleIcon";
 
 const Login = () => {
-    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [didRedirect, setDidRedirect] = useState(false);
@@ -24,8 +17,6 @@ const Login = () => {
     const [invalid, setInvalid] = useState(false);
 
     const [isVisible, setIsVisible] = useState(false);
-
-    const dispatch = useDispatch();
 
     function checkEmail(email) {
         return email.match(
@@ -84,7 +75,7 @@ const Login = () => {
             {didRedirect && <Redirect to="/" />}
 
             <div>
-                <div className="layout-2 section-layout-3-header">
+                {/* <div className="layout-2 section-layout-3-header">
                     <div className="layout-2-inner">
                         <div className="layout-2-item">
                             <Link
@@ -115,27 +106,32 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="section-layout-3-main">
                     <div className="section-1 text-center">
                         <div className="container">
-                            <div className="box-shadow-1">
-                                {" "}
-                                <a className="brand" href="index.html">
-                                    <img
-                                        className="brand-logo-dark"
-                                        src="images/logo-default-inverse-96x32.png"
-                                        alt=""
-                                        width={96}
-                                        height={32}
-                                        srcSet="images/logo-default-inverse-96x32.png 2x"
-                                    />
-                                </a>
-                                <p className="text-gray-900">
-                                    <span style={{ maxWidth: "400px" }}>
-                                        Login to your account to view your cart
-                                    </span>
-                                </p>
+                            <div className="box-shadow-1 p-2 pb-5 w-100 h-100">
+                                <div className="layout-2-inner">
+                                    <div className="layout-2-item">
+                                        <Link
+                                            className="link link-icon link-icon-left sffont"
+                                            to="/"
+                                        >
+                                            <span className="icon mdi mdi-arrow-left" />
+                                            <span>Back to Home</span>
+                                        </Link>
+                                    </div>
+                                    <div className="layout-2-item">
+                                        <div className="layout-2-group">
+                                            <Link
+                                                className="sffont"
+                                                to="/register"
+                                            >
+                                                Create Account
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
                                 {error && (
                                     <div
                                         className={
@@ -163,107 +159,182 @@ const Login = () => {
                                         {error}
                                     </div>
                                 )}
-                                <div className="box-shadow-1-main">
-                                    <form className="rd-form rd-mailform">
-                                        <div className="form-wrap">
-                                            <input
-                                                className="form-input"
-                                                type="email"
-                                                name="email"
-                                                placeholder="Email-ID"
-                                                required
-                                                onChange={handleEmailChange}
-                                            />
-                                        </div>
 
-                                        <div
-                                            className="form-wrap"
-                                            style={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                            }}
-                                        >
-                                            <input
-                                                className="form-input"
-                                                id="register-password"
-                                                type={
-                                                    isVisible
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                name="password"
-                                                placeholder="Password"
-                                                data-constraints="@Required"
-                                                onChange={(e) =>
-                                                    setPassword(e.target.value)
-                                                }
-                                                style={{ marginRight: "-10%" }}
-                                            />
-                                            <i
-                                                className={`fa fa-${eye}`}
-                                                id="eye"
-                                                aria-hidden="true"
+                                <div
+                                    className="row m-4 h-100"
+                                    style={{ flexDirection: "unset" }}
+                                >
+                                    <div
+                                        className="col-md-6"
+                                        style={{
+                                            maxWidth: "100%",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "flex-start",
+                                            flexDirection: "column",
+                                            // flexWrap: "wrap-reverse",
+                                        }}
+                                    >
+                                        <p className="auth-heading">
+                                            Sign in using Mail ID
+                                        </p>
+
+                                        <form className="rd-form rd-mailform w-100 mt-0">
+                                            <div className="form-wrap">
+                                                <input
+                                                    className="auth-form-input"
+                                                    type="email"
+                                                    name="email"
+                                                    placeholder="Email Address"
+                                                    required
+                                                    onChange={handleEmailChange}
+                                                />
+                                            </div>
+
+                                            <div
+                                                className="form-wrap"
                                                 style={{
-                                                    cursor: "pointer",
+                                                    display: "flex",
+                                                    alignItems: "center",
                                                 }}
-                                                onClick={() => {
-                                                    if (eye === "eye") {
-                                                        setIsVisible(true);
-                                                        setEye("eye-slash");
-                                                    } else {
-                                                        setIsVisible(false);
-                                                        setEye("eye");
-                                                    }
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="form-wrap">
-                                            <button
-                                                className="button button-sm button-primary-outline button-winona"
-                                                name="btnsignin"
-                                                id="btnsignin"
-                                                style={{ marginLeft: "30%" }}
-                                                onClick={handleLogin}
-                                                disabled={invalid}
                                             >
-                                                Sign In
-                                            </button>
-                                        </div>
-                                    </form>
-                                    <div className="text-decoration-lines">
-                                        <span className="text-decoration-lines-content">
-                                            Or log in via social networks
-                                        </span>
+                                                <input
+                                                    className="auth-form-input"
+                                                    id="register-password"
+                                                    type={
+                                                        isVisible
+                                                            ? "text"
+                                                            : "password"
+                                                    }
+                                                    name="password"
+                                                    placeholder="Password"
+                                                    data-constraints="@Required"
+                                                    onChange={(e) =>
+                                                        setPassword(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    style={{
+                                                        marginRight: "-10%",
+                                                    }}
+                                                />
+                                                <i
+                                                    className={`fa fa-${eye}`}
+                                                    id="eye"
+                                                    aria-hidden="true"
+                                                    style={{
+                                                        cursor: "pointer",
+                                                    }}
+                                                    onClick={() => {
+                                                        if (eye === "eye") {
+                                                            setIsVisible(true);
+                                                            setEye("eye-slash");
+                                                        } else {
+                                                            setIsVisible(false);
+                                                            setEye("eye");
+                                                        }
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="form-wrap">
+                                                <button
+                                                    className="auth-btn sffont w-100"
+                                                    name="btnsignin"
+                                                    onClick={handleLogin}
+                                                    disabled={invalid}
+                                                >
+                                                    Continue
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
 
-                                    <div className="group group-xs">
-                                        <a
-                                            className="link link-social-3 mdi mdi-twitter"
-                                            href="#"
-                                            aria-label="Twitter"
-                                        />
-                                        <a
-                                            className="link link-social-3 mdi mdi-facebook"
-                                            href="#"
-                                            aria-label="Facebook"
-                                        />
-                                        <a
-                                            className="link link-social-3 mdi mdi-instagram"
-                                            href="#"
-                                            aria-label="Google+"
-                                        />
-                                        <a
-                                            className="link link-social-3 mdi mdi-linkedin"
-                                            href="#"
-                                            aria-label="Linkedin"
-                                        />
+                                    <div className="col-md-1 hor-cont">
+                                        <div className="vertical-ruler-h">
+                                            OR
+                                        </div>
+                                        <div className="vertical-ruler-v">
+                                            OR
+                                        </div>
                                     </div>
-                                    <div className="text mt-4">
-                                        <span>
-                                            <Link to="request_reset_password">
-                                                Forgot Password ?
-                                            </Link>
-                                        </span>
+                                    <div
+                                        className="col-md-5"
+                                        style={{
+                                            maxWidth: "100%",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "flex-start",
+                                            flexDirection: "column",
+                                        }}
+                                    >
+                                        <form className="rd-form rd-mailform w-100 mt-0">
+                                            <div className="form-wrap">
+                                                <button
+                                                    className="oauth-btn sffont w-100"
+                                                    name="btnsignin"
+                                                    onClick={handleLogin}
+                                                    disabled={invalid}
+                                                >
+                                                    <img
+                                                        src="assets/img/google.png"
+                                                        className="img-fluid "
+                                                        alt="Google"
+                                                        width={"40px"}
+                                                        style={{
+                                                            left: 20,
+                                                            position:
+                                                                "absolute",
+                                                        }}
+                                                    />{" "}
+                                                    {/* <GoogleIcon /> */}
+                                                    Continue with Google
+                                                </button>
+                                            </div>
+                                            <div className="form-wrap">
+                                                <button
+                                                    className="oauth-btn sffont w-100"
+                                                    name="btnsignin"
+                                                    onClick={handleLogin}
+                                                    disabled={invalid}
+                                                >
+                                                    <img
+                                                        src="assets/img/apple.png"
+                                                        className="img-fluid "
+                                                        alt="Apple"
+                                                        width={"40px"}
+                                                        style={{
+                                                            left: 20,
+                                                            position:
+                                                                "absolute",
+                                                        }}
+                                                    />{" "}
+                                                    {/* <GoogleIcon /> */}
+                                                    Continue with Apple
+                                                </button>
+                                            </div>
+                                            <div className="form-wrap">
+                                                <button
+                                                    className="oauth-btn sffont w-100"
+                                                    name="btnsignin"
+                                                    onClick={handleLogin}
+                                                    disabled={invalid}
+                                                >
+                                                    <img
+                                                        src="assets/img/facebook.png"
+                                                        className="img-fluid "
+                                                        alt="Facebook"
+                                                        width={"40px"}
+                                                        style={{
+                                                            left: 20,
+                                                            position:
+                                                                "absolute",
+                                                        }}
+                                                    />{" "}
+                                                    {/* <GoogleIcon /> */}
+                                                    Continue with Facebook
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -271,20 +342,6 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="snackbars" id="form-output-global" />
-                {/* <script>
-					document.getElementById("eye").addEventListener("click", function() {'{'}
-					var x = document.getElementById("register-password");
-					if (x.type == "password") {'{'}
-					x.type = "text";
-					this.classList.add("fa-eye");
-					this.classList.remove("fa-eye-slash");
-					{'}'} else {'{'}
-					x.type = "password";
-					this.classList.remove("fa-eye");
-					this.classList.add("fa-eye-slash");
-					{'}'}
-					{'}'});
-          		</script> */}
             </div>
         </>
     );
