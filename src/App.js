@@ -84,7 +84,7 @@ function App() {
                     <Register />
                 </GuestRoute>
 
-                <GuestRoute path="/register/email">
+                <GuestRoute path="/emailreg">
                     <RegisterWithEmail />
                 </GuestRoute>
 

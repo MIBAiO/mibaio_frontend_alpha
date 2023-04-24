@@ -79,10 +79,10 @@
 
 .vertical-ruler-h {
     position: relative;
-    height: 150px;
+    height: 50px;
     width: 100%;
     display: block;
-    padding-top: 100px;
+    padding-top: 20px;
     margin: 10px auto;
 }
 .vertical-ruler-h:before {
@@ -93,12 +93,15 @@
     left: 2%;
     position: absolute;
     left: 0px;
-    top: 75%;
+    top: 65%;
     /* left: 0px; */
-    width: 29vw;
+    width: 100px;
     z-index: 0;
 }
-
+.signin-btn {
+    font-weight: bold;
+    margin-right: 30px;
+}
 .vertical-ruler-h:after {
     border-top: 1px solid #728288;
     content: "";
@@ -108,7 +111,7 @@
     position: absolute;
     /* top: 123px; */
     right: 0%;
-    top: 75%;
+    top: 65%;
     width: 29vw;
     z-index: 0;
 }
@@ -123,7 +126,25 @@
     .hor-cont {
         min-width: auto;
     }
+    .oauth-btn {
+        font-size: 18px;
+    }
 }
+
+@media screen and (min-width: 801px) and (max-width: 1000px) {
+    .oauth-btn {
+        font-size: 12px;
+    }
+}
+
+/* @media screen and (max-width: 800px) {
+    .vertical-ruler-h:before {
+        width: 20vw;
+    }
+    .vertical-ruler-h:after {
+        width: 20vw;
+    }
+} */
 
 @media screen and (max-width: 800px) {
     .vertical-ruler-v {
@@ -135,4 +156,45 @@
     .hor-cont {
         min-width: 100%;
     }
+
+    .oauth-btn {
+        font-size: 14px;
+    }
+    .inputs-cont {
+        flex: 1 !important;
+    }
+    .oauth-button-cont {
+        flex: 1 !important;
+    }
+}
+
+.signin-btn-text {
+    display: flex;
+    justify-content: start;
+}
+@media screen and (min-width: 421px) {
+    .signin-btn-text {
+        display: block;
+    }
+}
+@media screen and (max-width: 420px) {
+    .signin-btn-text {
+        display: none !important;
+    }
+}
+
+.back-home-btn {
+    /* top: 10px; */
+    /* left: 40px; */
+    /* position: absolute; */
+    margin-left: 30px;
+}
+.create-acc-btn {
+    top: 10px;
+    right: 50px;
+    /* position: absolute; */
+}
+
+.signup-oauth-btn {
+    max-width: 400px !important;
 }

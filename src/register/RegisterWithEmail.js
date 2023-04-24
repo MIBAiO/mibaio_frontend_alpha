@@ -5,21 +5,13 @@ import { register } from "../http/apis";
 import { Redirect, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-// import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Hamburger from "hamburger-react";
-
-import styled from "styled-components";
-import { faBookSkull } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "../components/navigationbar";
-
+import "../login/login.css";
 const RegisterWithEmail = () => {
-    const history = useHistory();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [redirected, setRedirected] = useState(false);
     const [error, setError] = useState(null);
 
@@ -28,6 +20,7 @@ const RegisterWithEmail = () => {
     const [eye, setEye] = useState("eye");
 
     const [isVisible, setIsVisible] = useState(false);
+    const [isVisible2, setIsVisible2] = useState(false);
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -79,6 +72,9 @@ const RegisterWithEmail = () => {
         // setInvalid(!status);
         return status;
     }
+    function comfirmPassMatch() {
+        return confirmPassword === password;
+    }
 
     useEffect(() => {
         if (
@@ -86,7 +82,8 @@ const RegisterWithEmail = () => {
                 containsAnyLetter(password) &&
                 containsAnyNumber(password) &&
                 isUpper(password) &&
-                checkLength(password)
+                checkLength(password) &&
+                comfirmPassMatch()
             )
         ) {
             setInvalid(true);
@@ -103,7 +100,7 @@ const RegisterWithEmail = () => {
             {/* RD Navbar*/}
             <NavigationBar />
 
-            {error && (
+            {/* {error && (
                 <div
                     className={
                         "alert alert-warning alert-dismissible fade" +
@@ -122,9 +119,9 @@ const RegisterWithEmail = () => {
                     </button>
                     <strong>WARNING!</strong> {error}
                 </div>
-            )}
+            )} */}
 
-            <div className="layout-2 ">
+            {/* <div className="layout-2 ">
                 <div className="layout-2-inner">
                     <div className="layout-2-item">
                         <Link className="link link-icon link-icon-left" to="/">
@@ -149,8 +146,194 @@ const RegisterWithEmail = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
             <div className="section-layout-3-main">
+                <div className="section-1 text-center">
+                    <div className="container">
+                        <div className="signup-cont box-shadow-1 p-2 pb-5 w-100 h-100">
+                            <div className="d-flex p-0 m-0 justify-content-between">
+                                <div className="layout-2-item back-home-btn">
+                                    <Link
+                                        className="link link-icon link-icon-left sffont"
+                                        to="/"
+                                    >
+                                        <span className="icon mdi mdi-arrow-left" />
+                                        <span>Back to Home</span>
+                                    </Link>
+                                </div>
+                                <div className="layout-2-item create-acc-btn d-flex p-0 m-0 justify-content-between align-items-center">
+                                    <div className="layout-2-group">
+                                        <Link className="sffont" to="/register">
+                                            Create Account
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            {error && (
+                                <div
+                                    className={
+                                        "alert alert-warning alert-dismissible fade" +
+                                        (error ? " show" : "")
+                                    }
+                                    role="alert"
+                                >
+                                    <button
+                                        type="button"
+                                        className="close"
+                                        data-dismiss="alert"
+                                        aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">×</span>
+                                        <span className="sr-only">Close</span>
+                                    </button>
+                                    <strong>WARNING!</strong> {error}
+                                </div>
+                            )}
+
+                            <div
+                                className="oauth-button-cont d-flex justify-content-center align-items-center w-100 m-5"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "flex-start",
+                                    flexDirection: "column",
+                                }}
+                            >
+                                <p className="auth-heading">
+                                    Sign in using Mail ID
+                                </p>
+
+                                <form
+                                    className="rd-form rd-mailform mt-0 w-100"
+                                    style={{
+                                        maxWidth: 600,
+                                    }}
+                                >
+                                    <div className="form-wrap">
+                                        <input
+                                            className="auth-form-input"
+                                            type="text"
+                                            name="name"
+                                            placeholder="Email Address"
+                                            required
+                                            onChange={(e) =>
+                                                setName(e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <div className="form-wrap">
+                                        <input
+                                            className="auth-form-input"
+                                            type="email"
+                                            name="email"
+                                            placeholder="Email Address"
+                                            required
+                                            // onChange={handleEmailChange}
+                                        />
+                                    </div>
+
+                                    <div
+                                        className="form-wrap"
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <input
+                                            className="auth-form-input"
+                                            id="register-password"
+                                            type={
+                                                isVisible ? "text" : "password"
+                                            }
+                                            name="password"
+                                            placeholder="Password"
+                                            data-constraints="@Required"
+                                            onChange={(e) =>
+                                                setPassword(e.target.value)
+                                            }
+                                            style={{
+                                                marginRight: "-10%",
+                                            }}
+                                        />
+                                        <i
+                                            className={`fa fa-${eye}`}
+                                            id="eye"
+                                            aria-hidden="true"
+                                            style={{
+                                                cursor: "pointer",
+                                            }}
+                                            onClick={() => {
+                                                if (eye === "eye") {
+                                                    setIsVisible(true);
+                                                    setEye("eye-slash");
+                                                } else {
+                                                    setIsVisible(false);
+                                                    setEye("eye");
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                    <div
+                                        className="form-wrap"
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <input
+                                            className="auth-form-input"
+                                            id="register-password"
+                                            type={
+                                                isVisible2 ? "text" : "password"
+                                            }
+                                            name="Conform-Password"
+                                            placeholder="Confirm Password"
+                                            data-constraints="@Required"
+                                            onChange={(e) =>
+                                                setConfirmPassword(
+                                                    e.target.value
+                                                )
+                                            }
+                                            style={{
+                                                marginRight: "-10%",
+                                            }}
+                                        />
+                                        <i
+                                            className={`fa fa-${eye}`}
+                                            id="eye"
+                                            aria-hidden="true"
+                                            style={{
+                                                cursor: "pointer",
+                                            }}
+                                            onClick={() => {
+                                                if (eye === "eye") {
+                                                    setIsVisible2(true);
+                                                    setEye("eye-slash");
+                                                } else {
+                                                    setIsVisible2(false);
+                                                    setEye("eye");
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="form-wrap">
+                                        <button
+                                            className="auth-btn sffont w-100"
+                                            name="btnsignin"
+                                            onClick={handleRegister}
+                                        >
+                                            Continue
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* <div className="section-layout-3-main">
                 <div className="section-1 text-center">
                     <div className="container">
                         <div className="box-shadow-1">
@@ -171,7 +354,6 @@ const RegisterWithEmail = () => {
                                 </span>
                             </p>
                             <div className="box-shadow-1-main">
-                                {/* RD Mailform */}
                                 <form
                                     className="rd-form rd-mailform"
                                     method="post"
@@ -191,7 +373,6 @@ const RegisterWithEmail = () => {
                                                 setName(e.target.value)
                                             }
                                         />
-                                        {/*<label class="form-label" for="register-name">Name</label> */}
                                     </div>
                                     <div className="form-wrap">
                                         <input
@@ -362,7 +543,7 @@ const RegisterWithEmail = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

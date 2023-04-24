@@ -111,8 +111,8 @@ const Login = () => {
                     <div className="section-1 text-center">
                         <div className="container">
                             <div className="box-shadow-1 p-2 pb-5 w-100 h-100">
-                                <div className="layout-2-inner">
-                                    <div className="layout-2-item">
+                                <div className="d-flex p-0 m-0 justify-content-between">
+                                    <div className="layout-2-item back-home-btn">
                                         <Link
                                             className="link link-icon link-icon-left sffont"
                                             to="/"
@@ -121,7 +121,7 @@ const Login = () => {
                                             <span>Back to Home</span>
                                         </Link>
                                     </div>
-                                    <div className="layout-2-item">
+                                    <div className="layout-2-item create-acc-btn d-flex p-0 m-0 justify-content-between align-items-center">
                                         <div className="layout-2-group">
                                             <Link
                                                 className="sffont"
@@ -165,7 +165,7 @@ const Login = () => {
                                     style={{ flexDirection: "unset" }}
                                 >
                                     <div
-                                        className="col-md-6"
+                                        className="col-md-6 inputs-cont"
                                         style={{
                                             maxWidth: "100%",
                                             display: "flex",
@@ -258,7 +258,7 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div
-                                        className="col-md-5"
+                                        className="col-md-5 oauth-button-cont"
                                         style={{
                                             maxWidth: "100%",
                                             display: "flex",
