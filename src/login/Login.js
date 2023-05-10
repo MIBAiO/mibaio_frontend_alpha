@@ -4,6 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import NavigationBar from "../components/navigationbar";
 import "./login.css";
 import GoogleIcon from "../assets/svg/GoogleIcon";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -43,6 +44,11 @@ const Login = () => {
         e.preventDefault();
 
         const loginData = { email, password };
+        if (error) {
+            console.log(error);
+            toast.error(error);
+            return;
+        }
         //console.log(loginData)
 
         try {
@@ -75,38 +81,6 @@ const Login = () => {
             {didRedirect && <Redirect to="/" />}
 
             <div>
-                {/* <div className="layout-2 section-layout-3-header">
-                    <div className="layout-2-inner">
-                        <div className="layout-2-item">
-                            <Link
-                                className="link link-icon link-icon-left"
-                                to="/"
-                            >
-                                <span className="icon mdi mdi-arrow-left" />
-                                <span>Back to Home</span>
-                            </Link>
-                        </div>
-                        <div className="layout-2-item">
-                            <div className="layout-2-group">
-                                <p className="text-gray-900 ls-001">
-                                    Don’t have an account?
-                                </p>
-                                <Link
-                                    className="button button-sm button-primary-outline button-winona"
-                                    to="/register"
-                                >
-                                    Register
-                                </Link>
-                                <a
-                                    className="link link-underline"
-                                    href="faq.html"
-                                >
-                                    Need help?{" "}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
                 <div className="section-layout-3-main">
                     <div className="section-1 text-center">
                         <div className="container">
@@ -132,7 +106,7 @@ const Login = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {error && (
+                                {/* {error && (
                                     <div
                                         className={
                                             `alert ${alertType} d-flex align-items-center alert-dismissible fade rounded-pill` +
@@ -158,7 +132,7 @@ const Login = () => {
                                         </button>
                                         {error}
                                     </div>
-                                )}
+                                )} */}
 
                                 <div
                                     className="row m-4 h-100"
@@ -179,11 +153,14 @@ const Login = () => {
                                             Sign in using Mail ID
                                         </p>
 
-                                        <form className="rd-form rd-mailform w-100 mt-0">
+                                        <form
+                                            onSubmit={handleLogin}
+                                            className="rd-form rd-mailform w-100 mt-0"
+                                        >
                                             <div className="form-wrap">
                                                 <input
                                                     className="auth-form-input"
-                                                    type="email"
+                                                    type="text"
                                                     name="email"
                                                     placeholder="Email Address"
                                                     required
@@ -240,8 +217,9 @@ const Login = () => {
                                                 <button
                                                     className="auth-btn sffont w-100"
                                                     name="btnsignin"
-                                                    onClick={handleLogin}
-                                                    disabled={invalid}
+                                                    type="submit"
+                                                    // onClick={handleLogin}
+                                                    // disabled={invalid}
                                                 >
                                                     Continue
                                                 </button>
@@ -336,6 +314,19 @@ const Login = () => {
                                             </div>
                                         </form>
                                     </div>
+                                </div>
+                                <div className="row d-flex justify-content-center align-items-center">
+                                    <div className="col-md-5 inputs-cont">
+                                        .
+                                    </div>
+                                    <div className="col-2">
+                                        <Link to="/request_reset_password">
+                                            <span style={{ cursor: "pointer" }}>
+                                                Cant Signin?
+                                            </span>
+                                        </Link>
+                                    </div>
+                                    <div className="col-md-4"></div>
                                 </div>
                             </div>
                         </div>
