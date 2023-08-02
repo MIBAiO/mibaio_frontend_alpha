@@ -231,7 +231,7 @@ const ViewProduct = (props) => {
                                 /> */}
                         <div
                             className="fluid__image-container wow fadeIn"
-                            style={{ margin: "10px", maxWidth: "500px" }}
+                            style={{ margin: "10px" }}
                         > {currentlyViewing.search("spin") !== -1 ? (
                             <>
                                 <iframe

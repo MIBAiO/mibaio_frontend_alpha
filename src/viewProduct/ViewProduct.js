@@ -100,6 +100,7 @@ const ViewProduct = (props) => {
 					"images/product2/white-lhsp-1.png",
 					"images/product2/white-rhsp-1.png",
 					"images/product2/actual-representation.png",
+					"https://warylums.sirv.com/White/White%20360.spin?zoom=10",
 				]);
 				setCurrentlyViewing("images/product2/white-front-1.png");
 				break;
@@ -118,6 +119,7 @@ const ViewProduct = (props) => {
 					"images/product2/black-lhsp.png",
 					"images/product2/black-rhsp.png",
 					"images/product2/actual-representation.png",
+					"https://warylums.sirv.com/Black/Black%20360.spin?zoom=10",
 				]);
 				setCurrentlyViewing("images/product2/black-front.png");
 				break;
@@ -232,7 +234,7 @@ const ViewProduct = (props) => {
                                 /> */}
 						<div
 							className="fluid__image-container wow fadeIn"
-							style={{ margin: "10px", maxWidth: "500px" }}
+							style={{ margin: "10px" }}
 						> {currentlyViewing.search("spin") !== -1 ? (
 							<>
 								<iframe
