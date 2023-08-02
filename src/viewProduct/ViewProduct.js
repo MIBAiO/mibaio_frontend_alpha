@@ -39,7 +39,10 @@ const ViewProduct = (props) => {
 		new WOW.WOW({
 			live: false,
 		}).init();
-	});
+
+
+	}, []);
+
 
 	const [state, setState] = useState({
 		previewHorizontalPos: "left",
@@ -61,7 +64,7 @@ const ViewProduct = (props) => {
 	]);
 
 	const [currentlyViewing, setCurrentlyViewing] = useState(
-		"images/product1/whiteFront600x600.png"
+		"images/product2/white-front-1.png"
 	);
 
 	const [didRedrirect, setDidRedirect] = useState(false);
@@ -93,13 +96,12 @@ const ViewProduct = (props) => {
 		switch (color) {
 			case "white":
 				setProductImages((_) => [
-					"images/product1/whiteFront600x600.png",
-					"images/product1/whiteLeft600x600.png",
-					"images/product1/whiteRight600x600.png",
-					"images/product1/white600x600.png",
-					"https://warylums.sirv.com/White/White%20360.spin?zoom=10",
+					"images/product2/white-front-1.png",
+					"images/product2/white-lhsp-1.png",
+					"images/product2/white-rhsp-1.png",
+					"images/product2/actual-representation.png",
 				]);
-				setCurrentlyViewing("images/product1/whiteFront600x600.png");
+				setCurrentlyViewing("images/product2/white-front-1.png");
 				break;
 			case "blue":
 				setProductImages((_) => [
@@ -112,13 +114,12 @@ const ViewProduct = (props) => {
 				break;
 			case "black":
 				setProductImages((_) => [
-					"images/product1/BlackFront600x600.png",
-					"images/product1/BlackLeft600x600.png",
-					"images/product1/BlackRight600x600.png",
-					"images/product1/Black600x600.png",
-					"https://warylums.sirv.com/Black/Black%20360.spin?zoom=10",
+					"images/product2/black-front.png",
+					"images/product2/black-lhsp.png",
+					"images/product2/black-rhsp.png",
+					"images/product2/actual-representation.png",
 				]);
-				setCurrentlyViewing("images/product1/BlackFront600x600.png");
+				setCurrentlyViewing("images/product2/black-front.png");
 				break;
 
 			default:
@@ -231,46 +232,30 @@ const ViewProduct = (props) => {
                                 /> */}
 						<div
 							className="fluid__image-container wow fadeIn"
-							style={{ margin: "10px" }}
+							style={{ margin: "10px", maxWidth: "500px" }}
 						>
-							{currentlyViewing.search("spin") !== -1 ? (
-								<>
-									<iframe
-										src={currentlyViewing}
-										title="360 image"
-										frameborder="0"
-										allowfullscreen
-										style={{
-											height: "60vh",
-											width: "70vw",
-											maxWidth: "600px",
-										}}
-									></iframe>
-								</>
-							) : (
-								<ReactImageMagnify
-									{...{
-										smallImage: {
-											alt: "Xtension 4S",
-											isFluidWidth: true,
-											src: currentlyViewing,
-										},
-										largeImage: {
-											src: currentlyViewing,
-											width: 1200,
-											height: 1200,
-										},
+							<ReactImageMagnify
+								{...{
+									smallImage: {
+										alt: "Xtension 4S",
+										isFluidWidth: true,
+										src: currentlyViewing,
+									},
+									largeImage: {
+										src: currentlyViewing,
+										width: 1200,
+										height: 1200,
+									},
 
-										enlargedImageContainerDimensions: {
-											width: "110%",
-											height: "110%",
-										},
-										isActivatedOnTouch: true,
-										enlargedImageContainerClassName:
-											"customEnlargedContainer",
-									}}
-								/>
-							)}
+									enlargedImageContainerDimensions: {
+										width: "110%",
+										height: "110%",
+									},
+									isActivatedOnTouch: true,
+									enlargedImageContainerClassName:
+										"customEnlargedContainer",
+								}}
+							/>
 						</div>
 						<div
 							className="col-md-1 product-small d-flex flex-md-column order-md-first smallProducts"
@@ -294,11 +279,7 @@ const ViewProduct = (props) => {
 									key={idx}
 								>
 									<img
-										src={
-											val.search("spin") !== -1
-												? "images/360-degrees.png"
-												: val
-										}
+										src={val}
 										alt={val}
 										className="img-fluid small-img"
 									/>
@@ -1042,9 +1023,9 @@ const ViewProduct = (props) => {
 
 				{/* Subscribe to Get Notified!*/}
 				<CustomFooter />
-			</div>
+			</div >
 			<div className="snackbars" id="form-output-global" />
-		</div>
+		</div >
 	);
 };
 
