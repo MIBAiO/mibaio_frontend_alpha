@@ -21,7 +21,7 @@ import "../css/selection.css";
 import "../style.css";
 // import "../finalcss.css";
 import "../css/newcss.css";
-import sample1 from "./Sample1.png";
+import sample1 from "./landing-page-image.png";
 import WOW from "wowjs";
 import alpha1 from "./Alpha-Concept_1-black-front.png";
 import offset from "./Alpha-Concept_1-offset.png";
@@ -518,15 +518,15 @@ const Home = (props) => {
 
                                     <div
                                         className="col-md-4 flex-center"
-                                        // data-aos="zoom-in"
-                                        // data-duration="1000"
+                                    // data-aos="zoom-in"
+                                    // data-duration="1000"
                                     >
                                         <img
                                             src={sample1}
                                             alt="MIBAiO Xtension 4S white"
                                             className="z-depth-0 img-fluid wow fadeInUp"
                                             data-wow-delay=".5s"
-                                            // style={{ transform: `scale(${scale})`, opacity }}
+                                        // style={{ transform: `scale(${scale})`, opacity }}
                                         />
                                     </div>
 
@@ -827,13 +827,13 @@ const Home = (props) => {
                                     data-aos-offset="100"
                                     data-aos-duration="1500"
                                     data-aos="fade-right"
-                                    // data-aos-anchor-placement="bottom-bottom"
+                                // data-aos-anchor-placement="bottom-bottom"
                                 >
                                     <div className="unit unit-spacing-1 align-items-center">
                                         <div className="unit-left">
                                             <div
                                                 className="icon icon-style-1 mdi mdi-flash"
-                                                // style={{ font: "normal 24px/2 Material Design Icons" }}
+                                            // style={{ font: "normal 24px/2 Material Design Icons" }}
                                             ></div>
                                         </div>
                                         <div className="unit-body">
@@ -864,7 +864,7 @@ const Home = (props) => {
                                     data-aos-offset="100"
                                     data-aos-duration="1500"
                                     data-aos="fade-left"
-                                    // data-aos-anchor-placement="bottom-bottom"
+                                // data-aos-anchor-placement="bottom-bottom"
                                 >
                                     <div className="item">
                                         <img
@@ -886,13 +886,13 @@ const Home = (props) => {
                                     data-aos-offset="100"
                                     data-aos-duration="1500"
                                     data-aos="fade-left"
-                                    // data-aos-anchor-placement="bottom-bottom"
+                                // data-aos-anchor-placement="bottom-bottom"
                                 >
                                     <div className="unit unit-spacing-1 align-items-center">
                                         <div className="unit-left">
                                             <div
                                                 className="icon icon-style-1 mdi mdi-access-point-network"
-                                                // style={{ font: "normal 24px/2 Material Design Icons" }}
+                                            // style={{ font: "normal 24px/2 Material Design Icons" }}
                                             ></div>
                                         </div>
                                         <div className="unit-body">
@@ -914,13 +914,13 @@ const Home = (props) => {
                                                     <br />
                                                     <div
                                                         className="icon icon-style-1 mdi mdi-wifi"
-                                                        // style={{ font: "normal 24px/2 Material Design Icons" }}
+                                                    // style={{ font: "normal 24px/2 Material Design Icons" }}
                                                     ></div>{" "}
                                                     Internet <br />
                                                     <br />
                                                     <div
                                                         className="icon icon-style-1 mdi mdi-bluetooth"
-                                                        // style={{ font: "normal 24px/2 Material Design Icons" }}
+                                                    // style={{ font: "normal 24px/2 Material Design Icons" }}
                                                     ></div>{" "}
                                                     Bluetooth
                                                 </p>
@@ -952,7 +952,7 @@ const Home = (props) => {
                                     data-aos-offset="100"
                                     data-aos-duration="1500"
                                     data-aos="fade-right"
-                                    // data-aos-anchor-placement="bottom-bottom"
+                                // data-aos-anchor-placement="bottom-bottom"
                                 >
                                     <img
                                         className="d-block w-100"
