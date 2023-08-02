@@ -233,7 +233,21 @@ const ViewProduct = (props) => {
 						<div
 							className="fluid__image-container wow fadeIn"
 							style={{ margin: "10px", maxWidth: "500px" }}
-						>
+						> {currentlyViewing.search("spin") !== -1 ? (
+							<>
+								<iframe
+									src={currentlyViewing}
+									title="360 image"
+									frameborder="0"
+									allowfullscreen
+									style={{
+										height: "60vh",
+										width: "70vw",
+										maxWidth: "600px",
+									}}
+								></iframe>
+							</>
+						) : (
 							<ReactImageMagnify
 								{...{
 									smallImage: {
@@ -256,6 +270,7 @@ const ViewProduct = (props) => {
 										"customEnlargedContainer",
 								}}
 							/>
+						)}
 						</div>
 						<div
 							className="col-md-1 product-small d-flex flex-md-column order-md-first smallProducts"
@@ -279,7 +294,11 @@ const ViewProduct = (props) => {
 									key={idx}
 								>
 									<img
-										src={val}
+										src={
+											val.search("spin") !== -1
+												? "images/360-degrees.png"
+												: val
+										}
 										alt={val}
 										className="img-fluid small-img"
 									/>
@@ -1023,9 +1042,9 @@ const ViewProduct = (props) => {
 
 				{/* Subscribe to Get Notified!*/}
 				<CustomFooter />
-			</div >
+			</div>
 			<div className="snackbars" id="form-output-global" />
-		</div >
+		</div>
 	);
 };
 
