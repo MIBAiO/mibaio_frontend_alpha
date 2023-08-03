@@ -774,7 +774,7 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100">
+                    <section className="section section-md bg-gray-100" style="background:linear-gradient(180deg,#000,#8a8b81);">
                         <h3
                             className="wow fadeInUp"
                             data-wow-delay=".4s"
@@ -784,8 +784,9 @@ const Home = (props) => {
                                 background: "linear-gradient(180deg, #434343, #000000)",
                             }}
                         >
-                            Title Here
+                            Control with your voice with your favorite assistants!
                         </h3>
+			<h4 style="text-align: center;">Supports your favourite voice assistant services</h4>
 
                         <picture>
                             <source
