@@ -187,7 +187,6 @@ const Home = (props) => {
 
                                                 <video
                                                     width="100%"
-                                                    loop
                                                     autoPlay
                                                     muted
                                                     style={{
@@ -209,7 +208,7 @@ const Home = (props) => {
                                             <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
                                             <lord-icon
                                                 src="https://cdn.lordicon.com/wxnxiano.json"
-                                                trigger="loop"
+                                                trigger="once"
                                                 delay="175"
                                                 speed=".5"
                                                 colors="primary:#ffffff,secondary:#0accbe"
@@ -266,11 +265,9 @@ const Home = (props) => {
                                             options={{
                                                 strings: [
                                                     "home",
-                                                    "routine tasks",
-                                                    "appliances",
                                                     "lifestyle",
+						    "appliances",
                                                     "office",
-                                                    "fingers",
                                                 ],
                                                 autoStart: true,
                                                 loop: true,
@@ -304,8 +301,7 @@ const Home = (props) => {
                                                 animationName: "clipInLeft",
                                             }}
                                         >
-                                            Upgrade your existing conventional
-                                            electrical appliances to a set of
+                                            Upgrade your existing electrical appliances to a set of
                                             smart appliances! Control & monitor
                                             from any part of the world with your
                                             smartphone!
@@ -774,7 +770,7 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100">
+                    <section className="section section-md bg-gray-100" style="background:linear-gradient(180deg,#000,#8a8b81,#fff);">
                         <h3
                             className="wow fadeInUp"
                             data-wow-delay=".4s"
@@ -784,8 +780,9 @@ const Home = (props) => {
                                 color: "#697484",
                             }}
                         >
-                            Title Here
+                            Control with your Voice 🎙️
                         </h3>
+			<h4 style="text-align: center;">Supports your favourite voice assistants</h4>
 
                         <picture>
                             <source
