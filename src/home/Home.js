@@ -208,7 +208,7 @@ const Home = (props) => {
                                             <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
                                             <lord-icon
                                                 src="https://cdn.lordicon.com/wxnxiano.json"
-                                                trigger="once"
+                                                trigger="loop"
                                                 delay="175"
                                                 speed=".5"
                                                 colors="primary:#ffffff,secondary:#0accbe"
@@ -770,7 +770,7 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100" style="background:linear-gradient(180deg,#000,#8a8b81,#fff);">
+                    <section className="section section-md bg-gray-100" style={{background:"linear-gradient(180deg,#000,#8a8b81,#fff)",}}>
                         <h3
                             className="wow fadeInUp"
                             data-wow-delay=".4s"
@@ -782,7 +782,7 @@ const Home = (props) => {
                         >
                             Control with your Voice 🎙️
                         </h3>
-			<h4 style="text-align: center;">Supports your favourite voice assistants</h4>
+			<h4 style={{textAlign: "center",}}>Supports your favourite voice assistants</h4>
 
                         <picture>
                             <source
