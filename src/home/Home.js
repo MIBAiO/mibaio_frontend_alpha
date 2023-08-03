@@ -781,7 +781,7 @@ const Home = (props) => {
                             style={{
                                 textAlign: "center",
                                 paddingTop: "32px",
-                                color: "#697484",
+                                background: "linear-gradient(180deg, #434343, #000000)",
                             }}
                         >
                             Title Here
