@@ -1415,8 +1415,7 @@ const Home = (props) => {
                                                             >
                                                                 03
                                                             </span>{" "}
-                                                            &nbsp; ROI [Return
-                                                            on Investment]?
+                                                            &nbsp; 💸 Returns 
                                                             <div className="card-arrow"></div>
                                                         </a>
                                                     </div>
@@ -1430,13 +1429,13 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            With uptp 26%
-                                                            savings on energy
-                                                            bills per month,
-                                                            you'll recover the
+                                                            Save upto 26%
+                                                            on electricity
+                                                            bill per month.<br/>
+                                                            recover the
                                                             amount invested
-                                                            roughly in about 7
-                                                            months*..!
+                                                            roughly in about 7*
+                                                            months!
                                                         </p>
                                                     </div>
                                                 </div>
@@ -2282,22 +2281,15 @@ const Home = (props) => {
                                                 >
                                                     <div className="accordion-body">
                                                         The major advantage is
-                                                        price: You get a premium
-                                                        model under ₹4000. You
-                                                        don't have to call an
-                                                        electrician for
-                                                        installation, we make it
-                                                        very easy to install for
-                                                        you. Second advantage is
-                                                        Made in INDIA: Our
+                                                        Easy life: You experience a #smarthome and other exciting features under ₹6000. <br/>
+                                                        Second advantage is
+                                                        Modular Design: Our
                                                         product is carefully
-                                                        designed for a standard
-                                                        Indian household of
-                                                        world-class quality. We
-                                                        are working under the
-                                                        Make in India, Digital
-                                                        India, Aatmanirbhar
-                                                        Bharat initiatives.{" "}
+                                                        designed to fit outside any existing electrical switchboard. It can be at your house or at your workplace.
+							<br/> 
+							We are working towards the
+                                                        #MakeInIndia, #DigitalIndia, 
+							#AatmanirbharBharat initiatives.{" "}
                                                     </div>
                                                 </div>
                                             </div>
@@ -2369,10 +2361,7 @@ const Home = (props) => {
                                                     data-bs-parent="#appAccordion"
                                                 >
                                                     <div className="accordion-body">
-                                                        No as of now. But you'll
-                                                        get that funtion in the
-                                                        upcoming versions of
-                                                        MIBAiO.
+                                                        Yes, you can regulate the speed of the fan with your app<br/>And also with your voice!🎙️
                                                     </div>
                                                 </div>
                                             </div>
@@ -2403,18 +2392,12 @@ const Home = (props) => {
                                                     data-bs-parent="#appAccordion"
                                                 >
                                                     <div className="accordion-body">
-                                                        Talk to your electrical
-                                                        appliances through Siri,
-                                                        Alexa and Google voice
-                                                        assistant. Control your
-                                                        exising appliances with
-                                                        your smartphone and also
-                                                        manually(like we do now
-                                                        using the conventional
-                                                        switches). Monitor your
+                                                        Ask 🎙️ Alexa to turn off your hall light</br> 
+							Set a routine to turn on outdoor light sharp at 6:45pm everyday ⏰ </br>
+							Monitor
                                                         electricity consumption
-                                                        of connected appliances
-                                                        on your smartphone app.
+                                                        of your connected appliances
+                                                        on your App 📊
                                                     </div>
                                                 </div>
                                             </div>
@@ -2720,9 +2703,8 @@ const Home = (props) => {
                                     }}
                                 >
                                     It’s time to upgrade your
-                                    home/office/workspace and experience the
-                                    futuristic lifestyle! Contact us directly to
-                                    enhance your lifestyle experience.
+                                    existing electrical appliances and experience the
+                                    futuristic lifestyle!
                                 </span>
                             </p>
                         </div>
