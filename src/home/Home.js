@@ -649,7 +649,7 @@ const Home = (props) => {
                                                     opacity: " .8",
                                                 }}
                                             >
-                                                (PS: Works with Alexa, Siri &
+                                                (Works with Alexa, Siri &
                                                 Google)
                                             </span>
                                         </p>
@@ -683,7 +683,7 @@ const Home = (props) => {
                                         <p className="description">
                                             Energy savings and advancements you
                                             never imagined! Save upto 26% of
-                                            your energy bills! 💚{" "}
+                                            your electricity bills! 💚{" "}
                                         </p>
                                     </div>
                                 </div>
@@ -713,9 +713,9 @@ const Home = (props) => {
                                             <a href="#Surge">Shared Access</a>
                                         </h4>
                                         <p className="description">
-                                            Share devices with your family 👨‍👩‍👦,
-                                            sync state of devices, set more
-                                            smart scenes for any space.
+                                            Share device access with your family 👨‍👩‍👦,
+                                            add timers to devices, set more
+                                            smart scenes for any switches.
                                         </p>
                                     </div>
                                 </div>
@@ -780,9 +780,9 @@ const Home = (props) => {
                                 color: "#697484",
                             }}
                         >
-                            Control with your Voice 🎙️
+                            Hands-free control 🎙️
                         </h3>
-			<h4 style={{textAlign: "center",}}>Supports your favourite voice assistants</h4>
+			<h4 style={{textAlign: "center", color: "#697484", opacity: "0.7"}}>Supports your favourite voice assistants</h4>
 
                         <picture>
                             <source
@@ -842,7 +842,7 @@ const Home = (props) => {
                                         <blockquote className="quote-light">
                                             <div className="quote-light-text">
                                                 <p>
-                                                    MIBAiO Xtension 4S is
+                                                    Xtension 4S is
                                                     equipped with a Positive
                                                     Temperature Coefficient
                                                     Thermister (PTC) to protect
@@ -909,10 +909,7 @@ const Home = (props) => {
                                                     appliances with:
                                                     <br />
                                                     <br />
-                                                    <div
-                                                        className="icon icon-style-1 mdi mdi-wifi"
-                                                    // style={{ font: "normal 24px/2 Material Design Icons" }}
-                                                    ></div>{" "}
+                                                    <div className="icon icon-style-1 mdi mdi-wifi" ></div>{" "}
                                                     Internet <br />
                                                     <br />
                                                     <div
@@ -954,7 +951,7 @@ const Home = (props) => {
                                     <img
                                         className="d-block w-100"
                                         src={modeposter}
-                                        alt="AI Chip image"
+                                        alt="multi-mode-control"
                                     />
                                 </div>
                             </div>
@@ -1431,7 +1428,7 @@ const Home = (props) => {
                                                         <p>
                                                             Save upto 26%
                                                             on electricity
-                                                            bill per month.<br/>
+                                                            bill per month.<br />
                                                             recover the
                                                             amount invested
                                                             roughly in about 7*
@@ -1617,11 +1614,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -1715,12 +1712,12 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
 
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
 
@@ -1799,11 +1796,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -2281,12 +2278,12 @@ const Home = (props) => {
                                                 >
                                                     <div className="accordion-body">
                                                         The major advantage is
-                                                        Easy life: You experience a #smarthome and other exciting features under ₹6000. <br/>
+                                                        Easy life: You experience a #smarthome and other exciting features under ₹6000. <br />
                                                         Second advantage is
                                                         Modular Design: Our
                                                         product is carefully
                                                         designed to fit outside any existing electrical switchboard. It can be at your house or at your workplace.
-							<br/> 
+							<br /> 
 							We are working towards the
                                                         #MakeInIndia, #DigitalIndia, 
 							#AatmanirbharBharat initiatives.{" "}
@@ -2361,7 +2358,7 @@ const Home = (props) => {
                                                     data-bs-parent="#appAccordion"
                                                 >
                                                     <div className="accordion-body">
-                                                        Yes, you can regulate the speed of the fan with your app<br/>And also with your voice!🎙️
+                                                        Yes, you can regulate the speed of the fan with your app <br /> And also with your voice!🎙️
                                                     </div>
                                                 </div>
                                             </div>
