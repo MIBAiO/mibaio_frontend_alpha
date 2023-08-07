@@ -9,7 +9,7 @@ const Register = () => {
     return (
         <>
             {/* RD Navbar*/}
-            <NavigationBar />
+            {/* <NavigationBar /> */}
             {/* {!validated && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
@@ -17,9 +17,9 @@ const Register = () => {
 
             <div>
                 <div className="section-layout-3-main">
-                    <div className="section-1 text-center">
+                    <div className="section mt-5 text-center">
                         <div className="container">
-                            <div className="signup-cont box-shadow-1 p-2 pb-5 w-100 h-100">
+                            <div className="signup-cont p-2 w-100 h-100">
                                 <div className="d-flex p-0 m-0 justify-content-between">
                                     <div className="layout-2-item back-home-btn">
                                         <Link
@@ -42,7 +42,7 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="oauth-button-cont m-5"
+                                    className="oauth-button-cont mt-5 mx-5"
                                     style={{
                                         maxWidth: "100%",
                                         display: "flex",
@@ -51,26 +51,29 @@ const Register = () => {
                                         flexDirection: "column",
                                     }}
                                 >
+                                    <p className="d-none d-sm-block auth-heading text-center ">
+                                        Create Your Account
+                                    </p>
+                                    <p className="fs-1 font-thin col-md-6 text-center text-dark">By creating an account, you agree to our <span className="underline">Terms of Service </span> and have
+                                        read and understood the Privacy Policy</p>
                                     <form className="rd-form rd-mailform w-100 mt-0 d-flex justify-content-center align-items-center flex-column">
                                         <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
+
                                             <button
-                                                className="signup-oauth-btn oauth-btn sffont w-100 row"
+                                                className="signup-oauth-btn mt-3 oauth-btn sffont w-100 row"
                                                 name="btnsignin"
-                                                onClick={() => {}}
+                                                onClick={() => { }}
                                             >
-                                                <div className="col-4 w-100">
+                                                <div className="col-4 w-75 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/google.png"
                                                         className="img-fluid "
                                                         alt="Google"
-                                                        width={"40px"}
-                                                        style={{
-                                                            left: 20,
-                                                            marginRight: 30,
-                                                        }}
+                                                        width={"35px"}
+
                                                     />{" "}
                                                 </div>
-                                                <div className="col-8 w-100 signin-btn-text">
+                                                <div className="col-8 signin-btn-text">
                                                     Continue with Google
                                                 </div>
                                             </button>
@@ -80,20 +83,17 @@ const Register = () => {
                                                 className="signup-oauth-btn oauth-btn sffont w-100 row"
                                                 name="btnsignin"
                                             >
-                                                <div className="col-4 w-100">
+                                                <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/apple.png"
                                                         className="img-fluid "
                                                         alt="Apple"
-                                                        width={"40px"}
-                                                        style={{
-                                                            left: 20,
-                                                            marginRight: 30,
-                                                        }}
+                                                        width={"35px"}
+
                                                     />{" "}
                                                 </div>
                                                 {/* <GoogleIcon /> */}
-                                                <div className="col-8 w-100 signin-btn-text">
+                                                <div className="col-8 signin-btn-text">
                                                     Continue with Apple
                                                 </div>
                                             </button>
@@ -103,16 +103,13 @@ const Register = () => {
                                                 className="signup-oauth-btn oauth-btn sffont w-100 row"
                                                 name="btnsignin"
                                             >
-                                                <div className="col-4 w-100">
+                                                <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/facebook.png"
                                                         className="img-fluid "
                                                         alt="Facebook"
-                                                        width={"40px"}
-                                                        style={{
-                                                            left: 20,
-                                                            marginRight: 30,
-                                                        }}
+                                                        width={"35px"}
+
                                                     />{" "}
                                                 </div>
                                                 <div className="col-8 w-100 signin-btn-text">
@@ -129,22 +126,23 @@ const Register = () => {
                                                 style={{
                                                     color: "#000",
                                                 }}
-                                                // onClick={() =>
-                                                //     setGoToEmailSignup(true)
-                                                // }
-                                                // disabled={invalid}
+                                            // onClick={() =>
+                                            //     setGoToEmailSignup(true)
+                                            // }
+                                            // disabled={invalid}
                                             >
-                                                <div className="col-4 w-100">
+                                                <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/mail.png"
                                                         className="img-fluid "
                                                         alt="Facebook"
-                                                        width={"40px"}
-                                                        height={"40px"}
+                                                        width={"35px"}
+                                                        height={"25px"}
                                                         style={
                                                             {
-                                                                // left: 20,
-                                                                // marginRight: 30,
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                justifyContent: "center",
                                                             }
                                                         }
                                                     />{" "}

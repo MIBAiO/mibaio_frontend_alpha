@@ -11,6 +11,15 @@ const RequestResetPassword = () => {
     const [invalid, setInvalid] = useState(true);
     const [alertType, setAlertType] = useState("alert-danger");
 
+    const [isActiveEmail, setisActiveEmail] = useState(false);
+    const [isActivePassword, setisActivePassword] = useState(false);
+
+    const handleEmailActivation = (e) => {
+        setisActiveEmail(e.target.value !== "");
+        setEmail(e.target.value);
+    };
+
+
     function checkEmail(email) {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -43,19 +52,19 @@ const RequestResetPassword = () => {
 
     return (
         <>
-            <NavigationBar />
+            {/* <NavigationBar /> */}
             <div className="section-layout-3-main">
                 <div className="section-1 text-center">
                     <div className="container">
-                        <div className="signup-cont box-shadow-1 p-2 pb-5 w-100 h-100">
+                        <div className="signup-con p-2 pb-5 w-100 h-100">
                             <div className="d-flex p-0 m-0 justify-content-between">
                                 <div className="layout-2-item back-home-btn">
                                     <Link
-                                        className="link link-icon link-icon-left sffont"
+                                        className="link  link-icon link-icon-left sffont"
                                         to="/"
                                     >
                                         <span className="icon mdi mdi-arrow-left" />
-                                        <span>Back to Home</span>
+                                        <span className="fw-bold">Back</span>
                                     </Link>
                                 </div>
                                 <div className="layout-2-item create-acc-btn d-flex p-0 m-0 justify-content-between align-items-center">
@@ -98,7 +107,7 @@ const RequestResetPassword = () => {
                             >
                                 <p className="auth-heading">Forgot Password</p>
                                 <span
-                                    className="sffont"
+                                    className=""
                                     style={{
                                         color: "#000",
                                         maxWidth: "350px",
@@ -108,34 +117,62 @@ const RequestResetPassword = () => {
                                     you an email to reset the password
                                 </span>
                                 <form
-                                    className="rd-form rd-mailform mt-0 w-100"
+                                    className="rd-form mt-5 rd-mailform mt-0 w-100"
                                     style={{
                                         maxWidth: 600,
                                     }}
                                     onSubmit={handleResetPassword}
                                 >
-                                    <div className="form-wrap">
+                                    <div className="form-group">
                                         <input
-                                            className="auth-form-input"
                                             type="text"
-                                            name="name"
-                                            placeholder="Email Address"
-                                            required
+                                            className="auth-form-input activate-input"
+                                            id="exampleInput"
+                                            style={{
+                                                border: `1.5px solid ${isActiveEmail ? '#007bbb' : '#ced4da'}`,
+                                                borderRadius: '0.25rem',
+                                                padding: '1rem',
+                                                paddingTop: '1.5rem',
+                                                borderRadius: '10px',
+                                                paddingBottom: '0.75rem',
+                                                outline: 'none',
+                                                fontWeight: 600,
+                                                transition: 'border-color 0.2s',
+                                            }}
+                                            onChange={handleEmailActivation}
+                                            onFocus={() => setisActiveEmail(true)}
                                             value={email}
-                                            onChange={handleChange}
+                                            onBlur={handleEmailActivation}
+                                            required
                                         />
+                                        <label
+                                            htmlFor="exampleInput"
+                                            style={{
+                                                position: 'absolute',
+                                                top: isActiveEmail ? '5px' : '1.2rem',
+                                                left: '1rem',
+                                                fontSize: isActiveEmail ? '0.75rem' : '1rem',
+                                                pointerEvents: 'none',
+                                                transition: 'all 0.2s',
+                                                color: isActiveEmail ? '#007bff' : '#ced4da',
+                                                fontWeight: isActiveEmail ? '600' : '400',
+                                            }}
+                                        >
+                                            Email
+                                        </label>
                                     </div>
-
                                     <div className="form-wrap">
                                         <button
-                                            className="auth-btn sffont w-100"
+                                            className="auth-btn sffont w-100 mt-3"
                                             name="btnsignin"
                                             disabled={invalid}
                                         >
-                                            Send Mail
+                                            Send Email
                                         </button>
                                     </div>
+
                                 </form>
+                                <a href="" className="text-center my-3 fw-bold text-uppercase mt-3">FORGOT THE EMAIL ADDRESS?</a>
                             </div>
                         </div>
                     </div>
@@ -248,8 +285,8 @@ const RequestResetPassword = () => {
 						</div>
 					</div>
 				</div>
-			</div> */}
-            <CustomFooter />
+			</div>
+                {/* <CustomFooter /> */ }
         </>
     );
 };

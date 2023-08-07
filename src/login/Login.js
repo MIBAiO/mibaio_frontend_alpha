@@ -19,6 +19,29 @@ const Login = () => {
 
     const [isVisible, setIsVisible] = useState(false);
 
+    //Input Field Activation
+    const [isActiveEmail, setisActiveEmail] = useState(false);
+    const [isActivePassword, setisActivePassword] = useState(false);
+
+    const handleEmailActivation = (e) => {
+        setisActiveEmail(e.target.value !== "");
+        setEmail(e.target.value);
+    };
+    const handlePasswordActivation = (e) => {
+        setisActivePassword(e.target.value !== "");
+        setPassword(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const togglePasswordVisibility = () => {
+        setIsVisible(!isVisible);
+        setEye(isVisible ? 'eye' : 'eye-slash');
+    };
+
+
     function checkEmail(email) {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -74,7 +97,7 @@ const Login = () => {
     return (
         <>
             {/* RD Navbar*/}
-            <NavigationBar />
+            {/* <NavigationBar /> */}
             {!validated && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
@@ -84,15 +107,15 @@ const Login = () => {
                 <div className="section-layout-3-main">
                     <div className="section-1 text-center">
                         <div className="container">
-                            <div className="box-shadow-1 p-2 pb-5 w-100 h-100">
-                                <div className="d-flex p-0 m-0 justify-content-between">
+                            <div className="p-2 pb-5 w-100 h-100">
+                                <div className="d-flex p-0 m-0 justify-content-between ">
                                     <div className="layout-2-item back-home-btn">
                                         <Link
                                             className="link link-icon link-icon-left sffont"
                                             to="/"
                                         >
                                             <span className="icon mdi mdi-arrow-left" />
-                                            <span>Back to Home</span>
+                                            <span className="fw-bold" style={{ fontWeight: "bold" }}>Back</span>
                                         </Link>
                                     </div>
                                     <div className="layout-2-item create-acc-btn d-flex p-0 m-0 justify-content-between align-items-center">
@@ -100,6 +123,7 @@ const Login = () => {
                                             <Link
                                                 className="sffont"
                                                 to="/register"
+                                                style={{ fontWeight: "bold" }}
                                             >
                                                 Create Account
                                             </Link>
@@ -135,39 +159,79 @@ const Login = () => {
                                 )} */}
 
                                 <div
-                                    className="row m-4 h-100"
+                                    className="row h-100"
                                     style={{ flexDirection: "unset" }}
                                 >
                                     <div
-                                        className="col-md-6 inputs-cont"
+                                        className="col-md-6 inputs-cont align-items-center align-items-sm-start"
                                         style={{
                                             maxWidth: "100%",
                                             display: "flex",
                                             justifyContent: "center",
-                                            alignItems: "flex-start",
+
                                             flexDirection: "column",
                                             // flexWrap: "wrap-reverse",
                                         }}
                                     >
-                                        <p className="auth-heading">
+                                        <p className="d-none d-sm-block auth-heading text-center mt-3">
                                             Sign in using Mail ID
+                                        </p>
+                                        <p className="d-block d-sm-none auth-heading  mt-3">
+                                            Sign into MIBAiO
                                         </p>
 
                                         <form
                                             onSubmit={handleLogin}
                                             className="rd-form rd-mailform w-100 mt-0"
                                         >
-                                            <div className="form-wrap">
-                                                <input
+                                            {/* <div className="form-wrap">
+                                                {/* <input
                                                     className="auth-form-input"
                                                     type="text"
                                                     name="email"
                                                     placeholder="Email Address"
                                                     required
                                                     onChange={handleEmailChange}
-                                                />
-                                            </div>
+                                                /> 
 
+                                            <div className="container mt-5">
+                                                {/* <div className="form-group">
+                                                        <input
+                                                            type="text"
+                                                            className="auth-form-input activate-input"
+                                                            id="exampleInput"
+                                                            style={{
+                                                                border: '1.5px solid ' + (isActive ? '#007bff' : '#ced4da'),
+                                                                borderRadius: '0.25rem',
+                                                                padding: '1rem',
+                                                                paddingTop: '1.5rem',
+                                                                borderRadius: '10px',
+                                                                outline: 'none',
+                                                                fontWeight: 600,
+                                                                transition: 'border-color 0.2s',
+                                                            }}
+                                                            onChange={handleActivation}
+                                                            onFocus={() => setIsActive(true)}
+                                                            onBlur={handleActivation}
+                                                            required
+                                                        />
+                                                        <label htmlFor="exampleInput" style={{
+                                                            position: 'absolute',
+                                                            top: isActive ? '5px' : '1.2rem',
+                                                            left: '2rem',
+                                                            fontSize: isActive ? '0.75rem' : '1rem',
+                                                            pointerEvents: 'none',
+                                                            transition: 'all 0.2s',
+                                                            color: isActive ? '#007bff' : '#ced4da',
+                                                            fontWeight: isActive ? '600' : '400',
+                                                        }}>
+                                                            Email
+                                                        </label>
+                                                    </div> 
+                                                </div>
+
+                                            </div>
+                                                    
                                             <div
                                                 className="form-wrap"
                                                 style={{
@@ -195,6 +259,9 @@ const Login = () => {
                                                         marginRight: "-10%",
                                                     }}
                                                 />
+                                                <label className={isActivePassword ? "Active" : ""} htmlFor="email" >
+                                                    E-mail
+                                                </label>
                                                 <i
                                                     className={`fa fa-${eye}`}
                                                     id="eye"
@@ -213,17 +280,126 @@ const Login = () => {
                                                     }}
                                                 />
                                             </div>
+                                            {/* Form */}
+                                            <div className="form-wrap">
+                                                <div className="container px-0">
+                                                    <div className="form-group">
+                                                        <input
+                                                            type="text"
+                                                            className="auth-form-input activate-input"
+                                                            id="exampleInput"
+                                                            style={{
+                                                                border: `1.5px solid ${isActiveEmail ? '#007bff' : '#ced4da'}`,
+                                                                borderRadius: '0.25rem',
+                                                                padding: '1rem',
+                                                                paddingTop: '1.5rem',
+                                                                borderRadius: '10px',
+                                                                paddingBottom: '0.75rem',
+                                                                outline: 'none',
+                                                                fontWeight: 600,
+                                                                transition: 'border-color 0.2s',
+                                                            }}
+                                                            onChange={handleEmailActivation}
+                                                            onFocus={() => setisActiveEmail(true)}
+                                                            onBlur={handleEmailActivation}
+                                                            required
+                                                        />
+                                                        <label
+                                                            htmlFor="exampleInput"
+                                                            style={{
+                                                                position: 'absolute',
+                                                                top: isActiveEmail ? '5px' : '1.2rem',
+                                                                left: '1rem',
+                                                                fontSize: isActiveEmail ? '0.75rem' : '1rem',
+                                                                pointerEvents: 'none',
+                                                                transition: 'all 0.2s',
+                                                                color: isActiveEmail ? '#007bff' : '#ced4da',
+                                                                fontWeight: isActiveEmail ? '600' : '400',
+                                                            }}
+                                                        >
+                                                            Email
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="form-wrap">
+                                                <div className="container mt-2 px-0">
+                                                    <div className="form-group">
+                                                        <div className="form-group">
+                                                            <input
+                                                                type={isVisible ? "text" : "password"}
+                                                                className="auth-form-input activate-input"
+                                                                id="exampleInput"
+                                                                data-constraints="@Required"
+
+                                                                style={{
+                                                                    border: `1.5px solid ${isActivePassword ? '#007bff' : '#ced4da'}`,
+                                                                    borderRadius: '0.25rem',
+                                                                    padding: '1rem',
+                                                                    paddingRight: '2.5rem', // Adjusted paddingRight to accommodate the eye icon
+                                                                    paddingTop: '1.5rem',
+                                                                    paddingBottom: '0.75rem',
+                                                                    borderRadius: '10px',
+                                                                    outline: 'none',
+                                                                    fontWeight: 600,
+                                                                    transition: 'border-color 0.2s',
+                                                                }}
+                                                                onChange={handlePasswordActivation}
+                                                                onFocus={() => setisActivePassword(true)}
+                                                                onBlur={handlePasswordActivation}
+                                                                required
+                                                            />
+                                                            <label
+                                                                htmlFor="exampleInput"
+                                                                style={{
+                                                                    position: 'absolute',
+                                                                    top: isActivePassword ? '5px' : '1.2rem',
+                                                                    left: '1rem',
+                                                                    fontSize: isActivePassword ? '0.75rem' : '1rem',
+                                                                    pointerEvents: 'none',
+                                                                    transition: 'all 0.2s',
+                                                                    color: isActivePassword ? '#007bff' : '#ced4da',
+                                                                    fontWeight: isActivePassword ? '600' : '400',
+                                                                }}
+                                                            >
+                                                                Password
+                                                            </label>
+                                                            <i
+                                                                className={`fa fa-${eye}`}
+                                                                id="eye"
+                                                                aria-hidden="true"
+                                                                onClick={togglePasswordVisibility}
+                                                                style={{
+                                                                    position: 'absolute',
+                                                                    cursor: 'pointer',
+                                                                    right: '0.8rem', // Adjusted right positioning to align the eye icon properly
+                                                                    top: '1.7rem', // Adjusted top positioning to align the eye icon properly
+                                                                    transition: 'all 0.2s',
+                                                                    zIndex: 99,
+                                                                }}
+                                                            />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                             <div className="form-wrap">
                                                 <button
                                                     className="auth-btn sffont w-100"
                                                     name="btnsignin"
                                                     type="submit"
-                                                    // onClick={handleLogin}
-                                                    // disabled={invalid}
+                                                // onClick={handleLogin}
+                                                // disabled={invalid}
                                                 >
                                                     Continue
                                                 </button>
                                             </div>
+
+
+
                                         </form>
                                     </div>
 
@@ -257,7 +433,7 @@ const Login = () => {
                                                         src="assets/img/google.png"
                                                         className="img-fluid "
                                                         alt="Google"
-                                                        width={"40px"}
+                                                        width={"35px"}
                                                         style={{
                                                             left: 20,
                                                             position:
@@ -279,7 +455,7 @@ const Login = () => {
                                                         src="assets/img/apple.png"
                                                         className="img-fluid "
                                                         alt="Apple"
-                                                        width={"40px"}
+                                                        width={"35px"}
                                                         style={{
                                                             left: 20,
                                                             position:
@@ -301,7 +477,7 @@ const Login = () => {
                                                         src="assets/img/facebook.png"
                                                         className="img-fluid "
                                                         alt="Facebook"
-                                                        width={"40px"}
+                                                        width={"35px"}
                                                         style={{
                                                             left: 20,
                                                             position:
@@ -312,6 +488,18 @@ const Login = () => {
                                                     Continue with Facebook
                                                 </button>
                                             </div>
+                                            {/* <div className="form-wrap">
+                                                <button
+                                                    className="oauth-btn sffont w-100 bg-dark text-light fs-2"
+                                                    name="btnsignin"
+                                                    onClick={handleLogin}
+                                                    disabled={invalid}
+                                                >
+
+                                                    {/* <GoogleIcon /> 
+                                            Continue as Guest
+                                        </button>
+                                    </div> */}
                                         </form>
                                     </div>
                                 </div>
@@ -319,10 +507,10 @@ const Login = () => {
                                     <div className="col-md-5 inputs-cont">
                                         .
                                     </div>
-                                    <div className="col-2">
+                                    <div className="text-uppercase">
                                         <Link to="/request_reset_password">
                                             <span style={{ cursor: "pointer" }}>
-                                                Cant Signin?
+                                                Cant Sign in?
                                             </span>
                                         </Link>
                                     </div>
@@ -331,9 +519,9 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
                 <div className="snackbars" id="form-output-global" />
-            </div>
+            </div >
         </>
     );
 };

@@ -1,6 +1,6 @@
 .sffont {
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     color: #000000;
 }
 
@@ -22,6 +22,7 @@
     font-size: 18px;
     font-weight: 590;
 }
+
 .oauth-btn {
     background-color: #fff;
     border-radius: 9.62099px;
@@ -36,6 +37,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .auth-heading {
     font-style: normal;
     font-weight: 590;
@@ -43,6 +45,7 @@
     /* line-height: 25px; */
     color: #000;
 }
+
 .vertical-ruler-v {
     position: relative;
     height: 150px;
@@ -52,6 +55,7 @@
     padding-top: 100px;
     margin: 10px auto;
 }
+
 .vertical-ruler-v:before {
     border-left: 1px solid #728288;
     content: "";
@@ -85,6 +89,7 @@
     padding-top: 20px;
     margin: 10px auto;
 }
+
 .vertical-ruler-h:before {
     border-top: 1px solid #728288;
     content: "";
@@ -98,10 +103,12 @@
     width: 100px;
     z-index: 0;
 }
+
 .signin-btn {
     font-weight: bold;
     margin-right: 30px;
 }
+
 .vertical-ruler-h:after {
     border-top: 1px solid #728288;
     content: "";
@@ -120,12 +127,15 @@
     .vertical-ruler-h {
         display: none;
     }
+
     .vertical-ruler-v {
         display: block;
     }
+
     .hor-cont {
         min-width: auto;
     }
+
     .oauth-btn {
         font-size: 18px;
     }
@@ -150,9 +160,11 @@
     .vertical-ruler-v {
         display: none;
     }
+
     .vertical-ruler-h {
         display: block;
     }
+
     .hor-cont {
         min-width: 100%;
     }
@@ -160,9 +172,11 @@
     .oauth-btn {
         font-size: 14px;
     }
+
     .inputs-cont {
         flex: 1 !important;
     }
+
     .oauth-button-cont {
         flex: 1 !important;
     }
@@ -172,11 +186,13 @@
     display: flex;
     justify-content: start;
 }
+
 @media screen and (min-width: 421px) {
     .signin-btn-text {
         display: block;
     }
 }
+
 @media screen and (max-width: 420px) {
     .signin-btn-text {
         display: none !important;
@@ -187,8 +203,10 @@
     /* top: 10px; */
     /* left: 40px; */
     /* position: absolute; */
-    margin-left: 30px;
+    font-weight: 700;
+    /* margin-left: 30px; */
 }
+
 .create-acc-btn {
     top: 10px;
     right: 50px;
