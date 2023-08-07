@@ -187,7 +187,6 @@ const Home = (props) => {
 
                                                 <video
                                                     width="100%"
-                                                    loop
                                                     autoPlay
                                                     muted
                                                     style={{
@@ -266,11 +265,9 @@ const Home = (props) => {
                                             options={{
                                                 strings: [
                                                     "home",
-                                                    "routine tasks",
-                                                    "appliances",
                                                     "lifestyle",
+						    "appliances",
                                                     "office",
-                                                    "fingers",
                                                 ],
                                                 autoStart: true,
                                                 loop: true,
@@ -304,8 +301,7 @@ const Home = (props) => {
                                                 animationName: "clipInLeft",
                                             }}
                                         >
-                                            Upgrade your existing conventional
-                                            electrical appliances to a set of
+                                            Upgrade your existing electrical appliances to a set of
                                             smart appliances! Control & monitor
                                             from any part of the world with your
                                             smartphone!
@@ -653,7 +649,7 @@ const Home = (props) => {
                                                     opacity: " .8",
                                                 }}
                                             >
-                                                (PS: Works with Alexa, Siri &
+                                                (Works with Alexa, Siri &
                                                 Google)
                                             </span>
                                         </p>
@@ -687,7 +683,7 @@ const Home = (props) => {
                                         <p className="description">
                                             Energy savings and advancements you
                                             never imagined! Save upto 26% of
-                                            your energy bills! 💚{" "}
+                                            your electricity bills! 💚{" "}
                                         </p>
                                     </div>
                                 </div>
@@ -717,9 +713,9 @@ const Home = (props) => {
                                             <a href="#Surge">Shared Access</a>
                                         </h4>
                                         <p className="description">
-                                            Share devices with your family 👨‍👩‍👦,
-                                            sync state of devices, set more
-                                            smart scenes for any space.
+                                            Share device access with your family 👨‍👩‍👦,
+                                            add timers to devices, set more
+                                            smart scenes for any switches.
                                         </p>
                                     </div>
                                 </div>
@@ -774,7 +770,7 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100">
+                    <section className="section section-md bg-gray-100" style={{background:"linear-gradient(180deg,#000,#8a8b81,#fff)",}}>
                         <h3
                             className="wow fadeInUp"
                             data-wow-delay=".4s"
@@ -784,8 +780,9 @@ const Home = (props) => {
                                 color: "#697484",
                             }}
                         >
-                            Title Here
+                            Hands-free control 🎙️
                         </h3>
+			<h4 style={{textAlign: "center", color: "#697484", opacity: "0.7"}}>Supports your favourite voice assistants</h4>
 
                         <picture>
                             <source
@@ -845,7 +842,7 @@ const Home = (props) => {
                                         <blockquote className="quote-light">
                                             <div className="quote-light-text">
                                                 <p>
-                                                    MIBAiO Xtension 4S is
+                                                    Xtension 4S is
                                                     equipped with a Positive
                                                     Temperature Coefficient
                                                     Thermister (PTC) to protect
@@ -912,10 +909,7 @@ const Home = (props) => {
                                                     appliances with:
                                                     <br />
                                                     <br />
-                                                    <div
-                                                        className="icon icon-style-1 mdi mdi-wifi"
-                                                    // style={{ font: "normal 24px/2 Material Design Icons" }}
-                                                    ></div>{" "}
+                                                    <div className="icon icon-style-1 mdi mdi-wifi" ></div>{" "}
                                                     Internet <br />
                                                     <br />
                                                     <div
@@ -957,7 +951,7 @@ const Home = (props) => {
                                     <img
                                         className="d-block w-100"
                                         src={modeposter}
-                                        alt="AI Chip image"
+                                        alt="multi-mode-control"
                                     />
                                 </div>
                             </div>
@@ -1418,8 +1412,7 @@ const Home = (props) => {
                                                             >
                                                                 03
                                                             </span>{" "}
-                                                            &nbsp; ROI [Return
-                                                            on Investment]?
+                                                            &nbsp; 💸 Returns 
                                                             <div className="card-arrow"></div>
                                                         </a>
                                                     </div>
@@ -1433,13 +1426,13 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            With uptp 26%
-                                                            savings on energy
-                                                            bills per month,
-                                                            you'll recover the
+                                                            Save upto 26%
+                                                            on electricity
+                                                            bill per month.<br />
+                                                            recover the
                                                             amount invested
-                                                            roughly in about 7
-                                                            months*..!
+                                                            roughly in about 7*
+                                                            months!
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1621,11 +1614,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -1719,12 +1712,12 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
 
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
 
@@ -1803,11 +1796,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -2285,22 +2278,15 @@ const Home = (props) => {
                                                 >
                                                     <div className="accordion-body">
                                                         The major advantage is
-                                                        price: You get a premium
-                                                        model under ₹4000. You
-                                                        don't have to call an
-                                                        electrician for
-                                                        installation, we make it
-                                                        very easy to install for
-                                                        you. Second advantage is
-                                                        Made in INDIA: Our
+                                                        Easy life: You experience a #smarthome and other exciting features under ₹6000. <br />
+                                                        Second advantage is
+                                                        Modular Design: Our
                                                         product is carefully
-                                                        designed for a standard
-                                                        Indian household of
-                                                        world-class quality. We
-                                                        are working under the
-                                                        Make in India, Digital
-                                                        India, Aatmanirbhar
-                                                        Bharat initiatives.{" "}
+                                                        designed to fit outside any existing electrical switchboard. It can be at your house or at your workplace.
+							<br /> 
+							We are working towards the
+                                                        #MakeInIndia, #DigitalIndia, 
+							#AatmanirbharBharat initiatives.{" "}
                                                     </div>
                                                 </div>
                                             </div>
@@ -2372,10 +2358,7 @@ const Home = (props) => {
                                                     data-bs-parent="#appAccordion"
                                                 >
                                                     <div className="accordion-body">
-                                                        No as of now. But you'll
-                                                        get that funtion in the
-                                                        upcoming versions of
-                                                        MIBAiO.
+                                                        Yes, you can regulate the speed of the fan with your app <br /> And also with your voice!🎙️
                                                     </div>
                                                 </div>
                                             </div>
@@ -2406,18 +2389,12 @@ const Home = (props) => {
                                                     data-bs-parent="#appAccordion"
                                                 >
                                                     <div className="accordion-body">
-                                                        Talk to your electrical
-                                                        appliances through Siri,
-                                                        Alexa and Google voice
-                                                        assistant. Control your
-                                                        exising appliances with
-                                                        your smartphone and also
-                                                        manually(like we do now
-                                                        using the conventional
-                                                        switches). Monitor your
+                                                        Ask 🎙️ Alexa to turn off your hall light</br> 
+							Set a routine to turn on outdoor light sharp at 6:45pm everyday ⏰ </br>
+							Monitor
                                                         electricity consumption
-                                                        of connected appliances
-                                                        on your smartphone app.
+                                                        of your connected appliances
+                                                        on your App 📊
                                                     </div>
                                                 </div>
                                             </div>
@@ -2723,9 +2700,8 @@ const Home = (props) => {
                                     }}
                                 >
                                     It’s time to upgrade your
-                                    home/office/workspace and experience the
-                                    futuristic lifestyle! Contact us directly to
-                                    enhance your lifestyle experience.
+                                    existing electrical appliances and experience the
+                                    futuristic lifestyle!
                                 </span>
                             </p>
                         </div>
