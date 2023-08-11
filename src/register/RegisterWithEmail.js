@@ -182,7 +182,7 @@ const RegisterWithEmail = () => {
                                             placeholder="Email Address"
                                             required
                                             onChange={(e) =>
-                                                setPassword(e.target.value)
+                                                setEmail(e.target.value)
                                             }
                                         />
                                     </div>
