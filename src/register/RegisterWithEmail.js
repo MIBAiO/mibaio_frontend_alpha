@@ -29,6 +29,7 @@ const RegisterWithEmail = () => {
         if (!error) {
             try {
                 const { data } = await register(userData);
+                console.log("Data: ");
                 console.log(data);
 
                 if (data) {
