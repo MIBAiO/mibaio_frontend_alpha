@@ -25,7 +25,7 @@ const RegisterWithEmail = () => {
     async function handleRegister(e) {
         e.preventDefault();
         const userData = { name, email, password };
-        //console.log(userData);
+        console.log(userData);
         if (!error) {
             try {
                 const { data } = await register(userData);
@@ -167,7 +167,7 @@ const RegisterWithEmail = () => {
                                             className="auth-form-input"
                                             type="text"
                                             name="name"
-                                            placeholder="Email Address"
+                                            placeholder="Name"
                                             required
                                             onChange={(e) =>
                                                 setName(e.target.value)
@@ -181,7 +181,7 @@ const RegisterWithEmail = () => {
                                             name="email"
                                             placeholder="Email Address"
                                             required
-                                            // onChange={handleEmailChange}
+                                            onChange={handleEmailChange}
                                         />
                                     </div>
 
