@@ -8,6 +8,8 @@ export const login = (data) =>
     axios.post(REACT_APP_API_URL + "/api/login", data);
 export const verifyUser = (data) =>
     axios.post(REACT_APP_API_URL + "/api/verify", data);
+export const loginGoogleOAuth = (data) =>
+    axios.post(REACT_APP_API_URL + "/api/oauth/google", data)
 
 export const requestResetPassword = (data) =>
     api.post("/api/requestResetPassword", data);
