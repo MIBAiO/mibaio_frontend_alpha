@@ -191,11 +191,32 @@
     .signin-btn-text {
         display: block;
     }
+
+    .signup-btn-logo {
+        width: 35px;
+    }
 }
 
 @media screen and (max-width: 420px) {
     .signin-btn-text {
-        display: none !important;
+        font-size: .8rem;
+        padding-left: 0%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .signup-btn-logo {
+        width: 25px;
+    }
+
+    .oauth-btn {
+        height: 45px;
+    }
+
+    .signup-description {
+        font-size: .7rem;
+        font-weight: 500;
     }
 }
 

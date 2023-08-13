@@ -42,7 +42,7 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="oauth-button-cont mt-5 mx-5"
+                                    className="oauth-button-cont mt-5 mx-md-5"
                                     style={{
                                         maxWidth: "100%",
                                         display: "flex",
@@ -54,7 +54,7 @@ const Register = () => {
                                     <p className="d-none d-sm-block auth-heading text-center ">
                                         Create Your Account
                                     </p>
-                                    <p className="fs-1 font-thin col-md-6 text-center text-dark">By creating an account, you agree to our <span className="underline">Terms of Service </span> and have
+                                    <p className="fs-1 signup-description font-thin col-md-6 text-center text-dark">By creating an account, you agree to our <span className="underline">Terms of Service </span> and have
                                         read and understood the Privacy Policy</p>
                                     <form className="rd-form rd-mailform w-100 mt-0 d-flex justify-content-center align-items-center flex-column">
                                         <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
@@ -67,13 +67,13 @@ const Register = () => {
                                                 <div className="col-4 w-75 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/google.png"
-                                                        className="img-fluid "
+                                                        className="img-fluid signup-btn-logo"
                                                         alt="Google"
-                                                        width={"35px"}
+
 
                                                     />{" "}
                                                 </div>
-                                                <div className="col-8 signin-btn-text">
+                                                <div className="col-8 px-0 signin-btn-text">
                                                     Continue with Google
                                                 </div>
                                             </button>
@@ -86,14 +86,14 @@ const Register = () => {
                                                 <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/apple.png"
-                                                        className="img-fluid "
+                                                        className="img-fluid signup-btn-logo"
                                                         alt="Apple"
-                                                        width={"35px"}
+
 
                                                     />{" "}
                                                 </div>
                                                 {/* <GoogleIcon /> */}
-                                                <div className="col-8 signin-btn-text">
+                                                <div className="col-8 px-0 signin-btn-text">
                                                     Continue with Apple
                                                 </div>
                                             </button>
@@ -106,13 +106,13 @@ const Register = () => {
                                                 <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/facebook.png"
-                                                        className="img-fluid "
+                                                        className="img-fluid signup-btn-logo"
                                                         alt="Facebook"
-                                                        width={"35px"}
+
 
                                                     />{" "}
                                                 </div>
-                                                <div className="col-8 w-100 signin-btn-text">
+                                                <div className="col-8 px-0 w-100 signin-btn-text">
                                                     {/* <GoogleIcon /> */}
                                                     Continue with Facebook
                                                 </div>
@@ -134,20 +134,13 @@ const Register = () => {
                                                 <div className="col-4 w-100 d-flex align-items-center justify-content-center">
                                                     <img
                                                         src="assets/img/mail.png"
-                                                        className="img-fluid "
+                                                        className="img-fluid signup-btn-logo"
                                                         alt="Facebook"
-                                                        width={"35px"}
-                                                        height={"25px"}
-                                                        style={
-                                                            {
-                                                                display: "flex",
-                                                                alignItems: "center",
-                                                                justifyContent: "center",
-                                                            }
-                                                        }
+
+
                                                     />{" "}
                                                 </div>
-                                                <div className="col-8 w-100 signin-btn-text">
+                                                <div className="col-8 px-0 w-100 signin-btn-text">
                                                     {/* <GoogleIcon /> */}
                                                     Continue with Email
                                                 </div>
