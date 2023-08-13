@@ -98,12 +98,13 @@ const RegisterWithEmail = () => {
             {redirected && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
-            <NavigationBar />
+            {/* Navgation Bar -------------------------- */}
+            {/* <NavigationBar /> */}
 
             <div className="section-layout-3-main">
                 <div className="section-1 text-center">
                     <div className="container">
-                        <div className="signup-cont box-shadow-1 p-2 pb-5 w-100 h-100">
+                        <div className="signup-cont p-2 pb-5 w-100 h-100">
                             <div className="d-flex p-0 m-0 justify-content-between">
                                 <div className="layout-2-item back-home-btn">
                                     <Link
