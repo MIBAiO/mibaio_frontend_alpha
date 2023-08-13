@@ -10,15 +10,7 @@ const RequestResetPassword = () => {
     const [error, setError] = useState(null);
     const [invalid, setInvalid] = useState(true);
     const [alertType, setAlertType] = useState("alert-danger");
-
     const [isActiveEmail, setisActiveEmail] = useState(false);
-    const [isActivePassword, setisActivePassword] = useState(false);
-
-    const handleEmailActivation = (e) => {
-        setisActiveEmail(e.target.value !== "");
-        setEmail(e.target.value);
-    };
-
 
     function checkEmail(email) {
         return email.match(
@@ -38,7 +30,7 @@ const RequestResetPassword = () => {
         }
     }
 
-    const handleChange = (e) => {
+    const handleEmailChange = (e) => {
         setEmail(e.target.value);
         if (!checkEmail(e.target.value)) {
             setAlertType("alert-danger");
@@ -48,6 +40,7 @@ const RequestResetPassword = () => {
             setError(null);
             setInvalid(false);
         }
+        setisActiveEmail(e.target.value !== "");
     };
 
     return (
@@ -97,7 +90,7 @@ const RequestResetPassword = () => {
                             )}
 
                             <div
-                                className="oauth-button-cont  m-5"
+                                className="oauth-button-cont  m-md-5"
                                 style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -139,10 +132,10 @@ const RequestResetPassword = () => {
                                                 fontWeight: 600,
                                                 transition: 'border-color 0.2s',
                                             }}
-                                            onChange={handleEmailActivation}
+                                            onChange={handleEmailChange}
                                             onFocus={() => setisActiveEmail(true)}
                                             value={email}
-                                            onBlur={handleEmailActivation}
+                                            onBlur={handleEmailChange}
                                             required
                                         />
                                         <label
