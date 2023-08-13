@@ -118,9 +118,6 @@ function App() {
                     <Validate />
                 </GuestRoute>
 
-                <GuestRoute path="/validate">
-                    <Validate />
-                </GuestRoute>
 
                 <ProtectedRoute path="/review">
                     <Review />

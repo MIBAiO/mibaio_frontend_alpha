@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 import NavigationBar from "../components/navigationbar";
 import "../login/login.css";
 const RegisterWithEmail = () => {
-    const [name, setName] = useState("");
+    const [name, setname] = useState("");
+    const [Fname, setFname] = useState("");
+    const [Lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,13 +24,68 @@ const RegisterWithEmail = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isVisible2, setIsVisible2] = useState(false);
 
+    //Active Input Handlers
+    const [isActiveEmail, setisActiveEmail] = useState(false);
+    const [isActiveFname, setisActiveFname] = useState(false);
+    const [isActiveLname, setisActiveLname] = useState(false);
+    const [isActivePassword, setisActivePassword] = useState(false);
+    const [isActiveConfirmPassword, setisActiveConfirmPassword] = useState(false);
+
+    const handleEmailActivation = (e) => {
+        setisActiveEmail(e.target.value !== "");
+        setEmail(e.target.value);
+
+    };
+    const handleFnameActivation = (e) => {
+        setisActiveFname(e.target.value !== "");
+
+        setFname(e.target.value);
+        setname(Fname + " " + Lname);
+    };
+    const handleLnameActivation = (e) => {
+        setisActiveLname(e.target.value !== "");
+        setLname(e.target.value);
+        setname(Fname + " " + Lname);
+    };
+    const handlePasswordActivation = (e) => {
+        setisActivePassword(e.target.value !== "");
+        setPassword(e.target.value);
+    };
+    const handleConfirmPasswordActivation = (e) => {
+        setisActiveConfirmPassword(e.target.value !== "");
+        setConfirmPassword(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+    const togglePasswordVisibility = () => {
+        setIsVisible(!isVisible);
+        setEye(isVisible ? 'eye' : 'eye-slash');
+    };
+
+
+
+
     async function handleRegister(e) {
         e.preventDefault();
-        const userData = { name, email, password };
-        //console.log(userData);
+
+        const userData = {
+            name, email, password
+        };
+        if (!name || !email || !password || !confirmPassword) {
+            setError("Please fill all the fields");
+            setTimeout(() => {
+                setError(null);
+            }, 5000);
+            return;
+        }
+
+        console.log(userData);
         if (!error) {
             try {
-                const { data } = await register(userData);
+                // const { data } = await register(userData);
+                const data = await register(userData);
                 console.log(data);
 
                 if (data) {
@@ -97,12 +154,12 @@ const RegisterWithEmail = () => {
             {redirected && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
-            <NavigationBar />
+            {/* <NavigationBar /> */}
 
             <div className="section-layout-3-main">
-                <div className="section-1 text-center">
+                <div className="section text-center">
                     <div className="container">
-                        <div className="signup-cont box-shadow-1 p-2 pb-5 w-100 h-100">
+                        <div className="signup-cont p-2 pb-5 w-100 h-100">
                             <div className="d-flex p-0 m-0 justify-content-between">
                                 <div className="layout-2-item back-home-btn">
                                     <Link
@@ -152,18 +209,251 @@ const RegisterWithEmail = () => {
                                 }}
                             >
                                 <p className="auth-heading">
-                                    Sign in using Mail ID
+                                    Create Your Account
                                 </p>
 
+                                {/* Old SignUp Form */}
                                 <form
                                     className="rd-form rd-mailform mt-0 w-100"
                                     style={{
                                         maxWidth: 600,
                                     }}
                                 >
+
                                     <div className="form-wrap">
+                                        <div className="container px-0">
+                                            <div className="form-group position-relative">
+                                                <input
+                                                    type="text"
+                                                    className="auth-form-input activate-input"
+                                                    id="exampleInput"
+                                                    style={{
+                                                        border: `1.5px solid ${isActiveFname ? '#007bff' : '#ced4da'}`,
+                                                        borderRadius: '0.25rem',
+                                                        padding: '1rem',
+                                                        paddingTop: '1.5rem',
+                                                        borderRadius: '10px',
+                                                        paddingBottom: '0.75rem',
+                                                        outline: 'none',
+                                                        fontWeight: 600,
+                                                        transition: 'border-color 0.2s',
+                                                    }}
+                                                    onChange={handleFnameActivation}
+                                                    onFocus={() => setisActiveFname(true)}
+                                                    onBlur={handleFnameActivation}
+                                                    required
+                                                />
+                                                <label
+                                                    htmlFor="exampleInput"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: isActiveFname ? '5px' : '1.2rem',
+                                                        left: '1rem',
+                                                        fontSize: isActiveFname ? '0.75rem' : '1rem',
+                                                        pointerEvents: 'none',
+                                                        transition: 'all 0.2s',
+                                                        color: isActiveFname ? '#007bff' : '#ced4da',
+                                                        fontWeight: isActiveFname ? '600' : '400',
+                                                    }}
+                                                >
+                                                    First Name
+                                                </label>
+                                            </div>
+                                            <div className="form-group  position-relative">
+                                                <input
+                                                    type="text"
+                                                    className="auth-form-input activate-input"
+                                                    id="exampleInput"
+                                                    style={{
+                                                        border: `1.5px solid ${isActiveLname ? '#007bff' : '#ced4da'}`,
+                                                        borderRadius: '0.25rem',
+                                                        padding: '1rem',
+                                                        paddingTop: '1.5rem',
+                                                        borderRadius: '10px',
+                                                        paddingBottom: '0.75rem',
+                                                        outline: 'none',
+                                                        fontWeight: 600,
+                                                        transition: 'border-color 0.2s',
+                                                    }}
+                                                    onChange={handleLnameActivation}
+                                                    onFocus={() => setisActiveLname(true)}
+                                                    onBlur={handleLnameActivation}
+                                                    required
+                                                />
+                                                <label
+                                                    htmlFor="exampleInput"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: isActiveLname ? '5px' : '1.2rem',
+                                                        left: '1rem',
+                                                        fontSize: isActiveLname ? '0.75rem' : '1rem',
+                                                        pointerEvents: 'none',
+                                                        transition: 'all 0.2s',
+                                                        color: isActiveLname ? '#007bff' : '#ced4da',
+                                                        fontWeight: isActiveLname ? '600' : '400',
+                                                    }}
+                                                >
+                                                    Last Name
+                                                </label>
+                                            </div>
+                                            <div className="form-group  position-relative">
+                                                <input
+                                                    type="text"
+                                                    className="auth-form-input activate-input"
+                                                    id="exampleInput"
+                                                    style={{
+                                                        border: `1.5px solid ${isActiveEmail ? '#007bff' : '#ced4da'}`,
+                                                        borderRadius: '0.25rem',
+                                                        padding: '1rem',
+                                                        paddingTop: '1.5rem',
+                                                        borderRadius: '10px',
+                                                        paddingBottom: '0.75rem',
+                                                        outline: 'none',
+                                                        fontWeight: 600,
+                                                        transition: 'border-color 0.2s',
+                                                    }}
+                                                    onChange={handleEmailActivation}
+                                                    onFocus={() => setisActiveEmail(true)}
+                                                    onBlur={handleEmailActivation}
+                                                    required
+                                                />
+                                                <label
+                                                    htmlFor="exampleInput"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: isActiveEmail ? '5px' : '1.2rem',
+                                                        left: '1rem',
+                                                        fontSize: isActiveEmail ? '0.75rem' : '1rem',
+                                                        pointerEvents: 'none',
+                                                        transition: 'all 0.2s',
+                                                        color: isActiveEmail ? '#007bff' : '#ced4da',
+                                                        fontWeight: isActiveEmail ? '600' : '400',
+                                                    }}
+                                                >
+                                                    Email Address
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-wrap">
+                                        <div className="container mt-2 px-0">
+                                            <div className="form-group position-relative">
+                                                <input
+                                                    type={isVisible ? "text" : "password"}
+                                                    className="auth-form-input activate-input"
+                                                    id="exampleInput"
+                                                    data-constraints="@Required"
+
+                                                    style={{
+                                                        border: `1.5px solid ${isActivePassword ? '#007bff' : '#ced4da'}`,
+                                                        borderRadius: '0.25rem',
+                                                        padding: '1rem',
+                                                        paddingRight: '2.5rem', // Adjusted paddingRight to accommodate the eye icon
+                                                        paddingTop: '1.5rem',
+                                                        paddingBottom: '0.75rem',
+                                                        borderRadius: '10px',
+                                                        outline: 'none',
+                                                        fontWeight: 600,
+                                                        transition: 'border-color 0.2s',
+                                                    }}
+                                                    onChange={handlePasswordActivation}
+                                                    onFocus={() => setisActivePassword(true)}
+                                                    onBlur={handlePasswordActivation}
+                                                    required
+                                                />
+                                                <label
+                                                    htmlFor="exampleInput"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: isActivePassword ? '5px' : '1.2rem',
+                                                        left: '1rem',
+                                                        fontSize: isActivePassword ? '0.75rem' : '1rem',
+                                                        pointerEvents: 'none',
+                                                        transition: 'all 0.2s',
+                                                        color: isActivePassword ? '#007bff' : '#ced4da',
+                                                        fontWeight: isActivePassword ? '600' : '400',
+                                                    }}
+                                                >
+                                                    Password
+                                                </label>
+                                                <i
+                                                    className={`fa fa-${eye}`}
+                                                    id="eye"
+                                                    aria-hidden="true"
+                                                    onClick={togglePasswordVisibility}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        cursor: 'pointer',
+                                                        right: '0.8rem', // Adjusted right positioning to align the eye icon properly
+                                                        top: '1.7rem', // Adjusted top positioning to align the eye icon properly
+                                                        transition: 'all 0.2s',
+                                                        zIndex: 99,
+                                                    }}
+                                                />
+                                            </div>
+
+                                        </div>
+                                        <div className="container mt-2 px-0">
+                                            <div className="form-group position-relative">
+                                                <input
+                                                    type={isVisible ? "text" : "ConfirmPassword"}
+                                                    className="auth-form-input activate-input"
+                                                    id="exampleInput"
+                                                    data-constraints="@Required"
+
+                                                    style={{
+                                                        border: `1.5px solid ${isActiveConfirmPassword ? '#007bff' : '#ced4da'}`,
+                                                        borderRadius: '0.25rem',
+                                                        padding: '1rem',
+                                                        paddingRight: '2.5rem', // Adjusted paddingRight to accommodate the eye icon
+                                                        paddingTop: '1.5rem',
+                                                        paddingBottom: '0.75rem',
+                                                        borderRadius: '10px',
+                                                        outline: 'none',
+                                                        fontWeight: 600,
+                                                        transition: 'border-color 0.2s',
+                                                    }}
+                                                    onChange={handleConfirmPasswordActivation}
+                                                    onFocus={() => setisActiveConfirmPassword(true)}
+                                                    onBlur={handleConfirmPasswordActivation}
+                                                    required
+                                                />
+                                                <label
+                                                    htmlFor="exampleInput"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: isActiveConfirmPassword ? '5px' : '1.2rem',
+                                                        left: '1rem',
+                                                        fontSize: isActiveConfirmPassword ? '0.75rem' : '1rem',
+                                                        pointerEvents: 'none',
+                                                        transition: 'all 0.2s',
+                                                        color: isActiveConfirmPassword ? '#007bff' : '#ced4da',
+                                                        fontWeight: isActiveConfirmPassword ? '600' : '400',
+                                                    }}
+                                                >
+                                                    ConfirmPassword
+                                                </label>
+                                                <i
+                                                    className={`fa fa-${eye}`}
+                                                    id="eye"
+                                                    aria-hidden="true"
+                                                    onClick={togglePasswordVisibility}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        cursor: 'pointer',
+                                                        right: '0.8rem', // Adjusted right positioning to align the eye icon properly
+                                                        top: '1.7rem', // Adjusted top positioning to align the eye icon properly
+                                                        transition: 'all 0.2s',
+                                                        zIndex: 99,
+                                                    }}
+                                                />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {/* <div className="form-wrap">
                                         <input
-                                            className="auth-form-input"
+                                        className="auth-form-input"
                                             type="text"
                                             name="name"
                                             placeholder="Email Address"
@@ -172,7 +462,7 @@ const RegisterWithEmail = () => {
                                                 setName(e.target.value)
                                             }
                                         />
-                                    </div>
+                                        </div>
                                     <div className="form-wrap">
                                         <input
                                             className="auth-form-input"
@@ -180,7 +470,7 @@ const RegisterWithEmail = () => {
                                             name="email"
                                             placeholder="Email Address"
                                             required
-                                            // onChange={handleEmailChange}
+                                        // onChange={handleEmailChange}
                                         />
                                     </div>
 
@@ -267,7 +557,7 @@ const RegisterWithEmail = () => {
                                                 }
                                             }}
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="form-wrap">
                                         <button
                                             className="auth-btn sffont w-100"
@@ -281,9 +571,9 @@ const RegisterWithEmail = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
     );
 };
 

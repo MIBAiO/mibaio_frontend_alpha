@@ -35,11 +35,11 @@ export const Validate = () => {
 	return (
 		<>
 			{verified && <Redirect to={{ pathname: "/login" }} />}
-			<NavigationBar />
+			{/* <NavigationBar /> */}
 			<div className="section-layout-3-main">
 				<div className="section-1 text-center">
 					<div className="container">
-						<div className="box-shadow-1 validateContainer">
+						<div className="validateContainer">
 							<a className="brand" href="index.html">
 								<img
 									className="brand-logo-dark"
@@ -116,7 +116,7 @@ export const Validate = () => {
 					</div>
 				</div>
 			</div>
-			<CustomFooter />
+			{/* <CustomFooter /> */}
 		</>
 	);
 };

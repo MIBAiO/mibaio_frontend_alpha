@@ -75,6 +75,7 @@ const Login = () => {
         //console.log(loginData)
 
         try {
+            console.log(loginData);
             const { data } = await login(loginData);
             // dispatch(setUser({ data }));
             console.log(data);
@@ -82,7 +83,7 @@ const Login = () => {
                 console.log("HEREEEEEEE", data);
                 // history.push("/");
                 setDidRedirect(true);
-                // console.log(data);
+                console.log(data);
             }
         } catch (e) {
             setAlertType("alert-danger");
