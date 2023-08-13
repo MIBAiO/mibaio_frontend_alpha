@@ -20,9 +20,10 @@ const RegisterWithEmail = () => {
     const [invalid, setInvalid] = useState(false);
 
     const [eye, setEye] = useState("eye");
+    const [ceye, setCEye] = useState("eye");
 
     const [isVisible, setIsVisible] = useState(false);
-    const [isVisible2, setIsVisible2] = useState(false);
+    const [isVisibleCPassword, setIsVisibleCPassword] = useState(false);
 
     //Active Input Handlers
     const [isActiveEmail, setisActiveEmail] = useState(false);
@@ -56,12 +57,14 @@ const RegisterWithEmail = () => {
         setConfirmPassword(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+
     const togglePasswordVisibility = () => {
         setIsVisible(!isVisible);
         setEye(isVisible ? 'eye' : 'eye-slash');
+    };
+    const toggleCPasswordVisibility = () => {
+        setIsVisibleCPassword(!isVisibleCPassword);
+        setCEye(isVisibleCPassword ? 'eye' : 'eye-slash');
     };
 
 
@@ -70,9 +73,17 @@ const RegisterWithEmail = () => {
     async function handleRegister(e) {
         e.preventDefault();
 
-        const userData = {
-            name, email, password
-        };
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            setTimeout(() => {
+                setError(null);
+            }, 5000);
+            return;
+        }
+        const userData = { name, email, password };
+        console.log(userData);
+
+
         if (!name || !email || !password || !confirmPassword) {
             setError("Please fill all the fields");
             setTimeout(() => {
@@ -84,9 +95,10 @@ const RegisterWithEmail = () => {
         console.log(userData);
         if (!error) {
             try {
+                const { data } = await register(userData);
+                console.log("Data: " + data);
                 // const { data } = await register(userData);
-                const data = await register(userData);
-                console.log(data);
+
 
                 if (data) {
                     // this.props.history.push('/login');
@@ -396,7 +408,7 @@ const RegisterWithEmail = () => {
                                         <div className="container mt-2 px-0">
                                             <div className="form-group position-relative">
                                                 <input
-                                                    type={isVisible ? "text" : "ConfirmPassword"}
+                                                    type={isVisibleCPassword ? "text" : "password"}
                                                     className="auth-form-input activate-input"
                                                     id="exampleInput"
                                                     data-constraints="@Required"
@@ -437,7 +449,7 @@ const RegisterWithEmail = () => {
                                                     className={`fa fa-${eye}`}
                                                     id="eye"
                                                     aria-hidden="true"
-                                                    onClick={togglePasswordVisibility}
+                                                    onClick={toggleCPasswordVisibility}
                                                     style={{
                                                         position: 'absolute',
                                                         cursor: 'pointer',
@@ -456,7 +468,7 @@ const RegisterWithEmail = () => {
                                         className="auth-form-input"
                                             type="text"
                                             name="name"
-                                            placeholder="Email Address"
+                                            placeholder="Name"
                                             required
                                             onChange={(e) =>
                                                 setName(e.target.value)

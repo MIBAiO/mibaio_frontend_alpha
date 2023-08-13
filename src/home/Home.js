@@ -29,8 +29,10 @@ import girlvideo from "./newgirl.mp4";
 import extensionphonevid from "./extensionphone.mp4";
 import alexaphone from "./alexaphone.gif";
 // import black from "./images/blue.png"
-import extensionvid from "./Event.mp4";
+// import extensionvid from "./Event.mp4";
 import appdemo from "./appdemo.mp4";
+import extensionvid from "./Event-new.mp4";
+// import appdemo from "./appdemo.mp4";
 import alexagif from "./Hi-Alexa.gif";
 import surgeproof from "./Surge-proof.png";
 import modeposter from "./3Modeposter.png";
@@ -267,6 +269,7 @@ const Home = (props) => {
                                                 strings: [
                                                     "home",
                                                     "lifestyle",
+                                                    "appliances",
                                                     "appliances",
                                                     "office",
                                                 ],
@@ -752,6 +755,7 @@ const Home = (props) => {
                                 }}
                                 // loop
                                 // autoPlay
+
                                 ref={videoRef}
                                 muted
                                 playsInline
@@ -771,21 +775,25 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100" style={{ background: "linear-gradient(180deg,#000,#8a8b81,#fff)", }}>
-                        <h3
-                            className="wow fadeInUp"
-                            data-wow-delay=".4s"
-                            style={{
-                                textAlign: "center",
-                                paddingTop: "32px",
-                                color: "#697484",
-                            }}
-                        >
-                            Hands-free control 🎙️
-                        </h3>
-                        <h4 style={{ textAlign: "center", color: "#697484", opacity: "0.7" }}>Supports your favourite voice assistants</h4>
+                    <section className="section section-md bg-gray-100" style={{ background: "linear-gradient(180deg, rgba(0,0,0,1) 8%, rgba(50,54,50,1) 26%, rgba(123,133,121,1) 51%, rgba(255,255,255,1) 77%)" }} >
+                        <div className="d-flex flex-column pt-5 pb-3 align-items-center justify-content-center">
 
-                        <picture>
+
+                            <h3
+                                className="wow fadeInUp"
+                                data-wow-delay=".4s"
+                                style={{
+                                    textAlign: "center",
+                                    paddingTop: "72px",
+                                    color: "#fff",
+                                }}
+                            >
+                                Hands-free control 🎙️
+                            </h3>
+                            <h4 style={{ textAlign: "center", color: "#fefefe", paddingBottom: "26", opacity: "0.7" }}>Supports your favourite voice assistants</h4>
+
+                        </div>
+                        <picture className="mt-4">
                             <source
                                 media="(min-width:800px)"
                                 srcSet={alexagif}
@@ -2750,7 +2758,8 @@ const Home = (props) => {
                                     <video
                                         width="100%"
                                         autoPlay
-                                        ref={videoRef}
+                                        loop
+                                        // ref={videoRef}
                                         muted
                                         style={{
                                             alignContent: "center",
