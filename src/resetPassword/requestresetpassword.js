@@ -100,7 +100,7 @@ const RequestResetPassword = () => {
                             >
                                 <p className="auth-heading">Forgot Password</p>
                                 <span
-                                    className=""
+                                    className="forgot-password-text "
                                     style={{
                                         color: "#000",
                                         maxWidth: "350px",

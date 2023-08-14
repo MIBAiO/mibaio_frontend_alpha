@@ -214,8 +214,9 @@
         height: 45px;
     }
 
-    .signup-description {
-        font-size: .7rem;
+    .signup-description,
+    .forgot-password-text {
+        font-size: .8rem;
         font-weight: 500;
     }
 }
