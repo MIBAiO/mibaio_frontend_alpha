@@ -2754,7 +2754,7 @@ const Home = (props) => {
 
                             {/* New App Video Here */}
                             <div className="row">
-                                <div className="col-md-6 mx-auto">
+                                <div className="col-md-10 mx-auto">
                                     <video
                                         width="100%"
                                         autoPlay
@@ -2780,7 +2780,7 @@ const Home = (props) => {
                             </div>
 
 
-                            <p className="wow fadeIn" data-wow-delay=".2s">
+                            {/* <p className="wow fadeIn" data-wow-delay=".2s">
                                 <span
                                     style={{
                                         maxWidth: "720px",
@@ -2791,7 +2791,7 @@ const Home = (props) => {
                                     existing electrical appliances and experience the
                                     futuristic lifestyle!
                                 </span>
-                            </p>
+                            </p> */}
                         </div>
                         <div className="group" style={{ padding: "15px" }}>
                             <Link
