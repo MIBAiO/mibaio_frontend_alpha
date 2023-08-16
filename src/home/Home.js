@@ -1607,14 +1607,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 4
+                                                        Smart Control upto 4
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 1 room</li>
-                                                    <li>Manual control</li>
-                                                    <li>Bluetooth control</li>
-                                                    <li>Internet control</li>
-                                                    <li>Voice control</li>
+                                                    <li>No addidional wiring</li>
+                                                    <li>Fits outside existing switch board</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
@@ -1705,14 +1703,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 12
+                                                        Smart Control upto 12
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 2 BHK</li>
-                                                    <li>Manual Control</li>
-                                                    <li>Internet Control</li>
-                                                    <li>Bluetooth Control</li>
-                                                    <li>Voice control</li>
+                                                    <li>No additional wiring</li>
+                                                    <li>Fits outside existing switch board/li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
@@ -1786,14 +1782,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 8
+                                                        Smart Control upto 8
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 1 BHK</li>
-                                                    <li>Manual control</li>
-                                                    <li>Internet control</li>
-                                                    <li>Voice control</li>
-                                                    <li>Bluetooth control</li>
+                                                    <li>No additional wiring</li>
+                                                    <li>Fits outside existing switch boards</li>
                                                     <li>
                                                         Upgrade more outputs
                                                     </li>
