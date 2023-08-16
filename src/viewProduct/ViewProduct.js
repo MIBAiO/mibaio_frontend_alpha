@@ -338,13 +338,11 @@ const ViewProduct = (props) => {
 									textAlign: "left",
 								}}
 							>
-								Smart switch controller | Dual mode WiFi +
+								Smart switch converter | Dual mode WiFi +
 								Bluetooth with manual control | Upto 4 appliance
 								control | Works with Google, Alexa and Siri{" "}
 							</p>
 							<p>Made with ❤ in India</p>
-
-							<hr />
 							<div
 								style={{
 									display: "flex",
@@ -442,7 +440,7 @@ const ViewProduct = (props) => {
 											₹5499.00{" "}
 											<small
 												style={{
-													fontSize: "10px",
+													fontSize: "12px",
 													color: "#0accbe",
 												}}
 											>
@@ -547,9 +545,9 @@ const ViewProduct = (props) => {
 									fontWeight: "400",
 								}}
 							>
-								MIBAiO 4S is a IoT smart device which upgrades
-								the abilities of upto 4 pre-existing electrical
-								appliances eg. lights, fan etc to be fully
+								Xtension 4S is a IoT smart device which upgrades
+								upto 4 existing electrical
+								appliances eg. lights, fan, fridge etc to be fully
 								operated & automated using our App across the
 								world!
 							</p>
@@ -663,7 +661,7 @@ const ViewProduct = (props) => {
 											<div className="icon icon-style-1 mdi mdi-clock"></div>
 										</div>
 										<div className="unit-body">
-											<h4>Schedule On/Off</h4>
+											<h4>Schedule On/Off Time</h4>
 										</div>
 									</div>
 									<div className="block-4 offset-top-4">
@@ -684,8 +682,8 @@ const ViewProduct = (props) => {
 														Switch ON your
 														Mandir/outdoor lights
 														every eveing at 6:15pm
-														and switch OFF at
-														11:00pm
+														and switch OFF outdoor light at
+														7am
 													</li>
 													<li>
 														Switch OFF TV/STB every
@@ -733,17 +731,16 @@ const ViewProduct = (props) => {
 									</div>
 									<div className="block-4 offset-top-4">
 										<p className="big">
-											With inspiration from "आत्मनिर्भर
-											भारत अभियान", we are comitted to
+											With inspiration from <i>"Aatmanirbhar Bharat Abhiyaan"</i>, we are comitted to
 											provide our customers a truely
-											self-reliant (आत्मनिर्भर) experience
+											self-reliant (Aatmanirbhar) experience
 											using MIBAiO.
 										</p>
 										<blockquote className="quote-light">
 											<div className="quote-light-text">
 												<ul className="list-marked list-marked_secondary">
 													<li>
-														Easily manage home
+														Easily manage electrical
 														appliances without
 														struggling to move from
 														your position
@@ -802,7 +799,7 @@ const ViewProduct = (props) => {
 											<div className="quote-light-text">
 												<ul className="list-marked list-marked_secondary">
 													<li>
-														Connect your voice
+														Connect your favorite voice
 														assistant(s) skills with
 														MIBAiO app to enjoy a
 														truely hands-free
@@ -811,8 +808,7 @@ const ViewProduct = (props) => {
 													<li>
 														Works with leading voice
 														assistants like Alexa,
-														Siri and Google vooice
-														assistant
+														Siri and Google Voice.
 													</li>
 												</ul>
 											</div>
@@ -838,12 +834,12 @@ const ViewProduct = (props) => {
 						<p style={{ float: "left" }}>
 							<ul>
 								<li>
-									<strong>Product Dimensions ‏ :</strong> ‎ 9
-									x 9 x 3 cm
+									<strong>Product Dimensions ‏ :</strong> ‎ 10
+									x 10 x 2.75 cm
 								</li>
 								<li>
 									<strong>Date First Available ‏ :</strong> ‎
-									1 July 2022
+									28 August 2023
 								</li>
 								<li>
 									<strong>Manufacturer ‏ :</strong> ‎ MIBAiO
@@ -851,18 +847,15 @@ const ViewProduct = (props) => {
 								</li>
 								<li>
 									<strong>Operating frequency ‏ :</strong> ‎
-									50Hz-60Hz
+									50Hz-60 Hz
 								</li>
 								<li>
 									<strong>Operating voltage ‏ :</strong> ‎
-									110-240 VAC
+									100-250 Volt AC
 								</li>
 								<li>
 									<strong>Communication protocol ‏ :</strong>{" "}
 									‎ WiFi 2.4GHz + Bluetooth 5.0
-								</li>
-								<li>
-									<strong>ASIN ‏ :</strong> ‎ B097HF97XP
 								</li>
 								<li>
 									<strong>Item model number ‏ :</strong> ‎
@@ -873,11 +866,11 @@ const ViewProduct = (props) => {
 									India
 								</li>
 								<li>
-									<strong>Item Weight ‏ :</strong> ‎ 200 g
+									<strong>Item Weight ‏ :</strong> ‎ 240 g
 								</li>
 								<li>
-									<strong>Included Components ‏ :</strong> ‎ 1
-									x MIBAiO Xtension, Instruction manual
+									<strong>Included in Box ‏ :</strong> ‎ 1
+									x Xtension 4S, 1 x Instruction manual, 4 x Wire connectors, 1 x Line tester 
 								</li>
 							</ul>
 						</p>
@@ -894,7 +887,7 @@ const ViewProduct = (props) => {
 											className="_1wB99o"
 										/>
 									</div>
-									&nbsp; ABC &nbsp;{" "}
+									&nbsp; Vinod Tawde &nbsp;{" "}
 									<svg
 										width="14"
 										height="14"
@@ -925,10 +918,10 @@ const ViewProduct = (props) => {
 								<div className="t-ZTKy">
 									<div>
 										<div className="">
-											Excellent cycle in this price range.
+											Excellent Home Automation product in this price range.
 											Value for money.. excellent build
-											quality.. nice looking.. ideal for
-											men.. satisfied...
+											quality.. Aesthetic look.. ideal for any
+											switchboard.. works without Internet too!!
 										</div>
 									</div>
 								</div>
