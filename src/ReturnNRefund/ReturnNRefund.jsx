@@ -128,9 +128,8 @@ const ReturnNRefund = () => {
                                                             Product packaging is
                                                             preserved in
                                                             original condition
-                                                            with no damage,
-                                                            scratches or grease
-                                                            stains
+                                                            with no damage or
+                                                            scratches
                                                         </p>
                                                         <p>
                                                             The product is
@@ -206,7 +205,7 @@ const ReturnNRefund = () => {
                                                             Customers can
                                                             initiate the return
                                                             by sending the mail
-                                                            to info@mibaio.in.
+                                                            to contact@mibaio.in.
                                                         </p>
                                                         <p>
                                                             Customers shall
@@ -229,7 +228,7 @@ const ReturnNRefund = () => {
                                                             of any problem with
                                                             the product, share
                                                             it at
-                                                            info@mibaio.in.
+                                                            contact@mibaio.in.
                                                         </p>
                                                         <p>
                                                             In case of a return,
@@ -265,7 +264,7 @@ const ReturnNRefund = () => {
                                                             customer in sending
                                                             the products back to
                                                             the company, will
-                                                            not be refunded.
+                                                            not be reimbursed.
                                                         </p>
                                                         <p>
                                                             If the return claim
@@ -275,10 +274,6 @@ const ReturnNRefund = () => {
                                                             request or scrap
                                                             after 30 days of
                                                             keeping it in stock.
-                                                            The customer will be
-                                                            responsible for
-                                                            paying all related
-                                                            shipping costs.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -328,7 +323,7 @@ const ReturnNRefund = () => {
                                                             inspected, and
                                                             approved by our QC
                                                             team, it would take
-                                                            1 day for the refund
+                                                            48 hours for the refund
                                                             to initiate.
                                                         </p>
                                                         <p>
@@ -527,7 +522,7 @@ const ReturnNRefund = () => {
                                                             address you will
                                                             have to inform us on
                                                             our email id –
-                                                            info@mibaio.in. If
+                                                            contact@mibaio.in. If
                                                             an item is out of
                                                             stock, we will wait
                                                             for the item to be
@@ -717,7 +712,7 @@ const ReturnNRefund = () => {
                         process.
                         <br />
                         For any queries, please feel free to get in touch with
-                        us at info@mibaio.in
+                        us at contact@mibaio.in
                     </a>
                 </div>
             </section>
