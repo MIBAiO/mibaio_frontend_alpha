@@ -1788,9 +1788,6 @@ const Home = (props) => {
                                                     <li>Ideal for 1 BHK</li>
                                                     <li>No additional wiring</li>
                                                     <li>Fits outside existing switch boards</li>
-                                                    <li>
-                                                        Upgrade more outputs
-                                                    </li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
