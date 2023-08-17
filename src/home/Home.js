@@ -1708,7 +1708,7 @@ const Home = (props) => {
                                                     </li>
                                                     <li>Ideal for 2 BHK</li>
                                                     <li>No additional wiring</li>
-                                                    <li>Fits outside existing switch board/li>
+                                                    <li>Fits outside existing switch board</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
