@@ -1,19 +1,60 @@
-import { login } from "../http/apis";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import NavigationBar from "../components/navigationbar";
+import { REACT_APP_API_URL, login, loginGoogleOAuth } from "../http/apis";
 import "../login/login.css";
 import GoogleIcon from "../assets/svg/GoogleIcon";
 
 const Register = () => {
+
+    const [error, setError] = useState(null);
+    const [didRedirect, setDidRedirect] = useState(false);
+    const [alertType, setAlertType] = useState("alert-danger");
+
+
+
+    const handleGoogleSignIn = useGoogleLogin({
+        onSuccess: async (codeResponse) => {
+            console.log("Login Success:", codeResponse)
+            try {
+                const codeData = {
+                    code: codeResponse.code
+                }
+                const { data } = await loginGoogleOAuth(codeData)
+                if (data) {
+                    console.log("Logged in")
+                    setDidRedirect(true)
+                }
+            } catch (e) {
+                setAlertType("alert-danger");
+                if (e.response) {
+                    setError(e.response.data.message)
+                    console.error(e.response.data.message)
+                } else {
+                    console.error(e)
+                }
+            }
+        },
+        onError: (error) => {
+            toast.error(error.error_description)
+            console.log("Login Failed:", error)
+        },
+        flow: "auth-code",
+        ux_mode: "popup",
+        state: window.location.href,
+    });
+
     return (
         <>
             {/* RD Navbar*/}
             {/* <NavigationBar /> */}
             {/* {!validated && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
-            )}
-            {didRedirect && <Redirect to="/" />} */}
+            )} */}
+            {didRedirect && <Redirect to="/" />}
 
             <div>
                 <div className="section-layout-3-main">
@@ -62,7 +103,11 @@ const Register = () => {
                                             <button
                                                 className="signup-oauth-btn mt-3 oauth-btn sffont w-100 row"
                                                 name="btnsignin"
-                                                onClick={() => { }}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleGoogleSignIn();
+                                                }}
+                                            // disabled={invalid}
                                             >
                                                 <div className="col-4 w-75 d-flex align-items-center justify-content-center">
                                                     <img
@@ -78,7 +123,8 @@ const Register = () => {
                                                 </div>
                                             </button>
                                         </div>
-                                        <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
+                                        {/* YET to Impliment */}
+                                        {/* <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
                                             <button
                                                 className="signup-oauth-btn oauth-btn sffont w-100 row"
                                                 name="btnsignin"
@@ -92,32 +138,32 @@ const Register = () => {
 
                                                     />{" "}
                                                 </div>
-                                                {/* <GoogleIcon /> */}
-                                                <div className="col-8 px-0 signin-btn-text">
-                                                    Continue with Apple
-                                                </div>
-                                            </button>
+                                                
+                                        <div className="col-8 px-0 signin-btn-text">
+                                            Continue with Apple
                                         </div>
-                                        <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
-                                            <button
-                                                className="signup-oauth-btn oauth-btn sffont w-100 row"
-                                                name="btnsignin"
-                                            >
-                                                <div className="col-4 w-100 d-flex align-items-center justify-content-center">
-                                                    <img
-                                                        src="assets/img/facebook.png"
-                                                        className="img-fluid signup-btn-logo"
-                                                        alt="Facebook"
+                                    </button>
+                                </div>
+                                <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
+                                    <button
+                                        className="signup-oauth-btn oauth-btn sffont w-100 row"
+                                        name="btnsignin"
+                                    >
+                                        <div className="col-4 w-100 d-flex align-items-center justify-content-center">
+                                            <img
+                                                src="assets/img/facebook.png"
+                                                className="img-fluid signup-btn-logo"
+                                                alt="Facebook"
 
 
-                                                    />{" "}
-                                                </div>
-                                                <div className="col-8 px-0 w-100 signin-btn-text">
-                                                    {/* <GoogleIcon /> */}
-                                                    Continue with Facebook
-                                                </div>
-                                            </button>
+                                            />{" "}
                                         </div>
+                                        <div className="col-8 px-0 w-100 signin-btn-text">
+                                            
+                                            Continue with Facebook
+                                        </div>
+                                    </button>
+                                </div> */}
                                         <div className="form-wrap w-100 d-flex justify-content-center align-items-center flex-column">
                                             <Link
                                                 to="/emailreg"
@@ -151,9 +197,9 @@ const Register = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
                 <div className="snackbars" id="form-output-global" />
-            </div>
+            </div >
         </>
     );
 };
