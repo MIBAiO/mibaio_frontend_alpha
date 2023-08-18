@@ -14,8 +14,6 @@ const Register = () => {
     const [didRedirect, setDidRedirect] = useState(false);
     const [alertType, setAlertType] = useState("alert-danger");
 
-
-
     const handleGoogleSignIn = useGoogleLogin({
         onSuccess: async (codeResponse) => {
             console.log("Login Success:", codeResponse)
