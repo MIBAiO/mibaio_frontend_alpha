@@ -99,10 +99,12 @@ const Login = () => {
 
     const handleGoogleSignIn = useGoogleLogin({
         onSuccess: async (codeResponse) => {
+            
             try {
                 const codeData = {
                     code: codeResponse.code
                 }
+                console.log(codeData);
                 const { data } = await loginGoogleOAuth(codeData)
                 if (data) {
                     console.log("Logged in")
