@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { getProductsInCart } from "../http/cartCalls";
 import { logUserOut, refresh } from "../http/apis";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 library.add(faIdCard, fas);
 
 const NavigationBar = () => {
@@ -25,27 +25,27 @@ const NavigationBar = () => {
 	const [cartCount, setCartCount] = useState(0);
 
 	const [didRedirect, setDidRedirect] = useState(false);
-// -----------------Sticky Navbar---------------------------------------
+	// -----------------Sticky Navbar---------------------------------------
 	const [isSticky, setIsSticky] = useState(false);
 
 	useEffect(() => {
-	  const handleScroll = () => {
-		const scrollTop = window.pageYOffset;
-		const deviceWidth = window.innerWidth;
-      	const isMobile = deviceWidth < 768;
-		if (isMobile && scrollTop > 100) {
-		  setIsSticky(true);
-		} else {
-		  setIsSticky(false);
-		}
-	  };
-	  window.addEventListener('scroll', handleScroll);
-  
-	  return () => {
-		window.removeEventListener('scroll', handleScroll);
-	  };
+		const handleScroll = () => {
+			const scrollTop = window.pageYOffset;
+			const deviceWidth = window.innerWidth;
+			const isMobile = deviceWidth < 768;
+			if (isMobile && scrollTop > 100) {
+				setIsSticky(true);
+			} else {
+				setIsSticky(false);
+			}
+		};
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	}, []);
-// ------------------------------------------------------------------------  
+	// ------------------------------------------------------------------------  
 
 	useEffect(() => {
 		if (Cookies.get("accessToken")) {
@@ -123,7 +123,7 @@ const NavigationBar = () => {
 					alignItems: "center",
 					flexDirection: "column",
 				}}
-				fixed={ isSticky ? "top" : "" }
+				fixed={isSticky ? "top" : ""}
 			>
 				<Container
 					style={{
