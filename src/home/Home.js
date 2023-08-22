@@ -106,6 +106,8 @@ const Home = (props) => {
 
     //----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
     const videoRef = useRef(null);
+    const appVideoRef = useRef(null);
+    const appScreenRef = useRef(null);
 
     useEffect(() => {
         let options = {
@@ -128,6 +130,27 @@ const Home = (props) => {
 
         observer.observe(videoRef.current);
     });
+
+    // App Video
+    useEffect(()=>{
+        let options = {
+            rootMargin: "50px",
+            // threshold: [0.5, 0.75]
+            threshold: 0.5,
+        };
+        let handlePlay = (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    appVideoRef.current.play();
+                } else {
+                    appVideoRef.current.pause();
+                }
+            });
+        };
+        const observer = new IntersectionObserver(handlePlay,options);
+        observer.observe(appVideoRef.current);
+        console.log("Observer");
+    },[])
     // ----------------------------------------------------------------------------------
     return (
         <>
@@ -2744,13 +2767,12 @@ const Home = (props) => {
                             </h3>
 
                             {/* New App Video Here */}
-                            <div className="row">
+                            <div className="row" ref={appScreenRef}>
                                 <div className="col-md-10 mx-auto">
                                     <video
                                         width="100%"
-                                        autoPlay
-                                        loop
-                                        // ref={videoRef}
+                                        playsInline={true}
+                                        ref={appVideoRef}
                                         muted
                                         style={{
                                             alignContent: "center",
