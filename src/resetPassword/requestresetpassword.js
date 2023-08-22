@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CustomFooter from "../components/customfooter";
 import NavigationBar from "../components/navigationbar";
 import { requestResetPassword } from "../http/apis";
+import { Toaster, toast } from "react-hot-toast";
 import "../login/login.css";
 
 const RequestResetPassword = () => {
@@ -19,33 +20,35 @@ const RequestResetPassword = () => {
     }
 
     async function handleResetPassword(e) {
+        console.log("Hi")
         e.preventDefault();
+
+        if (!checkEmail(email)) {
+            toast.error("Invalid Email");
+            return;
+        }
         try {
             await requestResetPassword({ email });
-            setAlertType("alert-success");
-            setError("Email has been successfully sent");
+            toast.success("Email Sent Successfully");
         } catch (err) {
             console.log(err.response.data.err);
             setError(err.response.data.err);
+            toast.error(err.response.data.err);
         }
     }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        if (!checkEmail(e.target.value)) {
-            setAlertType("alert-danger");
-            setError("Email is not valid");
-            setInvalid(true);
-        } else {
-            setError(null);
-            setInvalid(false);
-        }
         setisActiveEmail(e.target.value !== "");
     };
 
     return (
         <>
             {/* <NavigationBar /> */}
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="section-layout-3-main">
                 <div className="section-1 text-center">
                     <div className="container">
@@ -68,26 +71,7 @@ const RequestResetPassword = () => {
                                     </div>
                                 </div>
                             </div>
-                            {error && (
-                                <div
-                                    className={
-                                        "alert alert-warning alert-dismissible fade" +
-                                        (error ? " show" : "")
-                                    }
-                                    role="alert"
-                                >
-                                    <button
-                                        type="button"
-                                        className="close"
-                                        data-dismiss="alert"
-                                        aria-label="Close"
-                                    >
-                                        <span aria-hidden="true">×</span>
-                                        <span className="sr-only">Close</span>
-                                    </button>
-                                    <strong>WARNING!</strong> {error}
-                                </div>
-                            )}
+
 
                             <div
                                 className="oauth-button-cont  m-md-5"
@@ -158,7 +142,7 @@ const RequestResetPassword = () => {
                                         <button
                                             className="auth-btn sffont w-100 mt-3"
                                             name="btnsignin"
-                                            disabled={invalid}
+                                            type="submit"
                                         >
                                             Send Email
                                         </button>

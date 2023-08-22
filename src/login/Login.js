@@ -5,7 +5,8 @@ import NavigationBar from "../components/navigationbar";
 import "./login.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import GoogleIcon from "../assets/svg/GoogleIcon";
-import { toast } from "react-toastify";
+import { Toaster, toast } from "react-hot-toast";
+
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -49,25 +50,15 @@ const Login = () => {
         );
     }
 
-    const handleEmailChange = (e) => {
-        if (e.target.value.length !== 0) {
-            setEmail(e.target.value);
-            if (!checkEmail(e.target.value)) {
-                console.log("FROM CHANGE");
-                setAlertType("alert-danger");
-                setError("Email is not valid");
-                setInvalid(true);
-            } else {
-                setError(null);
-                setInvalid(false);
-            }
-        }
-    };
-
     async function handleLogin(e) {
         e.preventDefault();
 
         const loginData = { email, password };
+
+        if (!checkEmail(email)) {
+            toast.error("Email is not valid");
+            return;
+        }
         if (error) {
             console.log(error);
             toast.error(error);
@@ -99,7 +90,6 @@ const Login = () => {
 
     const handleGoogleSignIn = useGoogleLogin({
         onSuccess: async (codeResponse) => {
-            
             try {
                 const codeData = {
                     code: codeResponse.code
@@ -108,6 +98,7 @@ const Login = () => {
                 const { data } = await loginGoogleOAuth(codeData)
                 if (data) {
                     console.log("Logged in")
+                    toast.success("Logged in successfully")
                     setDidRedirect(true)
                 }
             } catch (e) {
@@ -117,6 +108,7 @@ const Login = () => {
                     console.error(e.response.data.message)
                 } else {
                     console.error(e)
+                    toast.error("Account already exists!")
                 }
             }
         },
@@ -140,10 +132,14 @@ const Login = () => {
             {didRedirect && <Redirect to="/" />}
 
             <div>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
                 <div className="section-layout-3-main">
-                    <div className="section-1 text-center">
+                    <div className="mt-5 text-center">
                         <div className="container">
-                            <div className="p-2 pb-5 w-100 h-100">
+                            <div className="p-2 pb-5 pt-3 w-100 h-100">
                                 <div className="d-flex p-0 m-0 justify-content-between ">
                                     <div className="layout-2-item back-home-btn">
                                         <Link

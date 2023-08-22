@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavigationBar from "../components/navigationbar";
 import "../login/login.css";
+import { Toaster, toast } from "react-hot-toast";
 const RegisterWithEmail = () => {
     const [name, setname] = useState("");
     const [Fname, setFname] = useState("");
@@ -73,24 +74,26 @@ const RegisterWithEmail = () => {
     async function handleRegister(e) {
         e.preventDefault();
 
+        //Validations
+        if (!name || !email || !password || !confirmPassword) {
+            toast.error("Please fill all the fields");
+            return;
+        }
+
         if (password !== confirmPassword) {
-            setError("Passwords do not match");
-            setTimeout(() => {
-                setError(null);
-            }, 5000);
+            toast.error("Passwords do not match");
+            return;
+        }
+
+        if (!checkEmail(email)) {
+            toast.error("Invalid Email");
             return;
         }
         const userData = { name, email, password };
         console.log(userData);
 
 
-        if (!name || !email || !password || !confirmPassword) {
-            setError("Please fill all the fields");
-            setTimeout(() => {
-                setError(null);
-            }, 5000);
-            return;
-        }
+
 
         console.log(userData);
         if (!error) {
@@ -98,22 +101,23 @@ const RegisterWithEmail = () => {
                 const { data } = await register(userData);
                 console.log("Data: " + data);
                 // const { data } = await register(userData);
-
-
                 if (data) {
                     // this.props.history.push('/login');
                     // history.push({ pathname: "/validate", state: { email } });
+                    toast.success("Account Created Successfully");
                     setRedirected(true);
                 }
             } catch (e) {
                 console.log(e.response.data.message);
-                setError(e.response.data.message);
-
-                setTimeout(() => {
-                    setError(null);
-                }, 5000);
+                toast.error(e.response.data.message);
             }
         }
+    }
+
+    function checkEmail(email) {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
     }
 
     function containsAnyLetter(str) {
@@ -130,9 +134,6 @@ const RegisterWithEmail = () => {
 
     function containsAnyNumber(str) {
         const status = /[0-9]/.test(str);
-
-        // setInvalid(!status);
-
         return status;
     }
 
@@ -167,9 +168,13 @@ const RegisterWithEmail = () => {
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
             {/* <NavigationBar /> */}
-
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="section-layout-3-main">
-                <div className="section text-center">
+
+                <div className="section text-center mt-4">
                     <div className="container">
                         <div className="signup-cont p-2 pb-5 w-100 h-100">
                             <div className="d-flex p-0 m-0 justify-content-between">

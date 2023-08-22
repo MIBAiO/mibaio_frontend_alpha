@@ -1,8 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { toast } from "react-toastify";
-
+import { Toaster, toast } from "react-hot-toast";
 import NavigationBar from "../components/navigationbar";
 import { REACT_APP_API_URL, login, loginGoogleOAuth } from "../http/apis";
 import "../login/login.css";
@@ -24,13 +23,12 @@ const Register = () => {
                 const { data } = await loginGoogleOAuth(codeData)
                 if (data) {
                     console.log("Logged in")
+                    toast.success("Logged in successfully!")
                     setDidRedirect(true)
                 }
             } catch (e) {
-                setAlertType("alert-danger");
                 if (e.response) {
-                    setError(e.response.data.message)
-                    console.error(e.response.data.message)
+                    toast.error(e.response.data.message)
                 } else {
                     console.error(e)
                 }
@@ -55,6 +53,10 @@ const Register = () => {
             {didRedirect && <Redirect to="/" />}
 
             <div>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
                 <div className="section-layout-3-main">
                     <div className="section mt-5 text-center">
                         <div className="container">
