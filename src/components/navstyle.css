@@ -1,4 +1,4 @@
-.linkClass:hover
-{
-    color:"red";
+.custom-dropdown-menu {
+    max-width: 200px;
+    /* Set your desired max width here */
 }
