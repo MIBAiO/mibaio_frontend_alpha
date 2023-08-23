@@ -12,7 +12,6 @@ const Register = () => {
     const [error, setError] = useState(null);
     const [didRedirect, setDidRedirect] = useState(false);
     const [alertType, setAlertType] = useState("alert-danger");
-
     const handleGoogleSignIn = useGoogleLogin({
         onSuccess: async (codeResponse) => {
             console.log("Login Success:", codeResponse)
@@ -28,8 +27,11 @@ const Register = () => {
                 }
             } catch (e) {
                 if (e.response) {
-                    toast.error(e.response.data.message)
+                    console.log("Account already exists!")
+                    toast.error("Account already exists!")
                 } else {
+                    toast.error(`Something went wrong!!`)
+                    console.log("Something went wrong");
                     console.error(e)
                 }
             }
@@ -41,6 +43,7 @@ const Register = () => {
         flow: "auth-code",
         ux_mode: "popup",
         state: window.location.href,
+
     });
 
     return (
@@ -116,9 +119,9 @@ const Register = () => {
                                                         alt="Google"
 
 
-                                                    />{" "}
+                                                    />
                                                 </div>
-                                                <div className="col-8 px-0 signin-btn-text">
+                                                <div className="col-8 px-0 w-100  d-flex justify-content-start signin-btn-text">
                                                     Continue with Google
                                                 </div>
                                             </button>
