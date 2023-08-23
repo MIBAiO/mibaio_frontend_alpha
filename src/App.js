@@ -57,6 +57,7 @@ import FAQ from "./FAQ/FAQ";
 import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 import ScrollToTop from "./components/ScrollToTop";
 import RegisterWithEmail from "./register/RegisterWithEmail";
+import ViewProductNew from "./viewProduct/ViewProductNew";
 
 function App() {
     const { loading } = useLoadingWithRefresh();
@@ -109,6 +110,7 @@ function App() {
                     <ViewProduct />
                     {/* <Temp /> */}
                 </GuestRoute>
+
 
                 <GuestRoute path="/passwordReset">
                     <PasswordReset />
