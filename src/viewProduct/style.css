@@ -1,0 +1,70 @@
+/* Styles */
+.product-page {
+    font-family: Avenir;
+    color: black;
+}
+
+.product-heading {
+    font-family: Avenir;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.product-feature p {
+    color: black;
+    font-family: Avenir;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    margin-top: 0;
+}
+
+
+.product-color h5,
+.product-price h5 {
+    font-weight: 700;
+    margin-top: 20;
+    font-size: 1.3rem;
+    font-family: Avenir;
+}
+
+.product-delivery h6 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: Avenir;
+}
+
+.product-delivery p,
+.product-delivery b {
+    margin: 0;
+}
+
+.btn-product {
+    margin-top: 1.4rem;
+    display: block;
+    padding: .5rem 2rem;
+    border-radius: 10px;
+    width: 70%;
+    color: white;
+    background-color: #3b82f6;
+}
+
+.product-info h5 {
+    font-family: Avenir;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.product-info p {
+    font-family: Avenir;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.product-info p {
+    font-family: Avenir;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0;
+}

@@ -64,7 +64,7 @@ const ViewProduct = (props) => {
 	]);
 
 	const [currentlyViewing, setCurrentlyViewing] = useState(
-		"images/product2/white-front-1.png"
+		"images/product2/white-front.png"
 	);
 
 	const [didRedrirect, setDidRedirect] = useState(false);
@@ -96,13 +96,13 @@ const ViewProduct = (props) => {
 		switch (color) {
 			case "white":
 				setProductImages((_) => [
-					"images/product2/white-front-1.png",
+					"images/product2/white-front.png",
 					"images/product2/white-lhsp-1.png",
 					"images/product2/white-rhsp-1.png",
 					"images/product2/actual-representation.png",
 					"https://warylums.sirv.com/White/White%20360.spin?zoom=10",
 				]);
-				setCurrentlyViewing("images/product2/white-front-1.png");
+				setCurrentlyViewing("images/product2/white-front.png");
 				break;
 			case "blue":
 				setProductImages((_) => [
@@ -870,7 +870,7 @@ const ViewProduct = (props) => {
 								</li>
 								<li>
 									<strong>Included in Box ‏ :</strong> ‎ 1
-									x Xtension 4S, 1 x Instruction manual, 4 x Wire connectors, 1 x Line tester 
+									x Xtension 4S, 1 x Instruction manual, 4 x Wire connectors, 1 x Line tester
 								</li>
 							</ul>
 						</p>
