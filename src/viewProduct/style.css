@@ -59,6 +59,7 @@
     font-family: Avenir;
     font-weight: 500;
     font-size: 1rem;
+    text-align: justify;
     margin-bottom: 0;
 }
 
@@ -67,4 +68,76 @@
     font-weight: 400;
     font-size: 1rem;
     margin-bottom: 0;
+}
+
+.product-features-card h5 {
+    font-family: Avenir;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.features-slide {
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    margin-top: 20px;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px;
+}
+
+.features-slide::-webkit-scrollbar {
+    display: none;
+}
+
+.features-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 30%;
+    min-width: 6rem;
+    height: 6rem;
+}
+
+.features-card img {
+    width: 35px;
+    height: 35px;
+}
+
+
+.features-card p {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: .7rem;
+    text-align: center;
+    line-height: 1;
+    margin-top: .4rem;
+    font-weight: 500;
+
+}
+
+
+
+/* Responsive */
+
+/* Mobile Device -  Up to 480px width */
+@media (max-width: 480px) {
+
+    /* Your mobile-specific styles here */
+    .btn-product {
+        width: 100%;
+    }
+
+
+    .features-card {
+        min-width: 5rem;
+        height: 5rem;
+        margin-right: 5px;
+    }
+
+    .features-card img {
+        width: 25px;
+        height: 25px;
+    }
 }

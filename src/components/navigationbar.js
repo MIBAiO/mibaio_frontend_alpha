@@ -115,7 +115,7 @@ const NavigationBar = () => {
 			<Navbar
 				collapseOnSelect
 				expand="lg"
-				className="rd-navbar-nav-wrap toggle-original-elements active color-nav"
+				className="rd-navbar-nav-wrap py-0 p-md-auto toggle-original-elements active color-nav"
 				variant="dark"
 				style={{
 					display: "flex",

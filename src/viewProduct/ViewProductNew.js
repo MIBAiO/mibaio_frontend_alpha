@@ -172,18 +172,20 @@ const ViewProductNew = (props) => {
                     {/* 2 Sectiobns */}
                     <div className="row">
                         <div className="col-md-6 pt-5">
-                            <h3 className="product-heading">
-                                Xtension 4S
-                            </h3>
-                            <div className="product-feature">
-                                <p>4 Appliance Control</p>
-                                <p>Smart Switch Controller</p>
-                                <p>Dual mode WiFi + Bluetooth</p>
-                            </div>
+                            <div className="text-mobile d-none d-md-block">
 
-                            <div className="product-price my-5">
-                                <h5 className="price">MRP ₹5499.00</h5>
-                                <p>Inclusive of all taxes</p>
+                                <h3 className="product-heading">
+                                    Xtension 4S
+                                </h3>
+                                <div className="product-feature">
+                                    <p>4 Appliance Control</p>
+                                    <p>Smart Switch Controller</p>
+                                    <p>Dual mode WiFi + Bluetooth</p>
+                                </div>
+                                <div className="product-price my-5">
+                                    <h5 className="price">MRP ₹5499.00</h5>
+                                    <p>Inclusive of all taxes</p>
+                                </div>
                             </div>
                             <div className="product-color">
                                 <h5>Color - Black</h5>
@@ -218,22 +220,6 @@ const ViewProductNew = (props) => {
                                         <div
                                             style={{
                                                 aspectRatio: "1 / 1",
-                                                backgroundColor: "#3f4b66",
-                                                borderRadius: "20px",
-                                                width: "30px",
-                                                height: "30px",
-                                                borderStyle: "solid",
-                                                border: "4px solid white",
-                                                outline: color === "blue"
-                                                    ? "2px solid #0ea5e9"
-                                                    : "none",
-                                                cursor: "pointer",
-                                            }}
-                                            onClick={() => changeColor("blue")}
-                                        ></div>
-                                        <div
-                                            style={{
-                                                aspectRatio: "1 / 1",
                                                 backgroundColor: "#1a1a1a",
                                                 borderRadius: "20px",
                                                 width: "30px",
@@ -256,14 +242,30 @@ const ViewProductNew = (props) => {
                                 <p>Order by 5:00 pm. Delivers to 411043</p>
                                 <b>Tomorrow - Free  </b>
                             </div>
-                            <button className="btn-product">
+                            <button className="btn-product ">
                                 Add to Cart
                             </button>
 
                         </div>
 
                         {/* Section - 2 Image */}
-                        <div className="col-md-6 px-5">
+                        <div className="col-md-6 col-12 px-md-5">
+                            <div className="text-mobile d-block d-md-none">
+
+                                <h3 className="product-heading">
+                                    Xtension 4S
+                                </h3>
+                                <div className="product-feature">
+                                    <p>4 Appliance Control</p>
+                                    <p>Smart Switch Controller</p>
+                                    <p>Dual mode WiFi + Bluetooth</p>
+                                </div>
+                                <div className="product-price my-5">
+                                    <h5 className="price">MRP ₹5499.00</h5>
+                                    <p>Inclusive of all taxes</p>
+                                </div>
+                            </div>
+
                             <div
                                 className="fluid__image-container wow fadeIn"
                                 style={{ margin: "10px", maxWidth: "600px" }}
@@ -350,10 +352,36 @@ const ViewProductNew = (props) => {
                         <p>MIBAiO 4S is a IoT smart device which upgrades the abilities of upto 4 pre-existing electrical appliances
                             eg. lights, fan etc to be fully operated and automated using our App across the world!</p>
                     </div>
-                    <div className="product-features-card">
-                        <h5>Product Features</h5>
-                        <div className="row">
-
+                    <div className="product-features-card mt-3">
+                        <h5>Features</h5>
+                        <div className="row pl-3">
+                            <div className="col-md-10 d-flex mt-0 features-slide">
+                                {/* Cards */}
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/clock_icon.svg" alt="clock-icon" className="" />
+                                    <p>Automation</p>
+                                </div>
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/voice_icon.svg" alt="clock-icon" className="" />
+                                    <p>Voice Control</p>
+                                </div>
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/share_icon.svg" alt="clock-icon" className="" />
+                                    <p>Shared Access</p>
+                                </div>
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/charge_icon.svg" alt="clock-icon" className="" />
+                                    <p>Surge<br /> Protection</p>
+                                </div>
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/os_icon.svg" alt="clock-icon" className="" />
+                                    <p>Multi-Platform Support</p>
+                                </div>
+                                <div className="features-card mr-2 border border-primary p-3 rounded-5">
+                                    <img src="/svg-icons/energy_icon.svg" alt="clock-icon" className="" />
+                                    <p>Energy Efficient</p>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
