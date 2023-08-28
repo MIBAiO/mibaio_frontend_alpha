@@ -26,6 +26,7 @@ import { addProductToCart } from "../http/apis";
 import { createSerializableStateInvariantMiddleware } from "@reduxjs/toolkit";
 
 import { faPlus, fas, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { IoCloseCircle } from "react-icons/io5";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import NavigationBar from "../components/navigationbar";
@@ -164,6 +165,12 @@ const ViewProductNew = (props) => {
         }
     }, []);
 
+    // Modal Deals -----------------------------------------------
+    const [activeDeal, setActiveDeal] = useState(null);
+
+
+
+
     return (
         <>
             <NavigationBar />
@@ -242,7 +249,7 @@ const ViewProductNew = (props) => {
                                 <p>Order by 5:00 pm. Delivers to 411043</p>
                                 <b>Tomorrow - Free  </b>
                             </div>
-                            <button className="btn-product ">
+                            <button className="btn-product " data-bs-toggle="modal" data-bs-target="#dealsModal">
                                 Add to Cart
                             </button>
 
@@ -811,6 +818,93 @@ const ViewProductNew = (props) => {
 								</blockquote>
 							</Carousel.Item>
 						</Carousel> */}
+                </div>
+            </div>
+
+
+
+            {/* Overlays */}
+            <div class="modal fade " id="dealsModal" tabindex="-1" aria-labelledby="dealsModalLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content product-modal">
+                        <div class="modal-header p-3 border-0 cursor-pointer">
+                            <IoCloseCircle size={28} data-bs-dismiss="modal" />
+                        </div>
+                        <div class="modal-body py-0">
+                            <h5 className="font-fw-bold text-center fs-5">
+                                Exclusive Deals
+                            </h5>
+                            <p className="text-center text-black fs-5">Upgrade Your Purchase and Enjoy Great Savings</p>
+
+                            <div className="row">
+                                {/* Deal 1 */}
+                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active' : ''}`}>
+                                    <button className={`px-5 py-2  fs-5 fw-bold ${activeDeal == 1 ? 'btn-active' : ''}`}>
+                                        Pack of 3
+                                    </button>
+                                    <div className="modal-deals-price px-3">
+                                        <h6>₹15597.00</h6>
+                                        <p>You save ₹900.00</p>
+                                    </div>
+                                </div>
+                                {/* Deal 2 */}
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+                                    <button className={`px-5 py-2  fs-5 fw-bold ${activeDeal == 2 ? 'btn-active' : ''}`}>
+                                        Pack of 5
+                                    </button>
+                                    <div className="modal-deals-price px-3">
+                                        <h6>₹15597.00</h6>
+                                        <p>You save ₹900.00</p>
+                                    </div>
+                                </div>
+                                {/* Buttons */}
+                                <div className="col-8 mx-auto d-flex py-4 justify-space-between">
+                                    <button className="modal-deals-closebtn" data-bs-dismiss="modal">No Thanks</button>
+                                    <button className={`modal-deals-getbtn ${activeDeal ? 'btn-active' : ''}`} data-bs-target="#chooseModel" data-bs-toggle="modal" data-bs-dismiss="modal">Get Deal</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            {/* Overlay 2 */}
+            <div class="modal fade " id="chooseModel" tabindex="-1" aria-labelledby="chooseModalLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content product-modal">
+                        <div class="modal-header p-3 border-0 cursor-pointer">
+                            <IoCloseCircle size={28} data-bs-dismiss="modal" />
+                        </div>
+                        <div class="modal-body py-0">
+                            <h5 className="font-fw-bold text-center fs-5">
+                                Choose Your Style
+                            </h5>
+                            <p className="text-center text-black fs-5">Mix and Match the colours according to your style</p>
+
+                            <div className="row px-4">
+                                {/* Option 1 */}
+                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active' : ''}`}>
+
+                                </div>
+                                {/* Option 2 */}
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+
+                                </div>
+                                {/* Option 3 */}
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+
+                                </div>
+                                {/* Option */}
+                                <div className="col-8 mx-auto d-flex py-4 justify-space-between">
+                                    <button className="modal-deals-closebtn" data-bs-dismiss="modal">No Thanks</button>
+                                    <button className={`modal-deals-getbtn ${activeDeal ? 'btn-active' : ''}`} >Get Deal</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
