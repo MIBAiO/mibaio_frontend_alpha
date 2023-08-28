@@ -58,6 +58,7 @@ import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 import ScrollToTop from "./components/ScrollToTop";
 import RegisterWithEmail from "./register/RegisterWithEmail";
 import ViewProductNew from "./viewProduct/ViewProductNew";
+import CartNew from "./cart/CartNew";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -147,9 +148,14 @@ function App() {
 					<ReturnNRefund />
 				</GuestRoute>
 
+				<GuestRoute path="/cartnew">
+					<CartNew />
+				</GuestRoute>
+
 				<ProtectedRoute path="/cart">
 					<Cart />
 				</ProtectedRoute>
+
 
 				<ProtectedRoute path="/checkout">
 					<Checkout />

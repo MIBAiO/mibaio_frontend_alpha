@@ -1,0 +1,135 @@
+.cart-page {
+    font-family: Avenir;
+    color: black;
+}
+
+.cart-header h5 {
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 800;
+
+}
+
+.cart-header button {
+    padding: 6px 18px;
+    align-items: center;
+    justify-content: start;
+    border-radius: .5rem;
+    width: 220px;
+    font-size: .8rem;
+    letter-spacing: .06rem;
+    color: white;
+    margin-top: 1rem;
+    background-color: #3b82f6;
+
+}
+
+.cart-product-name h5 {
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 800;
+}
+
+
+.cart-product-name p {
+    font-size: .7rem;
+}
+
+.cart-product-qty button {
+    width: 25px;
+    height: 25px;
+
+    background-color: #b3d0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00307e;
+}
+
+.cart-product-qty p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 1rem;
+}
+
+
+.cart-product-price {
+    text-align: end;
+}
+
+.cart-product-price h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: end;
+    color: black;
+}
+
+.cart-product-price p {
+    font-size: .8rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+
+.cart-deal h5 {
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 700;
+}
+
+.cart-deal p {
+    font-size: 1rem;
+    color: #171717;
+    font-weight: 700;
+}
+
+
+.cart-deal-btn {
+    background-color: #3b82f6;
+    color: white;
+    font-size: .8rem;
+    padding: 6px 18px;
+}
+
+.cart-delivery h6 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: Avenir;
+}
+
+.cart-delivery p,
+.cart-delivery b {
+    margin: 0;
+}
+
+
+.cart-subtotal {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.cart-subtotal-price {
+    text-align: end;
+}
+
+.cart-total h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+    text-align: end;
+}
+
+
+.cart-checkout-btn {
+    background-color: #3b82f6;
+    color: white;
+    font-size: .8rem;
+    padding: 6px 18px;
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: .5rem;
+}

@@ -308,6 +308,12 @@ const ViewProductNew = (props) => {
                                             width: "110%",
                                             height: "110%",
                                         },
+                                        enlargedImageContainerStyle: {
+                                            left: 'unset',
+                                            right: '100%',
+                                            marginLeft: 'unset',
+                                            marginRight: '50px'
+                                        },
                                         isActivatedOnTouch: true,
                                         enlargedImageContainerClassName:
                                             "customEnlargedContainer",
@@ -838,7 +844,7 @@ const ViewProductNew = (props) => {
 
                             <div className="row">
                                 {/* Deal 1 */}
-                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active' : ''}`}>
+                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active-deal' : ''}`}>
                                     <button className={`px-5 py-2  fs-5 fw-bold ${activeDeal == 1 ? 'btn-active' : ''}`}>
                                         Pack of 3
                                     </button>
@@ -848,7 +854,7 @@ const ViewProductNew = (props) => {
                                     </div>
                                 </div>
                                 {/* Deal 2 */}
-                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active-deal' : ''}`}>
                                     <button className={`px-5 py-2  fs-5 fw-bold ${activeDeal == 2 ? 'btn-active' : ''}`}>
                                         Pack of 5
                                     </button>
@@ -885,15 +891,15 @@ const ViewProductNew = (props) => {
 
                             <div className="row px-4">
                                 {/* Option 1 */}
-                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active' : ''}`}>
+                                <div onClick={() => setActiveDeal(1)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 px-md-5  mx-auto ${activeDeal == 1 ? 'active-deal' : ''}`}>
 
                                 </div>
                                 {/* Option 2 */}
-                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active-deal' : ''}`}>
 
                                 </div>
                                 {/* Option 3 */}
-                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active' : ''}`}>
+                                <div onClick={() => setActiveDeal(2)} className={`modal-deals-box d-flex align-items-center col-10 col-md-4 mx-3 p-4 mt-4 px-md-5  mx-auto ${activeDeal == 2 ? 'active-deal' : ''}`}>
 
                                 </div>
                                 {/* Option */}
