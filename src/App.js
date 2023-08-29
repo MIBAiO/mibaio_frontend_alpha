@@ -152,7 +152,7 @@ function App() {
 					<CartNew />
 				</GuestRoute>
 
-				<ProtectedRoute path="/cartnew">
+				<ProtectedRoute path="/cart">
 					{/* <Cart /> */}
 					<CartNew />
 				</ProtectedRoute>

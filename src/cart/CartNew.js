@@ -168,6 +168,8 @@ const CartNew = () => {
         </div>
       </div> */}
             {/* {didRedirect && <Redirect to="/checkout" />} */}
+            {didRedirect && <Redirect to="/checkout" />}
+
 
             <div>
                 <NavigationBar />
