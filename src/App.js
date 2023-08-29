@@ -148,13 +148,9 @@ function App() {
 					<ReturnNRefund />
 				</GuestRoute>
 
-				<GuestRoute path="/cartnew">
-					<CartNew />
-				</GuestRoute>
-
 				<ProtectedRoute path="/cart">
-					<Cart />
-					{/* <CartNew /> */}
+					{/* <Cart /> */}
+					<CartNew />
 				</ProtectedRoute>
 
 
