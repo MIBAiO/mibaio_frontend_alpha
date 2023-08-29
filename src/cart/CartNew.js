@@ -29,7 +29,7 @@ import { HiOutlineTruck } from "react-icons/hi";
 
 
 const CartNew = () => {
-    const [itemQuantity, setItemQuantity] = useState(0);
+    const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
 
     const [cartCalculation, setCartCalculation] = useState({
@@ -47,6 +47,19 @@ const CartNew = () => {
 
     const [didRedirect, setDidRedirect] = useState(false);
 
+
+    // Quantity
+    const incrementQuantity = () => {
+        setItemQuantity(itemQuantity + 1);
+    };
+
+    const decrementQuantity = () => {
+        if (itemQuantity > 1) {
+            setItemQuantity(itemQuantity - 1);
+        }
+    };
+
+    // Price
     const validateCoupon = async (e) => {
         e.preventDefault();
 
@@ -162,41 +175,42 @@ const CartNew = () => {
                     {/* FScreen*/}
                     <div className="cart-page container py-4">
                         <div className="cart-header">
-                            <h5>Your Cart Total is ₹5499.00</h5>
+                            <h5>Your Cart Total is ₹{itemPrice * itemQuantity}.0</h5>
                             <button>Checkout</button>
                         </div>
                         <hr />
-                        <div className="row mt-3">
-                            <div className="col-lg-2">
+                        <div className="row mt-3 flex-column flex-md-row ">
+                            <div className="col-lg-2 col-12 order-md-first ">
                                 <img className="img-fluid" src="images/product2/white-front.png" alt="cartproduct" />
                             </div>
-                            <div className="col-lg-10 pt-4">
+                            <div className="col-lg-10 col-12 pt-4 order-md-last">
 
                                 {/* Row1 - productname, qty, price */}
-                                <div className="d-flex align-items-center justify-content-between">
-                                    <div className="cart-product-name">
+                                <div className="d-flex flex-column justify-content-center flex-md-row align-items-center justify-content-between">
+                                    <div className="cart-product-name w-100">
                                         <h5>Xtension 4S</h5>
                                         <p>Graphite</p>
                                     </div>
-                                    <div className="cart-product-qty d-flex align-items-center ">
-                                        <button>-</button>
-                                        <p>1</p>
-                                        <button>+</button>
-                                    </div>
-                                    <div className="cart-product-price">
-                                        <h6>₹5499.00</h6>
-                                        <p>Inclusive of all taxes</p>
-                                        <div className="cursor-pointer">
-
-                                            <IoTrashSharp size={28} color="#ef4444" />
+                                    <div className="d-flex w-100 justify-content-between">
+                                        <div className="cart-product-qty d-flex align-items-center ">
+                                            <button onClick={decrementQuantity}>-</button>
+                                            <p>{itemQuantity}</p>
+                                            <button onClick={incrementQuantity}>+</button>
+                                        </div>
+                                        <div className="cart-product-price">
+                                            <h6>₹{itemPrice}.00</h6>
+                                            <p>Inclusive of all taxes</p>
+                                            <div className="cursor-pointer">
+                                                <IoTrashSharp size={28} color="#ef4444" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <hr />
 
                                 {/* Row2 - getdeal */}
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="cart-deal">
+                                <div className="cart-deal">
+                                    <div className="cart-deal-text">
                                         <h5>Get Deal</h5>
                                         <p>Upgrade your Purchase and Enjoy Great Deals</p>
 
@@ -208,7 +222,7 @@ const CartNew = () => {
 
                                 <hr />
                                 {/* delivery */}
-                                <div className=" cart-delivery">
+                                <div className="cart-delivery">
                                     <h6><HiOutlineTruck size={24} />Delivery</h6>
                                     <p>Order by 5:00 pm. Delivers to 411043</p>
                                     <b>Tomorrow - Free  </b>
@@ -216,7 +230,7 @@ const CartNew = () => {
                             </div>
                             <hr />
                         </div>                         <hr />
-                        <div className="row mt-1">
+                        <div className="row mt-1 flex-column flex-md-row">
                             <div className="col-lg-10 ml-md-auto">
                                 <div className="cart-subtotal d-flex align-items-center justify-content-between">
                                     <div className="">
@@ -224,7 +238,7 @@ const CartNew = () => {
                                         <p>Shipping</p>
                                     </div>
                                     <div className="cart-subtotal-price">
-                                        <p >₹5499.00</p>
+                                        <p >₹{itemPrice * itemQuantity}.00</p>
                                         <p >FREE</p>
                                     </div>
                                 </div>
@@ -232,7 +246,7 @@ const CartNew = () => {
                                 <div className="cart-total d-flex justify-content-between align-items-start">
                                     <h5>Total</h5>
                                     <div className="cart-total-price">
-                                        <h5>₹54999.00</h5>
+                                        <h5>₹{itemPrice * itemQuantity}.00</h5>
                                         <p>Inclusive of all taxes</p>
                                     </div>
                                 </div>
