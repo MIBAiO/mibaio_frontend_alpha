@@ -209,7 +209,7 @@ const CartNew = () => {
                     {/* FScreen*/}
                     <div className="cart-page container py-4">
                         <div className="cart-header">
-                            <h5>Your Cart Total is ₹{itemPrice * itemQuantity}.0</h5>
+                            <h5>Your Cart Total is ₹  {cartCalculation.total}.0</h5>
                             <button onClick={() => {
                                 if (
                                     cartItems.length > 0
@@ -228,7 +228,8 @@ const CartNew = () => {
                         {/* Row1 - cart-items */}
                         {cartItems.map(
                             (val, idx) => (
-                                <div className="row mt-3 flex-column flex-md-row ">
+                                <div className="row mt-3 flex-column flex-md-row "
+                                    key={"#key" + idx}>
                                     <div className="col-lg-2 col-12 order-md-first ">
                                         <img className="img-fluid" src="images/product2/white-front.png" alt="cartproduct" />
                                     </div>
@@ -331,7 +332,7 @@ const CartNew = () => {
                                         <p>Shipping</p>
                                     </div>
                                     <div className="cart-subtotal-price">
-                                        <p >₹{itemPrice * itemQuantity}.00</p>
+                                        <p >₹ {cartCalculation.total}.0</p>
                                         <p >FREE</p>
                                     </div>
                                 </div>
@@ -339,7 +340,7 @@ const CartNew = () => {
                                 <div className="cart-total d-flex justify-content-between align-items-start">
                                     <h5>Total</h5>
                                     <div className="cart-total-price">
-                                        <h5>₹{itemPrice * itemQuantity}.00</h5>
+                                        <h5>₹{cartCalculation.total}.00</h5>
                                         <p>Inclusive of all taxes</p>
                                     </div>
                                 </div>
