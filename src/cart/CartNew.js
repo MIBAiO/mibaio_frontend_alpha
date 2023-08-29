@@ -157,65 +157,156 @@ const CartNew = () => {
 
     return (
         <>
-            {/* <div className="preloader" id="loading">
-        <div className="preloader-body">
-          <div id="loading-center-object">
-            <div className="object" id="object_four" />
-            <div className="object" id="object_three" />
-            <div className="object" id="object_two" />
-            <div className="object" id="object_one" />
-          </div>
-        </div>
-      </div> */}
-            {/* {didRedirect && <Redirect to="/checkout" />} */}
             {didRedirect && <Redirect to="/checkout" />}
-
-
             <div>
                 <NavigationBar />
-                <div className="page">
+                {cartItems.length === 0 ? (
+                    <section className="section section-md container">
+                        <div className="container">
+                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border-2 ">
+                                <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                                    <h3
+                                        className="display-4 fw-bold lh-1"
+                                        style={{ color: "#03a59a" }}
+                                    >
+                                        Oops! Your cart is empty!
+                                    </h3>
+                                    <p className="lead">
+                                        Looks like you haven't added
+                                        anything to your cart yet
+                                    </p>
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                                        {/* <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> */}
+                                        <Link
+                                            to="/view"
+                                            className="button button-icon button-icon-right button-secondary button-winona wow clipInLeft wow fadeInUp"
+                                            data-wow-delay="0.3s"
+                                            href="model_copy.php"
+                                            data-wow-duration=".5s"
+                                            style={{ fontSize: "18px" }}
+                                        >
+                                            Back To Shopping
+                                        </Link>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4">
+                                    <img
+                                        className="img-svg animated-1"
+                                        style={{
+                                            transition:
+                                                "all 0.3s ease-in-out",
+                                            height: "auto",
+                                            width: "590px",
+                                        }}
+                                        src="images/svg2.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                ) : (<div className="page">
                     {/* FScreen*/}
                     <div className="cart-page container py-4">
                         <div className="cart-header">
                             <h5>Your Cart Total is ₹{itemPrice * itemQuantity}.0</h5>
-                            <button>Checkout</button>
+                            <button onClick={() => {
+                                if (
+                                    cartItems.length > 0
+                                ) {
+                                    setDidRedirect(
+                                        true
+                                    );
+                                } else {
+                                    setDidRedirect(
+                                        false
+                                    );
+                                }
+                            }}>Checkout</button>
                         </div>
                         <hr />
-                        <div className="row mt-3 flex-column flex-md-row ">
-                            <div className="col-lg-2 col-12 order-md-first ">
-                                <img className="img-fluid" src="images/product2/white-front.png" alt="cartproduct" />
-                            </div>
-                            <div className="col-lg-10 col-12 pt-4 order-md-last">
-
-                                {/* Row1 - productname, qty, price */}
-                                <div className="d-flex flex-column justify-content-center flex-md-row align-items-center justify-content-between">
-                                    <div className="cart-product-name w-100">
-                                        <h5>Xtension 4S</h5>
-                                        <p>Graphite</p>
+                        {/* Row1 - cart-items */}
+                        {cartItems.map(
+                            (val, idx) => (
+                                <div className="row mt-3 flex-column flex-md-row ">
+                                    <div className="col-lg-2 col-12 order-md-first ">
+                                        <img className="img-fluid" src="images/product2/white-front.png" alt="cartproduct" />
                                     </div>
-                                    <div className="d-flex w-100 justify-content-between">
-                                        <div className="cart-product-qty d-flex align-items-center ">
-                                            <button onClick={decrementQuantity}>-</button>
-                                            <p>{itemQuantity}</p>
-                                            <button onClick={incrementQuantity}>+</button>
-                                        </div>
-                                        <div className="cart-product-price">
-                                            <h6>₹{itemPrice}.00</h6>
-                                            <p>Inclusive of all taxes</p>
-                                            <div className="cursor-pointer">
-                                                <IoTrashSharp size={28} color="#ef4444" />
+                                    <div className="col-lg-10 col-12 pt-4 order-md-last">
+                                        <div className="d-flex flex-column justify-content-center flex-md-row align-items-center justify-content-between">
+                                            <div className="cart-product-name w-100">
+                                                <h5>{val.modelName}</h5>
+                                                <p>{val.color}</p>
+                                            </div>
+                                            <div className="d-flex w-100 justify-content-between">
+                                                <div className="cart-product-qty d-flex align-items-center ">
+                                                    <button
+                                                        onClick={() => {
+                                                            if (
+                                                                val.count >
+                                                                0
+                                                            )
+                                                                updateCount(
+                                                                    idx,
+                                                                    -1
+                                                                );
+                                                        }}
+                                                    >-</button>
+                                                    <p>{val.count}</p>
+                                                    <button
+                                                        onClick={
+                                                            () => {
+                                                                if (
+                                                                    val.count <
+                                                                    3
+                                                                ) {
+                                                                    updateCount(
+                                                                        idx,
+                                                                        1
+                                                                    );
+                                                                }
+                                                            }
+                                                        }
+                                                    >+</button>
+                                                </div>
+                                                <div className="cart-product-price">
+                                                    <h6>₹{itemPrice}.00</h6>
+                                                    <p>Inclusive of all taxes</p>
+                                                    <div className="cursor-pointer"
+                                                        onClick={async () => {
+                                                            await deleteCartItem(
+                                                                val._id
+                                                            );
+                                                            setCartItems(
+                                                                [
+                                                                    ...cartItems.slice(
+                                                                        0,
+                                                                        idx
+                                                                    ),
+                                                                    ...cartItems.slice(
+                                                                        idx +
+                                                                        1
+                                                                    ),
+                                                                ]
+                                                            );
+                                                        }}>
+                                                        <IoTrashSharp size={28} color="#ef4444" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
-
+                            )
+                        )}
+                        <hr />
+                        <div className="row mt-3 flex-column flex-md-row ">
+                            <div className="col-lg-10 col-12 pt-4 order-md-last">
                                 {/* Row2 - getdeal */}
                                 <div className="cart-deal">
                                     <div className="cart-deal-text">
                                         <h5>Get Deal</h5>
                                         <p>Upgrade your Purchase and Enjoy Great Deals</p>
-
                                     </div>
                                     <div className="cart-deal-btn rounded-pill  ">
                                         Get Deal
@@ -254,7 +345,20 @@ const CartNew = () => {
                                 </div>
                             </div>
                             <div className="col-md-3 ml-auto">
-                                <button className="cart-checkout-btn">Checkout</button>
+                                <button className="cart-checkout-btn"
+                                    onClick={() => {
+                                        if (
+                                            cartItems.length > 0
+                                        ) {
+                                            setDidRedirect(
+                                                true
+                                            );
+                                        } else {
+                                            setDidRedirect(
+                                                false
+                                            );
+                                        }
+                                    }}>Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -262,7 +366,8 @@ const CartNew = () => {
 
                     {/* Subscribe to Get Notified!*/}
                     <CustomFooter />
-                </div>
+                </div>)}
+
                 <div className="snackbars" id="form-output-global" />
             </div >
         </>
