@@ -140,6 +140,14 @@
 }
 
 
+.deals-card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.deal-item-image {
+    min-width: 60px;
+    min-height: 60px;
+}
 
 .modal-deals-box {
     display: flex;
@@ -220,5 +228,12 @@
     .features-card img {
         width: 25px;
         height: 25px;
+    }
+
+    .modal-deals-closebtn,
+    .modal-deals-getbtn {
+
+        margin: 0;
+
     }
 }

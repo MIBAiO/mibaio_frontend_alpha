@@ -59,6 +59,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import RegisterWithEmail from "./register/RegisterWithEmail";
 import ViewProductNew from "./viewProduct/ViewProductNew";
 import CartNew from "./cart/CartNew";
+import CheckoutNew from "./checkout/CheckoutNew";
+import AddressPage from "./checkout/AddressPage";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -147,16 +149,21 @@ function App() {
 				<GuestRoute path="/returnnrefund">
 					<ReturnNRefund />
 				</GuestRoute>
-
 				<ProtectedRoute path="/cart">
 					{/* <Cart /> */}
 					<CartNew />
 				</ProtectedRoute>
-
-
 				<ProtectedRoute path="/checkout">
 					<Checkout />
 				</ProtectedRoute>
+				{/* New Checkout FLow */}
+				<GuestRoute path="/checkoutnew">
+					<CheckoutNew />
+				</GuestRoute>
+
+				<GuestRoute path="/address">
+					<AddressPage />
+				</GuestRoute>
 				<ProtectedRoute path="/product_details">
 					<Product_details />
 				</ProtectedRoute>

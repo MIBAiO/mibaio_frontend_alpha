@@ -877,7 +877,7 @@ const Checkout = () => {
                                         className="btn w-40"
                                         data-toggle="modal"
                                         data-target="#exampleModal"
-                                        // onClick={saveData}
+                                    // onClick={saveData}
                                     >
                                         {isPaymentInProgress && (
                                             <div

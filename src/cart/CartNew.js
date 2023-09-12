@@ -82,7 +82,9 @@ const CartNew = () => {
             setCartItems(data);
             let total = 0;
             data.forEach((val) => {
-                total += val.pricePerPiece * val.count;
+                if (val.items && Array.isArray(val.items)) {
+                    total += val.pricePerPiece * val.count;
+                }
             });
             setCartCalculation({
                 ...cartCalculation,
@@ -226,6 +228,7 @@ const CartNew = () => {
                         </div>
                         <hr />
                         {/* Row1 - cart-items */}
+                        {console.log(cartItems)}
                         {cartItems.map(
                             (val, idx) => (
                                 <div className="row mt-3 flex-column flex-md-row "
