@@ -410,7 +410,7 @@ const ViewProductNew = (props) => {
                                             <div className="row my-0">
                                                 <div className="col-md-8 col-12 mx-auto d-flex flex-column flex-md-row py-4 justify-space-between">
                                                     <button className="modal-deals-closebtn mb-2" data-target="#dealsModal" data-toggle="modal" data-dismiss="modal">Back</button>
-                                                    <button className={`modal-deals-getbtn btn-active mb-2`} onClick={cartHandler}>Choose Style </button>
+                                                    <button className={`modal-deals-getbtn btn-active mb-2`} onClick={cartHandler} data-dismiss="modal">Choose Style </button>
                                                 </div>
                                             </div>
                                         </div>

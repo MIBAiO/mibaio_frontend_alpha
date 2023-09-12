@@ -110,7 +110,8 @@ function App() {
 
 				<GuestRoute path="/view">
 					{/* <BasicExample /> */}
-					<ViewProduct />
+					{/* <ViewProduct /> */}
+					<ViewProductNew />
 					{/* <Temp /> */}
 				</GuestRoute>
 				<GuestRoute path="/viewnew">
