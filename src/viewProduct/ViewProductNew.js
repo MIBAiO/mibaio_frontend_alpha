@@ -46,7 +46,6 @@ const ViewProductNew = (props) => {
 
     }, []);
 
-    const [color, setColor] = useState("white");
 
     const [state, setState] = useState({
         previewHorizontalPos: "left",
@@ -57,7 +56,6 @@ const ViewProductNew = (props) => {
         show: true,
     });
 
-    const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
 
     const [productImages, setProductImages] = useState([
@@ -75,11 +73,9 @@ const ViewProductNew = (props) => {
 
     const [isNotLoggedIn, setIsNotLoggedIn] = useState(false);
     // Cart Handler      -------------------------------------------------------------------------------------
-    const [productDeal, setProductDeal] = useState(3);
+    const [productDeal, setProductDeal] = useState(1);
     const [dealItems, setDealItems] = useState([
         { id: 1, color: 'white' },
-        { id: 2, color: 'black' },
-        { id: 3, color: 'white' },
     ])
 
     useEffect(() => {
@@ -116,7 +112,7 @@ const ViewProductNew = (props) => {
 
     const cartHandler = async () => {
         console.log("hi");
-        if (itemQuantity === 0) {
+        if (productDeal === 0) {
             toast.error("Minimum 1 item has to be purchased");
         }
         try {
@@ -133,10 +129,7 @@ const ViewProductNew = (props) => {
     };
 
 
-    // Changing the Main Product UI Color -------------------------------------------------------------------------------------
-    function changeColor(clr) {
-        setColor(clr);
-    }
+
 
     useEffect(() => {
         switch (color) {
@@ -270,12 +263,12 @@ const ViewProductNew = (props) => {
                                                 height: "30px",
                                                 borderStyle: "solid",
                                                 border: "4px solid white",
-                                                outline: color === "white"
+                                                outline: dealItems[0].color === "white"
                                                     ? "2px solid #0ea5e9"
                                                     : "none",
                                                 cursor: "pointer",
                                             }}
-                                            onClick={() => changeColor("white")}
+                                            onClick={() => updateDealItems(1, "white")}
                                         ></div>
                                         <div
                                             style={{
@@ -286,12 +279,12 @@ const ViewProductNew = (props) => {
                                                 height: "30px",
                                                 borderStyle: "solid",
                                                 border: "4px solid white",
-                                                outline: color === "black"
+                                                outline: dealItems[0].color === "black"
                                                     ? "2px solid #0ea5e9"
                                                     : "none",
                                                 cursor: "pointer",
                                             }}
-                                            onClick={() => changeColor("black")}
+                                            onClick={() => updateDealItems(1, "black")}
                                         ></div>
                                     </div>
                                 </div>
@@ -348,7 +341,7 @@ const ViewProductNew = (props) => {
                                                 </div>
                                                 {/* Buttons */}
                                                 <div className="col-10 col-md-8 mx-auto p-0 my-3 d-flex d-flex flex-column flex-md-row py-4-md justify-space-between">
-                                                    <button className="modal-deals-closebtn mb-3" data-dismiss="modal" >No Thanks</button>
+                                                    <button className="modal-deals-closebtn mb-3" data-dismiss="modal" onClick={cartHandler} >No Thanks</button>
                                                     <button className={`modal-deals-getbtn ${activeDeal ? 'btn-active' : ''}`}
                                                         data-target="#chooseModel" data-toggle="modal" data-dismiss="modal">Get
                                                         Deal</button>
