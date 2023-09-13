@@ -132,7 +132,7 @@ const ViewProductNew = (props) => {
 
 
     useEffect(() => {
-        switch (color) {
+        switch (dealItems[0].color) {
             case "white":
                 setProductImages((_) => [
                     "images/product2/white-front.png",
@@ -166,7 +166,7 @@ const ViewProductNew = (props) => {
             default:
                 break;
         }
-    }, [color]);
+    }, [dealItems]);
 
     // //----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
     const videoRef = useRef(null);
