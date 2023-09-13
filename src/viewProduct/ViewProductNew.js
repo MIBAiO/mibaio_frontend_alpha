@@ -341,7 +341,10 @@ const ViewProductNew = (props) => {
                                                 </div>
                                                 {/* Buttons */}
                                                 <div className="col-10 col-md-8 mx-auto p-0 my-3 d-flex d-flex flex-column flex-md-row py-4-md justify-space-between">
-                                                    <button className="modal-deals-closebtn mb-3" data-dismiss="modal" onClick={cartHandler} >No Thanks</button>
+                                                    <button className="modal-deals-closebtn mb-3" data-dismiss="modal" onClick={() => {
+                                                        setProductDeal(1);
+                                                        cartHandler();
+                                                    }} >No Thanks</button>
                                                     <button className={`modal-deals-getbtn ${activeDeal ? 'btn-active' : ''}`}
                                                         data-target="#chooseModel" data-toggle="modal" data-dismiss="modal">Get
                                                         Deal</button>
