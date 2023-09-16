@@ -129,7 +129,7 @@ const Login = () => {
             {!validated && (
                 <Redirect to={{ pathname: "/validate", state: { email } }} />
             )}
-            {didRedirect && <Redirect to="/" />}
+            {didRedirect && <Redirect to="/cart" />}
 
             <div>
                 <Toaster
