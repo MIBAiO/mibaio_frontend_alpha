@@ -320,7 +320,7 @@ const ViewProductNew = (props) => {
                                                 {/* Deal 1 */}
                                                 <div onClick={() => setProductDeal(3)} className={`modal-deals-box d-flex flex-column flex-md-row align-items-center col-10 p-4-md p-2
                         px-md-5 mx-auto ${productDeal == 3 ? 'active-deal' : ''}`}>
-                                                    <button className={`px-5 py-2 fs-5 fw-bold ${activeDeal == 1 ? 'btn-active' : ''}`}>
+                                                    <button className={`px-5 py-2 fs-5 fw-bold ${productDeal == 3 ? 'btn-active' : ''}`}>
                                                         Pack of 3
                                                     </button>
                                                     <div className="modal-deals-price px-3">
@@ -331,7 +331,7 @@ const ViewProductNew = (props) => {
                                                 {/* Deal 2 */}
                                                 <div onClick={() => setProductDeal(5)} className={`modal-deals-box d-flex flex-column flex-md-row align-items-center col-10 p-4-md p-2
                         mt-4 px-md-5 mx-auto ${productDeal == 5 ? 'active-deal' : ''}`}>
-                                                    <button className={`px-5 py-2 fs-5 fw-bold ${activeDeal == 2 ? 'btn-active' : ''}`}>
+                                                    <button className={`px-5 py-2 fs-5 fw-bold ${productDeal == 5 ? 'btn-active' : ''}`}>
                                                         Pack of 5
                                                     </button>
                                                     <div className="modal-deals-price px-3">
