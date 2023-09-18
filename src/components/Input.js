@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-const Input = ({ label, type = 'text', initialValue = '', onChange, simple }) => {
+const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onClick }) => {
     const [value, setValue] = useState(initialValue);
     const [isEditing, setIsEditing] = useState(false);
-
-
-
-
 
     const handleInputChange = (event) => {
         setValue(event.target.value);
@@ -20,11 +16,15 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple }) =>
 
     const handleEditClick = () => {
         setIsEditing(!isEditing);
+        if (onClick) {
+            onClick();
+        }
     };
 
     return (
         <div className="form-wrap">
             <div
+                onClick={handleEditClick}
                 style={{
                     border: `2px solid ${isEditing ? '#007bff' : '#ced4da'}`,
                     borderRadius: '0.25rem',
@@ -34,15 +34,16 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple }) =>
                     paddingBottom: '0.75rem',
                     outline: 'none',
                     fontWeight: 600,
+                    cursor: 'pointer',
                     transition: 'border-color 0.2s',
                 }}
             >
                 <input
                     type={type}
                     style={{
+                        width: 90 + "%",
                         border: 'none',
                         outline: 'none',
-                        width: '80%',
                         fontSize: '1rem',
                         fontWeight: '600',
                         padding: '0',
@@ -51,6 +52,7 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple }) =>
                     readOnly={simple ? '' : !isEditing}
                     onChange={handleInputChange}
                     value={value}
+                    onBlur={() => setIsEditing(false)}
                     required
                 />
                 <label

@@ -305,7 +305,7 @@ const CartNew = () => {
                         )}
                         <hr />
                         <div className="row mt-3 flex-column flex-md-row ">
-                            <div className="col-lg-12 col-12 pt-4 order-md-last">
+                            <div className="col-lg-10 col-12 pt-4 order-md-last">
                                 {/* Row2 - getdeal */}
                                 <div className="cart-deal">
                                     <div className="cart-deal-text">
@@ -326,9 +326,10 @@ const CartNew = () => {
                                 </div>
                             </div>
                             <hr />
-                        </div>                         <hr />
+                        </div>
+                        <hr className="col-12" />
                         <div className="row mt-1 flex-column flex-md-row">
-                            <div className="col-lg-12 ml-md-auto">
+                            <div className="col-lg-10 col-12 ml-md-auto">
                                 <div className="cart-subtotal d-flex align-items-center justify-content-between">
                                     <div className="">
                                         <p>Subtotal</p>

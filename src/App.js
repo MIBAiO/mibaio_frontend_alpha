@@ -61,6 +61,8 @@ import ViewProductNew from "./viewProduct/ViewProductNew";
 import CartNew from "./cart/CartNew";
 import CheckoutNew from "./checkout/CheckoutNew";
 import AddressPage from "./checkout/AddressPage";
+import PayMethod from "./checkout/PayMethod";
+import PayMethodNew from "./checkout/PayMethodNew";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -161,9 +163,14 @@ function App() {
 				<GuestRoute path="/checkoutnew">
 					<CheckoutNew />
 				</GuestRoute>
-
 				<GuestRoute path="/address">
 					<AddressPage />
+				</GuestRoute>
+				<GuestRoute path="/address2">
+					<AddressPage />
+				</GuestRoute>
+				<GuestRoute path="/paynew">
+					<PayMethodNew />
 				</GuestRoute>
 				<ProtectedRoute path="/product_details">
 					<Product_details />

@@ -38,6 +38,8 @@ const AddressPage = () => {
 
     const [add1, setAdd1] = useState("E -204, Koregaon Park Street Society");
     const [add2, setAdd2] = useState("E -204, Koregaon Park Street Society");
+    //Add New Addresss
+    const [newAddress, setNewAddress] = useState(false);
 
     const [email, setEmail] = useState("");
     const [Mobile, setMobile] = useState("");
@@ -65,6 +67,7 @@ const AddressPage = () => {
     const [orderSuccess, setOrderSuccess] = useState(false);
 
     const [payViaCash, setPayViaCash] = useState(false);
+    const [firstName, setFirstName] = useState();
 
     const closeModal = useRef(false);
 
@@ -77,6 +80,7 @@ const AddressPage = () => {
         zip: "",
         phoneNo: "",
     });
+
     const [billingDetails, setBillingDetails] = useState({
         name: "",
         email: "",
@@ -388,6 +392,8 @@ const AddressPage = () => {
         const paymentObject = new window.Razorpay(options);
         console.log(paymentObject);
         paymentObject.open();
+
+
     };
 
     return (
@@ -418,11 +424,27 @@ const AddressPage = () => {
                                 <p className="title">Delivers Monday 29 May</p>
                                 <p className="des">FREE</p>
                             </div> */}
-                            <Input label="Vedant Mane" initialValue={add2} onChange={(value) => setAdd1(value)} />
-                            <Input label="Vedant Mane" initialValue={add2} onChange={(value) => setAdd1(value)} />
-                            <div onClick={() => setSelectedIndex(3)} className={`checkout-option-item d-flex py-3 flex-column ${selectedIndex == 3 ? 'active-item' : ''}`}>
+                            <Input onClick={() => setNewAddress(false)} label="Vedant Mane" initialValue={add2} onChange={(value) => setAdd1(value)} />
+                            <Input onClick={() => setNewAddress(false)} label="Vedant Mane" initialValue={add2} onChange={(value) => setAdd1(value)} />
+                            <div onClick={() => { setSelectedIndex(3); setNewAddress(true); }} className={`checkout-option-item d-flex py-3 flex-column ${newAddress ? 'active-item' : ''}`}>
                                 <p className="des">Add new Address</p>
                             </div>
+
+                            {
+                                newAddress ?
+                                    <div className="new-address-fields">
+                                        <Input label="First Name" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Last Name" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Address Line 1" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Address Line 2 (Optional)" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Landmark" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Pin Code" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="City, State" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                        <Input label="Country" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
+                                    </div>
+                                    :
+                                    ''
+                            }
 
 
                             <h6 className="mt-5">What is Your Contact Information?</h6>
@@ -430,38 +452,47 @@ const AddressPage = () => {
                             <Input label="Mobile Number" initialValue={""} simple={true} onChange={(value) => setMobile(value)} />
 
                         </div>
-                        <div className="checkout-notice col-md-6 col-10 d-flex flex-column justify-content-end">
-                            <h5 >Important Note:</h5>
+                        <div className="checkout-notice col-md-4 mr-auto col-10 d-flex flex-column justify-content-end">
+                            <p>We'll email you a receipt and send order
+                                updates to your mobile phone via SMS</p>
+                            <h5 >For a successful delivery, make sure your
+                                phone number is correct:</h5>
                             <ul>
-                                <li>Standard deliveries are made between
-                                    8:00 a.m. and 6:00 p.m., Monday-
-                                    Saturday.
+                                <li>The courier will send a One-Time Password (OTP) to this number.
                                 </li>
                                 <li>
-                                    Drivers may ask for verbal confirmation
-                                    from a safe distance to satisfy the
-                                    signature requirement, or may leave
-                                    lower-cost shipments at your door with
-                                    no signature required.
+                                    To receive your goods, you must supply
+                                    the OTP to the courier at the time of
+                                    delivery. Be sure you have access to the
+                                    phone at that time.
                                 </li>
                             </ul>
                         </div>
-                        <hr className="col-12" />
-                        <div className="col-12 ">
-                            <h6>Share shopping updates with someone else?:</h6>
-                            <p>Enter Email Address: </p>
+                    </div>
+
+                    <hr />
+                    <div className="row checkout-container flex-column flex-md-row">
+                        <div className="col-md-6 col-12 ">
+                            <h6>Share shopping updates with someone else:</h6>
+                            <Input label="Email (Optional)" initialValue={""} simple={true} onChange={(value) => setFirstName(value)} />
                         </div>
-
-
-                        <hr className="col-12" />
-
-                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mt-3">
-                            <button className="checkout-btn">Continue to Shipping Address</button>
-                        </div>
-                        <div className="col-12 col-md-6 d-flex align-items-center  mt-3">Need some help? Chat now
-                            or call +91 12345 67890
+                        <div className="col-md-4 mr-auto align-items-end d-flex col-12">
+                            <p>Shipping notifications will be sent to the email address you enter.</p>
                         </div>
                     </div>
+                    <hr />
+                    <div className="row checkout-container flex-column flex-md-row">
+
+                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mt-3">
+                            <Link to="/paynew" className="checkout-btn text-center ">Continue to Payment</Link>
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <div className="d-flex align-items-end  mt-3">Need some help? Chat now
+                                or call +91 12345 67890
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 {/* <div className="snackbars" id="form-output-global" /> */}
             </div>
