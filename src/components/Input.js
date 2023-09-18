@@ -28,10 +28,8 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onCl
                 style={{
                     border: `2px solid ${isEditing ? '#007bff' : '#ced4da'}`,
                     borderRadius: '0.25rem',
-                    padding: '1rem',
-                    paddingTop: '1.5rem',
+
                     borderRadius: '10px',
-                    paddingBottom: '0.75rem',
                     outline: 'none',
                     fontWeight: 600,
                     cursor: 'pointer',
@@ -44,9 +42,11 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onCl
                         width: 90 + "%",
                         border: 'none',
                         outline: 'none',
+                        padding: '1rem',
+                        paddingTop: '1.3rem',
+                        paddingBottom: '0.7rem',
                         fontSize: '1rem',
                         fontWeight: '600',
-                        padding: '0',
                         color: '#212529',
                     }}
                     readOnly={simple ? '' : !isEditing}
@@ -64,7 +64,7 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onCl
                         pointerEvents: 'none',
                         transition: 'all 0.2s',
                         color: isEditing ? '#007bff' : '#000',
-                        color: simple ? "#c0c0c0" : "#c0c0c0",
+                        color: `${isEditing ? '#007bff' : '#ced4da'}`,
                         fontWeight: '600',
                         zIndex: -1
                     }}

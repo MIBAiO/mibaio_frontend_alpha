@@ -392,7 +392,7 @@ const CheckoutNew = () => {
                 <NavigationBar />
                 <div className="container mx-auto py-3 checkout-page-1">
                     <div className="checkout-header  mt-3 mb-2 d-flex flex-column flex-md-row justify-content-between">
-                        <h5>Checkout</h5>
+                        <h5 className="check-headline">Checkout</h5>
                         <p>Order Summary: ₹5499.00</p>
                     </div>
                     <hr />

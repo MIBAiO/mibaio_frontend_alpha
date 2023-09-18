@@ -1,5 +1,5 @@
 .cart-page {
-    font-family: Avenir !important;
+    font-family: 'Avenir' !important;
     color: black;
 }
 
@@ -125,11 +125,13 @@
 
 .cart-subtotal {
     font-size: 1.2rem;
+    font-family: 'Avenir';
     font-weight: 700;
     color: black;
 }
 
 .cart-subtotal-price {
+    font-family: 'Avenir';
     text-align: end;
 }
 
@@ -138,6 +140,7 @@
     font-weight: 700;
     color: black;
     text-align: end;
+    font-family: 'Avenir' !important;
 }
 
 
