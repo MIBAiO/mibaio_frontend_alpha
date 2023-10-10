@@ -7,7 +7,7 @@ import { Link, Redirect, useLocation } from "react-router-dom";
 import "./reviews.css";
 import { HiOutlineTruck } from "react-icons/hi";
 
-import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button, Toast } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
 import Hamburger from "hamburger-react";
 // import pic1 from "../../public/pic1.png";
@@ -30,7 +30,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
-import { toast } from "react-toastify";
+import { toast, Toaster } from "react-hot-toast";
 import "./style.css";
 import WOW from "wowjs";
 library.add(fas, faPlus, faMinus);
@@ -56,7 +56,23 @@ const ViewProductNew = (props) => {
         show: true,
     });
 
-    const [itemPrice, setItemPrice] = useState(5499);
+    const [pincode, setPincode] = useState("411043");
+    const [editPin, setEditPin] = useState(false);
+
+    const savePin = () => {
+        //check if pin is alid
+        if (pincode.length !== 6) {
+            toast.error("Please enter a valid pincode");
+            return;
+        }
+
+        localStorage.setItem("pincode", pincode);
+        toast.success("Pincode saved successfully");
+        setEditPin(false);
+    };
+
+    //Handle  click on chnage
+
 
     const [productImages, setProductImages] = useState([
         "images/product1/whiteFront600x600.png",
@@ -76,7 +92,7 @@ const ViewProductNew = (props) => {
     const [productDeal, setProductDeal] = useState(1);
     const [dealItems, setDealItems] = useState([
         { id: 1, color: 'white' },
-    ])
+    ]);
 
     useEffect(() => {
         if (productDeal == 3) {
@@ -86,7 +102,7 @@ const ViewProductNew = (props) => {
                 { id: 2, color: 'black' },
                 { id: 3, color: 'white' },
             ])
-        } else {
+        } else if (productDeal == 5) {
             //set data
             setDealItems([
                 { id: 1, color: 'white' },
@@ -95,7 +111,12 @@ const ViewProductNew = (props) => {
                 { id: 4, color: 'white' },
                 { id: 5, color: 'white' },
             ])
+        } else {
+            setDealItems([
+                { id: 1, color: 'white' }
+            ])
         }
+
     }, [productDeal])
 
     //update deal items color
@@ -213,6 +234,10 @@ const ViewProductNew = (props) => {
 
     return (
         <>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
 
 
             {didRedrirect && <Redirect to="/cart" />}
@@ -292,7 +317,19 @@ const ViewProductNew = (props) => {
 
                             <div className="product-delivery mt-5">
                                 <h6><HiOutlineTruck size={24} />Delivery</h6>
-                                <p>Order by 5:00 pm. Delivers to 411043</p>
+                                <div className="product-delivery-pin d-flex align-items-center">
+                                    <p>Delivers to <span class="text-primary">{pincode}</span> </p>
+                                    <button onClick={() => setEditPin(!editPin)} className="pinchange-btn mx-auto px-2 " >Change</button>
+                                </div>
+
+                                {
+                                    editPin ?
+                                        <div className="product-delivery-pin-input d-flex my-3 align-items-center justify-content-start ">
+                                            <input value={pincode} onChange={(e) => setPincode(e.target.value)} type="text" className="form-control pin-input" placeholder="Enter Pincode" />
+                                            <button onClick={savePin} className="pin-btn">Save</button>
+                                        </div> : ''
+                                }
+
                                 <b>Tomorrow - Free  </b>
                             </div>
                             <button className="btn-product"
@@ -563,10 +600,10 @@ const ViewProductNew = (props) => {
                         </div>
                     </div>
                 </div >
-            </div>
+            </div >
 
             {/* Old */}
-            <div className="tabs" ref={specsRef}>
+            < div className="tabs" ref={specsRef} >
                 <h3
                     style={{
                         fontWeight: "bold",
@@ -989,7 +1026,7 @@ const ViewProductNew = (props) => {
 							</Carousel.Item>
 						</Carousel> */}
                 </div>
-            </div>
+            </div >
 
 
 

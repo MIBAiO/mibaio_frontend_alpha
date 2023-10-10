@@ -9,7 +9,7 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onCl
         setValue(event.target.value);
 
         if (onChange) {
-            onChange(event.target.value);
+            onChange(event);
         }
         setIsEditing(true);
     };
@@ -20,6 +20,11 @@ const Input = ({ label, type = 'text', initialValue = '', onChange, simple, onCl
             onClick();
         }
     };
+
+    //If initialValue changes, update the value
+    useEffect(() => {
+        setValue(initialValue);
+    }, [initialValue]);
 
     return (
         <div className="form-wrap">

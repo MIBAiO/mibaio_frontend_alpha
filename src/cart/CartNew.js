@@ -32,6 +32,25 @@ const CartNew = () => {
     const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
 
+    const [pincode, setPincode] = useState('');
+
+    const [editPin, setEditPin] = useState(false);
+
+    const savePin = () => {
+        setEditPin(false);
+        localStorage.setItem("pincode", pincode);
+    }
+
+    useEffect(() => {
+        const pin = localStorage.getItem("pincode");
+        if (pin) {
+            setPincode(pin);
+        } else {
+            setPincode("411043");
+        }
+    }, []);
+
+
     const [cartCalculation, setCartCalculation] = useState({
         total: null,
         couponDiscount: null,
@@ -159,7 +178,7 @@ const CartNew = () => {
 
     return (
         <>
-            {didRedirect && <Redirect to="/checkout" />}
+            {didRedirect && <Redirect to="/checkoutnew" />}
             <div>
                 <NavigationBar />
                 {cartItems.length === 0 ? (
@@ -227,7 +246,7 @@ const CartNew = () => {
                             }}>Checkout</button>
                         </div>
                         <hr />
-                        {/* Row1 - cart-items */}
+                        {/* Rows - cart-items */}
                         {console.log(cartItems)}
                         {cartItems.map(
                             (val, idx) => (
@@ -319,11 +338,28 @@ const CartNew = () => {
 
                                 <hr />
                                 {/* delivery */}
-                                <div className="cart-delivery">
-                                    <h6><HiOutlineTruck size={24} />Delivery</h6>
-                                    <p>Order by 5:00 pm. Delivers to 411043</p>
-                                    <b>Tomorrow - Free  </b>
+                                <div className="cart-delivery  d-flex justify-content-between align-items-center ">
+                                    <div className="">
+                                        <h6><HiOutlineTruck size={24} />Delivery</h6>
+                                        <p>Order by 5:00 pm. Delivers to {pincode}</p>
+                                        <b>Tomorrow - Free  </b>
+                                    </div>
+
+                                    <div className="d-flex align-items-center justify-content-end flex-column">
+
+                                        {editPin ? <div className="cart-delivery-input rounded-pill  ">
+                                            <input className="pin-input" value={pincode} type="text" placeholder="Enter Pincode" onChange={(e) => setPincode(e.target.value)} />
+                                            <button className="pin-btn " onClick={savePin}>Save</button>
+                                        </div> :
+                                            <button onClick={() => setEditPin(!editPin)} className="cart-delivery-btn rounded-pill">
+                                                Change
+                                            </button>
+                                        }
+
+                                    </div>
+
                                 </div>
+
                             </div>
                             <hr />
                         </div>

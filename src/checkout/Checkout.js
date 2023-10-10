@@ -112,6 +112,7 @@ const Checkout = () => {
         },
     };
 
+    // Method to save data to database
     const saveData = async () => {
         if (!isInvalid) {
             setIsPaymentInProgress(true);
@@ -199,6 +200,8 @@ const Checkout = () => {
                 couponCode,
                 payViaCash ? "COD" : "Prepaid"
             );
+
+            //Cash FLow
             console.log(response.data);
             if (payViaCash) {
                 console.log(response.data);
@@ -211,11 +214,19 @@ const Checkout = () => {
                 setOrderSuccess(true);
                 setIsPaymentInProgress(false);
             } else {
+
+                console.log("RESPONSE RAXORPAY: ", response.data);
+                console.log(response.data);
+
+                //Razorpay Flow
                 displayRazorpay(response.data._id);
             }
         }
     };
 
+
+
+    //pre fetch all the shipment and billing details
     useEffect(() => {
         (async () => {
             try {
@@ -252,6 +263,9 @@ const Checkout = () => {
             }
         })();
     }, []);
+
+
+
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -266,6 +280,7 @@ const Checkout = () => {
         });
     }
 
+    //pre fetch all the cart items
     useEffect(() => {
         (async () => {
             const { data } = await getProductsInCart();

@@ -9,16 +9,14 @@ import {
     getBillingDetails,
     getCouponData,
     getProductsInCart,
-    getShippingDetails,
     updateBillingAndShippingAsSame,
     updateBillingDetails,
-    updateShippingDetails,
     uploadBillingDetails,
-    uploadShippingDetails,
 } from "../http/apis";
 import CheckoutForm from "../components/CheckoutForm";
 import CustomFooter from "../components/customfooter";
 import {
+    addOrder,
     deleteOrder,
     paymentSuccessCallback,
     uploadBillingAndShippingAsSame,
@@ -32,254 +30,23 @@ import Lottie from "react-lottie";
 import * as checkoutAnimation from "../assets/lottie/checkout.json";
 import { HiOutlineTruck } from "react-icons/hi";
 import Input from "../components/Input";
+import AddressPage from "./AddressPage";
+import { Toaster } from "react-hot-toast";
+import PayMethodNew from "./PayMethodNew";
+import CheckoutAddressForm from "../components/CheckoutAddressForm";
+import ReviewOrder from "./ReviewOrder";
 
 const CheckoutNew = () => {
-    //Refrence for custom input
-    // const [isActiveEmail, setisActiveEmail] = useState(false);
-    // const [email, setEmail] = useState("");
 
-
-    // const handleEmailActivation = (e) => {
-    //     setisActiveEmail(e.target.value !== "");
-    //     setEmail(e.target.value);
-    // };
-
-    const [selectedIndex, setSelectedIndex] = useState(1);
-
+    //0.  PreFetch All The Cart related Details ==============================================================================
+    const [cartItems, setCartItems] = useState([]);
+    const [couponData, setCouponData] = useState(false);
     const [cartCalculation, setCartCalculation] = useState({
         total: false,
         couponDiscount: false,
         discountedValue: false,
         toPay: false,
     });
-    const [cartItems, setCartItems] = useState([]);
-
-    const [isInvalid, setIsInvalid] = useState(false);
-
-    const [orderSuccess, setOrderSuccess] = useState(false);
-
-    const [payViaCash, setPayViaCash] = useState(false);
-
-    const closeModal = useRef(false);
-
-    const [shippingDetails, setShippingDetails] = useState({
-        name: "",
-        email: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        phoneNo: "",
-    });
-    const [billingDetails, setBillingDetails] = useState({
-        name: "",
-        email: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        phoneNo: "",
-    });
-
-    const [isPaymentInProgress, setIsPaymentInProgress] = useState(false);
-
-    const [isNewData, setIsNewData] = useState({
-        isNewShippingDetails: false,
-        isNewBillingDetails: false,
-    });
-
-    const [couponData, setCouponData] = useState(false);
-
-    const [lottieState, setLottieState] = useState({
-        isStopped: false,
-        isPaused: false,
-    });
-
-    const [isShippingAndBillingSame, setIsShippingAndBillingSame] =
-        useState(false);
-
-    const [shippingErrors, setShippingErrors] = useState({
-        name: false,
-        email: false,
-        address: false,
-        city: false,
-        state: false,
-        zip: false,
-        phoneNo: false,
-    });
-
-    const [billingErrors, setBillingErrors] = useState({
-        name: false,
-        email: false,
-        address: false,
-        city: false,
-        state: false,
-        zip: false,
-        phoneNo: false,
-    });
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: checkoutAnimation,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
-
-    const saveData = async () => {
-        if (!isInvalid) {
-            setIsPaymentInProgress(true);
-            const shipping = {
-                ...shippingDetails,
-                full_name: shippingDetails.name,
-            };
-            delete shipping.name;
-
-            const billing = {
-                ...billingDetails,
-                full_name: billingDetails.name,
-            };
-            delete billing.name;
-
-            if (Object.values(billingErrors))
-                if (isShippingAndBillingSame) {
-                    if (Object.values(billingErrors).every((val) => !val)) {
-                        try {
-                            if (isNewData.isNewBillingDetails) {
-                                const response =
-                                    await uploadBillingAndShippingAsSame(
-                                        billing
-                                    );
-                                console.log(response);
-                            } else {
-                                const response =
-                                    await updateBillingAndShippingAsSame(
-                                        billing
-                                    );
-                                console.log(response);
-                            }
-                        } catch (err) {
-                            console.log(err.message);
-                        }
-                    } else {
-                        toast.error("Invalid Data");
-                        setIsPaymentInProgress(false);
-                        return;
-                    }
-                } else {
-                    if (
-                        Object.values(billingErrors).every((val) => !val) &&
-                        Object.values(shippingErrors).every((val) => !val)
-                    ) {
-                        try {
-                            console.log(isNewData);
-                            if (isNewData.isNewBillingDetails) {
-                                const response = await uploadBillingDetails(
-                                    billing
-                                );
-                                console.log(response);
-                            } else {
-                                const response = await updateBillingDetails(
-                                    billing
-                                );
-                                console.log(response);
-                            }
-                            if (isNewData.isNewShippingDetails) {
-                                const response = await uploadShippingDetails(
-                                    shipping
-                                );
-                                console.log(response);
-                            } else {
-                                const response = await updateShippingDetails(
-                                    shipping
-                                );
-                                console.log(response);
-                            }
-                        } catch (err) {
-                            console.log(err.message);
-                        }
-                    } else {
-                        toast.error("Invalid Data");
-                        setIsPaymentInProgress(false);
-                        return;
-                    }
-                }
-
-            let couponCode = "";
-            if (couponData) {
-                couponCode = couponData.code;
-            }
-            const response = await createOrder(
-                couponCode,
-                payViaCash ? "COD" : "Prepaid"
-            );
-            console.log(response.data);
-            if (payViaCash) {
-                console.log(response.data);
-                const cashData = {
-                    ourOrderId: response.data._id,
-                };
-                const res = await CODPaymentCall(cashData);
-                console.log("RESPONSE: ", res);
-                localStorage.removeItem("coupon");
-                setOrderSuccess(true);
-                setIsPaymentInProgress(false);
-            } else {
-                displayRazorpay(response.data._id);
-            }
-        }
-    };
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const shippingDetails = await getShippingDetails();
-                // console.log(shippingDetails);
-                setShippingDetails({
-                    ...shippingDetails.data,
-                    name: shippingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewBillingDetails: true,
-                        isNewShippingDetails: true,
-                    });
-                }
-            }
-            try {
-                const billingDetails = await getBillingDetails();
-                console.log(billingDetails);
-                setBillingDetails({
-                    ...billingDetails.data,
-                    name: billingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewShippingDetails: true,
-                        isNewBillingDetails: true,
-                    });
-                }
-            }
-        })();
-    }, []);
-    function loadScript(src) {
-        return new Promise((resolve) => {
-            const script = document.createElement("script");
-            script.src = src;
-            script.onload = () => {
-                resolve(true);
-            };
-            script.onerror = () => {
-                resolve(false);
-            };
-            document.body.appendChild(script);
-        });
-    }
 
     useEffect(() => {
         (async () => {
@@ -311,6 +78,246 @@ const CheckoutNew = () => {
         })();
     }, []);
 
+    //1. Shipping Details =================================================================================================
+    const [shippingId, setShippingId] = useState("");
+    const [shippingDetails, setShippingDetails] = useState({
+        full_name: "",
+        email: "",
+        address1: "",
+        address2: "",
+        landmark: "",
+        city: "",
+        state: "",
+        zip: "",
+        phoneNo: "",
+    });
+
+    //2. Shipping Details =================================================================================================
+    const [isShippingAndBillingSame, setIsShippingAndBillingSame] =
+        useState(false);
+    const [billingId, setBillingId] = useState("");
+    const [billingDetails, setBillingDetails] = useState({
+        full_name: "",
+        email: "",
+        address1: "",
+        address2: "",
+        landmark: "",
+        city: "",
+        state: "",
+        zip: "",
+        phoneNo: "",
+    });
+
+    const [billingErrors, setBillingErrors] = useState({
+        full_name: false,
+        email: false,
+        address: false,
+        city: false,
+        state: false,
+        zip: false,
+        phoneNo: false,
+    });
+    const [isNewBillingDetails, setIsNewBillingDetails] = useState(true);
+
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const billingDetails = await getBillingDetails();
+                console.log(billingDetails);
+                setBillingDetails({
+                    ...billingDetails.data,
+                });
+                console.log("Billing Found: ", billingDetails.data);
+                setIsNewBillingDetails(false);
+            } catch (err) {
+                console.log(err.response.status);
+                if (err.response.status === 404) {
+                    setIsNewBillingDetails(true);
+                }
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
+        console.log("Smae: ", isShippingAndBillingSame)
+
+        if (isShippingAndBillingSame && shippingId != "") {
+            setBillingDetails({
+                ...shippingDetails
+            });
+        }
+    }, [isShippingAndBillingSame])
+
+    useEffect(() => {
+        console.log("Billing Details: ", billingDetails);
+    }, [billingDetails])
+
+    //3. Payment Related Details =================================================================================================
+    const [PAN, setPAN] = useState('');
+    const [reviewOrder, setReviewOrder] = useState(false)
+    const [payViaCash, setPayViaCash] = useState(false);
+
+    const [isPaymentInProgress, setIsPaymentInProgress] = useState(false);
+
+    const [isInvalid, setIsInvalid] = useState(false);
+
+    const closeModal = useRef(false);
+
+    useEffect(() => {
+        console.log("pay", payViaCash);
+    }, [payViaCash])
+
+
+    //4. Order Related Details =================================================================================================
+    const [order, setOrder] = useState({
+        shippingId: shippingId,
+        billingId: billingId,
+        coupon: "",
+        paymentMethod: payViaCash ? "COD" : "Prepaid",
+    });
+    //update order
+    useEffect(() => {
+        console.log("Order: ", order);
+        setOrder({
+            shippingId: shippingId,
+            billingId: billingId,
+            coupon: "",
+            paymentMethod: payViaCash ? "COD" : "Prepaid",
+
+        })
+    }, [shippingId, billingId, couponData, payViaCash]);
+
+
+    const [orderSuccess, setOrderSuccess] = useState(false);
+
+    //Review Order : =================================================================================================
+    const [reviewOrderData, setReviewOrderData] = useState({});
+    const [openReview, setOpenReview] = useState(false);
+
+    const openReviewOrder = async () => {
+        console.log("Open Review Order:")
+        //Check if Billing Address is present or not
+        if (Object.values(billingErrors).every((val) => !val)) {
+            try {
+                if (isNewBillingDetails) {
+                    console.log("New Billing?", isNewBillingDetails)
+                    const res = await uploadBillingDetails(
+                        billingDetails
+                    );
+                    if (res.status == 200) {
+                        setBillingId(res.data._id)
+                        if (shippingId != "" && billingId != "") {
+                            setOpenReview(true);
+                        }
+                    }
+                    console.log(openReview);
+
+                } else {
+                    console.log("Update Billing Address!!!")
+                    console.log(billingDetails)
+                    const res = await updateBillingDetails(
+                        billingDetails
+                    ).then((res) => {
+                        if (res.status == 200) {
+                            setBillingId(res.data._id)
+                            setOpenReview(true);
+                            // if (shippingId != "" && billingId != "") {
+                            // }
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+
+                    console.log(openReview);
+
+                }
+            } catch (err) {
+                console.log("Something went wrong");
+            }
+        } else {
+            toast.error("Invalid Data");
+        }
+
+        console.log("Review ID: ", billingId);
+
+    }
+
+    //Save the Order:-------------------------------------------------
+    const saveData = async () => {
+        console.log("SaveDATA", billingDetails);
+        console.log("SaveDATA", isNewBillingDetails);
+        if (!isInvalid) {
+            setIsPaymentInProgress(true);
+            //If Billing Address Present and Shipping Address Present then add it
+            if (shippingId != "" && billingId != "") {
+                try {
+                    await addOrder(order).then(
+                        (res) => {
+                            console.log("Order Added: ");
+                            console.log(res);
+                            displayRazorpay(res.data._id);
+                        }
+                    ).catch((err) => {
+                        console.log("Error: ");
+                        console.log(err);
+                    });
+                } catch (err) {
+                    console.log(err.message);
+                }
+            } else {
+                toast.error("Invalid Shipping Address and Billing Address");
+            }
+            console.log("Billing ID: ", billingId);
+
+            let couponCode = "";
+            if (couponData) {
+                couponCode = couponData.code;
+            }
+            console.log("Coupon")
+            console.log(couponCode);
+            const response = await createOrder(
+                couponCode,
+
+            );
+            console.log(response.data);
+            console.log(response.data?._id);
+            console.log("PayType Data:", payViaCash);
+
+            //COD will be completed later
+            if (payViaCash) {
+                console.log(response.data);
+                const cashData = {
+                    ourOrderId: response.data._id,
+                };
+                const res = await CODPaymentCall(cashData);
+                console.log("RESPONSE: ", res);
+                localStorage.removeItem("coupon");
+                setOrderSuccess(true);
+                setIsPaymentInProgress(false);
+            } else {
+
+                console.log("Payment Via Razorpay")
+                displayRazorpay(response.data?._id);
+            }
+        }
+
+    }
+
+    function loadScript(src) {
+        return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = () => {
+                resolve(true);
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+            document.body.appendChild(script);
+        });
+    }
+
     const displayRazorpay = async (orderId) => {
         //   e.preventDefaults();
         const res = await loadScript(
@@ -325,15 +332,15 @@ const CheckoutNew = () => {
         // creating a new order
 
         // `http://15.206.27.190:5500/payment/orders/${orderId}`
-        const result = await axios.post(
-            `https://mibaio.in:5500/payment/orders/${orderId}`
-        );
-        // const result = await axios.post(
-        //     `http://localhost:5500/payment/orders/${orderId}`
-        // );
 
+        const result = await axios.post(
+            `http://localhost:5500/payment/orders/${orderId}`
+        );
+        console.log("****/*/*/*//*Order Data: ")
+        console.log(result.data);
         if (!result) {
             alert("Server error. Are you online?");
+
             return;
         }
 
@@ -382,68 +389,67 @@ const CheckoutNew = () => {
         const paymentObject = new window.Razorpay(options);
         console.log(paymentObject);
         paymentObject.open();
-    };
+    }
 
     return (
         <>
             {/* TODO: Change redirect to success page after it is built */}
             {orderSuccess && <Redirect to="/success" />}
+
             <div>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
                 <NavigationBar />
                 <div className="container mx-auto py-3 checkout-page-1">
                     <div className="checkout-header  mt-3 mb-2 d-flex flex-column flex-md-row justify-content-between">
                         <h5 className="check-headline">Checkout</h5>
-                        <p>Order Summary: ₹5499.00</p>
+                        <p>Order Summary: ₹{cartCalculation.total}</p>
                     </div>
                     <hr />
-                    <div className="row checkout-container flex-column flex-md-row">
-                        <div className="col-md-6 col-12 pr-5 pr-0-md">
-                            <p><HiOutlineTruck size={24} />Delivers to: 411043</p>
-                            <h6>Select your Delivery Method</h6>
-                            <p>Choose prefered date of delivery</p>
-                            <div onClick={() => setSelectedIndex(1)} className={`checkout-option-item d-flex flex-column ${selectedIndex == 1 ? 'active-item' : ''}`}>
-                                <p className="title">Delivers Monday 29 May</p>
-                                <p className="des">FREE</p>
-                            </div>
-                            <div onClick={() => setSelectedIndex(2)} className={`checkout-option-item d-flex flex-column ${selectedIndex == 2 ? 'active-item' : ''}`}>
-                                <p className="title">Delivers Monday 29 May</p>
-                                <p className="des">FREE</p>
-                            </div>
-                            <div onClick={() => setSelectedIndex(3)} className={`checkout-option-item d-flex flex-column ${selectedIndex == 3 ? 'active-item' : ''}`}>
-                                <p className="title">Delivers Monday 29 May</p>
-                                <p className="des">FREE</p>
-                            </div>
-                        </div>
-                        <div className="checkout-notice col-md-6 col-10 d-flex flex-column justify-content-center">
-                            <h5 >Important Note:</h5>
-                            <ul>
-                                <li>Standard deliveries are made between
-                                    8:00 a.m. and 6:00 p.m., Monday-
-                                    Saturday.
-                                </li>
-                                <li>
-                                    Drivers may ask for verbal confirmation
-                                    from a safe distance to satisfy the
-                                    signature requirement, or may leave
-                                    lower-cost shipments at your door with
-                                    no signature required.
-                                </li>
-                            </ul>
-                        </div>
-                        <hr className="col-12" />
 
-                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mt-3">
-                            <Link to="/address" className="checkout-btn text-center ">Continue to Shipping Address</Link>
-                        </div>
-                        <div className="col-12 col-md-6 d-flex align-items-center  mt-3">Need some help? Chat now
-                            or call +91 12345 67890
-                        </div>
-                    </div>
+
+
+                    {/* Display Addresss Section:  */}
+                    {
+
+                        (shippingId == "") ?
+                            <AddressPage
+                                shippingId={shippingId}
+                                setShippingId={setShippingId}
+                                shippingDetails={shippingDetails}
+                                setShippingDetails={setShippingDetails}
+
+                            /> :
+                            !openReview && <PayMethodNew
+                                shippingDetails={shippingDetails}
+                                billingDetails={billingDetails}
+                                setBillingDetails={setBillingDetails}
+                                billingErrors={billingErrors}
+                                setBillingErrors={setBillingErrors}
+                                isShippingAndBillingSame={isShippingAndBillingSame}
+                                setIsShippingAndBillingSame={setIsShippingAndBillingSame}
+                                openReviewOrder={openReviewOrder}
+                                payViaCash={payViaCash}
+                                setPayViaCash={setPayViaCash}
+                                saveData={saveData}
+                                amount={cartCalculation.total}
+                            />
+                    }
+
+                    {
+                        openReview && <ReviewOrder shippingDetails={shippingDetails}
+                            billingDetails={billingDetails}
+                            saveData={saveData}
+                            payViaCash={payViaCash}
+                            displayRazorpay={displayRazorpay}
+                        />
+                    }
                 </div>
-                {/* <div className="snackbars" id="form-output-global" /> */}
-            </div>
+            </div >
         </>
     );
-};
+}
 
 export default CheckoutNew;

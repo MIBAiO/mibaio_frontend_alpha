@@ -156,6 +156,55 @@
 }
 
 
+
+.cart-delivery-btn {
+    border: 2px solid #e0e0e0 !important;
+    font-size: .8rem;
+    padding: 6px 18px;
+    font-weight: 600;
+}
+
+.pinchange-btn {
+    border-radius: 50px;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 6px;
+    border: none;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pinchange-btn:hover {
+    border: 2px solid #4A80F0 !important;
+
+}
+
+.pin-input {
+    font-size: .9rem !important;
+    padding: 3px 10px;
+
+    border: 2px solid #eee;
+    border-radius: 30px
+}
+
+.pin-input:focus {
+    box-shadow: none;
+    border: 2px solid #4A80F0
+}
+
+.pin-btn {
+    background-color: #4A80F0;
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 50px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+
 /* Mobile View */
 /* Mobile Device -  Up to 480px width */
 @media (max-width: 480px) {

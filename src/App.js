@@ -63,6 +63,7 @@ import CheckoutNew from "./checkout/CheckoutNew";
 import AddressPage from "./checkout/AddressPage";
 import PayMethod from "./checkout/PayMethod";
 import PayMethodNew from "./checkout/PayMethodNew";
+import ReviewOrder from "./checkout/ReviewOrder";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -166,8 +167,8 @@ function App() {
 				<GuestRoute path="/address">
 					<AddressPage />
 				</GuestRoute>
-				<GuestRoute path="/address2">
-					<AddressPage />
+				<GuestRoute path="/revieworder">
+					<ReviewOrder />
 				</GuestRoute>
 				<GuestRoute path="/paynew">
 					<PayMethodNew />

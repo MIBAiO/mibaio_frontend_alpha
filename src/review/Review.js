@@ -207,7 +207,7 @@ const Review = () => {
 																		ele.orderId,
 																}
 															)}
-															// href="#/action-1"
+														// href="#/action-1"
 														>
 															<div>
 																{ele.modelName}
@@ -283,8 +283,8 @@ const Review = () => {
 															key={index}
 															className={
 																index <=
-																(hover ||
-																	rating)
+																	(hover ||
+																		rating)
 																	? "on"
 																	: "off"
 															}

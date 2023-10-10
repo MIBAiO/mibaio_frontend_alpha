@@ -4,6 +4,55 @@
     color: black;
 }
 
+
+.text-primary {
+    color: #4A80F0 !important;
+}
+
+
+.product-delivery-pin-input {
+    width: 70%;
+}
+
+.pinchange-btn {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 6px;
+    border: none;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pinchange-btn:hover {
+    border: 2px solid #4A80F0 !important;
+
+}
+
+.pin-input {
+
+    border: 2px solid #eee;
+    border-radius: 10px
+}
+
+.pin-input:focus {
+    box-shadow: none;
+    border: 2px solid #4A80F0
+}
+
+.pin-btn {
+    border-radius: 8px;
+    background-color: #4A80F0;
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    margin-left: 12px;
+    margin-right: 12px;
+
+    padding: 5px 12px;
+
+    cursor: pointer;
+}
+
 .product-heading {
     font-family: Avenir;
     font-size: 1.8rem;
@@ -34,6 +83,7 @@
     font-family: Avenir;
 }
 
+
 .product-delivery p,
 .product-delivery b {
     margin: 0;
@@ -46,7 +96,7 @@
     border-radius: 10px;
     width: 70%;
     color: white;
-    background-color: #3b82f6;
+    background-color: #4A80F0;
 }
 
 .product-info h5 {
@@ -199,12 +249,12 @@
 }
 
 .active-deal {
-    border: 2px solid #3b82f6 !important;
+    border: 2px solid #4A80F0 !important;
 }
 
 .btn-active {
-    background-color: #3b82f6;
-    border: 2px solid #3b82f6 !important;
+    background-color: #4A80F0;
+    border: 2px solid #4A80F0 !important;
     color: white;
 }
 
