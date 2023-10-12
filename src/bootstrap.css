@@ -76,6 +76,7 @@
  	color: #8491a5;
  	text-align: left;
  	background-color: #ffffff;
+ 	overflow: auto !important;
  }
 
  [tabindex="-1"]:focus:not(:focus-visible) {

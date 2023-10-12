@@ -1,7 +1,3 @@
-//import React from "react";
-// import './bootstrap.css';
-// import './cart.css';
-
 import { useState } from "react";
 //import React from "react";
 import { Link, Redirect } from "react-router-dom";
@@ -11,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
 // import React, { useState } from "react";
 import styled from "styled-components";
-import { toast } from "react-toastify";
+import { Toaster, toast } from "react-hot-toast";
 import { useEffect } from "react";
 import {
     deleteCartItem,
@@ -24,23 +20,62 @@ import CustomFooter from "../components/customfooter";
 import PageHeadder from "../components/PageHeadder";
 import "./style.css"
 import { IoTrashBin, IoTrashSharp } from "react-icons/io5";
-import { HiOutlineTruck } from "react-icons/hi";
-
-
+import { HiOutlineTruck, HiOutlineReceiptTax, HiOutlineTag } from "react-icons/hi";
 
 const CartNew = () => {
+
     const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
+    const [cartItems, setCartItems] = useState([]);
+    const [didRedirect, setDidRedirect] = useState(false);
 
+    const [cartCalculation, setCartCalculation] = useState({
+        total: null,
+        couponDiscount: null,
+        discountedValue: null,
+        toPay: null,
+    });
+
+
+    /************ Fetch The CART ***************/
+    useEffect(() => {
+        (async () => {
+            const { data } = await getProductsInCart();
+
+            setCartItems(data);
+            let total = 0;
+            data.forEach((val) => {
+                total += val.pricePerPiece * val.items.length;
+            });
+            setCartCalculation({
+                ...cartCalculation,
+                total,
+                toPay: total,
+            });
+        })();
+    }, []);
+
+    // Calculate the total and toPay
+    useEffect(() => {
+        let total = 0;
+        cartItems.forEach((val) => {
+            total += val.pricePerPiece * val.items.length;
+        });
+        setCartCalculation({
+            ...cartCalculation,
+            total,
+            toPay: total,
+        });
+    }, [cartItems]);
+
+
+    /************ Set Pincode ***************/
     const [pincode, setPincode] = useState('');
-
     const [editPin, setEditPin] = useState(false);
-
     const savePin = () => {
         setEditPin(false);
         localStorage.setItem("pincode", pincode);
     }
-
     useEffect(() => {
         const pin = localStorage.getItem("pincode");
         if (pin) {
@@ -50,21 +85,70 @@ const CartNew = () => {
         }
     }, []);
 
-
-    const [cartCalculation, setCartCalculation] = useState({
-        total: null,
-        couponDiscount: null,
-        discountedValue: null,
-        toPay: null,
-    });
-
+    /************ Apply Coupon  **************/
+    const [couponCode, setCouponCode] = useState("");
+    const [isCouponValid, setIsCouponValid] = useState(false);
+    const [editCoupon, setEditCoupon] = useState(false);
     const [couponDiscount, setCouponDiscount] = useState(0);
 
-    const [cartItems, setCartItems] = useState([]);
 
-    const [couponCode, setCouponCode] = useState("");
+    // Validate Coupon From Database
+    const validateCoupon = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await getCouponData(couponCode);
+            setCouponDiscount(response.data.discount);
+            localStorage.setItem("coupon", couponCode);
+            setIsCouponValid(true);
+            toast.success("Coupon Applied")
+        } catch (err) {
 
-    const [didRedirect, setDidRedirect] = useState(false);
+            setIsCouponValid(false);
+            toast.error("Invalid Coupon Code");
+            localStorage.removeItem("coupon");
+        }
+    };
+
+    //CLEAR COUPON
+    const clearCoupon = () => {
+        console.log("CLEAR")
+        toast.success("Coupon Removed!!", {
+            icon: '🗑️'
+        })
+        setCouponCode("");
+        setCouponDiscount(0);
+        setIsCouponValid(false);
+        localStorage.removeItem("coupon");
+    }
+
+    useEffect(() => {
+        console.log("CART Calculation")
+        console.log(cartCalculation)
+        console.log("ITEMS")
+        console.log(cartItems)
+
+
+    }, [cartCalculation])
+
+    //Calculate the total and toPay
+    useEffect(() => {
+        console.log("TO PAY: ")
+
+        let total = 0;
+        cartItems.forEach((val) => {
+            console.log(val);
+            total += val.pricePerPiece * val.items.length;
+        });
+        setCartCalculation({
+            ...cartCalculation,
+            total,
+            toPay: total - (couponDiscount / 100) * total,
+        });
+        console.log("Coupon Discount: ")
+        console.log(couponDiscount)
+        console.log()
+    }, [couponDiscount]);
+
 
 
     // Quantity
@@ -78,67 +162,11 @@ const CartNew = () => {
         }
     };
 
-    // Price
-    const validateCoupon = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await getCouponData(couponCode);
-            // console.log(response);
-            setCouponDiscount(response.data.discount);
-            localStorage.setItem("coupon", couponCode);
-        } catch (err) {
-            console.log(err);
-            toast.error("Invalid Coupon Code");
-            localStorage.removeItem("coupon");
-        }
-    };
-
-    useEffect(() => {
-        (async () => {
-            const { data } = await getProductsInCart();
-            console.log(data);
-            setCartItems(data);
-            let total = 0;
-            data.forEach((val) => {
-                if (val.items && Array.isArray(val.items)) {
-                    total += val.pricePerPiece * val.count;
-                }
-            });
-            setCartCalculation({
-                ...cartCalculation,
-                total,
-                toPay: total,
-            });
-        })();
-    }, []);
-
-    useEffect(() => {
-        let total = 0;
-        cartItems.forEach((val) => {
-            total += val.pricePerPiece * val.count;
-        });
-        setCartCalculation({
-            ...cartCalculation,
-            total,
-            toPay: total,
-        });
-    }, [cartItems]);
-
-    useEffect(() => {
-        let total = 0;
-        cartItems.forEach((val) => {
-            console.log(val);
-            total += val.pricePerPiece * val.count;
-        });
-        setCartCalculation({
-            ...cartCalculation,
-            total,
-            toPay: total - (couponDiscount / 100) * total,
-        });
-    }, [couponDiscount]);
-
     const updateCount = async (idx, by) => {
+
+        console.log("UPDATE CART")
+        console.log(cartItems)
+        console.log(cartItems[idx].count)
         if (cartItems[idx].count === 1 && by === -1) {
             await deleteCartItem(cartItems[idx]._id);
             setCartItems([
@@ -148,10 +176,32 @@ const CartNew = () => {
             return;
         }
         try {
+
+            //Modify Cart Item According to the count
+            let modifyItems = cartItems[idx].items;
+            let countItems = cartItems[idx].count;
+
+            if (by > 0) {
+                for (let i = 0; i < by; i++) {
+                    modifyItems.push({
+                        id: modifyItems.length + 1,
+                        color: "white",
+                    });
+                    countItems++;
+                }
+            }
+            if (by < 0 && countItems > 0) {
+                for (let i = 0; i < Math.abs(by); i++) {
+                    modifyItems.pop();
+                    countItems--;
+                }
+            }
+
             const response = await updateCartItem(
                 {
                     modelName: cartItems[idx].modelName,
-                    count: cartItems[idx].count + by,
+                    count: countItems,
+                    items: modifyItems,
                 },
                 cartItems[idx]._id
             );
@@ -165,7 +215,8 @@ const CartNew = () => {
                 {
                     ...cartItems[idx],
                     modelName: cartItems[idx].modelName,
-                    count: cartItems[idx].count + by,
+                    count: countItems,
+                    items: modifyItems,
                 },
                 ...cartItems.slice(idx + 1),
             ]);
@@ -180,6 +231,10 @@ const CartNew = () => {
         <>
             {didRedirect && <Redirect to="/checkoutnew" />}
             <div>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
                 <NavigationBar />
                 {cartItems.length === 0 ? (
                     <section className="section section-md container">
@@ -227,7 +282,7 @@ const CartNew = () => {
                         </div>
                     </section>
                 ) : (<div className="cart-page">
-                    {/* FScreen*/}
+                    {/* Cart Header - Checkout Amount Details*/}
                     <div className="cart-page container py-4">
                         <div className="cart-header">
                             <h5>Your Cart Total is ₹  {cartCalculation.total}.0</h5>
@@ -246,8 +301,8 @@ const CartNew = () => {
                             }}>Checkout</button>
                         </div>
                         <hr />
-                        {/* Rows - cart-items */}
-                        {console.log(cartItems)}
+                        {/* Rows - Cart Items in Row */}
+
                         {cartItems.map(
                             (val, idx) => (
                                 <div className="row mt-3 flex-column flex-md-row "
@@ -259,11 +314,12 @@ const CartNew = () => {
                                         <div className="d-flex flex-column justify-content-center flex-md-row align-items-center justify-content-between">
                                             <div className="cart-product-name w-100">
                                                 <h5>{val.modelName}</h5>
-                                                <p>{val.color}</p>
+                                                <p>Varients: {val.items.map((data) => <span>{data.color},  </span>)}</p>
                                             </div>
                                             <div className="d-flex w-100 justify-content-between">
                                                 <div className="cart-product-qty d-flex align-items-center ">
                                                     <button
+                                                        className="cart-product-qty-btn"
                                                         onClick={() => {
                                                             if (
                                                                 val.count >
@@ -277,10 +333,11 @@ const CartNew = () => {
                                                     >-</button>
                                                     <p>{val.count}</p>
                                                     <button
+                                                        className="cart-"
                                                         onClick={
                                                             () => {
                                                                 if (
-                                                                    val.count <
+                                                                    val.count <=
                                                                     3
                                                                 ) {
                                                                     updateCount(
@@ -323,24 +380,51 @@ const CartNew = () => {
                             )
                         )}
                         <hr />
+                        {/* Sections - */}
                         <div className="row mt-3 flex-column flex-md-row ">
                             <div className="col-lg-10 col-12 pt-4 order-md-last">
-                                {/* Row2 - getdeal */}
+                                {/* Section 2 Get Deals */}
                                 <div className="cart-deal">
                                     <div className="cart-deal-text">
-                                        <h5>Get Deal</h5>
+                                        <h5>  <HiOutlineTag size={24} /> Get Deal</h5>
                                         <p>Upgrade your Purchase and Enjoy Great Deals</p>
                                     </div>
                                     <div className="cart-deal-btn rounded-pill  ">
                                         Get Deal
                                     </div>
                                 </div>
+                                <hr />
+                                {/* Section - 3 Apply Coupon */}
+                                <div className="cart-deal">
+                                    <div className="cart-deal-text">
+                                        <h5><HiOutlineReceiptTax size={24} />Apply Coupon</h5>
+                                        <p>Apply Coupon to avail discount and offers!</p>
+                                    </div>
+                                    <div className="d-flex align-items-center justify-content-end flex-column">
+                                        {
+                                            isCouponValid ? <div onClick={() => clearCoupon()} className="cart-coupon-pill flex items-center justify-between rounded-pill cart-coupon-btn tracking-wide">
+                                                {couponCode}
+                                                <span className="w-4 h-4 fw-bold pl-3">✕</span>
 
+                                            </div> :
+
+                                                editCoupon ? <div className="cart-delivery-input rounded-pill  ">
+                                                    <input className="coupon-input text-uppercase" value={couponCode} type="text" placeholder="Enter Coupon Code" onChange={(e) => setCouponCode(e.target.value)} />
+                                                    <button className="pin-btn " onClick={validateCoupon}>Apply</button>
+                                                </div> :
+                                                    <div className=" rounded-pill cart-coupon-btn " onClick={() => setEditCoupon(!editCoupon)}>
+                                                        Apply Coupon
+                                                    </div>
+                                        }
+
+                                    </div>
+
+                                </div>
                                 <hr />
                                 {/* delivery */}
-                                <div className="cart-delivery  d-flex justify-content-between align-items-center ">
+                                <div className="cart-delivery   d-flex justify-content-between align-items-center ">
                                     <div className="">
-                                        <h6><HiOutlineTruck size={24} />Delivery</h6>
+                                        <h5><HiOutlineTruck size={24} />Delivery</h5>
                                         <p>Order by 5:00 pm. Delivers to {pincode}</p>
                                         <b>Tomorrow - Free  </b>
                                     </div>
@@ -380,8 +464,12 @@ const CartNew = () => {
                                 <div className="cart-total d-flex justify-content-between align-items-start">
                                     <h5>Total</h5>
                                     <div className="cart-total-price">
-                                        <h5>₹{cartCalculation.total}.00</h5>
+                                        <h5>₹{cartCalculation.toPay}</h5>
                                         <p>Inclusive of all taxes</p>
+                                        {
+                                            isCouponValid ? <p className="text-success">{couponCode} Coupon Applied {couponDiscount}% OFF </p> : null
+
+                                        }
                                     </div>
                                 </div>
                             </div>

@@ -12,12 +12,16 @@ import Hamburger from "hamburger-react";
 // import React, { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
+
+
 import {
     deleteCartItem,
     getCouponData,
     getProductsInCart,
     updateCartItem,
 } from "../http/apis";
+
+
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
 import PageHeadder from "../components/PageHeadder";

@@ -25,6 +25,11 @@
 
 }
 
+.cart-product-qty-btn:active {
+    background-color: #3b82f6;
+    color: white;
+}
+
 .cart-product-name h5 {
     font-size: 1.4rem;
     color: black;
@@ -33,7 +38,7 @@
 
 
 .cart-product-name p {
-    font-size: .7rem;
+    font-size: .9rem;
 }
 
 .cart-product-qty button {
@@ -85,7 +90,8 @@
     border-radius: .5rem;
 }
 
-.cart-deal-text h5 {
+.cart-deal-text h5,
+.cart-delivery h5 {
     font-size: 1.1rem;
     color: black;
     font-weight: 700;
@@ -98,12 +104,26 @@
 }
 
 
-.cart-deal-btn {
+.cart-deal-btn,
+.cart-coupon-btn {
     background-color: #3b82f6;
     color: white;
     font-size: .8rem;
     padding: 6px 18px;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-coupon-pill {
+    border: 2px solid;
+    border-color: #3b82f6;
+    color: #3b82f6;
+    background-color: #fff;
+    font-size: .8rem;
+    padding: 6px 18px;
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .cart-delivery {
@@ -111,11 +131,7 @@
 
 }
 
-.cart-delivery h6 {
-    font-weight: 700;
-    font-size: 1.2rem;
-    font-family: Avenir;
-}
+
 
 .cart-delivery p,
 .cart-delivery b {
@@ -142,7 +158,6 @@
     text-align: end;
     font-family: 'Avenir' !important;
 }
-
 
 .checkout-btn,
 .cart-checkout-btn {
@@ -179,10 +194,10 @@
 
 }
 
-.pin-input {
+.pin-input,
+.coupon-input {
     font-size: .9rem !important;
     padding: 3px 10px;
-
     border: 2px solid #eee;
     border-radius: 30px
 }

@@ -92,7 +92,7 @@ const CheckoutNew = () => {
         phoneNo: "",
     });
 
-    //2. Shipping Details =================================================================================================
+    //2. Shipping and Billing Same Details =================================================================================================
     const [isShippingAndBillingSame, setIsShippingAndBillingSame] =
         useState(false);
     const [billingId, setBillingId] = useState("");
@@ -119,7 +119,7 @@ const CheckoutNew = () => {
     });
     const [isNewBillingDetails, setIsNewBillingDetails] = useState(true);
 
-
+    //Fectch Tbe billing Details
     useEffect(() => {
         (async () => {
             try {
@@ -139,12 +139,20 @@ const CheckoutNew = () => {
         })();
     }, []);
 
+    // If Shipping Billing Same Triggers
     useEffect(() => {
-        console.log("Smae: ", isShippingAndBillingSame)
-
+        console.log("Same: ", isShippingAndBillingSame)
         if (isShippingAndBillingSame && shippingId != "") {
             setBillingDetails({
-                ...shippingDetails
+                full_name: shippingDetails.full_name,
+                email: shippingDetails.email,
+                address1: shippingDetails.address1,
+                address2: shippingDetails.address2,
+                landmark: shippingDetails.landmark,
+                city: shippingDetails.city,
+                state: shippingDetails.state,
+                zip: shippingDetails.zip,
+                phoneNo: shippingDetails.phoneNo,
             });
         }
     }, [isShippingAndBillingSame])
@@ -191,7 +199,7 @@ const CheckoutNew = () => {
 
     const [orderSuccess, setOrderSuccess] = useState(false);
 
-    //Review Order : =================================================================================================
+    //Review Order : [Billing, Payment Option Selection] =================================================================================================
     const [reviewOrderData, setReviewOrderData] = useState({});
     const [openReview, setOpenReview] = useState(false);
 
@@ -230,7 +238,6 @@ const CheckoutNew = () => {
                     });
 
                     console.log(openReview);
-
                 }
             } catch (err) {
                 console.log("Something went wrong");
@@ -239,11 +246,11 @@ const CheckoutNew = () => {
             toast.error("Invalid Data");
         }
 
-        console.log("Review ID: ", billingId);
+        console.log("Billing Addresss Id ", billingId);
 
     }
 
-    //Save the Order:-------------------------------------------------
+    //Save Order:  =====================================================================================================================================
     const saveData = async () => {
         console.log("SaveDATA", billingDetails);
         console.log("SaveDATA", isNewBillingDetails);
@@ -251,12 +258,17 @@ const CheckoutNew = () => {
             setIsPaymentInProgress(true);
             //If Billing Address Present and Shipping Address Present then add it
             if (shippingId != "" && billingId != "") {
+
+                console.log("Shipping ID: " + shippingId);
+                console.log("Billing ID: " + billingId);
+
                 try {
                     await addOrder(order).then(
                         (res) => {
                             console.log("Order Added: ");
                             console.log(res);
-                            displayRazorpay(res.data._id);
+
+                            // displayRazorpay(res.data._id);
                         }
                     ).catch((err) => {
                         console.log("Error: ");
@@ -278,7 +290,6 @@ const CheckoutNew = () => {
             console.log(couponCode);
             const response = await createOrder(
                 couponCode,
-
             );
             console.log(response.data);
             console.log(response.data?._id);
@@ -377,11 +388,12 @@ const CheckoutNew = () => {
             },
             modal: {
                 ondismiss: () => {
-                    (async () => {
-                        console.log("CANCELLED");
-                        await deleteOrder(orderId);
-                        setIsPaymentInProgress(false);
-                    })();
+                    console.log("OnCancled!!!!")
+                        (async () => {
+                            console.log("CANCELLED");
+                            await deleteOrder(orderId);
+                            setIsPaymentInProgress(false);
+                        })();
                 },
             },
         };

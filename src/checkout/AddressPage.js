@@ -102,8 +102,10 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
         console.log(Object.values(shippingErrors).every(error => error === false));
         //Chec is shipping details are filled up
         if (selectedIndex === -1 || shippingDetails.full_name === "" || shippingDetails.email === "" || shippingDetails.address1 === "" || shippingDetails.address2 === "" || shippingDetails.landmark === "" || shippingDetails.city === "" || shippingDetails.state === "" || shippingDetails.zip === "" || shippingDetails.phoneNo === "") {
-            toast.error("Please select a shipping address");
-            return;
+            if (!newAddress) {
+                toast.error("Please select a shipping address");
+                return;
+            }
         }
         if (Object.values(shippingErrors).every(error => error == !false)) {
             console.log("error");
