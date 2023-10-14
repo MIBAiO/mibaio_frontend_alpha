@@ -266,7 +266,7 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
                 </div>
                 <div className="col-12 col-md-6">
                     <div className="d-flex align-items-end  mt-3">Need some help? Chat now
-                        or call +91 12345 67890
+                        or call +91 96736 60515
                     </div>
                 </div>
             </div>

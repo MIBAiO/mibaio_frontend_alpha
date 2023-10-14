@@ -112,9 +112,44 @@ const Checkout = () => {
         },
     };
 
+
+
+
+    //pre fetch all the cart items
+    useEffect(() => {
+        (async () => {
+            const { data } = await getProductsInCart();
+            console.log(data);
+            setCartItems(data);
+            let total = 0;
+            data.forEach((val) => {
+                total += val.pricePerPiece * val.count;
+            });
+            const couponCode = localStorage.getItem("coupon");
+            console.log(couponCode);
+            if (couponCode) {
+                const discountData = await getCouponData(couponCode);
+                setCouponData(discountData.data);
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total - total * (discountData.data.discount / 100),
+                });
+            } else {
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total,
+                });
+                setCouponData(false);
+            }
+        })();
+    }, []);
+
     // Method to save data to database
     const saveData = async () => {
         if (!isInvalid) {
+            // Address
             setIsPaymentInProgress(true);
             const shipping = {
                 ...shippingDetails,
@@ -192,10 +227,15 @@ const Checkout = () => {
                     }
                 }
 
+
+            // Coupon
+
             let couponCode = "";
             if (couponData) {
                 couponCode = couponData.code;
             }
+
+            // Order
             const response = await createOrder(
                 couponCode,
                 payViaCash ? "COD" : "Prepaid"
@@ -223,93 +263,6 @@ const Checkout = () => {
             }
         }
     };
-
-
-
-    //pre fetch all the shipment and billing details
-    useEffect(() => {
-        (async () => {
-            try {
-                const shippingDetails = await getShippingDetails();
-                // console.log(shippingDetails);
-                setShippingDetails({
-                    ...shippingDetails.data,
-                    name: shippingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewBillingDetails: true,
-                        isNewShippingDetails: true,
-                    });
-                }
-            }
-            try {
-                const billingDetails = await getBillingDetails();
-                console.log(billingDetails);
-                setBillingDetails({
-                    ...billingDetails.data,
-                    name: billingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewShippingDetails: true,
-                        isNewBillingDetails: true,
-                    });
-                }
-            }
-        })();
-    }, []);
-
-
-
-    function loadScript(src) {
-        return new Promise((resolve) => {
-            const script = document.createElement("script");
-            script.src = src;
-            script.onload = () => {
-                resolve(true);
-            };
-            script.onerror = () => {
-                resolve(false);
-            };
-            document.body.appendChild(script);
-        });
-    }
-
-    //pre fetch all the cart items
-    useEffect(() => {
-        (async () => {
-            const { data } = await getProductsInCart();
-            console.log(data);
-            setCartItems(data);
-            let total = 0;
-            data.forEach((val) => {
-                total += val.pricePerPiece * val.count;
-            });
-            const couponCode = localStorage.getItem("coupon");
-            console.log(couponCode);
-            if (couponCode) {
-                const discountData = await getCouponData(couponCode);
-                setCouponData(discountData.data);
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total - total * (discountData.data.discount / 100),
-                });
-            } else {
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total,
-                });
-                setCouponData(false);
-            }
-        })();
-    }, []);
 
     const displayRazorpay = async (orderId) => {
         //   e.preventDefaults();

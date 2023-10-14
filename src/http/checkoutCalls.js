@@ -1,5 +1,9 @@
 import api from "./apis";
 
+
+export const getShippingServiablity = (data) => api.post("/shiprocket/serviceablity", data);
+
+
 export const getShippingDetails = () => api.get("/checkout/shipping_details");
 export const getAllShippingDetails = () => api.get("/checkout/all_shipping_details");
 export const getBillingDetails = () => api.get("/checkout/billing_details");

@@ -21,6 +21,7 @@ import PageHeadder from "../components/PageHeadder";
 import "./style.css"
 import { IoTrashBin, IoTrashSharp } from "react-icons/io5";
 import { HiOutlineTruck, HiOutlineReceiptTax, HiOutlineTag } from "react-icons/hi";
+import { getShippingServiablity } from "../http/checkoutCalls";
 
 const CartNew = () => {
 
@@ -28,6 +29,13 @@ const CartNew = () => {
     const [itemPrice, setItemPrice] = useState(5499);
     const [cartItems, setCartItems] = useState([]);
     const [didRedirect, setDidRedirect] = useState(false);
+    const [esitimatingDate, setEstimatingDate] = useState(false);
+
+    const [couponCode, setCouponCode] = useState("");
+    const [isCouponValid, setIsCouponValid] = useState(false);
+    const [editCoupon, setEditCoupon] = useState(false);
+    const [couponDiscount, setCouponDiscount] = useState(0);
+
 
     const [cartCalculation, setCartCalculation] = useState({
         total: null,
@@ -41,17 +49,33 @@ const CartNew = () => {
     useEffect(() => {
         (async () => {
             const { data } = await getProductsInCart();
-
             setCartItems(data);
+
             let total = 0;
             data.forEach((val) => {
-                total += val.pricePerPiece * val.items.length;
+                total += val.pricePerPiece * val.count;
             });
-            setCartCalculation({
-                ...cartCalculation,
-                total,
-                toPay: total,
-            });
+            const couponCode = localStorage.getItem("coupon");
+            console.log("Coupon Code: ", couponCode);
+            console.log(couponCode);
+            if (couponCode) {
+                const discountData = await getCouponData(couponCode);
+                setCouponDiscount(discountData.data.discount);
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total - total * (couponDiscount / 100),
+                    couponDiscount: discountData.data.discount,
+                    discountedValue: total * (couponDiscount / 100),
+                });
+            } else {
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total,
+                });
+                setCouponDiscount(0);
+            }
         })();
     }, []);
 
@@ -75,21 +99,30 @@ const CartNew = () => {
     const savePin = () => {
         setEditPin(false);
         localStorage.setItem("pincode", pincode);
+        getEstDate();
     }
     useEffect(() => {
         const pin = localStorage.getItem("pincode");
         if (pin) {
             setPincode(pin);
+            getEstDate();
         } else {
             setPincode("411043");
         }
     }, []);
 
+
+    const getEstDate = async () => {
+        const res = await getShippingServiablity({ pincode });
+
+        console.log(res.data.data.data.available_courier_companies[0].etd);
+
+        setEstimatingDate(res.data.data.data.available_courier_companies[0].etd);
+    }
+
+
     /************ Apply Coupon  **************/
-    const [couponCode, setCouponCode] = useState("");
-    const [isCouponValid, setIsCouponValid] = useState(false);
-    const [editCoupon, setEditCoupon] = useState(false);
-    const [couponDiscount, setCouponDiscount] = useState(0);
+
 
 
     // Validate Coupon From Database
@@ -97,15 +130,21 @@ const CartNew = () => {
         e.preventDefault();
         try {
             const response = await getCouponData(couponCode);
+            if (response.error) {
+                toast.error(response.error);
+                console.log("ERROR: ", response.error)
+                return;
+            }
             setCouponDiscount(response.data.discount);
             localStorage.setItem("coupon", couponCode);
             setIsCouponValid(true);
             toast.success("Coupon Applied")
         } catch (err) {
-
             setIsCouponValid(false);
-            toast.error("Invalid Coupon Code");
+            toast.error(err.response.data.error);
             localStorage.removeItem("coupon");
+
+            console.log("ERROR: ", err.response.data.error)
         }
     };
 
@@ -149,19 +188,7 @@ const CartNew = () => {
         console.log()
     }, [couponDiscount]);
 
-
-
-    // Quantity
-    const incrementQuantity = () => {
-        setItemQuantity(itemQuantity + 1);
-    };
-
-    const decrementQuantity = () => {
-        if (itemQuantity > 1) {
-            setItemQuantity(itemQuantity - 1);
-        }
-    };
-
+    /*************** Update Cart Items *****************/
     const updateCount = async (idx, by) => {
 
         console.log("UPDATE CART")
@@ -225,7 +252,6 @@ const CartNew = () => {
         }
     };
 
-    // const [itemTotalPrice, setItemTotalPrice] = useState(itemPrice*itemQuantity);
 
     return (
         <>
@@ -237,13 +263,12 @@ const CartNew = () => {
                 />
                 <NavigationBar />
                 {cartItems.length === 0 ? (
-                    <section className="section section-md container">
+                    <section className="section section-md container pt-4">
                         <div className="container">
-                            <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border-2 ">
-                                <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                            <div className="row p-4 pb-0 pe-lg-0 align-items-center rounded-3 border-2 ">
+                                <div className="col-lg-7 p-3">
                                     <h3
                                         className="display-4 fw-bold lh-1"
-                                        style={{ color: "#03a59a" }}
                                     >
                                         Oops! Your cart is empty!
                                     </h3>
@@ -255,7 +280,7 @@ const CartNew = () => {
                                         {/* <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> */}
                                         <Link
                                             to="/view"
-                                            className="button button-icon button-icon-right button-secondary button-winona wow clipInLeft wow fadeInUp"
+                                            className="btn-cart-empty"
                                             data-wow-delay="0.3s"
                                             href="model_copy.php"
                                             data-wow-duration=".5s"
@@ -269,13 +294,13 @@ const CartNew = () => {
                                     <img
                                         className="img-svg animated-1"
                                         style={{
-                                            transition:
-                                                "all 0.3s ease-in-out",
+                                            // transition:
+                                            // "all 0.3s ease-in-out",
                                             height: "auto",
-                                            width: "590px",
+                                            width: "500px",
                                         }}
-                                        src="images/svg2.svg"
-                                        alt=""
+                                        src="images/cart_empty.gif"
+                                        alt="cart empty"
                                     />
                                 </div>
                             </div>
@@ -285,7 +310,7 @@ const CartNew = () => {
                     {/* Cart Header - Checkout Amount Details*/}
                     <div className="cart-page container py-4">
                         <div className="cart-header">
-                            <h5>Your Cart Total is ₹  {cartCalculation.total}.0</h5>
+                            <h5>Your Cart Total is ₹  {cartCalculation.toPay}</h5>
                             <button onClick={() => {
                                 if (
                                     cartItems.length > 0
@@ -409,8 +434,8 @@ const CartNew = () => {
                                             </div> :
 
                                                 editCoupon ? <div className="cart-delivery-input rounded-pill  ">
-                                                    <input className="coupon-input text-uppercase" value={couponCode} type="text" placeholder="Enter Coupon Code" onChange={(e) => setCouponCode(e.target.value)} />
-                                                    <button className="pin-btn " onClick={validateCoupon}>Apply</button>
+                                                    <input className="coupon-input" value={couponCode} type="text" placeholder="Enter Coupon Code" onChange={(e) => setCouponCode(e.target.value)} />
+                                                    <button className="pin-btn mt-2  " onClick={validateCoupon}>Apply</button>
                                                 </div> :
                                                     <div className=" rounded-pill cart-coupon-btn " onClick={() => setEditCoupon(!editCoupon)}>
                                                         Apply Coupon
@@ -425,15 +450,15 @@ const CartNew = () => {
                                 <div className="cart-delivery   d-flex justify-content-between align-items-center ">
                                     <div className="">
                                         <h5><HiOutlineTruck size={24} />Delivery</h5>
-                                        <p>Order by 5:00 pm. Delivers to {pincode}</p>
-                                        <b>Tomorrow - Free  </b>
+                                        <p>Order by 5:00 pm. Delivers to  {pincode}</p>
+                                        <b>Get by {esitimatingDate} - Free  </b>
                                     </div>
 
                                     <div className="d-flex align-items-center justify-content-end flex-column">
 
-                                        {editPin ? <div className="cart-delivery-input rounded-pill  ">
+                                        {editPin ? <div className="cart-delivery-input rounded-pill  d-flex ">
                                             <input className="pin-input" value={pincode} type="text" placeholder="Enter Pincode" onChange={(e) => setPincode(e.target.value)} />
-                                            <button className="pin-btn " onClick={savePin}>Save</button>
+                                            <button className="pin-btn mt-2" onClick={savePin}>Save</button>
                                         </div> :
                                             <button onClick={() => setEditPin(!editPin)} className="cart-delivery-btn rounded-pill">
                                                 Change

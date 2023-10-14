@@ -217,7 +217,7 @@ const RegisterWithEmail = () => {
                             )}
 
                             <div
-                                className="oauth-button-cont  m-5"
+                                className="oauth-button-cont  m-md-5 mt-4"
                                 style={{
                                     display: "flex",
                                     justifyContent: "center",

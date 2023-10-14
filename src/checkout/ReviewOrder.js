@@ -29,137 +29,39 @@ import { HiOutlineTruck } from "react-icons/hi";
 
 
 
-const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, displayRazorpay }) => {
+const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveData, payViaCash, displayRazorpay }) => {
     const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
 
-    const [cartCalculation, setCartCalculation] = useState({
-        total: null,
-        couponDiscount: null,
-        discountedValue: null,
-        toPay: null,
-    });
 
     console.log("Review Shipping")
     console.log(shippingDetails)
 
-    const [couponDiscount, setCouponDiscount] = useState(0);
-
     const [cartItems, setCartItems] = useState([]);
 
-    const [couponCode, setCouponCode] = useState("");
-
-    const [didRedirect, setDidRedirect] = useState(false);
 
 
-    // Quantity
-    const incrementQuantity = () => {
-        setItemQuantity(itemQuantity + 1);
-    };
-
-    const decrementQuantity = () => {
-        if (itemQuantity > 1) {
-            setItemQuantity(itemQuantity - 1);
-        }
-    };
-
-    // Price
-    const validateCoupon = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await getCouponData(couponCode);
-            // console.log(response);
-            setCouponDiscount(response.data.discount);
-            localStorage.setItem("coupon", couponCode);
-        } catch (err) {
-            console.log(err);
-            toast.error("Invalid Coupon Code");
-            localStorage.removeItem("coupon");
-        }
-    };
 
     useEffect(() => {
+
+
         (async () => {
             const { data } = await getProductsInCart();
             console.log(data);
             setCartItems(data);
-            let total = 0;
-            data.forEach((val) => {
-                if (val.items && Array.isArray(val.items)) {
-                    total += val.pricePerPiece * val.count;
-                }
-            });
-            setCartCalculation({
-                ...cartCalculation,
-                total,
-                toPay: total,
-            });
+            // let total = 0;
+            // data.forEach((val) => {
+            //     if (val.items && Array.isArray(val.items)) {
+            //         total += val.pricePerPiece * val.count;
+            //     }
+            // });
+            // setCartCalculation({
+            //     ...cartCalculation,
+            //     total,
+            //     toPay: total,
+            // });
         })();
     }, []);
-
-    useEffect(() => {
-        let total = 0;
-        cartItems.forEach((val) => {
-            total += val.pricePerPiece * val.count;
-        });
-        setCartCalculation({
-            ...cartCalculation,
-            total,
-            toPay: total,
-        });
-    }, [cartItems]);
-
-    useEffect(() => {
-        let total = 0;
-        cartItems.forEach((val) => {
-            console.log(val);
-            total += val.pricePerPiece * val.count;
-        });
-        setCartCalculation({
-            ...cartCalculation,
-            total,
-            toPay: total - (couponDiscount / 100) * total,
-        });
-    }, [couponDiscount]);
-
-    const updateCount = async (idx, by) => {
-        if (cartItems[idx].count === 1 && by === -1) {
-            await deleteCartItem(cartItems[idx]._id);
-            setCartItems([
-                ...cartItems.slice(0, idx),
-                ...cartItems.slice(idx + 1),
-            ]);
-            return;
-        }
-        try {
-            const response = await updateCartItem(
-                {
-                    modelName: cartItems[idx].modelName,
-                    count: cartItems[idx].count + by,
-                },
-                cartItems[idx]._id
-            );
-            console.log(response);
-            let temp = cartItems;
-            // console.log(temp.slice(0, idx));
-            // console.log(temp.splice(idx + 1));
-
-            setCartItems([
-                ...cartItems.slice(0, idx),
-                {
-                    ...cartItems[idx],
-                    modelName: cartItems[idx].modelName,
-                    count: cartItems[idx].count + by,
-                },
-                ...cartItems.slice(idx + 1),
-            ]);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    // const [itemTotalPrice, setItemTotalPrice] = useState(itemPrice*itemQuantity);
 
     return (
         <>
@@ -205,7 +107,7 @@ const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, di
                     <div className="row mt-4 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
                             <h5 className="check-heading">Shipping Details</h5>
-                            <p className="review-change-btn">Change<FiChevronRight /></p>
+                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
                         </div>
                         <div className="col-lg-5 review-text">
                             <h6 className="check-subheading">Delivers to:</h6>
@@ -225,7 +127,7 @@ const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, di
                     <div className="row mt-3 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
                             <h5 className="check-heading">Delivery Details</h5>
-                            <p className="review-change-btn">Change<FiChevronRight /></p>
+                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
                         </div>
                         <div className="col-lg-5">
                             <h6 className="check-subheading">Delivers on:</h6>
@@ -236,12 +138,12 @@ const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, di
                     {/* Payment Details */}
                     <div className="row mt-3 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
-                            <h5 className="check-heading">Delivery Details</h5>
-                            <p className="review-change-btn">Change<FiChevronRight /></p>
+                            <h5 className="check-heading">Billing Details</h5>
+                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
                         </div>
                         <div className="col-lg-5">
                             <h6 className="check-subheading">Payment Method:</h6>
-                            <p>Paying with <span className="fw-bold">{payViaCash ? 'Cash on Delivery' : 'Online'}</span></p>
+                            <p>Payment option  <span className="fw-bold">{payViaCash ? 'Cash on Delivery' : 'Online'}</span></p>
                         </div>
                         <div className="col-lg-5 review-text">
                             <h6 className="check-subheading ">Billing Address:</h6>
@@ -260,10 +162,12 @@ const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, di
                             <div className=" d-flex align-items-center justify-content-between">
                                 <div className="">
                                     <p>Subtotal</p>
+                                    {(cartCalculation.discountedValue > 0) && <p>Discount</p>}
                                     <p>Shipping</p>
                                 </div>
                                 <div className="cart-subtotal-price">
-                                    <p >₹ {cartCalculation.total}.0</p>
+                                    <p >₹ {cartCalculation.total}</p>
+                                    {(cartCalculation.discountedValue > 0) && <p>₹ {cartCalculation.discountedValue}</p>}
                                     <p >FREE</p>
                                 </div>
                             </div>
@@ -271,7 +175,7 @@ const ReviewOrder = ({ shippingDetails, billingDetails, saveData, payViaCash, di
                             <div className="cart-total d-flex justify-content-between align-items-start">
                                 <h5>Total</h5>
                                 <div className="cart-total-price">
-                                    <h5>₹{cartCalculation.total}.00</h5>
+                                    <h5>₹{cartCalculation.toPay}</h5>
                                     <p>Inclusive of all taxes</p>
                                 </div>
                             </div>

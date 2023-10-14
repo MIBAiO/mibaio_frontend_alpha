@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PayMethod.css";
 import NavigationBar from "../components/navigationbar";
 import "./style.css";
 import Input from "../components/Input";
 import CheckoutAddressForm from "../components/CheckoutAddressForm";
+import toast from "react-hot-toast";
 
 export default function PayMethodNew({ shippingDetails, billingDetails, setBillingDetails, billingErrors, setBillingErrors, isShippingAndBillingSame, setIsShippingAndBillingSame, openReviewOrder, payViaCash, setPayViaCash, amount }) {
+
+    useEffect(() => {
+        isShippingAndBillingSame && toast.success("Billing Address Same as Shipping Address");
+    }, [isShippingAndBillingSame]);
 
     return (
         <div class="paymnetPage">
@@ -102,7 +107,7 @@ export default function PayMethodNew({ shippingDetails, billingDetails, setBilli
                     <button className="checkout-btn" onClick={openReviewOrder}>Review Your Order</button>
                 </div>
                 <div className="col-12 col-md-6 d-flex align-items-center  mt-3">Need some help? Chat now
-                    or call +91 12345 67890
+                    or call +91 96736 60515
                 </div>
             </div>
         </div>

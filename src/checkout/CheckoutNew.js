@@ -40,7 +40,9 @@ const CheckoutNew = () => {
 
     //0.  PreFetch All The Cart related Details ==============================================================================
     const [cartItems, setCartItems] = useState([]);
+    const [couponCode, setCouponCode] = useState("");
     const [couponData, setCouponData] = useState(false);
+    const [pinCode, setPinCode] = useState("");
     const [cartCalculation, setCartCalculation] = useState({
         total: false,
         couponDiscount: false,
@@ -48,16 +50,19 @@ const CheckoutNew = () => {
         toPay: false,
     });
 
+    //Fetch Cart Itemmes, Coupons and Pincode
     useEffect(() => {
         (async () => {
             const { data } = await getProductsInCart();
             console.log(data);
             setCartItems(data);
+
             let total = 0;
             data.forEach((val) => {
                 total += val.pricePerPiece * val.count;
             });
             const couponCode = localStorage.getItem("coupon");
+            console.log("Coupon Code: ", couponCode);
             console.log(couponCode);
             if (couponCode) {
                 const discountData = await getCouponData(couponCode);
@@ -66,6 +71,8 @@ const CheckoutNew = () => {
                     ...cartCalculation,
                     total,
                     toPay: total - total * (discountData.data.discount / 100),
+                    couponDiscount: discountData.data.discount,
+                    discountedValue: total * (discountData.data.discount / 100),
                 });
             } else {
                 setCartCalculation({
@@ -75,8 +82,15 @@ const CheckoutNew = () => {
                 });
                 setCouponData(false);
             }
+
+            console.log("CART CALCULATION: ")
+            console.log(cartCalculation)
         })();
     }, []);
+
+
+    // Check For Applied Coupons Validity
+
 
     //1. Shipping Details =================================================================================================
     const [shippingId, setShippingId] = useState("");
@@ -97,6 +111,7 @@ const CheckoutNew = () => {
         useState(false);
     const [billingId, setBillingId] = useState("");
     const [billingDetails, setBillingDetails] = useState({
+
         full_name: "",
         email: "",
         address1: "",
@@ -124,12 +139,15 @@ const CheckoutNew = () => {
         (async () => {
             try {
                 const billingDetails = await getBillingDetails();
+                console.log("Fetched Billing")
                 console.log(billingDetails);
                 setBillingDetails({
                     ...billingDetails.data,
                 });
                 console.log("Billing Found: ", billingDetails.data);
-                setIsNewBillingDetails(false);
+                if (billingDetails.data != null && billingDetails.data.length > 0) {
+                    setIsNewBillingDetails(false);
+                }
             } catch (err) {
                 console.log(err.response.status);
                 if (err.response.status === 404) {
@@ -181,7 +199,7 @@ const CheckoutNew = () => {
     const [order, setOrder] = useState({
         shippingId: shippingId,
         billingId: billingId,
-        coupon: "",
+        coupon: couponData ? couponData.code : "",
         paymentMethod: payViaCash ? "COD" : "Prepaid",
     });
     //update order
@@ -190,7 +208,7 @@ const CheckoutNew = () => {
         setOrder({
             shippingId: shippingId,
             billingId: billingId,
-            coupon: "",
+            coupon: couponData ? couponData.code : "",
             paymentMethod: payViaCash ? "COD" : "Prepaid",
 
         })
@@ -209,112 +227,90 @@ const CheckoutNew = () => {
         if (Object.values(billingErrors).every((val) => !val)) {
             try {
                 if (isNewBillingDetails) {
-                    console.log("New Billing?", isNewBillingDetails)
-                    const res = await uploadBillingDetails(
+                    await uploadBillingDetails(
                         billingDetails
-                    );
-                    if (res.status == 200) {
+                    ).then((res) => {
+                        console.log("Res ID", res);
                         setBillingId(res.data._id)
-                        if (shippingId != "" && billingId != "") {
-                            setOpenReview(true);
-                        }
-                    }
-                    console.log(openReview);
-
+                    }).catch((err) => {
+                        console.log(err);
+                        toast.error("Invalid Data");
+                        return;
+                    });
                 } else {
-                    console.log("Update Billing Address!!!")
-                    console.log(billingDetails)
                     const res = await updateBillingDetails(
                         billingDetails
                     ).then((res) => {
-                        if (res.status == 200) {
-                            setBillingId(res.data._id)
-                            setOpenReview(true);
-                            // if (shippingId != "" && billingId != "") {
-                            // }
-                        }
+                        console.log("Res ID", res);
+                        setBillingId(res.data._id);
                     }).catch((err) => {
                         console.log(err);
+                        toast.error("Invalid Data");
+                        return;
                     });
-
-                    console.log(openReview);
                 }
             } catch (err) {
-                console.log("Something went wrong");
+                toast.error("Invalid Data");
+                return;
             }
         } else {
             toast.error("Invalid Data");
+            return;
         }
 
-        console.log("Billing Addresss Id ", billingId);
+        console.log('Billing ID: ', billingId);
+        console.log('Shipping ID: ', shippingId);
+        //set Review Open
+        setOpenReview(true);
 
     }
 
     //Save Order:  =====================================================================================================================================
     const saveData = async () => {
-        console.log("SaveDATA", billingDetails);
-        console.log("SaveDATA", isNewBillingDetails);
+        console.log("SaveData");
+        console.log("Shipping Id", shippingId);
+        console.log("Billing Id", billingId);
+
+        //Check if Billing Address is present or not
+        if (billingId == "" || billingId == null || shippingId == "" || shippingId == null) {
+            toast.error("Please Select Shipping and Billing Address");
+            return;
+        }
+        setIsPaymentInProgress(true);
         if (!isInvalid) {
             setIsPaymentInProgress(true);
             //If Billing Address Present and Shipping Address Present then add it
             if (shippingId != "" && billingId != "") {
 
-                console.log("Shipping ID: " + shippingId);
-                console.log("Billing ID: " + billingId);
+                console.log("Order: IN ORDER")
+                console.log(order);
 
-                try {
-                    await addOrder(order).then(
-                        (res) => {
-                            console.log("Order Added: ");
-                            console.log(res);
+                //Create Order
+                const response = await addOrder(order);
 
-                            // displayRazorpay(res.data._id);
-                        }
-                    ).catch((err) => {
-                        console.log("Error: ");
-                        console.log(err);
-                    });
-                } catch (err) {
-                    console.log(err.message);
+                console.log("Order Response: ", response.data)
+
+                //Chash Flow 
+                if (payViaCash) {
+                    console.log(response.data);
+                    const cashData = {
+                        ourOrderId: response.data._id,
+                    };
+                    const res = await CODPaymentCall(cashData);
+                    console.log("RESPONSE: ", res);
+                    localStorage.removeItem("coupon");
+                    setOrderSuccess(true);
+                    setIsPaymentInProgress(false);
+                } else {
+                    console.log("Payment Via Razorpay")
+                    displayRazorpay(response.data?._id);
                 }
-            } else {
-                toast.error("Invalid Shipping Address and Billing Address");
             }
-            console.log("Billing ID: ", billingId);
 
-            let couponCode = "";
-            if (couponData) {
-                couponCode = couponData.code;
-            }
-            console.log("Coupon")
-            console.log(couponCode);
-            const response = await createOrder(
-                couponCode,
-            );
-            console.log(response.data);
-            console.log(response.data?._id);
-            console.log("PayType Data:", payViaCash);
-
-            //COD will be completed later
-            if (payViaCash) {
-                console.log(response.data);
-                const cashData = {
-                    ourOrderId: response.data._id,
-                };
-                const res = await CODPaymentCall(cashData);
-                console.log("RESPONSE: ", res);
-                localStorage.removeItem("coupon");
-                setOrderSuccess(true);
-                setIsPaymentInProgress(false);
-            } else {
-
-                console.log("Payment Via Razorpay")
-                displayRazorpay(response.data?._id);
-            }
         }
+    };
 
-    }
-
+    //RAZORPAY Payment Related Functions ========================================================================================================================
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -417,7 +413,7 @@ const CheckoutNew = () => {
                 <div className="container mx-auto py-3 checkout-page-1">
                     <div className="checkout-header  mt-3 mb-2 d-flex flex-column flex-md-row justify-content-between">
                         <h5 className="check-headline">Checkout</h5>
-                        <p>Order Summary: ₹{cartCalculation.total}</p>
+                        <p>Order Summary: ₹{cartCalculation.toPay}</p>
                     </div>
                     <hr />
 
@@ -451,11 +447,15 @@ const CheckoutNew = () => {
                     }
 
                     {
-                        openReview && <ReviewOrder shippingDetails={shippingDetails}
+                        openReview &&
+                        <ReviewOrder
+                            cartCalculation={cartCalculation}
+                            shippingDetails={shippingDetails}
                             billingDetails={billingDetails}
                             saveData={saveData}
                             payViaCash={payViaCash}
                             displayRazorpay={displayRazorpay}
+                            isPaymentInProgress={isPaymentInProgress}
                         />
                     }
                 </div>

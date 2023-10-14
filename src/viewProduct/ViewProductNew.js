@@ -33,43 +33,49 @@ import CustomFooter from "../components/customfooter";
 import { toast, Toaster } from "react-hot-toast";
 import "./style.css";
 import WOW from "wowjs";
+import { getShippingServiablity } from "../http/checkoutCalls";
 library.add(fas, faPlus, faMinus);
 
 const ViewProductNew = (props) => {
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         new WOW.WOW({
             live: false,
         }).init();
 
-
+        const pin = localStorage.getItem("pincode");
+        if (pin) {
+            setPincode(pin);
+            getEstDate();
+        }
     }, []);
-
-
-    const [state, setState] = useState({
-        previewHorizontalPos: "left",
-        previewVerticalPos: "bottom",
-        previewSizePercentage: 35,
-        previewOpacity: 1,
-        shadow: false,
-        show: true,
-    });
 
     const [pincode, setPincode] = useState("411043");
     const [editPin, setEditPin] = useState(false);
+    const [esitimatingDate, setEstimatingDate] = useState(false);
 
-    const savePin = () => {
+    const savePin = async () => {
         //check if pin is alid
         if (pincode.length !== 6) {
             toast.error("Please enter a valid pincode");
             return;
         }
-
         localStorage.setItem("pincode", pincode);
         toast.success("Pincode saved successfully");
+        getEstDate();
         setEditPin(false);
     };
+
+
+    const getEstDate = async () => {
+        const res = await getShippingServiablity({ pincode });
+
+        console.log(res.data.data.data.available_courier_companies[0].etd);
+
+        setEstimatingDate(res.data.data.data.available_courier_companies[0].etd);
+    }
 
     //Handle  click on chnage
 
@@ -330,7 +336,7 @@ const ViewProductNew = (props) => {
                                         </div> : ''
                                 }
 
-                                <b>Tomorrow - Free  </b>
+                                <b>Get it by - {esitimatingDate} </b>
                             </div>
                             <button className="btn-product"
                                 data-toggle="modal"
