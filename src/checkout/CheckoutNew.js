@@ -51,45 +51,63 @@ const CheckoutNew = () => {
     });
 
     //Fetch Cart Itemmes, Coupons and Pincode
-    useEffect(() => {
-        (async () => {
-            const { data } = await getProductsInCart();
-            console.log(data);
-            setCartItems(data);
+    useEffect(async () => {
 
-            let total = 0;
-            data.forEach((val) => {
-                total += val.pricePerPiece * val.count;
+        const { data } = await getProductsInCart();
+        console.log(data);
+        setCartItems(data);
+
+        let total = 0;
+        data.forEach((val) => {
+            total += val.pricePerPiece * val.count;
+        });
+        const couponCode = localStorage.getItem("coupon");
+        setCouponCode(couponCode);
+
+        const valid = await validateCoupon();
+
+        if (valid && couponCode) {
+            const discountData = await getCouponData(couponCode);
+            setCouponData(discountData.data);
+            setCartCalculation({
+                ...cartCalculation,
+                total,
+                toPay: total - total * (discountData.data.discount / 100),
+                couponDiscount: discountData.data.discount,
+                discountedValue: total * (discountData.data.discount / 100),
             });
-            const couponCode = localStorage.getItem("coupon");
-            console.log("Coupon Code: ", couponCode);
-            console.log(couponCode);
-            if (couponCode) {
-                const discountData = await getCouponData(couponCode);
-                setCouponData(discountData.data);
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total - total * (discountData.data.discount / 100),
-                    couponDiscount: discountData.data.discount,
-                    discountedValue: total * (discountData.data.discount / 100),
-                });
-            } else {
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total,
-                });
-                setCouponData(false);
-            }
+        } else {
+            setCartCalculation({
+                ...cartCalculation,
+                total,
+                toPay: total,
+            });
+            setCouponData(false);
+        }
 
-            console.log("CART CALCULATION: ")
-            console.log(cartCalculation)
-        })();
+        console.log("CART CALCULATION: ")
+        console.log(cartCalculation)
     }, []);
 
 
     // Check For Applied Coupons Validity
+    const validateCoupon = async () => {
+        try {
+            const response = await getCouponData(couponCode);
+            if (response.error) {
+                toast.error(response.error);
+                //console.log("ERROR: ", response.error)
+                return false;
+            }
+            setCouponData(response.data);
+            localStorage.setItem("coupon", couponCode);
+            return true;
+        } catch (err) {
+            localStorage.removeItem("coupon");
+            return false;
+            //console.log("ERROR: ", err.response.data.error)
+        }
+    };
 
 
     //1. Shipping Details =================================================================================================

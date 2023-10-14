@@ -388,7 +388,7 @@ const ViewProductNew = (props) => {
                                                         setProductDeal(1);
                                                         cartHandler();
                                                     }} >No Thanks</button>
-                                                    <button className={`modal-deals-getbtn ${activeDeal ? 'btn-active' : ''}`}
+                                                    <button className={`modal-deals-getbtn btn-active `}
                                                         data-target="#chooseModel" data-toggle="modal" data-dismiss="modal">Get
                                                         Deal</button>
                                                 </div>
@@ -515,11 +515,18 @@ const ViewProductNew = (props) => {
                                             width: "110%",
                                             height: "110%",
                                         },
-                                        enlargedImageContainerStyle: {
+                                        enlargedImageContainerStyle: window.innerWidth > 768 ? {
                                             left: 'unset',
                                             right: '100%',
                                             marginLeft: 'unset',
                                             marginRight: '50px'
+                                        } : {
+                                            top: 'unset',
+                                            bottom: '100%',
+                                            margin: '0',
+                                            marginBottom: '50px',
+                                            left: '0',
+                                            right: '0'
                                         },
                                         isActivatedOnTouch: true,
                                         enlargedImageContainerClassName:

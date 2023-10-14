@@ -72,6 +72,20 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
 
         setSelectedIndex(-1);
 
+        if (!newAddress) {
+            setShippingErrors({
+                full_name: false,
+                email: false,
+                address1: false,
+                address2: false,
+                landmark: false,
+                city: false,
+                state: false,
+                zip: false,
+                phoneNo: false,
+            })
+        }
+
         console.log(shippingDetails)
     }, [newAddress])
 
@@ -262,14 +276,20 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
             <div className="row checkout-container flex-column flex-md-row">
 
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mt-3">
-                    <button onClick={saveShippingAddress} className="checkout-btn text-center ">Continue to Payment</button>
+
+                    {
+                        (shippingErrors.full_name || shippingErrors.email || shippingErrors.address1 || shippingErrors.address2 || shippingErrors.landmark || shippingErrors.city || shippingErrors.state || shippingErrors.zip || shippingErrors.phoneNo) ?
+                            <button onClick={() => toast.error("Please fill the address!")} className="checkout-btn text-center ">Continue to Payment</button>
+                            : <button onClick={saveShippingAddress} className="checkout-btn text-center ">Continue to Payment</button>
+                    }
+
                 </div>
                 <div className="col-12 col-md-6">
                     <div className="d-flex align-items-end  mt-3">Need some help? Chat now
                         or call +91 96736 60515
                     </div>
                 </div>
-            </div>
+            </div >
 
         </>
     );

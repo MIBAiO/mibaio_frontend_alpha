@@ -99,31 +99,75 @@ const CheckoutAddressForm = ({
                 ...errors,
                 zip: true,
             });
-            return;
         } else {
             setErrors({
                 ...errors,
                 zip: false,
             });
         }
-        setFormData({
-            ...formData,
-            zip: pincode,
-        });
+
     }
     //Set City : 
     const setCity = (city) => {
-        if (city.length > 0) {
+        if (city.length < 3) {
+            setErrors({
+                ...errors,
+                city: true,
+            });
+        } else {
             setFormData({ ...formData, city: city })
+            setErrors({
+                ...errors,
+                city: false,
+            })
         }
     }
     //Set State:
     const setState = (state) => {
-        if (state.length > 0) {
-            setFormData({ ...formData, state: state })
+        if (state.length < 3) {
+            setErrors({
+                ...errors,
+                state: true,
+            });
+        } else {
+            setErrors({
+                ...errors,
+                state: false,
+            });
         }
     }
 
+    //Set Email
+    const setEmail = (email) => {
+        if (validateEmail(email)) {
+            setErrors({
+                ...errors,
+                email: false,
+            });
+            setFormData({ ...formData, email: email })
+        } else {
+            setErrors({
+                ...errors,
+                email: true,
+            });
+        }
+    }
+
+    //set Phone
+    const setPhone = (phone) => {
+        if (validatePhone(phone)) {
+            setErrors({
+                ...errors,
+                phone: false,
+            });
+            setFormData({ ...formData, phoneNo: phone })
+        } else {
+            setErrors({
+                ...errors,
+                phone: true,
+            });
+        }
+    }
     return (
         <div className="new-address-fields">
             <Input
@@ -143,16 +187,16 @@ const CheckoutAddressForm = ({
                 value={formData.address1}
                 onChange={(e) => { setAddress1(e); }} />
             {
-                errors.address ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid name</div> : ''
+                errors.address1 ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid Address!</div> : ''
             }
             <Input
-                label="Address Line 2 (Optional)"
+                label="Address Line 2"
                 initialValue={formData.address2}
                 simple={true}
                 value={formData.address2}
                 onChange={(e) => { setAddress2(e); }} />
             {
-                errors.address ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid name</div> : ''
+                errors.address2 ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid address line 2</div> : ''
             }
             <Input
                 label="Landmark"
@@ -161,7 +205,7 @@ const CheckoutAddressForm = ({
                 value={formData.landmark}
                 onChange={(e) => { setLandmark(e); }} />
             {
-                errors.address ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid name</div> : ''
+                errors.landmark ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid Landmark</div> : ''
             }
             <Input
                 label="Pin Code"
@@ -170,7 +214,7 @@ const CheckoutAddressForm = ({
                 value={formData.zip}
                 onChange={(e) => setPincode(e.target.value)} />
             {
-                errors.zip ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a pincode</div> : ''
+                errors.zip ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a valid pincode</div> : ''
             }
             <Input
                 label="City"
@@ -179,7 +223,7 @@ const CheckoutAddressForm = ({
                 value={formData.city}
                 onChange={(e) => setCity(e.target.value)} />
             {
-                errors.city ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter a pincode</div> : ''
+                errors.city ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter valid city</div> : ''
             }
             <Input
                 label="State"
@@ -188,12 +232,25 @@ const CheckoutAddressForm = ({
                 value={formData.state}
                 onChange={(e) => setState(e.target.value)} />
             {
-                errors.state ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please entera pincode</div> : ''
+                errors.state ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter valid state</div> : ''
             }
 
             <h6 className="mt-5">What is Your Contact Information?</h6>
-            <Input label="Email Address" initialValue={formData.email} simple={true} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value, })} />
-            <Input label="Mobile Number" initialValue={formData.phoneNo} simple={true} value={formData.phoneNo} onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })} />
+            <Input label="Email Address"
+                initialValue={formData.email}
+                simple={true} value={formData.email}
+                onChange={(e) => setEmail(e.target.value)} />
+            {
+                errors.email ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter valid email</div> : ''
+            }
+            <Input label="Mobile Number"
+                initialValue={formData.phoneNo}
+                simple={true} value={formData.phoneNo}
+                onChange={(e) => setPhone(e.target.value)} />
+
+            {
+                errors.phone ? <div className='text-danger mb-2 mt-0 ml-1' style={{ fontSize: ".8rem", fontWeight: "500" }}>Please enter valid phone</div> : ''
+            }
 
         </div>
     )

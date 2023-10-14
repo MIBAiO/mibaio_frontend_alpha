@@ -24,7 +24,6 @@ import { HiOutlineTruck, HiOutlineReceiptTax, HiOutlineTag } from "react-icons/h
 import { getShippingServiablity } from "../http/checkoutCalls";
 
 const CartNew = () => {
-
     const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
     const [cartItems, setCartItems] = useState([]);
@@ -56,8 +55,8 @@ const CartNew = () => {
                 total += val.pricePerPiece * val.count;
             });
             const couponCode = localStorage.getItem("coupon");
-            console.log("Coupon Code: ", couponCode);
-            console.log(couponCode);
+            //console.log("Coupon Code: ", couponCode);
+            //console.log(couponCode);
             if (couponCode) {
                 const discountData = await getCouponData(couponCode);
                 setCouponDiscount(discountData.data.discount);
@@ -115,7 +114,7 @@ const CartNew = () => {
     const getEstDate = async () => {
         const res = await getShippingServiablity({ pincode });
 
-        console.log(res.data.data.data.available_courier_companies[0].etd);
+        //console.log(res.data.data.data.available_courier_companies[0].etd);
 
         setEstimatingDate(res.data.data.data.available_courier_companies[0].etd);
     }
@@ -132,7 +131,7 @@ const CartNew = () => {
             const response = await getCouponData(couponCode);
             if (response.error) {
                 toast.error(response.error);
-                console.log("ERROR: ", response.error)
+                //console.log("ERROR: ", response.error)
                 return;
             }
             setCouponDiscount(response.data.discount);
@@ -144,13 +143,13 @@ const CartNew = () => {
             toast.error(err.response.data.error);
             localStorage.removeItem("coupon");
 
-            console.log("ERROR: ", err.response.data.error)
+            //console.log("ERROR: ", err.response.data.error)
         }
     };
 
     //CLEAR COUPON
     const clearCoupon = () => {
-        console.log("CLEAR")
+        //console.log("CLEAR")
         toast.success("Coupon Removed!!", {
             icon: '🗑️'
         })
@@ -161,21 +160,21 @@ const CartNew = () => {
     }
 
     useEffect(() => {
-        console.log("CART Calculation")
-        console.log(cartCalculation)
-        console.log("ITEMS")
-        console.log(cartItems)
+        //console.log("CART Calculation")
+        //console.log(cartCalculation)
+        //console.log("ITEMS")
+        //console.log(cartItems)
 
 
     }, [cartCalculation])
 
     //Calculate the total and toPay
     useEffect(() => {
-        console.log("TO PAY: ")
+        //console.log("TO PAY: ")
 
         let total = 0;
         cartItems.forEach((val) => {
-            console.log(val);
+            //console.log(val);
             total += val.pricePerPiece * val.items.length;
         });
         setCartCalculation({
@@ -183,17 +182,17 @@ const CartNew = () => {
             total,
             toPay: total - (couponDiscount / 100) * total,
         });
-        console.log("Coupon Discount: ")
-        console.log(couponDiscount)
-        console.log()
+        //console.log("Coupon Discount: ")
+        //console.log(couponDiscount)
+        //console.log()
     }, [couponDiscount]);
 
     /*************** Update Cart Items *****************/
     const updateCount = async (idx, by) => {
 
-        console.log("UPDATE CART")
-        console.log(cartItems)
-        console.log(cartItems[idx].count)
+        //console.log("UPDATE CART")
+        //console.log(cartItems)
+        //console.log(cartItems[idx].count)
         if (cartItems[idx].count === 1 && by === -1) {
             await deleteCartItem(cartItems[idx]._id);
             setCartItems([
@@ -232,10 +231,10 @@ const CartNew = () => {
                 },
                 cartItems[idx]._id
             );
-            console.log(response);
+            //console.log(response);
             let temp = cartItems;
-            // console.log(temp.slice(0, idx));
-            // console.log(temp.splice(idx + 1));
+            // //console.log(temp.slice(0, idx));
+            // //console.log(temp.splice(idx + 1));
 
             setCartItems([
                 ...cartItems.slice(0, idx),
@@ -248,7 +247,7 @@ const CartNew = () => {
                 ...cartItems.slice(idx + 1),
             ]);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
         }
     };
 
@@ -265,10 +264,10 @@ const CartNew = () => {
                 {cartItems.length === 0 ? (
                     <section className="section section-md container pt-4">
                         <div className="container">
-                            <div className="row p-4 pb-0 pe-lg-0 align-items-center rounded-3 border-2 ">
+                            <div className="row p-4 pb-0 pe-lg-0 mt-lg-5 align-items-center rounded-3 border-2 ">
                                 <div className="col-lg-7 p-3">
                                     <h3
-                                        className="display-4 fw-bold lh-1"
+                                        className="display-5 fw-bold lh-1"
                                     >
                                         Oops! Your cart is empty!
                                     </h3>
@@ -280,7 +279,7 @@ const CartNew = () => {
                                         {/* <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> */}
                                         <Link
                                             to="/view"
-                                            className="btn-cart-empty"
+                                            className="btn-cart-empty mt-3"
                                             data-wow-delay="0.3s"
                                             href="model_copy.php"
                                             data-wow-duration=".5s"
@@ -290,14 +289,13 @@ const CartNew = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="col-lg-4">
+                                <div className="col-lg-5 px-lg-4">
                                     <img
-                                        className="img-svg animated-1"
+                                        className="img-svg animated-1 img-fluid"
                                         style={{
                                             // transition:
                                             // "all 0.3s ease-in-out",
                                             height: "auto",
-                                            width: "500px",
                                         }}
                                         src="images/cart_empty.gif"
                                         alt="cart empty"
@@ -407,7 +405,7 @@ const CartNew = () => {
                         <hr />
                         {/* Sections - */}
                         <div className="row mt-3 flex-column flex-md-row ">
-                            <div className="col-lg-10 col-12 pt-4 order-md-last">
+                            <div className="col-lg-10 ml-auto col-12 pt-4 order-md-last">
                                 {/* Section 2 Get Deals */}
                                 <div className="cart-deal">
                                     <div className="cart-deal-text">
@@ -470,9 +468,9 @@ const CartNew = () => {
                                 </div>
 
                             </div>
-                            <hr />
+
                         </div>
-                        <hr className="col-12" />
+                        <hr />
                         <div className="row mt-1 flex-column flex-md-row">
                             <div className="col-lg-10 col-12 ml-md-auto">
                                 <div className="cart-subtotal d-flex align-items-center justify-content-between">

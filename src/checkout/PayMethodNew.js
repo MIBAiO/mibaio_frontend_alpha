@@ -100,8 +100,8 @@ export default function PayMethodNew({ shippingDetails, billingDetails, setBilli
                 </>
             }
 
+            <hr />
             <div className="row checkout-container flex-column flex-md-row">
-                <hr className="col-12" />
 
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mt-3">
                     <button className="checkout-btn" onClick={openReviewOrder}>Review Your Order</button>
