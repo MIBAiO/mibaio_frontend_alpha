@@ -359,7 +359,7 @@ const CheckoutNew = () => {
         // `http://15.206.27.190:5500/payment/orders/${orderId}`
 
         const result = await axios.post(
-            `http://localhost:5500/payment/orders/${orderId}`
+            `http://mibaio.in:5500/payment/orders/${orderId}`
         );
         console.log("****/*/*/*//*Order Data: ")
         console.log(result.data);
