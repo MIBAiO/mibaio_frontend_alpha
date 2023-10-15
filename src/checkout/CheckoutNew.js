@@ -360,7 +360,7 @@ const CheckoutNew = () => {
         
 
         const result = await axios.post(
-            `http://15.206.27.190:5500/payment/orders/${orderId}`
+            `https://15.206.27.190:5500/payment/orders/${orderId}`
         );
         console.log("****/*/*/*//*Order Data: ")
         console.log(result.data);
