@@ -104,6 +104,7 @@ const CheckoutAddressForm = ({
                 ...errors,
                 zip: false,
             });
+            setFormData({ ...formData, zip: pincode });
         }
 
     }
