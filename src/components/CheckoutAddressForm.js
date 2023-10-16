@@ -134,6 +134,7 @@ const CheckoutAddressForm = ({
                 ...errors,
                 state: false,
             });
+            setFormData({ ...formData, state: state });
         }
     }
 
@@ -145,12 +146,15 @@ const CheckoutAddressForm = ({
                 email: false,
             });
             setFormData({ ...formData, email: email })
+            console.log("Email Set", email);
+
         } else {
             setErrors({
                 ...errors,
                 email: true,
             });
         }
+        console.log("Valid Email: ", validateEmail(email));
     }
 
     //set Phone
