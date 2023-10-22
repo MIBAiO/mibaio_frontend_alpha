@@ -29,9 +29,10 @@ import { HiOutlineTruck } from "react-icons/hi";
 
 
 
-const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveData, payViaCash, displayRazorpay }) => {
+const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveData, payViaCash, isPaymentInProgress, setOpenShip, setOpenReview }) => {
     const [itemQuantity, setItemQuantity] = useState(1);
     const [itemPrice, setItemPrice] = useState(5499);
+
 
 
     console.log("Review Shipping")
@@ -107,7 +108,7 @@ const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveDat
                     <div className="row mt-4 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
                             <h5 className="check-heading">Shipping Details</h5>
-                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
+                            <p onClick={() => { setOpenReview(false); setOpenShip(true) }} className="review-change-btn">Change<FiChevronRight /></p>
                         </div>
                         <div className="col-lg-5 review-text">
                             <h6 className="check-subheading">Delivers to:</h6>
@@ -127,7 +128,7 @@ const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveDat
                     <div className="row mt-3 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
                             <h5 className="check-heading">Delivery Details</h5>
-                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
+                            {/* <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a> */}
                         </div>
                         <div className="col-lg-5">
                             <h6 className="check-subheading">Delivers on:</h6>
@@ -139,7 +140,7 @@ const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveDat
                     <div className="row mt-3 flex-column flex-md-row ">
                         <div className="d-flex flex-column col-lg-2 col-12">
                             <h5 className="check-heading">Billing Details</h5>
-                            <a href="/#/checkoutnew" className="review-change-btn">Change<FiChevronRight /></a>
+                            <p onClick={() => setOpenReview(false)} className="review-change-btn">Change<FiChevronRight /></p>
                         </div>
                         <div className="col-lg-5">
                             <h6 className="check-subheading">Payment Method:</h6>
@@ -181,8 +182,45 @@ const ReviewOrder = ({ cartCalculation, shippingDetails, billingDetails, saveDat
                             </div>
                         </div>
                         <div className="col-md-4 ml-auto">
-                            <button className="cart-checkout-btn py-2 fw-bold"
-                                onClick={saveData}>Continue to Payment</button>
+                            {
+                                isPaymentInProgress ?
+                                    <button className="cart-checkout-btn py-2 fw-bold"><svg width="120" height="14" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                                        <circle cx="15" cy="15" r="15">
+                                            <animate attributeName="r" from="15" to="15"
+                                                begin="0s" dur="0.8s"
+                                                values="15;9;15" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="fill-opacity" from="1" to="1"
+                                                begin="0s" dur="0.8s"
+                                                values="1;.5;1" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="60" cy="15" r="9" fill-opacity="0.3">
+                                            <animate attributeName="r" from="9" to="9"
+                                                begin="0s" dur="0.8s"
+                                                values="9;15;9" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="fill-opacity" from="0.5" to="0.5"
+                                                begin="0s" dur="0.8s"
+                                                values=".5;1;.5" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="105" cy="15" r="15">
+                                            <animate attributeName="r" from="15" to="15"
+                                                begin="0s" dur="0.8s"
+                                                values="15;9;15" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="fill-opacity" from="1" to="1"
+                                                begin="0s" dur="0.8s"
+                                                values="1;.5;1" calcMode="linear"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                    </svg></button> :
+                                    <button className="cart-checkout-btn py-2 fw-bold"
+                                        onClick={saveData}>Continue to Payment</button>
+
+                            }
+
                             <p className="small mt-3">By clicking Continue to Payment, you agree that the
                                 Terms and Conditions of Sale will govern your purchase and that
                                 MIBAiO will email you an invoice.</p>

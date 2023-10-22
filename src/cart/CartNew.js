@@ -35,7 +35,6 @@ const CartNew = () => {
     const [editCoupon, setEditCoupon] = useState(false);
     const [couponDiscount, setCouponDiscount] = useState(0);
 
-
     const [cartCalculation, setCartCalculation] = useState({
         total: null,
         couponDiscount: null,
@@ -54,7 +53,8 @@ const CartNew = () => {
             data.forEach((val) => {
                 total += val.pricePerPiece * val.count;
             });
-            const couponCode = localStorage.getItem("coupon");
+            setCouponCode(localStorage.getItem("coupon"));
+
             //console.log("Coupon Code: ", couponCode);
             //console.log(couponCode);
             if (couponCode) {
@@ -425,7 +425,7 @@ const CartNew = () => {
                                     </div>
                                     <div className="d-flex align-items-center justify-content-end flex-column">
                                         {
-                                            isCouponValid ? <div onClick={() => clearCoupon()} className="cart-coupon-pill flex items-center justify-between rounded-pill cart-coupon-btn tracking-wide">
+                                            isCouponValid || couponDiscount != 0 ? <div onClick={() => clearCoupon()} className="cart-coupon-pill flex items-center justify-between rounded-pill cart-coupon-btn tracking-wide">
                                                 {couponCode}
                                                 <span className="w-4 h-4 fw-bold pl-3">✕</span>
 

@@ -16,7 +16,7 @@ import Input from "../components/Input";
 import CheckoutAddressForm from "../components/CheckoutAddressForm";
 import { addOrder } from "../http/checkoutCalls";
 
-const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShippingId }) => {
+const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShippingId, setOpenShip }) => {
 
     const [prevAddress, setPrevAddress] = useState([]);
     //Status of Form Submission
@@ -138,6 +138,7 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
                         shippingResponse = res.data;
                         console.log("New Address Uploaded:", res.data._id)
                         setShippingId(res.data._id);
+                        setOpenShip(false);
                         toast.success("Address Selected!")
                     }).catch((err) => {
                         console.log("Error: ");
@@ -154,6 +155,7 @@ const AddressPage = ({ shippingDetails, setShippingDetails, shippingId, setShipp
                         console.log(res.data._id)
                         setShippingId(res.data._id);
                         console.log("Address Updated:", res.data._id);
+                        setOpenShip(false);
                         toast.success("Address Selected!")
                     }).catch((err) => {
                         console.log("Error: ");

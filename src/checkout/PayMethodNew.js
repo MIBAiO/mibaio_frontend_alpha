@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 export default function PayMethodNew({ shippingDetails, billingDetails, setBillingDetails, billingErrors, setBillingErrors, isShippingAndBillingSame, setIsShippingAndBillingSame, openReviewOrder, payViaCash, setPayViaCash, amount }) {
 
     useEffect(() => {
+        console.log("Is Billing Same")
+        console.log(isShippingAndBillingSame)
         isShippingAndBillingSame && toast.success("Billing Address Same as Shipping Address");
     }, [isShippingAndBillingSame]);
 
@@ -37,7 +39,7 @@ export default function PayMethodNew({ shippingDetails, billingDetails, setBilli
                     <hr />
                     <h5 className="check-heading">Billing Address</h5>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" value={isShippingAndBillingSame} id="shippingSameAs" onClick={() => setIsShippingAndBillingSame(!isShippingAndBillingSame)} />
+                        <input type="checkbox" class="form-check-input" checked={isShippingAndBillingSame} value={isShippingAndBillingSame} id="shippingSameAs" onClick={() => setIsShippingAndBillingSame(!isShippingAndBillingSame)} />
                         <label class="form-check-label" htmlFor="exampleCheck1">Use my shipping address</label>
                     </div>
                     {

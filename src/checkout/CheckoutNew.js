@@ -50,6 +50,11 @@ const CheckoutNew = () => {
         toPay: false,
     });
 
+
+
+    // Change Data
+    const [openShip, setOpenShip] = useState(false);
+
     //Fetch Cart Itemmes, Coupons and Pincode
     useEffect(async () => {
 
@@ -64,49 +69,41 @@ const CheckoutNew = () => {
         const couponCode = localStorage.getItem("coupon");
         setCouponCode(couponCode);
 
-        const valid = await validateCoupon();
-
-        if (valid && couponCode) {
-            const discountData = await getCouponData(couponCode);
-            setCouponData(discountData.data);
+        try {
+            const response = await getCouponData(couponCode);
+            if (response.error) {
+                toast.error(response.error);
+                console.log("ERROR: ", response.error)
+                return false;
+            }
+            setCouponData(response.data);
             setCartCalculation({
                 ...cartCalculation,
                 total,
-                toPay: total - total * (discountData.data.discount / 100),
-                couponDiscount: discountData.data.discount,
-                discountedValue: total * (discountData.data.discount / 100),
+                toPay: total - total * (response.data.discount / 100),
+                couponDiscount: response.data.discount,
+                discountedValue: total * (response.data.discount / 100),
             });
-        } else {
+            localStorage.setItem("coupon", couponCode);
+        } catch (err) {
             setCartCalculation({
                 ...cartCalculation,
                 total,
                 toPay: total,
             });
             setCouponData(false);
+            localStorage.removeItem("coupon");
+            //console.log("ERROR: ", err.response.data.error)
         }
 
-        console.log("CART CALCULATION: ")
-        console.log(cartCalculation)
+
+
     }, []);
 
 
     // Check For Applied Coupons Validity
     const validateCoupon = async () => {
-        try {
-            const response = await getCouponData(couponCode);
-            if (response.error) {
-                toast.error(response.error);
-                //console.log("ERROR: ", response.error)
-                return false;
-            }
-            setCouponData(response.data);
-            localStorage.setItem("coupon", couponCode);
-            return true;
-        } catch (err) {
-            localStorage.removeItem("coupon");
-            return false;
-            //console.log("ERROR: ", err.response.data.error)
-        }
+
     };
 
 
@@ -355,13 +352,17 @@ const CheckoutNew = () => {
         }
 
         // creating a new order
-        // `http://localhost:5500/payment/orders/${orderId}`
 
+        //Production
+        // const result = await axios.post(
+        //     `https://mibaio.in:5500/payment/orders/${orderId}`
+        // );
 
-
+        //Development
         const result = await axios.post(
-            `https://mibaio.in:5500/payment/orders/${orderId}`
+            `http://localhost:5500/payment/orders/${orderId}`
         );
+
         console.log("****/*/*/*//*Order Data: ")
         console.log(result.data);
         if (!result) {
@@ -403,12 +404,14 @@ const CheckoutNew = () => {
             },
             modal: {
                 ondismiss: () => {
-                    console.log("OnCancled!!!!")
-                        (async () => {
-                            console.log("CANCELLED");
-                            await deleteOrder(orderId);
-                            setIsPaymentInProgress(false);
-                        })();
+                    (async () => {
+                        console.log("OnCancelled!!!!");
+
+                        // Assuming `deleteOrder` is an asynchronous function, you should await it.
+                        await deleteOrder(orderId);
+
+                        setIsPaymentInProgress(false);
+                    })();
                 },
             },
         };
@@ -441,12 +444,13 @@ const CheckoutNew = () => {
                     {/* Display Addresss Section:  */}
                     {
 
-                        (shippingId == "") ?
+                        (shippingId == "" || openShip) ?
                             <AddressPage
                                 shippingId={shippingId}
                                 setShippingId={setShippingId}
                                 shippingDetails={shippingDetails}
                                 setShippingDetails={setShippingDetails}
+                                setOpenShip={setOpenShip}
 
                             /> :
                             !openReview && <PayMethodNew
@@ -475,6 +479,9 @@ const CheckoutNew = () => {
                             payViaCash={payViaCash}
                             displayRazorpay={displayRazorpay}
                             isPaymentInProgress={isPaymentInProgress}
+                            setOpenShip={setOpenShip}
+                            setOpenReview={setOpenReview}
+
                         />
                     }
                 </div>
