@@ -1,12 +1,13 @@
 .privacy-heading{
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Avenir';
-    font-size: 1.1rem;
-    
+    font-size: 1.2rem;
+    margin-top: 5px;
 }
 
 .privacy-text{
     font-weight: 400;
     font-family: 'Avenir';
-    color: #111827;
+    color: #1f2937;
+    margin-top: 0 !important;
 }
