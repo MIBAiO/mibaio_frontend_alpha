@@ -64,6 +64,7 @@ import AddressPage from "./checkout/AddressPage";
 import PayMethod from "./checkout/PayMethod";
 import PayMethodNew from "./checkout/PayMethodNew";
 import ReviewOrder from "./checkout/ReviewOrder";
+import AppPrivacyPolicy from "./PrivacyPolicy/AppPrivacyPolicy";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -146,9 +147,13 @@ function App() {
 				<GuestRoute path="/privacyPolicy">
 					<PrivacyPolicy />
 				</GuestRoute>
+
 				<GuestRoute path="/faq">
 					<FAQ />
 				</GuestRoute>
+                <GuestRoute path="/privacyPolicyApp">
+                    <AppPrivacyPolicy/>
+                </GuestRoute>
 
 				<GuestRoute path="/returnnrefund">
 					<ReturnNRefund />
