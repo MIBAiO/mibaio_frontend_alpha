@@ -29,7 +29,10 @@ import girlvideo from "./newgirl.mp4";
 import extensionphonevid from "./extensionphone.mp4";
 import alexaphone from "./alexaphone.gif";
 // import black from "./images/blue.png"
-import extensionvid from "./Event.mp4";
+// import extensionvid from "./Event.mp4";
+import appdemo from "./appdemo.mp4";
+import extensionvid from "./Event-new.mp4";
+// import appdemo from "./appdemo.mp4";
 import alexagif from "./Hi-Alexa.gif";
 import surgeproof from "./Surge-proof.png";
 import modeposter from "./3Modeposter.png";
@@ -103,6 +106,8 @@ const Home = (props) => {
 
     //----------- Playing / Pausing the features video on scroll-------------------------------------------------------------
     const videoRef = useRef(null);
+    const appVideoRef = useRef(null);
+    const appScreenRef = useRef(null);
 
     useEffect(() => {
         let options = {
@@ -125,6 +130,27 @@ const Home = (props) => {
 
         observer.observe(videoRef.current);
     });
+
+    // App Video
+    useEffect(() => {
+        let options = {
+            rootMargin: "50px",
+            // threshold: [0.5, 0.75]
+            threshold: 0.5,
+        };
+        let handlePlay = (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    appVideoRef.current.play();
+                } else {
+                    appVideoRef.current.pause();
+                }
+            });
+        };
+        const observer = new IntersectionObserver(handlePlay, options);
+        observer.observe(appVideoRef.current);
+        console.log("Observer");
+    }, [])
     // ----------------------------------------------------------------------------------
     return (
         <>
@@ -187,7 +213,6 @@ const Home = (props) => {
 
                                                 <video
                                                     width="100%"
-                                                    loop
                                                     autoPlay
                                                     muted
                                                     style={{
@@ -266,11 +291,10 @@ const Home = (props) => {
                                             options={{
                                                 strings: [
                                                     "home",
-                                                    "routine tasks",
-                                                    "appliances",
                                                     "lifestyle",
+                                                    "appliances",
+                                                    "appliances",
                                                     "office",
-                                                    "fingers",
                                                 ],
                                                 autoStart: true,
                                                 loop: true,
@@ -304,8 +328,7 @@ const Home = (props) => {
                                                 animationName: "clipInLeft",
                                             }}
                                         >
-                                            Upgrade your existing conventional
-                                            electrical appliances to a set of
+                                            Upgrade your existing electrical appliances to a set of
                                             smart appliances! Control & monitor
                                             from any part of the world with your
                                             smartphone!
@@ -653,7 +676,7 @@ const Home = (props) => {
                                                     opacity: " .8",
                                                 }}
                                             >
-                                                (PS: Works with Alexa, Siri &
+                                                (Works with Alexa, Siri &
                                                 Google)
                                             </span>
                                         </p>
@@ -687,7 +710,7 @@ const Home = (props) => {
                                         <p className="description">
                                             Energy savings and advancements you
                                             never imagined! Save upto 26% of
-                                            your energy bills! 💚{" "}
+                                            your electricity bills! 💚{" "}
                                         </p>
                                     </div>
                                 </div>
@@ -717,9 +740,9 @@ const Home = (props) => {
                                             <a href="#Surge">Shared Access</a>
                                         </h4>
                                         <p className="description">
-                                            Share devices with your family 👨‍👩‍👦,
-                                            sync state of devices, set more
-                                            smart scenes for any space.
+                                            Share device access with your family 👨‍👩‍👦,
+                                            add timers to devices, set more
+                                            smart scenes for any switches.
                                         </p>
                                     </div>
                                 </div>
@@ -755,6 +778,7 @@ const Home = (props) => {
                                 }}
                                 // loop
                                 // autoPlay
+
                                 ref={videoRef}
                                 muted
                                 playsInline
@@ -774,21 +798,25 @@ const Home = (props) => {
                     </picture>
                     {/* <img src={alexagif} style={{minWidth:"100%"}} /> */}
                     {/* <img src={alexaphone} srcSet={`${alexaphone} 800w, ${alexagif} 1360w`} /> */}
-                    <section className="section section-md bg-gray-100" style="background:linear-gradient(180deg,#000,#8a8b81);">
-                        <h3
-                            className="wow fadeInUp"
-                            data-wow-delay=".4s"
-                            style={{
-                                textAlign: "center",
-                                paddingTop: "32px",
-                                background: "linear-gradient(180deg, #434343, #000000)",
-                            }}
-                        >
-                            Control with your voice with your favorite assistants!
-                        </h3>
-			<h4 style="text-align: center;">Supports your favourite voice assistant services</h4>
+                    <section className="section section-md bg-gray-100" style={{ background: "linear-gradient(180deg, rgba(0,0,0,1) 8%, rgba(50,54,50,1) 26%, rgba(123,133,121,1) 51%, rgba(255,255,255,1) 77%)" }} >
+                        <div className="d-flex flex-column pt-5 pb-3 align-items-center justify-content-center">
 
-                        <picture>
+
+                            <h3
+                                className="wow fadeInUp"
+                                data-wow-delay=".4s"
+                                style={{
+                                    textAlign: "center",
+                                    paddingTop: "72px",
+                                    color: "#fff",
+                                }}
+                            >
+                                Hands-free control 🎙️
+                            </h3>
+                            <h4 style={{ textAlign: "center", color: "#fefefe", paddingBottom: "26", opacity: "0.7" }}>Supports your favourite voice assistants</h4>
+
+                        </div>
+                        <picture className="mt-4">
                             <source
                                 media="(min-width:800px)"
                                 srcSet={alexagif}
@@ -846,7 +874,7 @@ const Home = (props) => {
                                         <blockquote className="quote-light">
                                             <div className="quote-light-text">
                                                 <p>
-                                                    MIBAiO Xtension 4S is
+                                                    Xtension 4S is
                                                     equipped with a Positive
                                                     Temperature Coefficient
                                                     Thermister (PTC) to protect
@@ -913,10 +941,7 @@ const Home = (props) => {
                                                     appliances with:
                                                     <br />
                                                     <br />
-                                                    <div
-                                                        className="icon icon-style-1 mdi mdi-wifi"
-                                                    // style={{ font: "normal 24px/2 Material Design Icons" }}
-                                                    ></div>{" "}
+                                                    <div className="icon icon-style-1 mdi mdi-wifi" ></div>{" "}
                                                     Internet <br />
                                                     <br />
                                                     <div
@@ -958,7 +983,7 @@ const Home = (props) => {
                                     <img
                                         className="d-block w-100"
                                         src={modeposter}
-                                        alt="AI Chip image"
+                                        alt="multi-mode-control"
                                     />
                                 </div>
                             </div>
@@ -1419,8 +1444,7 @@ const Home = (props) => {
                                                             >
                                                                 03
                                                             </span>{" "}
-                                                            &nbsp; ROI [Return
-                                                            on Investment]?
+                                                            &nbsp; 💸 Returns
                                                             <div className="card-arrow"></div>
                                                         </a>
                                                     </div>
@@ -1434,13 +1458,13 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            With uptp 26%
-                                                            savings on energy
-                                                            bills per month,
-                                                            you'll recover the
+                                                            Save upto 26%
+                                                            on electricity
+                                                            bill per month.<br />
+                                                            recover the
                                                             amount invested
-                                                            roughly in about 7
-                                                            months*..!
+                                                            roughly in about 7*
+                                                            months!
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1606,14 +1630,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 4
+                                                        Smart Control upto 4
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 1 room</li>
-                                                    <li>Manual control</li>
-                                                    <li>Bluetooth control</li>
-                                                    <li>Internet control</li>
-                                                    <li>Voice control</li>
+                                                    <li>No addidional wiring</li>
+                                                    <li>Fits outside existing switch board</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
@@ -1622,11 +1644,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -1704,14 +1726,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 12
+                                                        Smart Control upto 12
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 2 BHK</li>
-                                                    <li>Manual Control</li>
-                                                    <li>Internet Control</li>
-                                                    <li>Bluetooth Control</li>
-                                                    <li>Voice control</li>
+                                                    <li>No additional wiring</li>
+                                                    <li>Fits outside existing switch board</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
@@ -1720,12 +1740,12 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
 
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
 
@@ -1785,17 +1805,12 @@ const Home = (props) => {
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
                                                     <li>
-                                                        Control upto 8
+                                                        Smart Control upto 8
                                                         appliances
                                                     </li>
                                                     <li>Ideal for 1 BHK</li>
-                                                    <li>Manual control</li>
-                                                    <li>Internet control</li>
-                                                    <li>Voice control</li>
-                                                    <li>Bluetooth control</li>
-                                                    <li>
-                                                        Upgrade more outputs
-                                                    </li>
+                                                    <li>No additional wiring</li>
+                                                    <li>Fits outside existing switch boards</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
@@ -1804,11 +1819,11 @@ const Home = (props) => {
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Select Plan
+                                                            Add to cart
                                                         </div>
                                                     </a>
                                                 </div>
@@ -2160,11 +2175,13 @@ const Home = (props) => {
                         </div>
                     </section>
 
+
+
+                    {/* ---------------------------------- FAQ Section ---------------------------------- */}
                     <section
                         id="FAQ"
                         className="section section-md bg-gray-100 text-center wow fadeInUp"
-                        data-wow-delay=".3s"
-                    >
+                        data-wow-delay=".3s">
                         <div className=" container">
                             <span className="normal text-primary font-weight-bold text-uppercase wow fadeIn">
                                 Popular Questions
@@ -2182,251 +2199,279 @@ const Home = (props) => {
 							> */}
                             {/* --------------------------- */}
                             <div
-                                className="accordion row row-30 justify-content-center justify-content-lg-start flex-column flex-md-row"
-                                id="appAccordion"
+                                className="accordion  row row-30 justify-content-center justify-content-lg-start flex-column flex-md-row"
+                                id="faqAccordion"
                                 data-wow-delay=".2s"
                             >
-                                <div className="col-md-10 col-lg-6 wow fadeInLeft">
-                                    <div className="card-group-custom card-group-classic card-group-classic_1">
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingOne"
-                                                >
-                                                    <a
-                                                        className="accordion-button"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseOne"
-                                                        aria-expanded="true"
-                                                        aria-controls="collapseOne"
-                                                    >
-                                                        What does "MIBAiO" mean?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
+                                {/* FAQ Column - 1 */}
+                                <div className="col-md-10 col-lg-6 wow fadeInLeft accordion-list">
+                                    <div className="accordion-list">
+                                        <div
+                                            className="card-group-custom card-group-classic card-group-classic_1"
+                                            role="tablist"
+                                            aria-multiselectable="false"
+                                        >
+                                            <article className="card card-custom card-classic">
                                                 <div
-                                                    id="collapseOne"
-                                                    className="accordion-collapse collapse card-body show"
-                                                    aria-labelledby="headingOne"
-                                                    data-bs-parent="#appAccordion"
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-4"
+                                                    role="tab"
                                                 >
-                                                    <div className="accordion-body">
-                                                        MIBAiO is an acronym for
-                                                        Manual Internet
-                                                        Bluetooth All In One.{" "}
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-4"
+                                                            aria-controls="faq-accordion-collapse-4"
+                                                            aria-expanded="true"
+                                                        >
+                                                            What does "MIBAiO" mean?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingTwo"
-                                                >
-                                                    <a
-                                                        className="accordion-button collapsed"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseTwo"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseTwo"
-                                                    >
-                                                        What are the key
-                                                        features of your
-                                                        product?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
                                                 <div
-                                                    id="collapseTwo"
-                                                    className="accordion-collapse collapse card-body"
-                                                    aria-labelledby="headingTwo"
-                                                    data-bs-parent="#appAccordion"
+                                                    className="collapse show"
+                                                    id="faq-accordion-collapse-4"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-4"
+                                                    data-parent="#faqAccordion"
                                                 >
-                                                    <div className="accordion-body">
-                                                        Our product offers
-                                                        Manual, Internet and
-                                                        Bluetooth all-in-one
-                                                        functionality along with
-                                                        voice control. To know
-                                                        more about key features,
-                                                        please refer the product
-                                                        brochure.
+                                                    <div className="card-body">
+                                                        <p>
+                                                            MIBAiO is an acronym for
+                                                            Manual Internet
+                                                            Bluetooth All In One.{" "}
+                                                        </p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingThree"
-                                                >
-                                                    <a
-                                                        className="accordion-button collapsed"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseThree"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseThree"
-                                                    >
-                                                        Why should I purchase
-                                                        your product?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
+                                            </article>
+
+                                            <article className="card card-custom card-classic">
                                                 <div
-                                                    id="collapseThree"
-                                                    className="accordion-collapse collapse card-body"
-                                                    aria-labelledby="headingThree"
-                                                    data-bs-parent="#appAccordion"
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-1"
+                                                    role="tab"
                                                 >
-                                                    <div className="accordion-body">
-                                                        The major advantage is
-                                                        price: You get a premium
-                                                        model under ₹4000. You
-                                                        don't have to call an
-                                                        electrician for
-                                                        installation, we make it
-                                                        very easy to install for
-                                                        you. Second advantage is
-                                                        Made in INDIA: Our
-                                                        product is carefully
-                                                        designed for a standard
-                                                        Indian household of
-                                                        world-class quality. We
-                                                        are working under the
-                                                        Make in India, Digital
-                                                        India, Aatmanirbhar
-                                                        Bharat initiatives.{" "}
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link collapsed"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-1"
+                                                            aria-controls="faq-accordion-collapse-1"
+                                                            aria-expanded="false"
+                                                        > What are the key
+                                                            features of your
+                                                            product?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div
+                                                    className="collapse"
+                                                    id="faq-accordion-collapse-1"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-1"
+                                                    data-parent="#faqAccordion"
+                                                >
+                                                    <div className="card-body">
+                                                        <p>
+                                                            Our product offers
+                                                            Manual, Internet and
+                                                            Bluetooth all-in-one
+                                                            functionality along with
+                                                            voice control. To know
+                                                            more about key features,
+                                                            please refer the product
+                                                            brochure.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                            <article className="card card-custom card-classic">
+                                                <div
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-2"
+                                                    role="tab"
+                                                >
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link collapsed"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-2"
+                                                            aria-controls="faq-accordion-collapse-2"
+                                                            aria-expanded="false"
+                                                        >
+                                                            Why should I purchase
+                                                            your product?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="collapse"
+                                                    id="faq-accordion-collapse-2"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-2"
+                                                    data-parent="#faqAccordion"
+                                                >
+                                                    <div className="card-body">
+                                                        <p>
+                                                            The major advantage is
+                                                            Easy life: You experience a #smarthome and other exciting features under ₹6000. <br />
+                                                            Second advantage is
+                                                            Modular Design: Our
+                                                            product is carefully
+                                                            designed to fit outside any existing electrical switchboard. It can be at your house or at your workplace.
+                                                            <br />
+                                                            We are working towards the
+                                                            #MakeInIndia, #DigitalIndia,
+                                                            #AatmanirbharBharat initiatives.{" "}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </article>
                                         </div>
                                     </div>
                                 </div>
-
+                                {/* FAQ Column - 2 */}
                                 <div className="col-md-10 col-lg-6 wow fadeInRight">
-                                    <div className="card-group-custom card-group-classic card-group-classic_1">
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingFour"
-                                                >
-                                                    <a
-                                                        className="accordion-button collapsed"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseFour"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseFour"
-                                                    >
-                                                        Do you provide post
-                                                        sales service?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
-                                                <div
-                                                    id="collapseFour"
-                                                    className="accordion-collapse collapse card-body"
-                                                    aria-labelledby="headingFour"
-                                                    data-bs-parent="#appAccordion"
-                                                >
-                                                    <div className="accordion-body">
-                                                        Yes, we do. Our team is
-                                                        ready for your support
-                                                        24x7x365 with our
-                                                        qualified Engineers.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="accordion-list">
+                                        <div
+                                            className="card-group-custom card-group-classic card-group-classic_1"
+                                            role="tablist"
+                                            aria-multiselectable="false"
+                                        >
 
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingFive"
-                                                >
-                                                    <a
-                                                        className="accordion-button collapsed"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseFive"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseFive"
-                                                    >
-                                                        Does your product
-                                                        control the speed of fan
-                                                        digitally?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
+
+                                            <article className="card card-custom card-classic">
                                                 <div
-                                                    id="collapseFive"
-                                                    className="accordion-collapse collapse card-body"
-                                                    aria-labelledby="headingFive"
-                                                    data-bs-parent="#appAccordion"
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-3"
+                                                    role="tab"
                                                 >
-                                                    <div className="accordion-body">
-                                                        No as of now. But you'll
-                                                        get that funtion in the
-                                                        upcoming versions of
-                                                        MIBAiO.
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link collapsed"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-3"
+                                                            aria-controls="faq-accordion-collapse-3"
+                                                            aria-expanded="false"
+                                                        >
+                                                            Do you provide post
+                                                            sales service?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="card card-custom card-classic">
-                                            <div className="accordion-item card-header">
-                                                <h2
-                                                    className="accordion-header card-title"
-                                                    id="headingSix"
-                                                >
-                                                    <a
-                                                        className="accordion-button collapsed"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseSix"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseSix"
-                                                    >
-                                                        What can I do with your
-                                                        product?
-                                                        <span className="card-arrow"></span>
-                                                    </a>
-                                                </h2>
                                                 <div
-                                                    id="collapseSix"
-                                                    className="accordion-collapse collapse card-body"
-                                                    aria-labelledby="headingSix"
-                                                    data-bs-parent="#appAccordion"
+                                                    className="collapse"
+                                                    id="faq-accordion-collapse-3"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-3"
+                                                    data-parent="#faqAccordion"
                                                 >
-                                                    <div className="accordion-body">
-                                                        Talk to your electrical
-                                                        appliances through Siri,
-                                                        Alexa and Google voice
-                                                        assistant. Control your
-                                                        exising appliances with
-                                                        your smartphone and also
-                                                        manually(like we do now
-                                                        using the conventional
-                                                        switches). Monitor your
-                                                        electricity consumption
-                                                        of connected appliances
-                                                        on your smartphone app.
+                                                    <div className="card-body">
+                                                        <p>
+                                                            Yes, we do. Our team is
+                                                            ready for your support
+                                                            24x7x365 with our
+                                                            qualified Engineers.
+                                                        </p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </article>
+                                            <article className="card card-custom card-classic">
+                                                <div
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-5"
+                                                    role="tab"
+                                                >
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link collapsed"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-5"
+                                                            aria-controls="faq-accordion-collapse-5"
+                                                            aria-expanded="false"
+                                                        >
+                                                            Does your product
+                                                            control the speed of fan
+                                                            digitally?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="collapse"
+                                                    id="faq-accordion-collapse-5"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-5"
+                                                    data-parent="#faqAccordion"
+                                                >
+                                                    <div className="card-body">
+                                                        <p>
+                                                            Yes, you can regulate the speed of the fan with your app <br /> And also with your voice!🎙️
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                            <article className="card card-custom card-classic">
+                                                <div
+                                                    className="card-header"
+                                                    id="faq-accordion-heading-6"
+                                                    role="tab"
+                                                >
+                                                    <div className="card-title">
+                                                        <a
+                                                            className="card-link collapsed"
+                                                            role="button"
+                                                            data-toggle="collapse"
+                                                            href="#faq-accordion-collapse-6"
+                                                            aria-controls="faq-accordion-collapse-6"
+                                                            aria-expanded="false"
+                                                        >
+                                                            What can I do with your
+                                                            product?
+                                                            <div className="card-arrow"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="collapse"
+                                                    id="faq-accordion-collapse-6"
+                                                    role="tabpanel"
+                                                    aria-labelledby="faq-accordion-heading-6"
+                                                    data-parent="#faqAccordion"
+                                                >
+                                                    <div className="card-body">
+                                                        <p>
+                                                            Ask 🎙️ Alexa to turn off your hall light<br />
+                                                            Set a routine to turn on outdoor light sharp at 6:45pm everyday ⏰ <br />
+                                                            Monitor
+                                                            electricity consumption
+                                                            of your connected appliances
+                                                            on your App 📊
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </article>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            {/* <div className="col-md-10 col-lg-6">
+
+                        </div >
+
+                        {/* <div className="col-md-10 col-lg-6">
 									<div
 										className="card-group-custom card-group-classic card-group-classic_1"
 										role="tablist"
@@ -2698,10 +2743,14 @@ const Home = (props) => {
 										</article>
 									</div>
 								</div> */}
-                            {/* </div> */}
-                        </div>
-                    </section>
+                        {/* </div> */}
+                    </section >
 
+
+
+
+
+                    {/* Upgrate To MIBAiO section */}
                     <section className="section section-md text-center">
                         <div className="container">
                             <span className="normal text-primary font-weight-bold text-uppercase wow fadeIn">
@@ -2711,12 +2760,40 @@ const Home = (props) => {
                                 className="offset-top-7 wow fadeIn"
                                 data-wow-delay=".1s"
                             >
-                                Step into the future,{" "}
+                                One App {" "}
                                 <span style={{ color: "#0accbe" }}>
-                                    Upgrade to MIBAiO
+                                    Versatile Control
                                 </span>
                             </h3>
-                            <p className="wow fadeIn" data-wow-delay=".2s">
+
+                            {/* New App Video Here */}
+                            <div className="row" ref={appScreenRef}>
+                                <div className="col-md-10 mx-auto">
+                                    <video
+                                        width="100%"
+                                        playsInline={true}
+                                        ref={appVideoRef}
+                                        muted
+                                        style={{
+                                            alignContent: "center",
+                                        }}
+                                    >
+                                        <source
+                                            src={appdemo}
+                                            type="video/mp4"
+                                        />
+                                    </video>
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+
+                            {/* <p className="wow fadeIn" data-wow-delay=".2s">
                                 <span
                                     style={{
                                         maxWidth: "720px",
@@ -2724,11 +2801,10 @@ const Home = (props) => {
                                     }}
                                 >
                                     It’s time to upgrade your
-                                    home/office/workspace and experience the
-                                    futuristic lifestyle! Contact us directly to
-                                    enhance your lifestyle experience.
+                                    existing electrical appliances and experience the
+                                    futuristic lifestyle!
                                 </span>
-                            </p>
+                            </p> */}
                         </div>
                         <div className="group" style={{ padding: "15px" }}>
                             <Link
@@ -2747,12 +2823,12 @@ const Home = (props) => {
                                 <span></span>Buy Now
                             </Link>
                         </div>
-                    </section>
+                    </section >
 
                     <CustomFooter />
-                </div>
+                </div >
                 <div className="snackbars" id="form-output-global" />
-            </div>
+            </div >
             {/* </div> */}
         </>
     );

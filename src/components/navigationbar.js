@@ -15,8 +15,9 @@ import { useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 import { getProductsInCart } from "../http/cartCalls";
+import "./navstyle.css"
 import { logUserOut, refresh } from "../http/apis";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 library.add(faIdCard, fas);
 
 const NavigationBar = () => {
@@ -25,27 +26,26 @@ const NavigationBar = () => {
 	const [cartCount, setCartCount] = useState(0);
 
 	const [didRedirect, setDidRedirect] = useState(false);
-// -----------------Sticky Navbar---------------------------------------
+	// -----------------Sticky Navbar---------------------------------------
 	const [isSticky, setIsSticky] = useState(false);
 
 	useEffect(() => {
-	  const handleScroll = () => {
-		const scrollTop = window.pageYOffset;
-		const deviceWidth = window.innerWidth;
-      	const isMobile = deviceWidth < 768;
-		if (isMobile && scrollTop > 100) {
-		  setIsSticky(true);
-		} else {
-		  setIsSticky(false);
+		const handleScroll = () => {
+			const scrollTop = window.pageYOffset;
+			const deviceWidth = window.innerWidth;
+			const isMobile = deviceWidth < 768;
+			if (isMobile && scrollTop > 100) {
+				setIsSticky(true);
+			} else {
+				setIsSticky(false);
+			}
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
 		}
-	  };
-	  window.addEventListener('scroll', handleScroll);
-  
-	  return () => {
-		window.removeEventListener('scroll', handleScroll);
-	  };
 	}, []);
-// ------------------------------------------------------------------------  
+	// ------------------------------------------------------------------------  
 
 	useEffect(() => {
 		if (Cookies.get("accessToken")) {
@@ -115,7 +115,7 @@ const NavigationBar = () => {
 			<Navbar
 				collapseOnSelect
 				expand="lg"
-				className="rd-navbar-nav-wrap toggle-original-elements active color-nav"
+				className="rd-navbar-nav-wrap py-0 p-md-auto toggle-original-elements active color-nav"
 				variant="dark"
 				style={{
 					display: "flex",
@@ -123,7 +123,7 @@ const NavigationBar = () => {
 					alignItems: "center",
 					flexDirection: "column",
 				}}
-				fixed={ isSticky ? "top" : "" }
+				fixed={isSticky ? "top" : ""}
 			>
 				<Container
 					style={{
@@ -402,9 +402,38 @@ const NavigationBar = () => {
 						</div>
 					</Nav>
 					<Nav>
-						<div className="rd-navbar-element rd-navbar-element_right">
+						<div className="rd-navbar-element rd-navbar-element_right" >
 							<div id="google_translate_element"></div>
 							<ul className="list-localization">
+								<div className="nav" >
+									<li class="nav-item mt-2 dropdown">
+										<a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Language
+										</a>
+										<ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="navbarDropdown" style={{ maxWidth: "100px" }}>
+											<li className="dropdown-item" onClick={(e) => {
+												updateLanguage("mr");
+											}}>
+												<span className="label-text">
+													<span className="notranslate text-dark">मराठी</span>
+												</span>
+											</li>
+											<li className="dropdown-item" onClick={(e) => {
+												updateLanguage("en");
+											}}>
+												<span className="label-text text-dark">English</span>
+											</li>
+											<li className="dropdown-item" onClick={(e) => {
+												updateLanguage("hi");
+											}}>
+												<span className="label-text">
+													<span className="notranslate text-dark">हिंदी</span>
+												</span>
+											</li>
+										</ul>
+
+									</li>
+								</div>
 								<li>
 									<a
 										className="icon icon-sm link-social-2 mdi mdi-cart-outline mr-2"
@@ -416,70 +445,93 @@ const NavigationBar = () => {
 										</span>
 									</a>
 								</li>
-								<li>
-									<label
-										onClick={(e) => {
-											updateLanguage("mr");
-										}}
-									>
-										<input
-											id="Marathi"
-											name="localization"
-											defaultValue="Marathi"
-											type="radio"
-											autoComplete="Off"
-											className="radio-custom"
-										/>
-										<span className="radio-custom-dummy" />
-										<span className="label-text">
-											<span className="notranslate">मराठी</span>
-										</span>
-									</label>
-								</li>
-								<li>
-									<label
-										onClick={(e) => {
-											updateLanguage("en");
-										}}
-									>
-										<input
-											id="English"
-											name="localization"
-											defaultValue="English"
-											type="radio"
-											defaultChecked="checked"
-											autoComplete="Off"
-											className="radio-custom"
-										/>
-										<span className="radio-custom-dummy" />
-										<span className="label-text">English</span>
-									</label>
-								</li>
-								<li>
-									<label
-										onClick={(e) => {
-											updateLanguage("hi");
-										}}
-									>
-										<input
-											id="Hindi"
-											name="localization"
-											defaultValue="Hindi"
-											type="radio"
-											autoComplete="Off"
-											className="radio-custom"
-										/>
-										<span className="radio-custom-dummy" />
-										<span className="label-text">
-											<span className="notranslate">हिंदी</span>
-										</span>
-									</label>
-								</li>
+
 							</ul>
 						</div>
 					</Nav>
-				</Container>
-			</Navbar>
+				</Container >
+			</Navbar >
+			{/* <nav class="navbar navbar-expand-lg navbar-dark color-nav">
+				<div class="container-fluid">
+					<Link to="/">
+						<img
+							className=" brand-logo-dark"
+							src="images/logo-default-96x32.png"
+							alt=""
+							width={96}
+							height={32}
+							srcSet="images/logo-default-96x32.png 2x"
+						/>
+					</Link>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="nav mx-auto  navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item ">
+								<div className="nav-link">
+									<Link class="nav-link text-white " href="/">
+										Home
+									</Link>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div className="nav-link">
+									<Link class="nav-link text-white" href="about_us">
+										About Us
+									</Link>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div className="nav-link">
+									<Link class="nav-link text-white" href="view">
+										Product
+									</Link>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div className="nav-link">
+									<Link class="nav-link text-white" href="contact_us">
+										Contact Us
+									</Link>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link dropdown">
+									<a
+										class="nav-link dropdown-toggle text-white"
+										href="#"
+										id="collasible-nav-dropdown"
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
+									>
+										More
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="collasible-nav-dropdown">
+										<li>
+											<a class="dropdown-item text-dark" href="/careers">Careers</a>
+										</li>
+										<li>
+											<a class="dropdown-item text-dark" href="/faq">FAQ</a>
+										</li>
+										<li>
+											<a class="dropdown-item text-dark" href="/our_team">Our Team</a>
+										</li>
+										<li>
+											<a class="dropdown-item text-dark" href="/privacyPolicy">Privacy Policy</a>
+										</li>
+										<li>
+											<a class="dropdown-item text-dark" href="/returnnrefund">Return &amp; Refund</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</nav> */}
 		</>
 	);
 };

@@ -1,0 +1,281 @@
+.cart-page {
+    font-family: 'Avenir' !important;
+    color: black;
+}
+
+.cart-header h5 {
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 800;
+
+}
+
+.cart-header button {
+    padding: 6px 18px;
+    align-items: center;
+    justify-content: start;
+    border-radius: .5rem;
+    width: 220px;
+    font-size: .8rem;
+    letter-spacing: .06rem;
+    color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    background-color: #3b82f6;
+
+}
+
+.cart-product-qty-btn:active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.cart-product-name h5 {
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 800;
+}
+
+
+.cart-product-name p {
+    font-size: .9rem;
+}
+
+.cart-product-qty button {
+    width: 25px;
+    height: 25px;
+
+    background-color: #b3d0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00307e;
+}
+
+.cart-product-qty p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 1rem;
+}
+
+
+.cart-product-price {
+    text-align: end;
+}
+
+.cart-product-price h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: end;
+    color: black;
+}
+
+.cart-product-price p {
+    font-size: .8rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+
+.cart-deal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin: 0;
+    padding: .5rem 0;
+    border-radius: .5rem;
+}
+
+.cart-deal-text h5,
+.cart-delivery h5 {
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 700;
+}
+
+.cart-deal-text p {
+    font-size: 1rem;
+    color: #171717;
+    font-weight: 700;
+}
+
+
+.cart-deal-btn,
+.cart-coupon-btn {
+    background-color: #3b82f6;
+    color: white;
+    font-size: .8rem;
+    padding: 6px 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-coupon-pill {
+    border: 2px solid;
+    border-color: #3b82f6;
+    color: #3b82f6;
+    background-color: #fff;
+    font-size: .8rem;
+    padding: 6px 18px;
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-delivery {
+    padding: .5rem 0;
+
+}
+
+
+
+.cart-delivery p,
+.cart-delivery b {
+    margin: 0;
+}
+
+
+.cart-subtotal {
+    font-size: 1.2rem;
+    font-family: 'Avenir';
+    font-weight: 700;
+    color: black;
+}
+
+.cart-subtotal-price {
+    font-family: 'Avenir';
+    text-align: end;
+}
+
+.cart-total h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+    text-align: end;
+    font-family: 'Avenir' !important;
+}
+
+.checkout-btn,
+.cart-checkout-btn {
+    background-color: #3b82f6;
+    color: white;
+    font-size: .8rem;
+    padding: 6px 18px;
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: .5rem;
+}
+
+.btn-cart-empty {
+    background-color: #3b82f6;
+    color: white;
+    font-size: .7rem;
+    font-family: 'Avenir';
+    font-weight: 600;
+    padding: 12px 24px;
+    margin-top: 1rem;
+
+    border-radius: 2rem;
+}
+
+.cart-delivery-btn {
+    border: 2px solid #e0e0e0 !important;
+    font-size: .8rem;
+    padding: 6px 18px;
+    font-weight: 600;
+}
+
+.pinchange-btn {
+    border-radius: 50px;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 6px;
+    border: none;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pinchange-btn:hover {
+    border: 2px solid #4A80F0 !important;
+
+}
+
+.pin-input,
+.coupon-input {
+    font-size: .9rem !important;
+    padding: 3px 10px;
+    border: 2px solid #eee;
+    border-radius: 30px
+}
+
+.pin-input:focus {
+    box-shadow: none;
+    border: 2px solid #4A80F0
+}
+
+.pin-btn {
+    background-color: #4A80F0;
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 50px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+
+/* Mobile View */
+/* Mobile Device -  Up to 480px width */
+@media (max-width: 480px) {
+
+    /* Your mobile-specific styles here */
+    .cart-header h5 {
+        text-align: center;
+    }
+
+    .cart-header button {
+        width: 100%;
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+
+
+    .features-card {
+        min-width: 5rem;
+        height: 5rem;
+        margin-right: 5px;
+    }
+
+    .features-card img {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    .cart-product-name h5,
+    .cart-product-name p {
+        text-align: center;
+    }
+
+    .cart-deal,
+    .cart-delivery {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .cart-checkout-btn {
+        width: 100%;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: .06rem;
+        padding: 10px;
+    }
+}

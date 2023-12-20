@@ -58,153 +58,181 @@ import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 import ScrollToTop from "./components/ScrollToTop";
 import RegisterWithEmail from "./register/RegisterWithEmail";
 import ViewProductNew from "./viewProduct/ViewProductNew";
+import CartNew from "./cart/CartNew";
+import CheckoutNew from "./checkout/CheckoutNew";
+import AddressPage from "./checkout/AddressPage";
+import PayMethod from "./checkout/PayMethod";
+import PayMethodNew from "./checkout/PayMethodNew";
+import ReviewOrder from "./checkout/ReviewOrder";
+import AppPrivacyPolicy from "./PrivacyPolicy/AppPrivacyPolicy";
 
 function App() {
-    const { loading } = useLoadingWithRefresh();
-    return loading ? (
-        <Loader />
-    ) : (
-        // <BrowserRouter>
-        <HashRouter basename="/">
-            {/* added ScrollToTop so that page scrolls to top on changing pages */}
-            <ScrollToTop />
-            <Switch>
-                <GuestRoute path="/" exact>
-                    <Home />
-                </GuestRoute>
+	const { loading } = useLoadingWithRefresh();
+	return loading ? (
+		<Loader />
+	) : (
+		// <BrowserRouter>
+		<HashRouter basename="/">
+			{/* added ScrollToTop so that page scrolls to top on changing pages */}
+			<ScrollToTop />
+			<Switch>
+				<GuestRoute path="/" exact>
+					<Home />
+				</GuestRoute>
 
-                <GuestRoute path="/about_us" exact>
-                    <AboutUs />
-                </GuestRoute>
+				<GuestRoute path="/about_us" exact>
+					<AboutUs />
+				</GuestRoute>
 
-                <GuestRoute path="/careers" exact>
-                    <Careers />
-                </GuestRoute>
+				<GuestRoute path="/careers" exact>
+					<Careers />
+				</GuestRoute>
 
-                <GuestRoute path="/register">
-                    <Register />
-                </GuestRoute>
+				<GuestRoute path="/register">
+					<Register />
+				</GuestRoute>
 
-                <GuestRoute path="/register/email">
-                    <RegisterWithEmail />
-                </GuestRoute>
+				<GuestRoute path="/emailreg">
+					<RegisterWithEmail />
+				</GuestRoute>
 
-                <GuestRoute path="/login">
-                    <Login />
-                </GuestRoute>
+				<GuestRoute path="/login">
+					<Login />
+				</GuestRoute>
 
-                <GuestRoute path="/our_team">
-                    <OurTeam />
-                </GuestRoute>
+				<GuestRoute path="/our_team">
+					<OurTeam />
+				</GuestRoute>
 
-                <GuestRoute path="/contact_us">
-                    <ContactUs />
-                </GuestRoute>
+				<GuestRoute path="/contact_us">
+					<ContactUs />
+				</GuestRoute>
 
-                <GuestRoute path="/request_reset_password">
-                    <RequestResetPassword />
-                </GuestRoute>
+				<GuestRoute path="/request_reset_password">
+					<RequestResetPassword />
+				</GuestRoute>
 
-                <GuestRoute path="/view">
-                    {/* <BasicExample /> */}
-                    <ViewProduct />
-                    {/* <Temp /> */}
-                </GuestRoute>
+				<GuestRoute path="/view">
+					{/* <BasicExample /> */}
+					{/* <ViewProduct /> */}
+					<ViewProductNew />
+					{/* <Temp /> */}
+				</GuestRoute>
+				<GuestRoute path="/viewnew">
+					{/* <BasicExample /> */}
+					<ViewProductNew />
+					{/* <Temp /> */}
+				</GuestRoute>
 
+				<GuestRoute path="/passwordReset">
+					<PasswordReset />
+				</GuestRoute>
 
-                <GuestRoute path="/passwordReset">
-                    <PasswordReset />
-                </GuestRoute>
+				<GuestRoute path="/validate">
+					<Validate />
+				</GuestRoute>
 
-                <GuestRoute path="/validate">
-                    <Validate />
-                </GuestRoute>
+				<GuestRoute path="/validate">
+					<Validate />
+				</GuestRoute>
 
-                <GuestRoute path="/validate">
-                    <Validate />
-                </GuestRoute>
+				<ProtectedRoute path="/review">
+					<Review />
+				</ProtectedRoute>
 
-                <ProtectedRoute path="/review">
-                    <Review />
-                </ProtectedRoute>
+				<GuestRoute path="/success">
+					<OrderSuccess />
+				</GuestRoute>
 
-                <GuestRoute path="/success">
-                    <OrderSuccess />
-                </GuestRoute>
+				<GuestRoute path="/privacyPolicy">
+					<PrivacyPolicy />
+				</GuestRoute>
 
-                <GuestRoute path="/privacyPolicy">
-                    <PrivacyPolicy />
-                </GuestRoute>
-                <GuestRoute path="/faq">
-                    <FAQ />
-                </GuestRoute>
+				<GuestRoute path="/faq">
+					<FAQ />
+				</GuestRoute>
+				<GuestRoute path="/privacyPolicyApp">
+					<AppPrivacyPolicy />
+				</GuestRoute>
 
-                <GuestRoute path="/returnnrefund">
-                    <ReturnNRefund />
-                </GuestRoute>
-
-                <ProtectedRoute path="/cart">
-                    <Cart />
-                </ProtectedRoute>
-
-                <ProtectedRoute path="/checkout">
-                    <Checkout />
-                </ProtectedRoute>
-                <ProtectedRoute path="/product_details">
-                    <Product_details />
-                </ProtectedRoute>
-                <ProtectedRoute path="/orders">
-                    <PreviousOrders />
-                </ProtectedRoute>
-            </Switch>
-        </HashRouter>
-        // </BrowserRouter>
-    );
+				<GuestRoute path="/returnnrefund">
+					<ReturnNRefund />
+				</GuestRoute>
+				<ProtectedRoute path="/cart">
+					{/* <Cart /> */}
+					<CartNew />
+				</ProtectedRoute>
+				<ProtectedRoute path="/checkout">
+					<Checkout />
+				</ProtectedRoute>
+				{/* New Checkout FLow */}
+				<GuestRoute path="/checkoutnew">
+					<CheckoutNew />
+				</GuestRoute>
+				<GuestRoute path="/address">
+					<AddressPage />
+				</GuestRoute>
+				<GuestRoute path="/revieworder">
+					<ReviewOrder />
+				</GuestRoute>
+				<GuestRoute path="/paynew">
+					<PayMethodNew />
+				</GuestRoute>
+				<ProtectedRoute path="/product_details">
+					<Product_details />
+				</ProtectedRoute>
+				<ProtectedRoute path="/orders">
+					<PreviousOrders />
+				</ProtectedRoute>
+			</Switch>
+		</HashRouter>
+		// </BrowserRouter>
+	);
 }
 
 const GuestRoute = ({ children, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={({ location }) => {
-                return children;
-            }}
-        ></Route>
-    );
+	return (
+		<Route
+			{...rest}
+			render={({ location }) => {
+				return children;
+			}}
+		></Route>
+	);
 };
 
 const ProtectedRoute = ({ children, ...rest }) => {
-    const [isUnauthorized, setIsUnauthorized] = useState(false);
-    useEffect(() => {
-        if (!Cookies.get("accessToken")) {
-            (async () => {
-                try {
-                    console.log("Calling in Protected Route.....");
-                    await refresh();
-                } catch (err) {
-                    console.log(err);
-                    setIsUnauthorized(true);
-                }
-            })();
-        }
-    }, []);
-    return (
-        <Route
-            {...rest}
-            render={({ location }) => {
-                return isUnauthorized ? (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: location },
-                        }}
-                    />
-                ) : (
-                    children
-                );
-            }}
-        ></Route>
-    );
+	const [isUnauthorized, setIsUnauthorized] = useState(false);
+	useEffect(() => {
+		if (!Cookies.get("accessToken")) {
+			(async () => {
+				try {
+					console.log("Calling in Protected Route.....");
+					await refresh();
+				} catch (err) {
+					console.log(err);
+					setIsUnauthorized(true);
+				}
+			})();
+		}
+	}, []);
+	return (
+		<Route
+			{...rest}
+			render={({ location }) => {
+				return isUnauthorized ? (
+					<Redirect
+						to={{
+							pathname: "/login",
+							state: { from: location },
+						}}
+					/>
+				) : (
+					children
+				);
+			}}
+		></Route>
+	);
 };
 
 export default App;

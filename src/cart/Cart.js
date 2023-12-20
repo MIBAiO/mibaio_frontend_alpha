@@ -12,12 +12,16 @@ import Hamburger from "hamburger-react";
 // import React, { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
+
+
 import {
     deleteCartItem,
     getCouponData,
     getProductsInCart,
     updateCartItem,
 } from "../http/apis";
+
+
 import NavigationBar from "../components/navigationbar";
 import CustomFooter from "../components/customfooter";
 import PageHeadder from "../components/PageHeadder";
@@ -175,7 +179,7 @@ const Cart = () => {
                                 href: "cart",
                             },
                         ]}
-                        // info="abcd"
+                    // info="abcd"
                     />
 
                     {cartItems.length === 0 ? (
@@ -366,7 +370,7 @@ const Cart = () => {
                                                                                 ),
                                                                                 ...cartItems.slice(
                                                                                     idx +
-                                                                                        1
+                                                                                    1
                                                                                 ),
                                                                             ]
                                                                         );
@@ -431,7 +435,7 @@ const Cart = () => {
                                                 <div className="d-flex flex-row flex-wrap align-items-center justify-content-between">
                                                     <div
                                                         className="form_group col-6"
-                                                        // style={{ width: "100%" }}
+                                                    // style={{ width: "100%" }}
                                                     >
                                                         <label className="input_label">
                                                             Coupon (If Any)

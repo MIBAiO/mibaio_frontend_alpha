@@ -1,0 +1,26 @@
+{
+    "_id": {
+        "$oid": "6519c8e3d15fc673b21ca7fe"
+    },
+    "modelName": "MIBAiO Xtension 4S",
+    "userId": {
+        "$oid": "6519b4fb1bdb0b21c41f1965"
+    },
+    "count": 1,
+    "items": [
+        {
+            "id": 1,
+            "color": "white",
+            "_id": {
+                "$oid": "6519c8e3d15fc673b21ca7ff"
+            }
+        }
+    ],
+    "createdAt": {
+        "$date": "2023-10-01T19:30:43.454Z"
+    },
+    "updatedAt": {
+        "$date": "2023-10-01T19:31:39.413Z"
+    },
+    "__v": 0
+}

@@ -1,12 +1,12 @@
 .sffont {
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     color: #000000;
 }
 
 .auth-form-input {
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 0.768156px solid #e7eaeb;
     width: 100%;
     min-height: 50px;
@@ -16,12 +16,13 @@
 
 .auth-btn {
     background-color: #4a80f0;
-    border-radius: 9.62099px;
+    border-radius: 10px;
     height: 50px;
     color: #fff;
     font-size: 18px;
     font-weight: 590;
 }
+
 .oauth-btn {
     background-color: #fff;
     border-radius: 9.62099px;
@@ -36,6 +37,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .auth-heading {
     font-style: normal;
     font-weight: 590;
@@ -43,6 +45,7 @@
     /* line-height: 25px; */
     color: #000;
 }
+
 .vertical-ruler-v {
     position: relative;
     height: 150px;
@@ -52,6 +55,7 @@
     padding-top: 100px;
     margin: 10px auto;
 }
+
 .vertical-ruler-v:before {
     border-left: 1px solid #728288;
     content: "";
@@ -79,12 +83,13 @@
 
 .vertical-ruler-h {
     position: relative;
-    height: 150px;
+    height: 50px;
     width: 100%;
     display: block;
-    padding-top: 100px;
+    padding-top: 20px;
     margin: 10px auto;
 }
+
 .vertical-ruler-h:before {
     border-top: 1px solid #728288;
     content: "";
@@ -93,10 +98,15 @@
     left: 2%;
     position: absolute;
     left: 0px;
-    top: 75%;
+    top: 65%;
     /* left: 0px; */
-    width: 29vw;
+    width: 100px;
     z-index: 0;
+}
+
+.signin-btn {
+    font-weight: bold;
+    margin-right: 30px;
 }
 
 .vertical-ruler-h:after {
@@ -108,7 +118,7 @@
     position: absolute;
     /* top: 123px; */
     right: 0%;
-    top: 75%;
+    top: 65%;
     width: 29vw;
     z-index: 0;
 }
@@ -117,22 +127,114 @@
     .vertical-ruler-h {
         display: none;
     }
+
     .vertical-ruler-v {
         display: block;
     }
+
     .hor-cont {
         min-width: auto;
     }
+
+    .oauth-btn {
+        font-size: 18px;
+    }
 }
+
+@media screen and (min-width: 801px) and (max-width: 1000px) {
+    .oauth-btn {
+        font-size: 12px;
+    }
+}
+
+/* @media screen and (max-width: 800px) {
+    .vertical-ruler-h:before {
+        width: 20vw;
+    }
+    .vertical-ruler-h:after {
+        width: 20vw;
+    }
+} */
 
 @media screen and (max-width: 800px) {
     .vertical-ruler-v {
         display: none;
     }
+
     .vertical-ruler-h {
         display: block;
     }
+
     .hor-cont {
         min-width: 100%;
     }
+
+    .oauth-btn {
+        font-size: 14px;
+    }
+
+    .inputs-cont {
+        flex: 1 !important;
+    }
+
+    .oauth-button-cont {
+        flex: 1 !important;
+    }
+}
+
+.signin-btn-text {
+    display: flex;
+    justify-content: start;
+}
+
+@media screen and (min-width: 421px) {
+    .signin-btn-text {
+        display: block;
+    }
+
+    .signup-btn-logo {
+        width: 35px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .signin-btn-text {
+        font-size: .8rem;
+        padding-left: 0%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .signup-btn-logo {
+        width: 25px;
+    }
+
+    .oauth-btn {
+        height: 45px;
+    }
+
+    .signup-description,
+    .forgot-password-text {
+        font-size: .8rem;
+        font-weight: 500;
+    }
+}
+
+.back-home-btn {
+    /* top: 10px; */
+    /* left: 40px; */
+    /* position: absolute; */
+    font-weight: 700;
+    /* margin-left: 30px; */
+}
+
+.create-acc-btn {
+    top: 10px;
+    right: 50px;
+    /* position: absolute; */
+}
+
+.signup-oauth-btn {
+    max-width: 400px !important;
 }

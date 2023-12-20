@@ -105,7 +105,7 @@ const AboutUs = () => {
                         <div className="breadcrumbs-custom-aside text-white">
                             <ul className="breadcrumbs-custom-path">
                                 <li>
-                                    <a href="index.php">Home</a>
+                                    <a href="#/">Home</a>
                                 </li>
                                 <li className="active text-white">About Us</li>
                             </ul>
@@ -119,7 +119,7 @@ const AboutUs = () => {
                             <div class="col-md-8 col-lg-7 wow fadeInLeft">
                                 <h3>We're a Passionate Team of Innovators!</h3>
                                 <p class="text-gray-900">
-                                    MIBAiO was conceptualized in 2019 to
+                                    MIBAiO was conceptualized in 2020 to
                                     simplify everyday living.
                                     <br />
                                     We want homes, offices, restaurants and
@@ -384,6 +384,53 @@ const AboutUs = () => {
                                 <figure class="profile-modern-figure">
                                     <img
                                         class="profile-modern-image"
+                                        src="images/profile-pic(22).png"
+                                        alt="Picture of Director"
+                                        width="369"
+                                        height="315"
+                                    />
+                                </figure>
+                                <div class="profile-modern-main">
+                                    <div class="profile-modern-main-item profile-modern-main-item_primary">
+                                        <h4 class="profile-modern-name">
+                                            Dr. Suryakant A. Mane
+                                        </h4>
+                                        <p class="profile-modern-position">
+                                            Director
+                                        </p>
+                                    </div>
+                                    <div class="profile-modern-main-item profile-modern-main-item_secondary">
+                                        <h4 class="profile-modern-main-title extra-lighter">
+                                            Get in Touch
+                                        </h4>
+                                        <ul class="list-inline list-inline-xs">
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-facebook"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-email"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    class="icon icon-md mdi mdi-instagram"
+                                                    href="#"
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                        <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
+                                    </div>
+                                </div>
+                            </article>
+				<article class="profile-modern">
+                                <figure class="profile-modern-figure">
+                                    <img
+                                        class="profile-modern-image"
                                         src="images/profile-pic(9).png"
                                         alt="Picture of CEO"
                                         width="369"
@@ -412,8 +459,8 @@ const AboutUs = () => {
                                             </li>
                                             <li>
                                                 <a
-                                                    class="icon icon-md mdi mdi-twitter"
-                                                    href="#"
+                                                    class="icon icon-md mdi mdi-email"
+                                                    href="mailto:vedantmane@mibaio.in"
                                                 ></a>
                                             </li>
                                             <li>
@@ -459,7 +506,7 @@ const AboutUs = () => {
                                             </li>
                                             <li>
                                                 <a
-                                                    class="icon icon-md mdi mdi-twitter"
+                                                    class="icon icon-md mdi mdi-email"
                                                     href="#"
                                                 ></a>
                                             </li>
@@ -521,7 +568,7 @@ const AboutUs = () => {
                                     </div>
                                 </div>
                             </article>
-                            <article class="profile-modern">
+				{/*<article class="profile-modern">
                                 <figure class="profile-modern-figure">
                                     <img
                                         class="profile-modern-image"
@@ -614,7 +661,7 @@ const AboutUs = () => {
                                         <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                     </div>
                                 </div>
-                            </article>
+                            </article> -->
                             <article class="profile-modern">
                                 <figure class="profile-modern-figure">
                                     <img
@@ -755,7 +802,7 @@ const AboutUs = () => {
                                         <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                     </div>
                                 </div>
-                            </article>
+                            </article>*/}
                             {/* </div> */}
                         </OwlCarousel>
                     </div>
@@ -927,7 +974,7 @@ const AboutUs = () => {
                                         </h3>
                                         <a
                                             className="button button-secondary button-winona"
-                                            href="careers.html"
+                                            href="#/careers"
                                         >
                                             Browse Vacancies
                                         </a>

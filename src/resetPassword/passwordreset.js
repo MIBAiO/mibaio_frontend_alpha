@@ -16,7 +16,7 @@ const PasswordReset = () => {
 	const { search } = useLocation();
 	const queryParams = new URLSearchParams(search);
 	useEffect(() => {
-		if (!queryParams.get("token") && !queryParams.get("id")) {
+		if (!queryParams.get("token") || !queryParams.get("id")) {
 			setRedirect(true);
 		}
 	}, []);

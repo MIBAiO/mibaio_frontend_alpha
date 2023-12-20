@@ -1,0 +1,289 @@
+/* Styles */
+.product-page {
+    font-family: Avenir;
+    color: black;
+}
+
+
+.text-primary {
+    color: #4A80F0 !important;
+}
+
+
+.product-delivery-pin-input {
+    width: 70%;
+}
+
+.pinchange-btn {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 6px;
+    border: none;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pinchange-btn:hover {
+    border: 2px solid #4A80F0 !important;
+
+}
+
+.pin-input {
+
+    border: 2px solid #eee;
+    border-radius: 10px
+}
+
+.pin-input:focus {
+    box-shadow: none;
+    border: 2px solid #4A80F0
+}
+
+.pin-btn {
+    border-radius: 8px;
+    background-color: #4A80F0;
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    margin-left: 12px;
+    margin-right: 12px;
+
+    padding: 5px 12px;
+
+    cursor: pointer;
+}
+
+.product-heading {
+    font-family: Avenir;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.product-feature p {
+    color: black;
+    font-family: Avenir;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    margin-top: 0;
+}
+
+
+.product-color h5,
+.product-price h5 {
+    font-weight: 700;
+    margin-top: 20;
+    font-size: 1.3rem;
+    font-family: Avenir;
+}
+
+.product-delivery h6 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: Avenir;
+}
+
+
+.product-delivery p,
+.product-delivery b {
+    margin: 0;
+}
+
+.btn-product {
+    margin-top: 1.4rem;
+    display: block;
+    padding: .5rem 2rem;
+    border-radius: 10px;
+    width: 70%;
+    color: white;
+    background-color: #4A80F0;
+}
+
+.product-info h5 {
+    font-family: Avenir;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.product-info p {
+    font-family: Avenir;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+.product-info p {
+    font-family: Avenir;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.product-features-card h5 {
+    font-family: Avenir;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.features-slide {
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    margin-top: 20px;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px;
+}
+
+.features-slide::-webkit-scrollbar {
+    display: none;
+}
+
+.features-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 30%;
+    min-width: 6rem;
+    max-width: 6rem;
+    height: 6rem;
+}
+
+.features-card img {
+    width: 35px;
+    height: 35px;
+}
+
+
+.features-card p {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: .7rem;
+    text-align: center;
+    line-height: 1;
+    margin-top: .4rem;
+    font-weight: 500;
+}
+
+
+.modal-dialog {
+    width: 100vw !important;
+    max-width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Avenir;
+}
+
+.product-modal {
+    width: 90vw;
+}
+
+
+.modal-body h5 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+
+.deals-card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.deal-item-image {
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.modal-deals-box {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #dbdbdb;
+    align-items: center;
+    justify-content: start;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+
+}
+
+.modal-deals-box button {
+    border: 2px solid #dadada;
+    align-items: center;
+    justify-content: start;
+    border-radius: .9rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.modal-deals-price {
+    margin-left: 1rem;
+}
+
+.modal-deals-price h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.modal-deals-price p {
+    color: #BF4800;
+}
+
+.modal-deals-closebtn,
+.modal-deals-getbtn {
+    margin: 20px;
+    padding: 10px 16px;
+    width: 100%;
+    border: 2px solid #dadada;
+    align-items: center;
+    justify-content: start;
+    border-radius: .9rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.active-deal {
+    border: 2px solid #4A80F0 !important;
+}
+
+.btn-active {
+    background-color: #4A80F0;
+    border: 2px solid #4A80F0 !important;
+    color: white;
+}
+
+/* Responsive */
+
+/* Mobile Device -  Up to 480px width */
+@media (max-width: 480px) {
+
+    /* Your mobile-specific styles here */
+    .btn-product {
+        width: 100%;
+    }
+
+
+    .features-card {
+        min-width: 5rem;
+        height: 5rem;
+        margin-right: 5px;
+    }
+
+    .features-card img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modal-deals-closebtn,
+    .modal-deals-getbtn {
+
+        margin: 0;
+
+    }
+}

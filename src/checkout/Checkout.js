@@ -112,8 +112,44 @@ const Checkout = () => {
         },
     };
 
+
+
+
+    //pre fetch all the cart items
+    useEffect(() => {
+        (async () => {
+            const { data } = await getProductsInCart();
+            console.log(data);
+            setCartItems(data);
+            let total = 0;
+            data.forEach((val) => {
+                total += val.pricePerPiece * val.count;
+            });
+            const couponCode = localStorage.getItem("coupon");
+            console.log(couponCode);
+            if (couponCode) {
+                const discountData = await getCouponData(couponCode);
+                setCouponData(discountData.data);
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total - total * (discountData.data.discount / 100),
+                });
+            } else {
+                setCartCalculation({
+                    ...cartCalculation,
+                    total,
+                    toPay: total,
+                });
+                setCouponData(false);
+            }
+        })();
+    }, []);
+
+    // Method to save data to database
     const saveData = async () => {
         if (!isInvalid) {
+            // Address
             setIsPaymentInProgress(true);
             const shipping = {
                 ...shippingDetails,
@@ -191,14 +227,21 @@ const Checkout = () => {
                     }
                 }
 
+
+            // Coupon
+
             let couponCode = "";
             if (couponData) {
                 couponCode = couponData.code;
             }
+
+            // Order
             const response = await createOrder(
                 couponCode,
                 payViaCash ? "COD" : "Prepaid"
             );
+
+            //Cash FLow
             console.log(response.data);
             if (payViaCash) {
                 console.log(response.data);
@@ -211,47 +254,16 @@ const Checkout = () => {
                 setOrderSuccess(true);
                 setIsPaymentInProgress(false);
             } else {
+
+                console.log("RESPONSE RAXORPAY: ", response.data);
+                console.log(response.data);
+
+                //Razorpay Flow
                 displayRazorpay(response.data._id);
             }
         }
     };
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const shippingDetails = await getShippingDetails();
-                // console.log(shippingDetails);
-                setShippingDetails({
-                    ...shippingDetails.data,
-                    name: shippingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewBillingDetails: true,
-                        isNewShippingDetails: true,
-                    });
-                }
-            }
-            try {
-                const billingDetails = await getBillingDetails();
-                console.log(billingDetails);
-                setBillingDetails({
-                    ...billingDetails.data,
-                    name: billingDetails.data.full_name,
-                });
-            } catch (err) {
-                console.log(err.response.status);
-                if (err.response.status === 404) {
-                    setIsNewData({
-                        isNewShippingDetails: true,
-                        isNewBillingDetails: true,
-                    });
-                }
-            }
-        })();
-    }, []);
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -265,36 +277,6 @@ const Checkout = () => {
             document.body.appendChild(script);
         });
     }
-
-    useEffect(() => {
-        (async () => {
-            const { data } = await getProductsInCart();
-            console.log(data);
-            setCartItems(data);
-            let total = 0;
-            data.forEach((val) => {
-                total += val.pricePerPiece * val.count;
-            });
-            const couponCode = localStorage.getItem("coupon");
-            console.log(couponCode);
-            if (couponCode) {
-                const discountData = await getCouponData(couponCode);
-                setCouponData(discountData.data);
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total - total * (discountData.data.discount / 100),
-                });
-            } else {
-                setCartCalculation({
-                    ...cartCalculation,
-                    total,
-                    toPay: total,
-                });
-                setCouponData(false);
-            }
-        })();
-    }, []);
 
     const displayRazorpay = async (orderId) => {
         //   e.preventDefaults();
@@ -877,7 +859,7 @@ const Checkout = () => {
                                         className="btn w-40"
                                         data-toggle="modal"
                                         data-target="#exampleModal"
-                                        // onClick={saveData}
+                                    // onClick={saveData}
                                     >
                                         {isPaymentInProgress && (
                                             <div

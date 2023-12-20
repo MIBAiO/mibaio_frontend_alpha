@@ -338,6 +338,11 @@ const CustomFooter = () => {
 									{" "}
 									Privacy Policy
 								</Link>
+								|
+								<Link to="/privacyPolicyApp">
+									{" "}
+									App Privacy Policy
+								</Link>
 							</p>
 						</div>
 					</div>

@@ -9,26 +9,29 @@ import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById("root")
+	<GoogleOAuthProvider clientId="640213126047-mu94j9q46gbajonino9lcudcu2ha02ek.apps.googleusercontent.com">
+		<React.StrictMode>
+			<Provider store={store}>
+				<App />
+				<ToastContainer
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="dark"
+				/>
+			</Provider>
+		</React.StrictMode>
+	</GoogleOAuthProvider>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
