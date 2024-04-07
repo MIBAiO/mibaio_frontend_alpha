@@ -161,7 +161,7 @@ const OurTeam = () => {
                                     </div>
                                 </article>
                             </div>
-                            <div class="col-sm-6 col-lg-4 col-xl-3">
+{/*                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <article class="profile-modern">
                                     <figure class="profile-modern-figure">
                                         <img
@@ -649,9 +649,9 @@ const OurTeam = () => {
                                             </ul>
                                             <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </article>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                 </section>
