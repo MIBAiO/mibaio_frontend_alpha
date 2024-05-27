@@ -1,15 +1,9 @@
-//import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-// import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import home1 from "./home1.png";
-import home2 from "./home2.png";
-import home3 from "./home3.png";
-import home4 from "./home4.png";
 import AOS from "aos";
 import Typewriter from "typewriter-effect";
 import { loadAnimation } from "lottie-web";
@@ -19,23 +13,19 @@ import "react-modal-video/css/modal-video.css";
 import "aos/dist/aos.css";
 import "../css/selection.css";
 import "../style.css";
-// import "../finalcss.css";
 import "../css/newcss.css";
 import sample1 from "./landing-page-image.png";
 import WOW from "wowjs";
-import alpha1 from "./Alpha-Concept_1-black-front.png";
-import offset from "./Alpha-Concept_1-offset.png";
-import girlvideo from "./newgirl.mp4";
 import extensionphonevid from "./extensionphone.mp4";
+import x4s from "./X4S-on-wall.png";
 import alexaphone from "./alexaphone.gif";
-// import black from "./images/blue.png"
-// import extensionvid from "./Event.mp4";
 import appdemo from "./appdemo.mp4";
 import extensionvid from "./Event-new.mp4";
-// import appdemo from "./appdemo.mp4";
 import alexagif from "./Hi-Alexa.gif";
-import surgeproof from "./Surge-proof.png";
+import surgeproof from "./X4S-Commercial-2.png";
 import modeposter from "./3Modeposter.png";
+import gplay from "./google-play-badge.png";
+import apstore from "./App_Store_Badge.svg";
 import Chevron from "react-chevron";
 import { faArrowDown, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "../components/navigationbar";
@@ -215,8 +205,10 @@ const Home = (props) => {
                                                     width="100%"
                                                     autoPlay
                                                     muted
+                                                    loop true
                                                     style={{
                                                         alignContent: "center",
+                                                        maxWidth:500
                                                     }}
                                                 >
                                                     <source
@@ -236,7 +228,7 @@ const Home = (props) => {
                                                 src="https://cdn.lordicon.com/wxnxiano.json"
                                                 trigger="loop"
                                                 delay="175"
-                                                speed=".5"
+                                                speed=".01"
                                                 colors="primary:#ffffff,secondary:#0accbe"
                                                 style={{
                                                     width: "40px",
@@ -268,7 +260,7 @@ const Home = (props) => {
                                         }}
                                     >
                                         <span className="text-white">
-                                            Automate Your
+                                            Control your
                                         </span>
                                     </h2>
                                     <h2
@@ -291,10 +283,9 @@ const Home = (props) => {
                                             options={{
                                                 strings: [
                                                     "home",
-                                                    "lifestyle",
-                                                    "appliances",
-                                                    "appliances",
                                                     "office",
+                                                    "lifestyle",
+                                                    "devices",
                                                 ],
                                                 autoStart: true,
                                                 loop: true,
@@ -328,10 +319,9 @@ const Home = (props) => {
                                                 animationName: "clipInLeft",
                                             }}
                                         >
-                                            Upgrade your existing electrical appliances to a set of
-                                            smart appliances! Control & monitor
-                                            from any part of the world with your
-                                            smartphone!
+                                            Upgrade your existing electrical appliances 🛜 <br />
+                                            Control & monitor from any part of the world with your
+                                            App!📱
                                         </p>
                                     </div>
                                     <br />
@@ -399,38 +389,6 @@ const Home = (props) => {
                         </div>
                     </section>
 
-                    {/*
-                            <div className="container text-center">
-                                <span
-                                    className="normal text-primary font-weight-bold text-uppercase wow fadeIn"
-                                    style={{
-                                        visibility: "visible",
-                                        animationName: "fadeIn",
-                                    }}
-                                >
-                                    Our Product
-                                </span>
-                                
-                                <h3
-                                    className="offset-top-7 font-weight-regular wow fadeIn"
-                                    style={{
-                                        visibility: "visible",
-                                        animationName: "fadeIn",
-                                    }}
-                                >
-                                    Introducing MIBAiO S series
-                                </h3>
-                                
-                               <div className="introducing_4s">
-                                   
-                                    <button className="elipse_20"></button>
-                                    <button className="elipse_24"></button>
-                                    <button className="elipse_25"></button>
-                                    <button className="elipse_26"></button>                                  
-                               
-                            </div> 
-                                */}
-
                     <section
                         id="services"
                         className="services section-md section-bg"
@@ -471,6 +429,8 @@ const Home = (props) => {
                                         options={{
                                             strings: [
                                                 "Designed to simplify your life",
+                                                "Fits outside any switchboard",
+                                                "Controls 4 individual devices",
                                             ],
                                             autoStart: true,
                                             loop: true,
@@ -502,10 +462,10 @@ const Home = (props) => {
                                                     No Hub required
                                                 </h6>
                                                 <p className="grey-text">
-                                                    Does not need any additional
-                                                    hub to connect to internet,
-                                                    works with any 2.4Ghz
+                                                    Works with any 2.4Ghz
                                                     compatible WiFi router.
+                                                    Does not need any additional
+                                                    hub.
                                                 </p>
                                                 <div
                                                     style={{ height: "15px" }}
@@ -572,7 +532,7 @@ const Home = (props) => {
                                                     Bluetooth + WiFi hybrid mode
                                                     ensures that it works
                                                     flawlessly with and without
-                                                    internet.
+                                                    internet. 🛜
                                                 </p>
                                                 <div
                                                     style={{ height: "15px" }}
@@ -634,7 +594,7 @@ const Home = (props) => {
                                             <a href="#Security">Automation</a>
                                         </h4>
                                         <p className="description">
-                                            Schedule your appliances to turn
+                                            Schedule devices to turn
                                             on/off automatically at desired
                                             timing. Individually or
                                             simultaneously!🕖{" "}
@@ -667,8 +627,8 @@ const Home = (props) => {
                                             <a href="#Voice">Voice Control</a>
                                         </h4>
                                         <p className="description">
-                                            Relax yourself completely, 🗣 Let
-                                            your voice do the job!
+                                         🎙️Relax ... Let
+                                            your voice turn on your light.
                                             <br /> <br />{" "}
                                             <span
                                                 style={{
@@ -676,8 +636,7 @@ const Home = (props) => {
                                                     opacity: " .8",
                                                 }}
                                             >
-                                                (Works with Alexa, Siri &
-                                                Google)
+                                                (Works with Alexa)
                                             </span>
                                         </p>
                                     </div>
@@ -705,12 +664,12 @@ const Home = (props) => {
                                             </a>
                                         </div>
                                         <h4 style={{ color: "#BDD4E7" }}>
-                                            <a href="#MMC">Energy Efficient</a>
+                                            <a href="#MMC">Energy Savings</a>
                                         </h4>
                                         <p className="description">
-                                            Energy savings and advancements you
-                                            never imagined! Save upto 26% of
-                                            your electricity bills! 💚{" "}
+                                            Save upto 26%* of
+                                            your electricity bill! 💚{" "}
+                                            Monitor electricity usage on App.
                                         </p>
                                     </div>
                                 </div>
@@ -737,12 +696,12 @@ const Home = (props) => {
                                             </a>
                                         </div>
                                         <h4 style={{ color: "#BDD4E7" }}>
-                                            <a href="#Surge">Shared Access</a>
+                                            <a href="#Surge">Share Access</a>
                                         </h4>
                                         <p className="description">
                                             Share device access with your family 👨‍👩‍👦,
                                             add timers to devices, set more
-                                            smart scenes for any switches.
+                                            smart scenes as per your need.
                                         </p>
                                     </div>
                                 </div>
@@ -830,6 +789,7 @@ const Home = (props) => {
                         </picture>
                     </section>
                     {/* <img src={alexaphone} style={alexaphonestyle} />  */}
+                    <img src ={x4s}></img>
 
                     <section className="section section-md bg-gray-100">
                         <h3
@@ -880,8 +840,7 @@ const Home = (props) => {
                                                     Thermister (PTC) to protect
                                                     your electrical appliances
                                                     from accidental voltage
-                                                    spikes in alternating
-                                                    current (AC) circuits
+                                                    spikes.
                                                 </p>
                                             </div>
                                         </blockquote>
@@ -1008,6 +967,7 @@ const Home = (props) => {
                                     style={{ animationName: "none" }}
                                 >
                                     About MIBAiO
+                                    <br />
                                 </span>
                                 <h3>MIBAiO</h3>
                                 <p
@@ -1023,11 +983,9 @@ const Home = (props) => {
                                         options={{
                                             strings: [
                                                 "is a startup",
-                                                "strives towards innovation",
-                                                "automates your existing home appliances",
                                                 "upgrades your lifestyle",
                                                 "delivers you delightful experiences",
-                                                "is designed for you",
+                                                "Your smart choice..!",
                                             ],
                                             autoStart: true,
                                             loop: true,
@@ -1110,14 +1068,14 @@ const Home = (props) => {
                                             >
                                                 <div className="counter-classic-main">
                                                     <div className="counter">
-                                                        14
+                                                        8
                                                     </div>
                                                     <span className="small text-primary">
-                                                        k
+                                                        +
                                                     </span>
                                                 </div>
                                                 <h4 className="counter-classic-title extra-lighter">
-                                                    Lines <br /> of code
+                                                    Devices supported
                                                 </h4>
                                             </article>
                                         </div>
@@ -1133,15 +1091,14 @@ const Home = (props) => {
                                             >
                                                 <div className="counter-classic-main">
                                                     <div className="counter">
-                                                        5
+                                                        1
                                                     </div>
                                                     <span className="small text-primary">
-                                                        yrs
+                                                        yr
                                                     </span>
                                                 </div>
                                                 <h4 className="counter-classic-title extra-lighter">
-                                                    Of warranty <br /> MIBAiO
-                                                    guarantee
+                                                    replacement warranty <br /> No questions asked
                                                 </h4>
                                             </article>
                                         </div>
@@ -1167,8 +1124,7 @@ const Home = (props) => {
                                         </h3>
                                         <br />
                                         <h5 style={{ color: "#697484" }}>
-                                            Here's where we tell how MIBAiO
-                                            Xtension 4S truely{" "}
+                                            Xtension 4S truly{" "}
                                             <span style={{ color: "#4a80f0" }}>
                                                 adds value
                                             </span>{" "}
@@ -1178,149 +1134,6 @@ const Home = (props) => {
                                     <br />
 
                                     <br />
-                                    {/* <div className="wrapper">
-                                        <div className="accordion">
-                                            <div className="item">
-                                                <div
-                                                    className="title"
-                                                    onClick={() => toggle(1)}
-                                                >
-                                                    <h4
-                                                        style={{
-                                                            fontSize: "20px",
-                                                            paddingLeft: "20px",
-                                                            paddingTop: "20px",
-                                                        }}
-                                                    >
-                                                        {" "}
-                                                        <span
-                                                            style={{
-                                                                color: "#0accbe",
-                                                            }}
-                                                        >
-                                                            01&nbsp; &nbsp;
-                                                        </span>
-                                                        Comfort
-                                                    </h4>
-                                                    <span
-                                                        style={{
-                                                            fontSize: 30,
-                                                        }}
-                                                    >
-                                                        {selected == 1
-                                                            ? "-"
-                                                            : "+"}
-                                                    </span>
-                                                </div>
-
-                                                <div
-                                                    className={
-                                                        selected === 1
-                                                            ? "Accorcontent show"
-                                                            : "Accorcontent"
-                                                    }
-                                                >
-                                                    Control and keep an eye on
-                                                    your electricals from
-                                                    anywhere
-                                                    <br />
-                                                    Do it with your voice! or
-                                                    your fingertips.
-                                                </div>
-                                            </div>
-                                            <div className="item">
-                                                <div
-                                                    className="title"
-                                                    onClick={() => toggle(2)}
-                                                >
-                                                    <h4
-                                                        style={{
-                                                            fontSize: "20px",
-                                                            paddingLeft: "20px",
-                                                            paddingTop: "20px",
-                                                        }}
-                                                    >
-                                                        {" "}
-                                                        <span
-                                                            style={{
-                                                                color: "#0accbe",
-                                                            }}
-                                                        >
-                                                            02&nbsp; &nbsp;
-                                                        </span>
-                                                        Convenience
-                                                    </h4>
-                                                    <span
-                                                        style={{
-                                                            fontSize: 30,
-                                                        }}
-                                                    >
-                                                        {selected === 2
-                                                            ? "-"
-                                                            : "+"}
-                                                    </span>
-                                                </div>
-                                                <div
-                                                    className={
-                                                        selected == 2
-                                                            ? "Accorcontent show"
-                                                            : "Accorcontent"
-                                                    }
-                                                >
-                                                    Easy to install.
-                                                    <br />
-                                                    Easy to operate... Makes
-                                                    life simple!
-                                                </div>
-                                            </div>
-                                            <div className="item">
-                                                <div
-                                                    className="title"
-                                                    onClick={() => toggle(3)}
-                                                >
-                                                    <h4
-                                                        style={{
-                                                            fontSize: "20px",
-                                                            paddingLeft: "20px",
-                                                            paddingTop: "20px",
-                                                        }}
-                                                    >
-                                                        <span
-                                                            style={{
-                                                                color: "#0accbe",
-                                                            }}
-                                                        >
-                                                            03&nbsp; &nbsp;
-                                                        </span>
-                                                        ROI [Return on
-                                                        Investment]?
-                                                    </h4>
-                                                    <span
-                                                        style={{
-                                                            fontSize: 30,
-                                                        }}
-                                                    >
-                                                        {selected === 3
-                                                            ? "-"
-                                                            : "+"}
-                                                    </span>
-                                                </div>
-                                                <div
-                                                    className={
-                                                        selected == 3
-                                                            ? "Accorcontent show"
-                                                            : "Accorcontent"
-                                                    }
-                                                >
-                                                    With uptp 26% savings on
-                                                    energy bills per month,
-                                                    you'll recover the amount
-                                                    invested roughly in about 7
-                                                    months*..!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
 
                                     <div className="accordion-list">
                                         <div
@@ -1366,7 +1179,7 @@ const Home = (props) => {
                                                         <p>
                                                             Control and keep an
                                                             eye on your
-                                                            electricals from
+                                                            appliances from
                                                             anywhere
                                                             <br />
                                                             Do it with your
@@ -1477,7 +1290,7 @@ const Home = (props) => {
                                     className="col-lg-5 align-items-stretch order-1 order-lg-2 img"
                                     style={{
                                         backgroundImage:
-                                            ' url("images/Picture1.png")',
+                                            ' url("images/Picture1.jpg")',
                                     }}
                                     data-aos="zoom-in"
                                     data-aos-delay="150"
@@ -1526,7 +1339,7 @@ const Home = (props) => {
                                     }}
                                 >
                                     <span style={{ maxWidth: "700px" }}>
-                                        We've got you an offer we're sure you
+                                        We've got you offers we're sure you
                                         wont resist. 😎
                                     </span>
                                 </p>
@@ -1551,7 +1364,7 @@ const Home = (props) => {
                                         <span className="toggle-modern-switch-element" />
                                     </button>
                                     <div className="toggle-modern-text toggle-modern-text_alternate">
-                                        Xtension 8S
+                                        Xtension 4C+
                                     </div>
                                 </div>
                             </div>
@@ -1829,340 +1642,6 @@ const Home = (props) => {
                                                 </div>
                                             </article>
                                         </OwlCarousel>
-
-                                        {/* <div className="owl-stage-outer">
-                                            <div
-                                                className="owl-stage"
-                                                style={{
-                                                    transform:
-                                                        "translate3d(0px, 0px, 0px)",
-                                                    transition:
-                                                        "all 0s ease 0s",
-                                                    width: "1200px",
-                                                }}
-                                            >
-                                                <div
-                                                    className="owl-item active"
-                                                    style={{
-                                                        width: "370px",
-                                                        marginRight: "30px",
-                                                    }}
-                                                    data-aos="fade-left"
-                                                >
-                                                    <article
-                                                        className="pt-classic wow slideInRightLg"
-                                                        data-wow-delay=".5s"
-                                                        style={{
-                                                            animationDelay:
-                                                                "0.5s",
-                                                            animationName:
-                                                                "none",
-                                                        }}
-                                                    >
-                                                        <h4 className="pt-classic-title">
-                                                            Pack of 1
-                                                        </h4>
-                                                        <div className="pt-classic-price-outer">
-                                                            <div
-                                                                className="pt-classic-price"
-                                                                aria-hidden={
-                                                                    toggleState
-                                                                        ? "true"
-                                                                        : "false"
-                                                                }
-                                                            >
-                                                                <div className="pt-classic-price-currency font-weight-regular">
-                                                                    {" "}
-                                                                    ₹
-                                                                </div>
-                                                                <div className="pt-classic-price-value extra-light">
-                                                                    3433
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                className="pt-classic-price"
-                                                                aria-hidden={
-                                                                    toggleState
-                                                                        ? "false"
-                                                                        : "true"
-                                                                }
-                                                            >
-                                                                <div className="pt-classic-price-currency font-weight-regular">
-                                                                    {" "}
-                                                                    ₹
-                                                                </div>
-                                                                <div className="pt-classic-price-value extra-light">
-                                                                    6333
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="pt-classic-divider" />
-                                                        <ul className="pt-classic-list">
-                                                            <li>
-                                                                Control upto 4
-                                                                appliances
-                                                            </li>
-                                                            <li>
-                                                                Ideal for 1 room
-                                                            </li>
-                                                            <li>
-                                                                Manual control
-                                                            </li>
-                                                            <li>
-                                                                Bluetooth
-                                                                control
-                                                            </li>
-                                                            <li>
-                                                                Internet control
-                                                            </li>
-                                                            <li>
-                                                                Voice control
-                                                            </li>
-                                                        </ul>
-                                                        <div className="pt-classic-footer">
-                                                            <a
-                                                                className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
-                                                                href="https://mibaio.in/#"
-                                                            >
-                                                                <div className="content-original">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-                                                                <div className="content-dubbed">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <div
-                                                    className="owl-item active"
-                                                    style={{
-                                                        width: "370px",
-                                                        marginRight: "30px",
-                                                    }}
-                                                    data-aos="fade-up"
-                                                >
-                                                    <article
-                                                        className="pt-classic pt-classic_style-2 pt-classic_preferred wow scaleIn"
-                                                        style={{
-                                                            animationName:
-                                                                "none",
-                                                        }}
-                                                    >
-                                                        <div className="pt-classic-header">
-                                                            <h4 className="pt-classic-title">
-                                                                Pack of 3
-                                                            </h4>
-                                                            <div className="pt-classic-price-outer">
-                                                                <div
-                                                                    className="pt-classic-price"
-                                                                    aria-hidden={
-                                                                        toggleState
-                                                                            ? "true"
-                                                                            : "false"
-                                                                    }
-                                                                >
-                                                                    <div className="pt-classic-price-currency font-weight-regular">
-                                                                        {" "}
-                                                                        ₹
-                                                                    </div>
-                                                                    <div className="pt-classic-price-value extra-light">
-                                                                        9999
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    className="pt-classic-price"
-                                                                    aria-hidden={
-                                                                        toggleState
-                                                                            ? "false"
-                                                                            : "true"
-                                                                    }
-                                                                >
-                                                                    <div className="pt-classic-price-currency font-weight-regular">
-                                                                        {" "}
-                                                                        ₹
-                                                                    </div>
-
-                                                                    <div className="pt-classic-price-value extra-light">
-                                                                        17999
-                                                                    </div>
-                                                                    <div
-                                                                        style={{
-                                                                            width: "70%",
-                                                                            fontWeight:
-                                                                                " 500",
-                                                                            color: "#0accbe",
-                                                                            background:
-                                                                                " #d6f3f5",
-                                                                            letterSpacing:
-                                                                                "0.075em",
-                                                                            fontSize:
-                                                                                "20%",
-                                                                            display:
-                                                                                "flex",
-                                                                            justifyContent:
-                                                                                "center",
-                                                                            alignItems:
-                                                                                "center",
-                                                                            height: "35px",
-                                                                        }}
-                                                                    >
-                                                                        Save 20%
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="pt-classic-divider" />
-                                                        <ul className="pt-classic-list">
-                                                            <li>
-                                                                Control upto 12
-                                                                appliances
-                                                            </li>
-                                                            <li>
-                                                                Ideal for 2 BHK
-                                                            </li>
-                                                            <li>
-                                                                Manual Control
-                                                            </li>
-                                                            <li>
-                                                                Internet Control
-                                                            </li>
-                                                            <li>
-                                                                Bluetooth
-                                                                Control
-                                                            </li>
-                                                            <li>
-                                                                Voice control
-                                                            </li>
-                                                        </ul>
-                                                        <div className="pt-classic-footer">
-                                                            <a
-                                                                className="button button-secondary button-shadow button-icon button-icon-right button-winona font-weight-regular"
-                                                                href="https://mibaio.in/#"
-                                                            >
-                                                                <div className="content-original">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-
-                                                                <div className="content-dubbed">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-                                                            </a>
-                                                           
-                                                            <p className="pt-classic-note">
-                                                                #Recommended
-                                                            </p>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <div
-                                                    className="owl-item active"
-                                                    style={{
-                                                        width: "370px",
-                                                        marginRight: "30px",
-                                                    }}
-                                                    data-aos="fade-right"
-                                                >
-                                                    <article
-                                                        className="pt-classic pt-classic_style-3 wow slideInLeftLg"
-                                                        data-wow-delay=".5s"
-                                                        style={{
-                                                            animationDelay:
-                                                                "0.5s",
-                                                            animationName:
-                                                                "none",
-                                                        }}
-                                                    >
-                                                        <h4 className="pt-classic-title">
-                                                            Pack of 2
-                                                        </h4>
-                                                        <div className="pt-classic-price-outer">
-                                                            <div
-                                                                className="pt-classic-price"
-                                                                aria-hidden={
-                                                                    toggleState
-                                                                        ? "false"
-                                                                        : "true"
-                                                                }
-                                                            >
-                                                                <div className="pt-classic-price-currency font-weight-regular">
-                                                                    {" "}
-                                                                    ₹
-                                                                </div>
-                                                                <div className="pt-classic-price-value extra-light">
-                                                                    13199
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                className="pt-classic-price"
-                                                                aria-hidden={
-                                                                    toggleState
-                                                                        ? "true"
-                                                                        : "false"
-                                                                }
-                                                            >
-                                                                <div className="pt-classic-price-currency font-weight-regular">
-                                                                    {" "}
-                                                                    ₹
-                                                                </div>
-                                                                <div className="pt-classic-price-value extra-light">
-                                                                    6833
-                                                                </div>
-                                                                <div className="badge badge-1">
-                                                                    Save 12%
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="pt-classic-divider" />
-                                                        <ul className="pt-classic-list">
-                                                            <li>
-                                                                Control upto 8
-                                                                appliances
-                                                            </li>
-                                                            <li>
-                                                                Ideal for 1 BHK
-                                                            </li>
-                                                            <li>
-                                                                Manual control
-                                                            </li>
-                                                            <li>
-                                                                Internet control
-                                                            </li>
-                                                            <li>
-                                                                Voice control
-                                                            </li>
-                                                            <li>
-                                                                Bluetooth
-                                                                control
-                                                            </li>
-                                                            <li>
-                                                                Upgrade more
-                                                                outputs
-                                                            </li>
-                                                        </ul>
-                                                        <div className="pt-classic-footer">
-                                                            <a
-                                                                className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
-                                                                href="https://mibaio.in/#"
-                                                            >
-                                                                <div className="content-original">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-                                                                <div className="content-dubbed">
-                                                                    <span className="icon mdi mdi-arrow-right" />
-                                                                    Select Plan
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                            </div>
-                                        </div> */}
 
                                         <div className="owl-nav disabled">
                                             <div className="owl-prev disabled" />
@@ -2466,288 +1945,11 @@ const Home = (props) => {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-                        </div >
-
-                        {/* <div className="col-md-10 col-lg-6">
-									<div
-										className="card-group-custom card-group-classic card-group-classic_1"
-										role="tablist"
-										aria-multiselectable="false"
-									>
-										<article className="card card-custom card-classic">
-											<div
-												className="card-header"
-												id="app-accordion-heading-4"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-4"
-														aria-controls="app-accordion-collapse-4"
-														aria-expanded="true"
-													>
-														What does "MIBAiO" mean?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse show"
-												id="app-accordion-collapse-4"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-4"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														MIBAiO is an acronym for
-														Manual Internet
-														Bluetooth All In One.{" "}
-													</p>
-												</div>
-											</div>
-										</article>
-
-										<article className="card card-custom card-classic">
-											<div
-												className="card-header"
-												id="app-accordion-heading-1"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link collapsed"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-1"
-														aria-controls="app-accordion-collapse-1"
-														aria-expanded="false"
-													>
-														What are the key
-														features of your
-														product?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse"
-												id="app-accordion-collapse-1"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-1"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														Our product offers
-														Manual, Internet and
-														Bluetooth all-in-one
-														functionality along with
-														voice control. To know
-														more about key features,
-														please refer the product
-														brochure.
-													</p>
-												</div>
-											</div>
-										</article>
-
-										<article className="card card-custom card-classic">
-											<div
-												className="card-header"
-												id="app-accordion-heading-2"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link collapsed"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-2"
-														aria-controls="app-accordion-collapse-2"
-														aria-expanded="false"
-													>
-														Why should I purchase
-														your product?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse"
-												id="app-accordion-collapse-2"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-2"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														The major advantage is
-														price: You get a premium
-														model under ₹4000. You
-														don't have to call an
-														electrician for
-														installation, we make it
-														very easy to install for
-														you. Second advantage is
-														Made in INDIA: Our
-														product is carefully
-														designed for a standard
-														Indian household of
-														world-class quality. We
-														are working under the
-														Make in India, Digital
-														India, Aatmanirbhar
-														Bharat initiatives.{" "}
-													</p>
-												</div>
-											</div>
-										</article>
-									</div>
-								</div>
-								<div className="col-md-10 col-lg-6">
-									<div
-										className="card-group-custom card-group-classic card-group-classic_1"
-										role="tablist"
-										aria-multiselectable="false"
-									>
-										<article className="card card-custom card-classic wow clipInLeft">
-											<div
-												className="card-header"
-												id="app-accordion-heading-3"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link collapsed"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-3"
-														aria-controls="app-accordion-collapse-3"
-														aria-expanded="false"
-													>
-														Do you provide post
-														sales service?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse"
-												id="app-accordion-collapse-3"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-3"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														Yes, we do. Our team is
-														ready for your support
-														24x7x365 with our
-														qualified Engineers.
-													</p>
-												</div>
-											</div>
-										</article>
-
-										<article className="card card-custom card-classic">
-											<div
-												className="card-header"
-												id="app-accordion-heading-6"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link collapsed"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-6"
-														aria-controls="app-accordion-collapse-6"
-														aria-expanded="false"
-													>
-														Does your product
-														control the speed of fan
-														digitally?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse"
-												id="app-accordion-collapse-6"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-6"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														No as of now. But you'll
-														get that funtion in the
-														upcoming versions of
-														MIBAiO.
-													</p>
-												</div>
-											</div>
-										</article>
-										<article className="card card-custom card-classic">
-											<div
-												className="card-header"
-												id="app-accordion-heading-5"
-												role="tab"
-											>
-												<div className="card-title">
-													<a
-														className="card-link collapsed"
-														role="button"
-														data-toggle="collapse"
-														href="#app-accordion-collapse-5"
-														aria-controls="app-accordion-collapse-5"
-														aria-expanded="false"
-													>
-														What can I do with your
-														product?
-														<div className="card-arrow"></div>
-													</a>
-												</div>
-											</div>
-											<div
-												className="collapse"
-												id="app-accordion-collapse-5"
-												role="tabpanel"
-												aria-labelledby="app-accordion-heading-5"
-												data-parent="#app-accordion"
-											>
-												<div className="card-body">
-													<p>
-														Talk to your electrical
-														appliances through Siri,
-														Alexa and Google voice
-														assistant. Control your
-														exising appliances with
-														your smartphone and also
-														manually(like we do now
-														using the conventional
-														switches). Monitor your
-														electricity consumption
-														of connected appliances
-														on your smartphone app.
-													</p>
-												</div>
-											</div>
-										</article>
-									</div>
-								</div> */}
-                        {/* </div> */}
+                        </div >    
                     </section >
 
-
-
+                    {/* ------------- FAQ Section End ----------*/}
 
 
                     {/* Upgrate To MIBAiO section */}
@@ -2783,12 +1985,6 @@ const Home = (props) => {
                                             type="video/mp4"
                                         />
                                     </video>
-
-
-
-
-
-
                                 </div>
                             </div>
 
@@ -2807,21 +2003,30 @@ const Home = (props) => {
                             </p> */}
                         </div>
                         <div className="group" style={{ padding: "15px" }}>
-                            <Link
+                            {/* <Link
                                 className="button button-default-outline button-winona text-black wow fadeIn"
                                 to="/contact_us"
                                 data-wow-delay=".1s"
                             >
                                 <span></span>Contact us
-                            </Link>
-                            <Link
-                                className="button button-secondary button-winona wow fadeIn"
-                                to="/view"
-                                data-wow-delay=".1s"
-                                style={{ marginLeft: "13px" }}
-                            >
-                                <span></span>Buy Now
-                            </Link>
+                            </Link> */}
+                            <a href="https://play.google.com/store/apps/details?id=com.MIBAiO.mibaio_alpha&pcampaignid=web_share">
+                                <img
+                                            src={gplay}
+                                            alt="MIBAiO-app-play-store"
+                                            className="z-depth-0 img-fluid wow fadeInUp"
+                                            data-wow-delay=".5s"
+                                            width={150}
+                                        />
+                            </a>
+                            <a href="https://apps.apple.com/in/app/mibaio-smart-home/id6483760428">
+                                <img
+                                            src={apstore}
+                                            alt="MIBAiO-app-store"
+                                            className="z-depth-0 img-fluid wow fadeInUp"
+                                            data-wow-delay=".5s"
+                                        />
+                            </a>
                         </div>
                     </section >
 

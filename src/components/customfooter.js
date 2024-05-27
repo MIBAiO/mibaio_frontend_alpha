@@ -111,7 +111,7 @@ const CustomFooter = () => {
 								Time to Get Started
 							</p>
 							<p className="big text-white-50">
-								Upgrade your home to a smart home with MIBAiO!
+								Upgrade your smart home with MIBAiO!
 							</p>
 							<div className="group ot30">
 								<a
@@ -170,8 +170,7 @@ const CustomFooter = () => {
 											}}
 										>
 											MIBAiO is the leading provider of
-											the best automation system for your
-											smarthome.
+											the best home automation solutions.
 										</span>
 									</p>
 									{!isLoggedIn && (
@@ -286,9 +285,9 @@ const CustomFooter = () => {
 												<div className="col-lg-6 col-xl-12">
 													<a
 														className="footer-anchor"
-														href="mailto:info@mibaio.in"
+														href="mailto:contact@mibaio.in"
 													>
-														info@mibaio.in
+														contact@mibaio.in
 													</a>
 												</div>
 												<div className="col-lg-6 col-xl-12">
@@ -309,11 +308,11 @@ const CustomFooter = () => {
 												/>
 												<a
 													className="link link-social-1 mdi mdi-facebook"
-													href="https://mibaio.in/#"
+													href="https://www.facebook.com/mibaio.in"
 												/>
 												<a
 													className="link link-social-1 mdi mdi-instagram"
-													href="https://mibaio.in/#"
+													href="https://www.instagram.com/mibaio.in/"
 												/>
 											</div>
 										</div>
