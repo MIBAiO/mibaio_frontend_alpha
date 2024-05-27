@@ -321,16 +321,15 @@ const AboutUs = () => {
                                             <div class="timeline-classic-item-decoration"></div>
                                             <p class="timeline-classic-title">
                                                 <span class="text-primary">
-                                                    March 2022.
+                                                    August 2023.
                                                 </span>
                                                 <span>
-                                                    Worldwide Recognition
+                                                    Product Launch
                                                 </span>
                                             </p>
                                             <div class="timeline-classic-text">
                                                 <p>
-                                                    Some nice text needs to be
-                                                    added over here.
+                                                    Xtension 4S commercially available for sale.
                                                 </p>
                                             </div>
                                         </div>
@@ -521,7 +520,7 @@ const AboutUs = () => {
                                     </div>
                                 </div>
                             </article>
-                            <article class="profile-modern">
+                            {/* <article class="profile-modern">
                                 <figure class="profile-modern-figure">
                                     <img
                                         class="profile-modern-image"
@@ -567,7 +566,7 @@ const AboutUs = () => {
                                         <div class="profile-modern-toggle mdi mdi-arrow-top-right"></div>
                                     </div>
                                 </div>
-                            </article>
+                            </article> */}
 				{/*<article class="profile-modern">
                                 <figure class="profile-modern-figure">
                                     <img
@@ -955,13 +954,10 @@ const AboutUs = () => {
                                     <div className="list-blocks-item-inner">
                                         <div className="list-blocks-counter" />
                                         <p className="list-blocks-title">
-                                            Cookies
+                                            Opportunities
                                         </p>
                                         <p>
-                                            We are well experienced with the
-                                            fact that "Hunger achhe achho ko
-                                            badal deta hai". Don't worry, we've
-                                            got your snacks covered!
+                                            Opportunity to connect, network and collaborate with like minded people across the industry.
                                         </p>
                                     </div>
                                 </div>
@@ -1001,9 +997,7 @@ const AboutUs = () => {
                                             Benefits
                                         </p>
                                         <p>
-                                            "Experience is the only teacher we
-                                            have" -Swami Vivekananda <br />
-                                            You'll gain a lot of experience
+                                            Gain experience and exposure to the manufacturing industry
                                             working <strong>with </strong>MIBAiO
                                             team to enhance your career.{" "}
                                         </p>
@@ -1016,9 +1010,8 @@ const AboutUs = () => {
                                             Collaboration
                                         </p>
                                         <p>
-                                            Career at MIBAiO is beneficial for
-                                            you as we have collaborations with
-                                            government as well as private firms.
+                                            Collaborate with
+                                            government as well as private firms. B2B and B2C busniess models for Architects, Interior designers.
                                         </p>
                                     </div>
                                 </div>
