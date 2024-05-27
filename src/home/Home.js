@@ -789,7 +789,7 @@ const Home = (props) => {
                         </picture>
                     </section>
                     {/* <img src={alexaphone} style={alexaphonestyle} />  */}
-                    <img src ={x4s}></img>
+                    <img src ={x4s} style={{width: "100%"}}></img>
 
                     <section className="section section-md bg-gray-100">
                         <h3
