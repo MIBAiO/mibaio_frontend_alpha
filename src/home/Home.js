@@ -14,16 +14,17 @@ import "aos/dist/aos.css";
 import "../css/selection.css";
 import "../style.css";
 import "../css/newcss.css";
-import sample1 from "./landing-page-image.png";
+import sample1 from "./MIBAiO-Xtension-4C.png";
 import WOW from "wowjs";
 import extensionphonevid from "./extensionphone.mp4";
-import x4s from "./X4S-on-wall.png";
 import alexaphone from "./alexaphone.gif";
 import appdemo from "./appdemo.mp4";
 import extensionvid from "./Event-new.mp4";
 import alexagif from "./Hi-Alexa.gif";
 import surgeproof from "./X4S-Commercial-2.png";
-import modeposter from "./3Modeposter.png";
+import feature1 from "./prominent-features-mobile-1.png";
+import feature2 from "./prominent-features-mobile-2.png";
+import modeposter from "./Multi-Mode.png";
 import gplay from "./google-play-badge.png";
 import apstore from "./App_Store_Badge.svg";
 import Chevron from "react-chevron";
@@ -173,7 +174,7 @@ const Home = (props) => {
 
                         <div
                             id="belownavbar"
-                            className="box-custom-4 bg-default"
+                            className="box-custom-4 bg-default wow fadeInDown"
                         >
                             <div className="box-custom-4-aside bg-accent">
                                 <div className="box-custom-4-aside-decoration">
@@ -208,7 +209,8 @@ const Home = (props) => {
                                                     loop true
                                                     style={{
                                                         alignContent: "center",
-                                                        maxWidth:500
+                                                        maxWidth:500,
+                                                        borderRadius: "10px",
                                                     }}
                                                 >
                                                     <source
@@ -226,7 +228,7 @@ const Home = (props) => {
                                             <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
                                             <lord-icon
                                                 src="https://cdn.lordicon.com/wxnxiano.json"
-                                                trigger="loop"
+                                                trigger="loop-on-hover"
                                                 delay="175"
                                                 speed=".01"
                                                 colors="primary:#ffffff,secondary:#0accbe"
@@ -251,7 +253,7 @@ const Home = (props) => {
                             <div className="box-custom-4-main">
                                 <div className="block-10">
                                     <h2
-                                        className="font-weight-bold heading-decoration-2 wow fadeInUp"
+                                        className="font-weight-bold heading-decoration wow fadeInUp"
                                         data-wow-delay=".4s"
                                         style={{
                                             visibility: "visible",
@@ -260,11 +262,11 @@ const Home = (props) => {
                                         }}
                                     >
                                         <span className="text-white">
-                                            Control your
+                                            Transform the way you control your
                                         </span>
                                     </h2>
                                     <h2
-                                        className="extra-light text-white heading-decoration-3 wow fadeInUp"
+                                        className="text-white heading-decoration wow fadeInUp"
                                         data-wow-delay=".4s"
                                         style={{
                                             visibility: "visible",
@@ -272,13 +274,6 @@ const Home = (props) => {
                                             animationName: "fadeInUp",
                                         }}
                                     >
-                                        {/* <span
-                                            className="typed-text text-primary"
-                                            data-strings='["phone", "home", " electrical appliances", "lifestyle", "smartphone", "fingers"]'
-                                            data-type-speed={60}
-                                        >
-                                            home
-                                        </span> */}
                                         <Typewriter
                                             options={{
                                                 strings: [
@@ -294,7 +289,7 @@ const Home = (props) => {
                                                 cursorClassName:
                                                     "typed-cursor typed-cursor--blink",
                                             }}
-                                            initDelay={1000}
+                                            initDelay={800}
                                         />
                                         {/* <span className="typed-cursor typed-cursor--blink">
                                             |
@@ -319,9 +314,9 @@ const Home = (props) => {
                                                 animationName: "clipInLeft",
                                             }}
                                         >
-                                            Upgrade your existing electrical appliances 🛜 <br />
+                                            Experience smart living. Upgrade your existing appliances.  <br />
                                             Control & monitor from any part of the world with your
-                                            App!📱
+                                            App!
                                         </p>
                                     </div>
                                     <br />
@@ -414,7 +409,7 @@ const Home = (props) => {
                                     }}
                                     data-wow-delay=".4s"
                                 >
-                                    Xtension 4S
+                                    Xtension 4C
                                 </h2>
                                 <h5
                                     className="text-center wow-animation wow fadeIn design-text"
@@ -428,9 +423,9 @@ const Home = (props) => {
                                     <Typewriter
                                         options={{
                                             strings: [
-                                                "Designed to simplify your life",
-                                                "Fits outside any switchboard",
+                                                "Fits inside any switchboard",
                                                 "Controls 4 individual devices",
+                                                "Controls Fan speed"
                                             ],
                                             autoStart: true,
                                             loop: true,
@@ -438,7 +433,7 @@ const Home = (props) => {
                                             cursorClassName:
                                                 "typed-cursor typed-cursor--blink",
                                         }}
-                                        initDelay={1000}
+                                        initDelay={900}
                                     />
                                 </h5>
 
@@ -506,7 +501,7 @@ const Home = (props) => {
                                     >
                                         <img
                                             src={sample1}
-                                            alt="MIBAiO Xtension 4S white"
+                                            alt="MIBAiO Xtension 4C"
                                             className="z-depth-0 img-fluid wow fadeInUp"
                                             data-wow-delay=".5s"
                                         // style={{ transform: `scale(${scale})`, opacity }}
@@ -577,7 +572,6 @@ const Home = (props) => {
                                     <div className="icon-box">
                                         <div className="icon">
                                             <a href="#Security">
-                                                {/* <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script> */}
                                                 <lord-icon
                                                     src="https://cdn.lordicon.com/kbtmbyzy.json"
                                                     trigger="loop"
@@ -763,7 +757,7 @@ const Home = (props) => {
 
                             <h3
                                 className="wow fadeInUp"
-                                data-wow-delay=".4s"
+                                data-aos-delay=".2s"
                                 style={{
                                     textAlign: "center",
                                     paddingTop: "72px",
@@ -775,7 +769,9 @@ const Home = (props) => {
                             <h4 style={{ textAlign: "center", color: "#fefefe", paddingBottom: "26", opacity: "0.7" }}>Supports your favourite voice assistants</h4>
 
                         </div>
-                        <picture className="mt-4">
+                        <picture className="mt-4" data-aos-offset="-100"
+                                    data-aos-duration="200"
+                                    data-aos="fade-down">
                             <source
                                 media="(min-width:800px)"
                                 srcSet={alexagif}
@@ -788,10 +784,14 @@ const Home = (props) => {
                             />
                         </picture>
                     </section>
-                    {/* <img src={alexaphone} style={alexaphonestyle} />  */}
-                    <img src ={x4s} style={{width: "100%"}}></img>
+                    
+                    {/* Section Ends */}
 
-                    <section className="section section-md bg-gray-100">
+                    {/* <img src ={x4s} style={{width: "100%", marginTop: "-7%"}} data-aos-offset="100"
+                                    data-aos-duration="900"
+                                    data-aos="fade-up"></img> */}
+
+                    <section className="section section-md bg-gray-100" style={{marginTop: "-5%"}}>
                         <h3
                             className="wow fadeInUp"
                             data-wow-delay=".4s"
@@ -810,15 +810,10 @@ const Home = (props) => {
 
                         <div className="container" id="Surge">
                             <div className="row row-50 designTextContainer justify-content-xl-between align-items-center">
-                                <div
-                                    className="col-md-8 col-lg-7 col-xl-6"
-                                    // data-wow-delay=".5s"
-                                    data-aos-offset="100"
-                                    data-aos-duration="1500"
-                                    data-aos="fade-right"
-                                // data-aos-anchor-placement="bottom-bottom"
+                                <div className="col-md-5 col-lg-6 left-pattern" data-aos-offset="150" data-aos-duration="2000" data-aos="fade-right"
+                                    // data-wow-delay=".5s" 
                                 >
-                                    <div className="unit unit-spacing-1 align-items-center">
+                                    {/* <div className="unit unit-spacing-1 align-items-center">
                                         <div className="unit-left">
                                             <div
                                                 className="icon icon-style-1 mdi mdi-flash"
@@ -844,23 +839,32 @@ const Home = (props) => {
                                                 </p>
                                             </div>
                                         </blockquote>
+                                    </div> */}
+                                    <div className="item">
+                                        <img
+                                            className="d-block w-100"
+                                            src={feature1}
+                                            alt="feature-1"
+                                            width="456px"
+                                            height="456px"
+                                        />
                                     </div>
                                 </div>
                                 <div
-                                    className="col-md-4 col-lg-5 right-pattern"
+                                    className="col-md-5 col-lg-6 right-pattern"
                                     // data-wow-delay=".5s"
-                                    data-aos-offset="100"
-                                    data-aos-duration="1500"
+                                    data-aos-offset="150"
+                                    data-aos-duration="1800"
                                     data-aos="fade-left"
                                 // data-aos-anchor-placement="bottom-bottom"
                                 >
                                     <div className="item">
                                         <img
                                             className="d-block w-100"
-                                            src={surgeproof}
-                                            alt="Surge-proof-Xtension4S"
-                                            width="456"
-                                            height="456"
+                                            src={feature2}
+                                            alt="feature-2"
+                                            width="456px"
+                                            height="456px"
                                         />
                                     </div>
                                 </div>
@@ -869,7 +873,7 @@ const Home = (props) => {
                         <div className="container" id="MMC">
                             <div className="row row-50 designTextContainer justify-content-xl-between align-items-center flex-md-row-reverse">
                                 <div
-                                    className="col-md-8 col-lg-7 col-xl-6"
+                                    className="col-md-4 col-lg-5 col-xl-6"
                                     // data-wow-delay=".5s"
                                     data-aos-offset="100"
                                     data-aos-duration="1500"
@@ -966,9 +970,10 @@ const Home = (props) => {
                                     className="normal text-white font-weight-bold text-uppercase wow fadeIn"
                                     style={{ animationName: "none" }}
                                 >
-                                    About MIBAiO
+                                    About Us
                                     <br />
                                 </span>
+                                <br/>
                                 <h3>MIBAiO</h3>
                                 <p
                                     className="offset-top-7 font-weight-regular typed-text-heading wow fadeIn"
@@ -1004,17 +1009,18 @@ const Home = (props) => {
                                         animationName: "none",
                                     }}
                                 >
-                                    <span style={{ maxWidth: "800px" }}>
+                                    <h4 style={{ maxWidth: "800px" }}>
                                         We are on a mission to transform the
                                         Smart Home Ecosystem in India <br />
                                         And we invite you to take a front seat
                                         in this revolution
-                                    </span>
+                                    </h4>
                                 </p>
                                 {/* <a className="button-play mdi mdi-play mdi-24px wow fadeIn" href="https://youtu.be/qxN6Cw6qgLk" data-lightgallery="item" data-wow-delay=".3s">
                             <svg className="button-play-shape" width="86" height="86" viewbox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
                                 <rect x="1" y="1" width="86" height="86" rx="6" ry="6"></rect>
                             </svg></a>  */}
+                                <br/>
                                 <div
                                     id="play-video"
                                     className="video-play-button"
@@ -1051,9 +1057,9 @@ const Home = (props) => {
                                                         +
                                                     </span>
                                                 </div>
-                                                <h4 className="counter-classic-title text-black extra-lighter">
+                                                <h5 className="counter-classic-title text-black extra-lighter">
                                                     Modes <br /> of control
-                                                </h4>
+                                                </h5>
                                             </article>
                                         </div>
                                         <div className="layout-bordered-1-item">
@@ -1074,9 +1080,9 @@ const Home = (props) => {
                                                         +
                                                     </span>
                                                 </div>
-                                                <h4 className="counter-classic-title extra-lighter">
+                                                <h5 className="counter-classic-title extra-lighter">
                                                     Devices supported
-                                                </h4>
+                                                </h5>
                                             </article>
                                         </div>
                                         <div className="layout-bordered-1-item">
@@ -1097,9 +1103,9 @@ const Home = (props) => {
                                                         yr
                                                     </span>
                                                 </div>
-                                                <h4 className="counter-classic-title extra-lighter">
+                                                <h5 className="counter-classic-title extra-lighter">
                                                     replacement warranty <br /> No questions asked
-                                                </h4>
+                                                </h5>
                                             </article>
                                         </div>
                                     </div>
@@ -1163,7 +1169,7 @@ const Home = (props) => {
                                                             >
                                                                 01
                                                             </span>{" "}
-                                                            &nbsp; Comfort
+                                                            &nbsp; Comfort & Convenience
                                                             <div className="card-arrow"></div>
                                                         </a>
                                                     </div>
@@ -1178,8 +1184,8 @@ const Home = (props) => {
                                                     <div className="card-body">
                                                         <p>
                                                             Control and keep an
-                                                            eye on your
-                                                            appliances from
+                                                            eye on your smart home
+                                                            devices from
                                                             anywhere
                                                             <br />
                                                             Do it with your
@@ -1212,7 +1218,7 @@ const Home = (props) => {
                                                             >
                                                                 02
                                                             </span>{" "}
-                                                            &nbsp; Convenience
+                                                            &nbsp; Ease of usage
                                                             <div className="card-arrow"></div>
                                                         </a>
                                                     </div>
@@ -1226,7 +1232,8 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            Easy to install.
+                                                            Works with any type of electrical wiring, No rewiring or Hub required. 
+                                                            <br />Easy to install.
                                                             <br />
                                                             Easy to operate...
                                                             Makes life simple!
@@ -1274,9 +1281,7 @@ const Home = (props) => {
                                                             Save upto 26%
                                                             on electricity
                                                             bill per month.<br />
-                                                            recover the
-                                                            amount invested
-                                                            roughly in about 7*
+                                                            Enjoy returns within 7*
                                                             months!
                                                         </p>
                                                     </div>
@@ -1343,7 +1348,7 @@ const Home = (props) => {
                                         wont resist. 😎
                                     </span>
                                 </p>
-                                <div
+                                {/* <div
                                     className="toggle-modern"
                                     aria-label="Pricing Switch Monthly/Yearly"
                                     id="pt-classic-toggle"
@@ -1366,7 +1371,7 @@ const Home = (props) => {
                                     <div className="toggle-modern-text toggle-modern-text_alternate">
                                         Xtension 4C+
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="container ot50">
                                 <div
@@ -1404,10 +1409,12 @@ const Home = (props) => {
                                                 }}
                                             >
                                                 <h4 className="pt-classic-title">
-                                                    Pack of 1
+                                                    Smart IR Remote
                                                 </h4>
+                                                <img src="images/Smart-remote.png"
+                                                    style={{maxWidth : "200px"}}/>
                                                 <div className="pt-classic-price-outer">
-                                                    <div
+                                                <div
                                                         className="pt-classic-price"
                                                         aria-hidden={
                                                             toggleState
@@ -1420,7 +1427,7 @@ const Home = (props) => {
                                                             ₹
                                                         </div>
                                                         <div className="pt-classic-price-value extra-light">
-                                                            5499
+                                                            1199
                                                         </div>
                                                     </div>
                                                     <div
@@ -1442,26 +1449,24 @@ const Home = (props) => {
                                                 </div>
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
-                                                    <li>
-                                                        Smart Control upto 4
-                                                        appliances
-                                                    </li>
-                                                    <li>Ideal for 1 room</li>
-                                                    <li>No addidional wiring</li>
-                                                    <li>Fits outside existing switch board</li>
+                                                    <li>All remotes in one App</li>
+                                                    <li>Control TV, AC, Audio system, RGB LED any any other device controlled by IR remote</li>
+                                                    <li>10m range</li>
+                                                    <li>Set schedules and automations</li>
+                                                    <li>Voice control with Alexa</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
                                                         className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
-                                                        href="https://mibaio.in/#"
+                                                        href="/#/SmartRemote"
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read more
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read more
                                                         </div>
                                                     </a>
                                                 </div>
@@ -1475,8 +1480,10 @@ const Home = (props) => {
                                             >
                                                 <div className="pt-classic-header">
                                                     <h4 className="pt-classic-title">
-                                                        Pack of 3
+                                                        Xtension 4C+
                                                     </h4>
+                                                    <img src="images/X4C.png"  style={{maxWidth : "100px",display : "inline-block"}} width={1000}
+											        height={1000}/>
                                                     <div className="pt-classic-price-outer">
                                                         <div
                                                             className="pt-classic-price"
@@ -1491,7 +1498,7 @@ const Home = (props) => {
                                                                 ₹
                                                             </div>
                                                             <div className="pt-classic-price-value extra-light">
-                                                                15597
+                                                                4699
                                                             </div>
                                                         </div>
                                                         <div
@@ -1538,27 +1545,25 @@ const Home = (props) => {
                                                 </div>
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
-                                                    <li>
-                                                        Smart Control upto 12
-                                                        appliances
-                                                    </li>
-                                                    <li>Ideal for 2 BHK</li>
-                                                    <li>No additional wiring</li>
-                                                    <li>Fits outside existing switch board</li>
+                                                    <li>Smart Control of upto 5 appliances</li>
+                                                    <li>Fan-speed control</li>
+                                                    <li>Set schedules and automations</li>
+                                                    <li>Fits inside existing switch board</li>
+                                                    <li>Voice control with Alexa</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
                                                         className="button button-secondary button-shadow button-icon button-icon-right button-winona font-weight-regular"
-                                                        href="https://mibaio.in/#"
+                                                        href="/#/Xtension4C"
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read More
                                                         </div>
 
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read More
                                                         </div>
                                                     </a>
 
@@ -1576,8 +1581,10 @@ const Home = (props) => {
                                                 }}
                                             >
                                                 <h4 className="pt-classic-title">
-                                                    Pack of 2
+                                                    Motion Sensor
                                                 </h4>
+                                                <img src="images/Motion-Sensor.png"  style={{maxWidth : "110px"}}  
+                                                    />
                                                 <div className="pt-classic-price-outer">
                                                     <div
                                                         className="pt-classic-price"
@@ -1592,7 +1599,7 @@ const Home = (props) => {
                                                             ₹
                                                         </div>
                                                         <div className="pt-classic-price-value extra-light">
-                                                            10798
+                                                            499
                                                         </div>
                                                     </div>
                                                     <div
@@ -1608,35 +1615,30 @@ const Home = (props) => {
                                                             ₹
                                                         </div>
                                                         <div className="pt-classic-price-value extra-light">
-                                                            10798
+                                                            499
                                                         </div>
-                                                        <div className="badge badge-1">
-                                                            Save 12%
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                                 <div className="pt-classic-divider" />
                                                 <ul className="pt-classic-list">
-                                                    <li>
-                                                        Smart Control upto 8
-                                                        appliances
-                                                    </li>
-                                                    <li>Ideal for 1 BHK</li>
+                                                    <li>Converts normal light to motion sensor based light</li>
+                                                    <li>Fits to any existing Tubelight or Bulb</li>
                                                     <li>No additional wiring</li>
-                                                    <li>Fits outside existing switch boards</li>
+                                                    <li>Covers 10ft distance and 120⁰ angle for detection</li>
                                                 </ul>
                                                 <div className="pt-classic-footer">
                                                     <a
                                                         className="button button-default-outline button-icon button-icon-right button-winona font-weight-regular"
-                                                        href="https://mibaio.in/#"
+                                                        href="/#/MotionSensor"
                                                     >
                                                         <div className="content-original">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read More
                                                         </div>
                                                         <div className="content-dubbed">
                                                             <span className="icon mdi mdi-arrow-right" />
-                                                            Add to cart
+                                                            Read More
                                                         </div>
                                                     </a>
                                                 </div>
@@ -1757,14 +1759,12 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            Our product offers
-                                                            Manual, Internet and
-                                                            Bluetooth all-in-one
-                                                            functionality along with
-                                                            voice control. To know
-                                                            more about key features,
-                                                            please refer the product
-                                                            brochure.
+                                                            Our product makes your existing devices Smart. You can control and monitor from anywhere in the world with
+                                                            all-in-one functionality which includes
+                                                            Voice control, Manual control along with App control Internet and
+                                                            Bluetooth. 
+                                                            Our hardware as well as software is 100% Made in INDIA. 
+                                                            Our cloud servers are located in India to ensure data privacy and security unlike our competitors who use Chineese hardware and app platforms.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1800,12 +1800,12 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            The major advantage is
+                                                            The major advantage is Smart &
                                                             Easy life: You experience a #smarthome and other exciting features under ₹6000. <br />
                                                             Second advantage is
                                                             Modular Design: Our
-                                                            product is carefully
-                                                            designed to fit outside any existing electrical switchboard. It can be at your house or at your workplace.
+                                                            products are carefully
+                                                            designed to fit aesthethically with any existing electrical switchboard with no extra wiring. It can be at your house or at your workplace.
                                                             <br />
                                                             We are working towards the
                                                             #MakeInIndia, #DigitalIndia,
@@ -1896,7 +1896,7 @@ const Home = (props) => {
                                                 >
                                                     <div className="card-body">
                                                         <p>
-                                                            Yes, you can regulate the speed of the fan with your app <br /> And also with your voice!🎙️
+                                                            Yes, with Xtension 4C+ you can regulate the speed of the fan with your app along with fan regulator<br /> And also with your voice!🎙️
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1937,7 +1937,7 @@ const Home = (props) => {
                                                             Monitor
                                                             electricity consumption
                                                             of your connected appliances
-                                                            on your App 📊
+                                                            on your App 📊 And much more!
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1988,28 +1988,8 @@ const Home = (props) => {
                                 </div>
                             </div>
 
-
-                            {/* <p className="wow fadeIn" data-wow-delay=".2s">
-                                <span
-                                    style={{
-                                        maxWidth: "720px",
-                                        opacity: " .85",
-                                    }}
-                                >
-                                    It’s time to upgrade your
-                                    existing electrical appliances and experience the
-                                    futuristic lifestyle!
-                                </span>
-                            </p> */}
                         </div>
                         <div className="group" style={{ padding: "15px" }}>
-                            {/* <Link
-                                className="button button-default-outline button-winona text-black wow fadeIn"
-                                to="/contact_us"
-                                data-wow-delay=".1s"
-                            >
-                                <span></span>Contact us
-                            </Link> */}
                             <a href="https://play.google.com/store/apps/details?id=com.MIBAiO.mibaio_alpha&pcampaignid=web_share">
                                 <img
                                             src={gplay}

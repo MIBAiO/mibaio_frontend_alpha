@@ -52,8 +52,8 @@ const CustomFooter = () => {
 		<section className="section section-md-last block-footer-classic">
 			{didRedirect && <Redirect to="/" />}
 
-			<div className="block-footer-classic-wrap">
-				<div className="container">
+			{/* <div className="block-footer-classic-wrap"> */}
+				{/* <div className="container">
 					<div className="row row-50 justify-content-lg-between">
 						<div
 							className="col-md-6 col-lg-6 wow clipInLeft"
@@ -140,9 +140,11 @@ const CustomFooter = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 				{/* Page Footer*/}
-				<footer className="section footer-classic footer-classic_boxed text-white-50 text">
+				{/* <footer className="section footer-classic footer-classic_boxed text-white-50 text">
+				 */}
+				 <footer className="section footer-classic footer-classic_boxed text-white-50 text">
 					<div className="hr container">
 						<hr />
 					</div>
@@ -152,7 +154,7 @@ const CustomFooter = () => {
 								<div className="col-sm-7 col-lg-3 col-xl-2">
 									<a
 										className="brand"
-										href="https://mibaio.in/index.html"
+										href="https://mibaio.in/#"
 									>
 										<img
 											src="images/logo-default-96x32.png"
@@ -169,7 +171,7 @@ const CustomFooter = () => {
 												maxWidth: "250px",
 											}}
 										>
-											MIBAiO is the leading provider of
+											MIBAiO is the leading manufacturer of
 											the best home automation solutions.
 										</span>
 									</p>
@@ -335,7 +337,7 @@ const CustomFooter = () => {
 								{/* <a href="https://mibaio.in/privacy-policy.html"> */}
 								<Link to="/privacyPolicy">
 									{" "}
-									Privacy Policy
+									Privacy Policy{" "}
 								</Link>
 								|
 								<Link to="/privacyPolicyApp">
@@ -366,7 +368,7 @@ const CustomFooter = () => {
                                 />
                             </a> */}
 				{/* <a href="#" id="ui-to-top" className="ui-to-top mdi mdi-chevron-up"></a> */}
-			</div>
+			{/* </div> */}
 		</section>
 	);
 };

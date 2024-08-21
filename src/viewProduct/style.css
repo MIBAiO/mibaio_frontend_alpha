@@ -1,7 +1,7 @@
 /* Styles */
 .product-page {
     font-family: Avenir;
-    color: black;
+    color: #3b3c3b;
 }
 
 
@@ -61,7 +61,7 @@
 }
 
 .product-feature p {
-    color: black;
+    color: #86868b;
     font-family: Avenir;
     font-weight: 500;
     margin-bottom: .5rem;
@@ -109,7 +109,7 @@
     font-family: Avenir;
     font-weight: 500;
     font-size: 1rem;
-    text-align: justify;
+    /* text-align: justify; */
     margin-bottom: 0;
 }
 
@@ -145,7 +145,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 30%;
+    border-radius: 12%;
     min-width: 6rem;
     max-width: 6rem;
     height: 6rem;

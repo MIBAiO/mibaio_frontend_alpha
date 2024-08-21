@@ -6,6 +6,7 @@ import { addModel1, removeModel1 } from "../store/cartSlice";
 import { Link, Redirect, useLocation } from "react-router-dom";
 import "./reviews.css";
 import { HiOutlineTruck } from "react-icons/hi";
+import x4s from "../home/X4S-on-wall.png";
 
 import { Navbar, Nav, Container, NavDropdown, Button, Toast } from "react-bootstrap";
 // import { Link } from 'react-router-dom'
@@ -77,7 +78,7 @@ const ViewProductNew = (props) => {
         setEstimatingDate(res.data.data.data.available_courier_companies[0].etd);
     }
 
-    //Handle  click on chnage
+    //Handle  click on change
 
 
     const [productImages, setProductImages] = useState([
@@ -253,11 +254,10 @@ const ViewProductNew = (props) => {
             <NavigationBar />
             <div className="container-fluid product-page">
                 <div className="container mx-auto my-3">
-                    {/* 2 Sectiobns */}
+                    {/* 2 Sections */}
                     <div className="row">
                         <div className={"col-md-6  pt-5"}>
                             <div className="text-mobile d-none d-md-block">
-
                                 <h3 className="product-heading">
                                     Xtension 4S
                                 </h3>
@@ -268,7 +268,7 @@ const ViewProductNew = (props) => {
                                 </div>
                                 <div className="product-price my-5">
                                     <h5 className="price">MRP ₹5499.00</h5>
-                                    <p>Inclusive of all taxes</p>
+                                    <p>Incl. all taxes</p>
                                 </div>
                             </div>
                             <div className="product-color">
@@ -338,11 +338,14 @@ const ViewProductNew = (props) => {
 
                                 <b>Get it by - {esitimatingDate} </b>
                             </div>
-                            <button className="btn-product"
-                                data-toggle="modal"
-                                data-target="#dealsModal">
-                                Add to Cart
-                            </button>
+                            <a href="https://wa.me/919834163593?text=Hi%20I'm%20interested%20to%20purchase%20Xtension4S">
+                                <button className="btn-product"
+                                    // data-toggle="modal"
+                                    // data-target="#dealsModal"
+                                >
+                                    Add to Cart
+                                </button>
+                            </a>
 
                             {/* MODAL================================================================== */}
                             {/* Overlays */}
@@ -549,8 +552,8 @@ const ViewProductNew = (props) => {
                                     <div
                                         className="small-img-col"
                                         style={{
-                                            border: "1px solid #000",
-                                            borderRadius: 20,
+                                            border: "0.5px solid #000",
+                                            borderRadius: 5,
                                             padding: 10,
                                             cursor: "pointer",
                                             margin: "5px",
@@ -576,8 +579,8 @@ const ViewProductNew = (props) => {
                     </div>
                     <div className="product-info mt-5">
                         <h5 className="">Product Info</h5>
-                        <p>MIBAiO 4S is a IoT smart device which upgrades the abilities of upto 4 pre-existing electrical appliances
-                            eg. lights, fan etc to be fully operated and automated using our App across the world!</p>
+                        <p>Xtension 4S is a IoT smart switch converter which upgrades the abilities of upto 4 existing electrical appliances
+                            eg. lights, fan etc to be fully operated and automated using old switches + our App across the world!</p>
                     </div>
                     <div className="product-features-card mt-3">
                         <h5>Features</h5>
@@ -658,6 +661,9 @@ const ViewProductNew = (props) => {
                         // autoPlay="true"
                         muted="true"
                     ></video>
+                    <img src ={x4s} style={{width: "100%", marginTop: "-7%"}} data-aos-offset="100"
+                                    data-aos-duration="900"
+                                    data-aos="fade-up"></img>
                     <div className="container">
                         <div className="row row-50 justify-content-xl-between align-items-center">
                             <div
@@ -680,7 +686,7 @@ const ViewProductNew = (props) => {
                                             appliance(s) to run at a
                                             specified time or set a timer to
                                             turn on/off your appliance(s)
-                                            automatically. eg:
+                                            automatically.
                                         </p>
                                     </div>
                                     <blockquote className="quote-light">
@@ -689,18 +695,18 @@ const ViewProductNew = (props) => {
                                                 <li>
                                                     Switch ON your
                                                     Mandir/outdoor lights
-                                                    every eveing at 6:15pm
+                                                    every evening at 6:15pm
                                                     and switch OFF outdoor light at
                                                     7am
                                                 </li>
                                                 <li>
-                                                    Switch OFF TV/STB every
+                                                    Switch OFF TV every
                                                     night at 11:00pm
                                                 </li>
                                                 <li>
                                                     Set up timings of light
                                                     and fan in kids/elderly
-                                                    rooms
+                                                    rooms ♿
                                                 </li>
                                             </ul>
                                         </div>
@@ -815,8 +821,7 @@ const ViewProductNew = (props) => {
                                                 </li>
                                                 <li>
                                                     Works with leading voice
-                                                    assistants like Alexa,
-                                                    Siri and Google Voice.
+                                                    assistants like Alexa.
                                                 </li>
                                             </ul>
                                         </div>
@@ -893,6 +898,7 @@ const ViewProductNew = (props) => {
                                     <img
                                         src="images/star.svg"
                                         className="_1wB99o"
+                                        alt="Review"
                                     />
                                 </div>
                                 &nbsp; Vinod Tawde &nbsp;{" "}
@@ -926,118 +932,14 @@ const ViewProductNew = (props) => {
                             <div className="t-ZTKy">
                                 <div>
                                     <div className="">
-                                        Excellent Home Automation product in this price range.
-                                        Value for money.. excellent build
-                                        quality.. Aesthetic look.. ideal for any
-                                        switchboard.. works without Internet too!!
+                                        Excellent Home Automation product price should be around 4K.
+                                        Overall, value for money. Ideal for my home
+                                        switchboard. Can control with Alexa and works without Internet too!!
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* <Carousel
-							controls={false}
-							indicators={false}
-							interval={2000}
-							draggable={true}
-							slide={true}
-						>
-							<Carousel.Item>
-								<blockquote className="quote-classic">
-									<img
-										className="quote-classic-avatar"
-										src="images/testimonials-1-102x102.jpg"
-										alt="Customer profile image"
-										width="102"
-										height="102"
-									/>
-									<div className="quote-classic-text">
-										<p>
-											With MIBAiO installed at my
-											restaurant, I am tension free of all
-											the hassels as I have the real time
-											status of my connected appliances on
-											my phone screen. Best part is, I can
-											control my restaurant lights and
-											fans without replacing them from
-											anywhere in the world!
-										</p>
-									</div>
-
-									<div className="quote-classic-meta">
-										<cite className="quote-classic-cite">
-											Mr. Prasad S
-										</cite>
-										<p className="quote-classic-position">
-											Restaurant Owner
-										</p>
-									</div>
-								</blockquote>
-							</Carousel.Item>
-							<Carousel.Item>
-								<blockquote className="quote-classic">
-									<img
-										className="quote-classic-avatar"
-										src="images/testimonials-2-102x102.jpg"
-										alt="Customer profile image"
-										width="102"
-										height="102"
-									/>
-
-									<div className="quote-classic-text">
-										<p>
-											The Voice control feature is really
-											helpful for my mother-in-law who is
-											on a wheelchair! Setting up lights
-											and scenes with 1 tap whenever
-											guests arrive at my house puts a
-											futuristic tech impression! 😎
-										</p>
-									</div>
-
-									<div className="quote-classic-meta">
-										<cite className="quote-classic-cite">
-											Mrs. Swati K
-										</cite>
-										<p className="quote-classic-position">
-											House Maker
-										</p>
-									</div>
-								</blockquote>
-							</Carousel.Item>
-							<Carousel.Item>
-								<blockquote className="quote-classic">
-									<img
-										className="quote-classic-avatar"
-										src="images/testimonials-3-102x102.jpg"
-										alt="Customer profile image"
-										width="102"
-										height="102"
-									/>
-									<div className="quote-classic-text">
-										<p>
-											As promised, Xtension 4S has
-											upgraded my lifestyle. I like the
-											automatic scheduling feature which
-											runs exactly at time set which
-											reduces my effort and delivers me a
-											delightful experience!
-											<br />
-											Kudos to MIBAiO team!!
-										</p>
-									</div>
-
-									<div className="quote-classic-meta">
-										<cite className="quote-classic-cite">
-											Ms. Ankita R
-										</cite>
-										<p className="quote-classic-position">
-											Working Professional
-										</p>
-									</div>
-								</blockquote>
-							</Carousel.Item>
-						</Carousel> */}
                 </div>
             </div >
 
@@ -1057,57 +959,3 @@ const ViewProductNew = (props) => {
 
 export default ViewProductNew;
 
-
-// import React, { useState, useRef } from 'react';
-// import ViewProduct from './ViewProduct';
-
-// function ViewProductNew() {
-//     const closeModal = React.useRef(false);
-
-//     return (
-//         <div>
-
-//             <div
-//                 class="modal fade"
-//                 id="exampleModal"
-//                 tabindex="-1"
-//                 role="dialog"
-//                 aria-labelledby="exampleModalLabel"
-//                 aria-hidden="true"
-//             >
-//                 <div
-//                     class="modal-dialog"
-//                     role="document"
-//                 >
-//                     <div class="modal-content">
-//                         <div class="modal-body">
-//                             <h1>Hii</h1>
-//                         </div>
-//                         <button
-//                             ref={closeModal}
-//                             style={{
-//                                 visibility: "hidden",
-//                             }}
-//                         ></button>
-//                     </div>
-//                 </div>
-//             </div>
-
-//             <button
-//                 type="submit"
-//                 defaultValue="Place My Order"
-//                 className="btn w-40"
-//                 data-toggle="modal"
-//                 data-target="#exampleModal"
-//             // onClick={saveData}
-//             >
-
-
-
-//                 "Proceed"
-//             </button>
-//         </div>
-//     );
-// }
-
-// export default ViewProductNew;

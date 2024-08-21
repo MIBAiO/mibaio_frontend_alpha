@@ -6,7 +6,7 @@ import PageHeadder from "../components/PageHeadder";
 const FAQ = () => {
     return (
         <div className="page">
-            <section className="section page-header-1 header-section">
+            <section className="section page-header-3 header-section">
                 {/* <NavigationBar /> */}
                 <PageHeadder
                     quote="FAQ"

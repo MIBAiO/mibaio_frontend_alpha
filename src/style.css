@@ -20024,7 +20024,7 @@ body:not(.lg-from-hash)
 }
 @media (max-width: 575px) {
   .why-us .img {
-    min-height: 200px;
+    min-height: 500px;
   }
   .typed-text-heading .Typewriter {
     font-size: 1.1rem;

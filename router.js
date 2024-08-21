@@ -10,6 +10,10 @@ export default (
 
         <Route path="/about_us" exact />
 
+        <Route path="/Xtension4C"></Route>
+        <Route path="/SmartRemote"></Route>
+        <Route path="/MotionSensor"></Route>
+
         <Route path="/careers" exact></Route>
 
         <Route path="/register"></Route>

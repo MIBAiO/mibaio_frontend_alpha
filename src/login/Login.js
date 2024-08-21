@@ -150,6 +150,16 @@ const Login = () => {
                                             <span className="fw-bold" style={{ fontWeight: "bold" }}>Back</span>
                                         </Link>
                                     </div>
+                                    <div className="d-flex p-0 m-0 justify-content-between ">
+                                        <img
+                                            className=" brand-logo-dark"
+                                            src="images/MIBAiO-Logo-vector.svg"
+                                            alt="MIBAiO Logo"
+                                            width={96}
+                                            height={32}
+                                            srcSet="images/MIBAiO-Logo-vector.svg"
+                                        />
+                                    </div>
                                     <div className="layout-2-item create-acc-btn d-flex p-0 m-0 justify-content-between align-items-center">
                                         <div className="layout-2-group">
                                             <Link

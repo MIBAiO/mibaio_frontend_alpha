@@ -138,7 +138,7 @@ const NavigationBar = () => {
 							<img
 								className=" brand-logo-dark"
 								src="images/logo-default-96x32.png"
-								alt=""
+								alt="MIBAiO Logo"
 								width={96}
 								height={32}
 								srcSet="images/logo-default-96x32.png 2x"
@@ -198,7 +198,65 @@ const NavigationBar = () => {
 								}}
 							>
 								<Link className="rd-nav-link nav-font" to="/view">
-									Product
+								<NavDropdown
+									title={<span className="text-white">Products</span>}
+									id="collasible-nav-dropdown"
+									style={{
+										minWidth: "100%",
+										backgroundColor: "#0000",
+										textAlign: "center",
+									}}
+								>
+										<NavDropdown.Item
+											style={{
+												backgroundColor: "#0000",
+											}}
+										>
+											<div
+												style={{
+													display: "flex",
+													justifyContent: "center",
+													alignItems: "Left",
+													flexDirection: "column",
+													backgroundColor: "#0000",
+												}}
+											>
+												<li class="rd-megamenu-list-item">
+													<Link
+														to="/view"
+														class="rd-megamenu-list-link text-dark"
+													>
+														Xtension 4S Smart switch
+													</Link>
+												</li>
+												<li class="rd-megamenu-list-item">
+													<Link
+														to="/Xtension4C"
+														class="rd-megamenu-list-link text-dark"
+													>
+														Xtension 4C/4C+ 
+													</Link>
+												</li>
+												<li class="rd-megamenu-list-item">
+													<Link
+														to="/SmartRemote"
+														class="rd-megamenu-list-link text-dark"
+													>
+														Smart Remote blaster
+													</Link>
+												</li>
+												<li class="rd-megamenu-list-item">
+													<Link
+														to="/MotionSensor"
+														class="rd-megamenu-list-link text-dark"
+													>
+														Motion Sensor
+													</Link>
+												</li>
+
+											</div>
+										</NavDropdown.Item>
+								</NavDropdown>
 								</Link>
 							</Nav.Link>
 							{/* <NavDropdown title="Account" id="collasible-nav-dropdown" className="rd-nav-link nav-font">
@@ -451,87 +509,6 @@ const NavigationBar = () => {
 					</Nav>
 				</Container >
 			</Navbar >
-			{/* <nav class="navbar navbar-expand-lg navbar-dark color-nav">
-				<div class="container-fluid">
-					<Link to="/">
-						<img
-							className=" brand-logo-dark"
-							src="images/logo-default-96x32.png"
-							alt=""
-							width={96}
-							height={32}
-							srcSet="images/logo-default-96x32.png 2x"
-						/>
-					</Link>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="nav mx-auto  navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item ">
-								<div className="nav-link">
-									<Link class="nav-link text-white " href="/">
-										Home
-									</Link>
-								</div>
-							</li>
-							<li class="nav-item">
-								<div className="nav-link">
-									<Link class="nav-link text-white" href="about_us">
-										About Us
-									</Link>
-								</div>
-							</li>
-							<li class="nav-item">
-								<div className="nav-link">
-									<Link class="nav-link text-white" href="view">
-										Product
-									</Link>
-								</div>
-							</li>
-							<li class="nav-item">
-								<div className="nav-link">
-									<Link class="nav-link text-white" href="contact_us">
-										Contact Us
-									</Link>
-								</div>
-							</li>
-							<li class="nav-item">
-								<div class="nav-link dropdown">
-									<a
-										class="nav-link dropdown-toggle text-white"
-										href="#"
-										id="collasible-nav-dropdown"
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded="false"
-									>
-										More
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="collasible-nav-dropdown">
-										<li>
-											<a class="dropdown-item text-dark" href="/careers">Careers</a>
-										</li>
-										<li>
-											<a class="dropdown-item text-dark" href="/faq">FAQ</a>
-										</li>
-										<li>
-											<a class="dropdown-item text-dark" href="/our_team">Our Team</a>
-										</li>
-										<li>
-											<a class="dropdown-item text-dark" href="/privacyPolicy">Privacy Policy</a>
-										</li>
-										<li>
-											<a class="dropdown-item text-dark" href="/returnnrefund">Return &amp; Refund</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-
-					</div>
-				</div>
-			</nav> */}
 		</>
 	);
 };

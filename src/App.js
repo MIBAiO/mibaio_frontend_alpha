@@ -58,6 +58,8 @@ import ReturnNRefund from "./ReturnNRefund/ReturnNRefund";
 import ScrollToTop from "./components/ScrollToTop";
 import RegisterWithEmail from "./register/RegisterWithEmail";
 import ViewProductNew from "./viewProduct/ViewProductNew";
+import Xtension4C from "./viewProduct/Xtension4C"; //added new on 03/06/24
+import MotionSensor from "./viewProduct/MotionSensor";
 import CartNew from "./cart/CartNew";
 import CheckoutNew from "./checkout/CheckoutNew";
 import AddressPage from "./checkout/AddressPage";
@@ -65,6 +67,7 @@ import PayMethod from "./checkout/PayMethod";
 import PayMethodNew from "./checkout/PayMethodNew";
 import ReviewOrder from "./checkout/ReviewOrder";
 import AppPrivacyPolicy from "./PrivacyPolicy/AppPrivacyPolicy";
+import SmartRemote from "./viewProduct/SmartRemote";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -122,6 +125,18 @@ function App() {
 					{/* <BasicExample /> */}
 					<ViewProductNew />
 					{/* <Temp /> */}
+				</GuestRoute>
+
+				<GuestRoute path ="/Xtension4C">
+					<Xtension4C />
+				</GuestRoute>
+
+				<GuestRoute path ="/MotionSensor">
+					<MotionSensor />
+				</GuestRoute>
+
+				<GuestRoute path ="/SmartRemote">
+					<SmartRemote />
 				</GuestRoute>
 
 				<GuestRoute path="/passwordReset">

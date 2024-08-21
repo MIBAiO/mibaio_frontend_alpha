@@ -5,12 +5,12 @@ import PageHeadder from "../components/PageHeadder";
 const PrivacyPolicy = () => {
     return (
         <div className="page">
-            <section className="section page-header-1 header-section">
+            <section className="section page-header-2 header-section">
                 {/* <NavigationBar /> */}
                 <PageHeadder
                     quote="Our Privacy Policy"
                     showYouAre={false}
-                    info="This Privacy Policy is effective as of June 01, 2022. This is our official Privacy Policy which forms part of your legal agreement with us. Please read our Privacy Policy carefully to be sure you understand how we collect and use the information and under what circumstances we share information."
+                    info="This Privacy Policy is updated and effective as of August 01, 2024. This is our official Privacy Policy which forms part of your legal agreement with us. Please read our Privacy Policy carefully to be sure you understand how we collect and use the information and under what circumstances we share information."
                 />
             </section>
 
