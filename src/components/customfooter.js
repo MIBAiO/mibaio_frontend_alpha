@@ -158,7 +158,7 @@ const CustomFooter = () => {
 									>
 										<img
 											src="images/logo-default-96x32.png"
-											alt=""
+											alt="MIBAiO-Logo"
 											width={96}
 											height={32}
 											srcSet="images/logo-default-96x32.png 2x"
