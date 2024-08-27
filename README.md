@@ -1,1 +1,1 @@
-# mibaio_frontend_alpha
+# MIBAiO Frontend
